@@ -2,7 +2,7 @@ Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl):	Podstawowe programy ¶rodowiska graficznego GNOME
 Name:		gnome-panel
 Version:	2.4.0
-Release:	4
+Release:	5
 License:	LGPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/2.4/%{name}-%{version}.tar.bz2
@@ -37,6 +37,7 @@ Requires:	gnome-applets >= 2.4.1
 Requires:	gnome-desktop >= 2.4.0
 Requires:	gnome-icon-theme >= 1.0.9
 Requires:	libgnomeui >= 2.4.0.1
+Requires:	librsvg >= 2.4.0-3
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description

@@ -2,25 +2,25 @@ Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl):	Podstawowe programy ¶rodowiska graficznego GNOME
 Name:		gnome-panel
 Version:	2.3.4.1
-Release:	1
+Release:	2
 License:	LGPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/2.3/%{name}-%{version}.tar.bz2
 # Source0-md5:	dc7f01f874633f9c9eab4a7c9edbd6e5
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.3.0
-BuildRequires:	ORBit2-devel >= 2.7.3
+BuildRequires:	ORBit2-devel >= 2.7.5-1
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	glib2-devel >= 2.2.0
 BuildRequires:	gnome-common >= 1.2.4
-BuildRequires:	gnome-desktop-devel >= 2.3.4
+BuildRequires:	gnome-desktop-devel >= 2.3.4-2
 BuildRequires:	gtk+2-devel >= 2.2.0
 BuildRequires:  gtk-doc >= 1.0
 BuildRequires:	intltool >= 0.23
 BuildRequires:	libart_lgpl-devel >= 2.3.11
 BuildRequires:	libglade2-devel >= 2.0.1
-BuildRequires:	libgnomeui-devel >= 2.2.0
+BuildRequires:	libgnomeui-devel >= 2.3.3.1-2
 BuildRequires:	libtool
 BuildRequires:	libwnck-devel >= 2.3.0
 BuildRequires:	pkgconfig >= 0.12.0
@@ -30,8 +30,8 @@ BuildConflicts:	GConf-devel < 1.0.9-7
 Requires(post,postun): /sbin/ldconfig
 Requires(post,postun): scrollkeeper
 Requires(post):	GConf2 >= 2.3.0
-Requires:	gnome-desktop >= 2.3.4
-Requires:	libgnomeui >= 2.3.0
+Requires:	gnome-desktop >= 2.3.4-2
+Requires:	libgnomeui >= 2.3.3.1-2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -57,7 +57,7 @@ Summary:	GNOME panel includes, and more
 Summary(pl):	Pliki nag³ówkowe biblioteki panelu GNOME
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}
-Requires:	libgnomeui-devel >= 2.3.0
+Requires:	libgnomeui-devel >= 2.3.3.1-2
 Requires:	gtk-doc-common
 
 %description devel

@@ -1,0 +1,43 @@
+diff -urN aaa/gnome-panel-2.3.6.1/applets/clock/clock.c gnome-panel-2.3.6.1/applets/clock/clock.c
+--- aaa/gnome-panel-2.3.6.1/applets/clock/clock.c	2003-08-07 14:30:15.000000000 +0200
++++ gnome-panel-2.3.6.1/applets/clock/clock.c	2003-08-09 21:53:07.000000000 +0200
+@@ -37,6 +37,7 @@
+ #include <dirent.h>
+ #include <string.h>
+ #include <time.h>
++#include <locale.h>
+ #include <langinfo.h>
+ 
+ #include <panel-applet.h>
+@@ -57,6 +58,8 @@
+ 
+ #define NEVER_SENSITIVE "never_sensitive"
+ 
++#define FIRST_WEEKDAY_IS_MONDAY 1
++
+ static const char* KEY_HOUR_FORMAT   = "hour_format";
+ static const char* KEY_SHOW_SECONDS  = "show_seconds";
+ static const char* KEY_SHOW_DATE     = "show_date";
+@@ -447,6 +450,10 @@
+ {
+ 	GtkWindow *window;
+ 	GtkWidget *calendar;
++        gint first_day;
++
++        setlocale (LC_ALL, "");
++        first_day = (int) *(nl_langinfo (_NL_TIME_FIRST_WEEKDAY));
+ 
+ 	window = GTK_WINDOW (gtk_window_new (GTK_WINDOW_TOPLEVEL));
+ 
+@@ -464,6 +471,11 @@
+ 			
+ 	calendar = gtk_calendar_new ();
+ 
++        if (first_day == FIRST_WEEKDAY_IS_MONDAY) {
++                gtk_calendar_display_options (GTK_CALENDAR (calendar),
++                                              GTK_CALENDAR_WEEK_START_MONDAY | GTK_CALENDAR_SHOW_HEADING | GTK_CALENDAR_SHOW_DAY_NAMES);
++        }
++
+ 	gtk_container_add (GTK_CONTAINER (window), calendar);
+ 
+ 	gtk_widget_show (calendar);

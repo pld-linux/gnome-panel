@@ -31,9 +31,9 @@ diff -urN aa/gnome-panel-2.6.1/gnome-panel/panel-compatibility.schemas gnome-pan
       
        <schema>
          <key>/schemas/apps/panel/default_profiles/medium/objects/00000002/panel_id</key>
-diff -urN aa/gnome-panel-2.6.1/gnome-panel/panel-default-setup.entries gnome-panel-2.6.1/gnome-panel/panel-default-setup.entries
---- aa/gnome-panel-2.6.1/gnome-panel/panel-default-setup.entries	2004-04-02 19:05:41.000000000 +0200
-+++ gnome-panel-2.6.1/gnome-panel/panel-default-setup.entries	2004-04-20 00:05:32.229882288 +0200
+diff -urN aa/gnome-panel-2.6.1/gnome-panel/panel-default-setup.entries.in gnome-panel-2.6.1/gnome-panel/panel-default-setup.entries.in
+--- aa/gnome-panel-2.6.1/gnome-panel/panel-default-setup.entries.in	2004-04-02 19:05:41.000000000 +0200
++++ gnome-panel-2.6.1/gnome-panel/panel-default-setup.entries.in	2004-04-20 00:05:32.229882288 +0200
 @@ -29,12 +29,6 @@
            <value>
              <string>menu_bar</string>
@@ -92,7 +92,7 @@ diff -urN aa/gnome-panel-2.6.1/gnome-panel/panel-default-setup.entries gnome-pan
 -      <key>objects/nautilus_launcher/launcher_location</key>
 -      <schema_key>/schemas/apps/panel/objects/launcher_location</schema_key>
 -      <value>
--        <string>applications:///nautilus.desktop</string>
+-        <string>@DATADIR@/nautilus.desktop</string>
 -      </value>
 -    </entry>
 -
@@ -146,7 +146,7 @@ diff -urN aa/gnome-panel-2.6.1/gnome-panel/panel-default-setup.entries gnome-pan
 -      <key>objects/terminal_launcher/launcher_location</key>
 -      <schema_key>/schemas/apps/panel/objects/launcher_location</schema_key>
 -      <value>
--        <string>applications:///System/gnome-terminal.desktop</string>
+-        <string>@DATADIR@/gnome-terminal.desktop</string>
 -      </value>
 -    </entry>
 -

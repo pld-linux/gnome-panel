@@ -1,6 +1,6 @@
-diff -urN aa/gnome-panel-2.5.5/gnome-panel/panel-default-setup.entries gnome-panel-2.5.5/gnome-panel/panel-default-setup.entries
---- aa/gnome-panel-2.5.5/gnome-panel/panel-default-setup.entries	2004-01-09 13:56:30.000000000 +0100
-+++ gnome-panel-2.5.5/gnome-panel/panel-default-setup.entries	2004-02-17 23:03:27.187869200 +0100
+diff -urN aa/gnome-panel-2.5.5/gnome-panel/panel-default-setup.entries.in gnome-panel-2.5.5/gnome-panel/panel-default-setup.entries.in
+--- aa/gnome-panel-2.5.5/gnome-panel/panel-default-setup.entries.in	2004-01-09 13:56:30.000000000 +0100
++++ gnome-panel-2.5.5/gnome-panel/panel-default-setup.entries.in	2004-02-17 23:03:27.187869200 +0100
 @@ -56,6 +56,9 @@
              <string>clock</string>
            </value>

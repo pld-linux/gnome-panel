@@ -1,11 +1,14 @@
+%define	_snap	20030418
+
 Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl):	Podstawowe programy ¶rodowiska graficznego GNOME
 Name:		gnome-panel
 Version:	2.3.0
-Release:	1
+Release:	1.%{_snap}
 License:	LGPL
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/2.3/%{name}-%{version}.tar.bz2
+#Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/2.3/%{name}-%{version}.tar.bz2
+Source0:	%{name}-%{version}-%{_snap}.tar.bz2
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -83,6 +86,7 @@ intltoolize --copy --force
 %{__libtoolize}
 glib-gettextize --copy --force
 %{__aclocal} -I %{_aclocaldir}/gnome2-macros
+%{__autoheader}
 %{__autoconf}
 %{__automake}
 %configure \

@@ -1,6 +1,6 @@
-diff -urN aa/gnome-panel-2.6.1/gnome-panel/panel-compatibility.schemas gnome-panel-2.6.1/gnome-panel/panel-compatibility.schemas
---- aa/gnome-panel-2.6.1/gnome-panel/panel-compatibility.schemas	2003-09-05 14:35:53.000000000 +0200
-+++ gnome-panel-2.6.1/gnome-panel/panel-compatibility.schemas	2004-04-20 00:03:54.872682832 +0200
+diff -urN gnome-panel-2.9.92.orig/gnome-panel/panel-compatibility.schemas gnome-panel-2.9.92/gnome-panel/panel-compatibility.schemas
+--- gnome-panel-2.9.92.orig/gnome-panel/panel-compatibility.schemas	2005-03-01 12:56:44.872746256 +0100
++++ gnome-panel-2.9.92/gnome-panel/panel-compatibility.schemas	2005-03-01 13:02:11.575079952 +0100
 @@ -182,14 +182,6 @@
        </schema>
       
@@ -16,24 +16,24 @@ diff -urN aa/gnome-panel-2.6.1/gnome-panel/panel-compatibility.schemas gnome-pan
          <key>/schemas/apps/panel/default_profiles/medium/objects/00000001/panel_id</key>
          <owner>panel</owner>
          <type>string</type>
-@@ -220,14 +212,6 @@
-         <default>launcher-object</default>
- 	<locale name="C"/>
+@@ -222,14 +214,6 @@
        </schema>
--
--      <schema>
+ 
+       <schema>
 -        <key>/schemas/apps/panel/default_profiles/medium/objects/00000002/launcher_location</key>
 -        <owner>panel</owner>
 -        <type>string</type>
 -        <default>applications:///System/gnome-terminal.desktop</default>
 -	<locale name="C"/>
 -      </schema>
-      
-       <schema>
+-     
+-      <schema>
          <key>/schemas/apps/panel/default_profiles/medium/objects/00000002/panel_id</key>
-diff -urN aa/gnome-panel-2.6.1/gnome-panel/panel-default-setup.entries.in gnome-panel-2.6.1/gnome-panel/panel-default-setup.entries.in
---- aa/gnome-panel-2.6.1/gnome-panel/panel-default-setup.entries.in	2004-04-02 19:05:41.000000000 +0200
-+++ gnome-panel-2.6.1/gnome-panel/panel-default-setup.entries.in	2004-04-20 00:05:32.229882288 +0200
+         <owner>panel</owner>
+         <type>string</type>
+diff -urN gnome-panel-2.9.92.orig/gnome-panel/panel-default-setup.entries.in gnome-panel-2.9.92/gnome-panel/panel-default-setup.entries.in
+--- gnome-panel-2.9.92.orig/gnome-panel/panel-default-setup.entries.in	2005-03-01 12:56:44.876745648 +0100
++++ gnome-panel-2.9.92/gnome-panel/panel-default-setup.entries.in	2005-03-01 13:00:04.572387296 +0100
 @@ -29,12 +29,6 @@
            <value>
              <string>menu_bar</string>
@@ -47,7 +47,7 @@ diff -urN aa/gnome-panel-2.6.1/gnome-panel/panel-default-setup.entries.in gnome-
          </list>
        </value>
      </entry>
-@@ -223,114 +217,6 @@
+@@ -208,114 +202,6 @@
      <entry><key>objects/menu_bar/launcher_location</key><schema_key>/schemas/apps/panel/objects/launcher_location</schema_key></entry>
      <entry><key>objects/menu_bar/action_type</key><schema_key>/schemas/apps/panel/objects/action_type</schema_key></entry>
  
@@ -92,7 +92,7 @@ diff -urN aa/gnome-panel-2.6.1/gnome-panel/panel-default-setup.entries.in gnome-
 -      <key>objects/nautilus_launcher/launcher_location</key>
 -      <schema_key>/schemas/apps/panel/objects/launcher_location</schema_key>
 -      <value>
--        <string>@DATADIR@/nautilus.desktop</string>
+-        <string>@DATADIR@/applications/nautilus.desktop</string>
 -      </value>
 -    </entry>
 -
@@ -146,7 +146,7 @@ diff -urN aa/gnome-panel-2.6.1/gnome-panel/panel-default-setup.entries.in gnome-
 -      <key>objects/terminal_launcher/launcher_location</key>
 -      <schema_key>/schemas/apps/panel/objects/launcher_location</schema_key>
 -      <value>
--        <string>@DATADIR@/gnome-terminal.desktop</string>
+-        <string>@DATADIR@/applications/gnome-terminal.desktop</string>
 -      </value>
 -    </entry>
 -

@@ -1,23 +1,22 @@
 Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl):	Podstawowe programy ¶rodowiska graficznego GNOME
 Name:		gnome-panel
-Version:	2.2.0.1
-Release:	2
+Version:	2.2.1
+Release:	1
 License:	LGPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/2.2/%{name}-%{version}.tar.bz2
-Patch0:		%{name}-crash.patch
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	glib2-devel >= 2.2.0
-BuildRequires:	gnome-desktop-devel >= 2.2.0
+BuildRequires:	gnome-desktop-devel >= 2.2.1
 BuildRequires:	gtk+2-devel >= 2.2.0
 BuildRequires:  gtk-doc >= 1.0
 BuildRequires:	intltool >= 0.23
 BuildRequires:	libart_lgpl-devel >= 2.3.11
 BuildRequires:	libglade2-devel >= 2.0.1
-BuildRequires:	libgnomeui-devel >= 2.1.5
+BuildRequires:	libgnomeui-devel >= 2.2.0
 BuildRequires:	libtool
 BuildRequires:	libwnck-devel >= 2.2.0
 BuildRequires:	ORBit2-devel >= 2.6.0
@@ -29,7 +28,7 @@ Requires(post,postun): scrollkeeper
 Requires(post,postun): /sbin/ldconfig
 Requires(post):	GConf2
 Requires:	gnome-desktop >= 2.2.0
-Requires:	libgnomeui >= 2.1.5
+Requires:	libgnomeui >= 2.2.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -77,7 +76,6 @@ Statyczne biblioteki panelu GNOME.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 intltoolize --copy --force

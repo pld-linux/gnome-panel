@@ -1,20 +1,20 @@
 Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl):	Podstawowe programy ¶rodowiska graficznego GNOME
 Name:		gnome-panel
-Version:	1.5.21
+Version:	1.5.22
 Release:	1
 License:	LGPL
 Group:		X11/Applications
 Source0:	ftp://ftp.gnome.org/pub/gnome/pre-gnome2/sources/%{name}/%{name}-%{version}.tar.bz2
-Patch0:		%{name}-am.patch
 URL:		http://www.gnome.org/
 BuildRequires:	ORBit2-devel >= 2.3.108
-BuildRequires:	gnome-desktop-devel >= 1.5.19
+BuildRequires:	gnome-desktop-devel >= 1.5.20
 BuildRequires:	gtk+2-devel >= 2.0.2
 BuildRequires:	libglade2-devel >= 1.99.12
 BuildRequires:	libgnomeui-devel >= 1.117.0
-BuildRequires:	libwnck-devel >= 0.9
+BuildRequires:	libwnck-devel >= 0.12
 BuildRequires:	pkgconfig >= 0.12.0
+BuildRequires:	intltool >= 0.21
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define         _prefix         /usr/X11R6
@@ -66,15 +66,14 @@ Statyczne biblioteki panelu GNOME.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 intltoolize --copy --force
-libtoolize --copy --force
-gettextize --copy --force
-aclocal
-autoconf
-automake -a -c -f
+%{__libtoolize}
+%{__gettextize}
+%{__aclocal} -I %{_aclocaldir}/gnome2-macros
+%{__autoconf}
+%{__automake}
 if [ -f %{_pkgconfigdir}/libpng12.pc ] ; then
         CPPFLAGS="`pkg-config libpng12 --cflags`"
 fi
@@ -90,8 +89,6 @@ rm -rf $RPM_BUILD_ROOT
 	omf_dest_dir=%{_omf_dest_dir}/%{name} \
 	pkgconfigdir=%{_pkgconfigdir}
 
-gzip -9nf AUTHORS ChangeLog NEWS README
-
 %find_lang %{name} --with-gnome --all-name
 
 %clean
@@ -106,12 +103,13 @@ GCONF_CONFIG_SOURCE=`%{_bindir}/gconftool-2 --get-default-source`; export GCONF_
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc *.gz
+%doc AUTHORS ChangeLog NEWS README
 %config %{_sysconfdir}/gconf/schemas/*
 %config %{_sysconfdir}/sound/events/*
 %attr(755,root,root) %{_bindir}/*
 %attr(755,root,root) %{_libdir}/libpanel-applet*.so.*.*
 %attr(755,root,root) %{_libdir}/libgen_util_applet*.so
+%attr(755,root,root) %{_libdir}/libgen_util_applet*.la
 %{_libdir}/bonobo/servers/*
 %{_datadir}/control-center-2.0/capplets/*
 %{_datadir}/gen_util

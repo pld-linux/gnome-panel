@@ -21,9 +21,7 @@ BuildRequires:	libtool
 BuildRequires:	libwnck-devel >= 2.1.1
 BuildRequires:	pkgconfig >= 0.12.0
 BuildRequires:	scrollkeeper >= 0.3.11
-# I don't know how solve this problem. Compilation with GConf-devel causes
-# segfault gnome-panel.
-BuildConflicts:	GConf-devel
+BuildConflicts:	GConf-devel < 1.0.9-7
 Requires(post,postun): scrollkeeper
 Requires(post,postun): /sbin/ldconfig
 Requires(post):	GConf2

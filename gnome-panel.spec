@@ -1,4 +1,7 @@
 #
+# TODO
+# - fix menu-stripe patch
+#
 # Conditional build:
 %bcond_with     menu_stripe	# build with menu-stripe.patch
 #
@@ -9,7 +12,7 @@ Version:	2.10.0
 Release:	1
 License:	LGPL
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-panel/2.10/%{name}-%{version}.tar.bz2
+Source0:	http://ftp.gnome.org/pub/gnome/sources/gnome-panel/2.10/%{name}-%{version}.tar.bz2
 # Source0-md5:	398e95097aeb7b8be2b6b47a0f9affe0
 Source1:	pld-desktop-stripe.png
 # Source1-md5:	4b8b299a8aa7b95a606e7c4d8debd60c

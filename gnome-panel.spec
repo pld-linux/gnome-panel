@@ -1,10 +1,11 @@
 Summary:	The core programs for the GNOME GUI desktop environment.
 Name:		gnome-panel
 Version:	1.5.18
-Release:	0.1
+Release:	0.2
 License:	LGPL
 Group:		X11/Applications
 Source0:	ftp://ftp.gnome.org/pub/gnome/pre-gnome2/sources/%{name}/%{name}-%{version}.tar.bz2
+Patch0:		%{name}-am.patch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 URL:		http://www.gnome.org/
 BuildRequires:	pkgconfig
@@ -50,8 +51,15 @@ Panel libraries and header files for creating GNOME panels.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
+intltoolize --copy --force
+libtoolize --copy --force
+gettextize --copy --force
+aclocal
+autoconf
+automake -a -c -f
 if [ -f %{_pkgconfigdir}/libpng12.pc ] ; then
         CPPFLAGS="`pkg-config libpng12 --cflags`"
 fi

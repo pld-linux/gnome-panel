@@ -2,13 +2,14 @@ Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl):	Podstawowe programy ¶rodowiska graficznego GNOME
 Name:		gnome-panel
 Version:	2.4.0
-Release:	3
+Release:	4
 License:	LGPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/2.4/%{name}-%{version}.tar.bz2
 # Source0-md5:	9a81f7ebbb450611a28783900f5f2cbc
 Patch0:		%{name}-clock.patch
 Patch1:		%{name}-no_launchers_on_panel.patch
+Patch2:		%{name}-focus.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.4.0
 BuildRequires:	ORBit2-devel >= 2.8.1
@@ -86,6 +87,7 @@ Statyczne biblioteki panelu GNOME.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 intltoolize --copy --force

@@ -86,13 +86,11 @@ rm -rf $RPM_BUILD_ROOT
 %post
 /sbin/ldconfig
 export GCONF_CONFIG_SOURCE=`gconftool-2 --get-default-source`
-for SCHEMAS in clock.schemas fish.schemas mailcheck.schemas pager.schemas panel-global-config.schemas panel-per-panel-config.schemas tasklist.schemas; do
+for SCHEMAS in `ls %{_sysconfdir}/gconf/schemas/*.schemas`; do
 	/usr/X11R6/bin/gconftool-2 --makefile-install-rule %{_sysconfdir}/gconf/schemas/$SCHEMAS > /dev/null 2>&1
 done
 
-%postun
-/sbin/ldconfig
-/usr/bin/scrollkeeper-update
+%postun	-p /sbin/ldconfig
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)

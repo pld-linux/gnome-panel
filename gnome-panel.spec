@@ -2,7 +2,7 @@ Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl):	Podstawowe programy ¶rodowiska graficznego GNOME
 Name:		gnome-panel
 Version:	2.1.1
-Release:	2
+Release:	3
 License:	LGPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/2.1/%{name}-%{version}.tar.bz2
@@ -16,7 +16,7 @@ BuildRequires:  gtk-doc >= 0.9-4
 BuildRequires:	gtk+2-devel >= 2.1.0
 BuildRequires:	intltool >= 0.22
 BuildRequires:	libglade2-devel >= 2.0.1
-BuildRequires:	libgnomeui-devel >= 2.1.0
+BuildRequires:	libgnomeui-devel >= 2.1.1-3
 BuildRequires:	libtool
 BuildRequires:	libwnck-devel >= 2.1.1
 BuildRequires:	pkgconfig >= 0.12.0
@@ -26,6 +26,7 @@ Requires(post,postun): scrollkeeper
 Requires(post,postun): /sbin/ldconfig
 Requires(post):	GConf2
 Requires:	gnome-desktop >= 2.1.0
+Requires:	libgnomeui >= 2.1.1-3
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define         _prefix         /usr/X11R6

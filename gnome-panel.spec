@@ -101,7 +101,7 @@ rm -rf $RPM_BUILD_ROOT
 %post
 /sbin/ldconfig
 GCONF_CONFIG_SOURCE=`%{_bindir}/gconftool-2 --get-default-source`; export GCONF_CONFIG_SOURCE
-%{_bindir}/gconftool-2 --makefile-install-rule %{_sysconfdir}/gconf/schemas/*.schemas > /dev/null 2>&1
+%{_bindir}/gconftool-2 --makefile-install-rule %{_sysconfdir}/gconf/schemas/*.schemas > /dev/null 
 
 %postun	-p /sbin/ldconfig
 

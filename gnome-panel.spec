@@ -11,6 +11,7 @@ Patch0:		%{name}-clock.patch
 Patch1:		%{name}-no_launchers_on_panel.patch
 Patch2:		%{name}-focus.patch
 Patch3:		%{name}-finalize-memleak.patch
+Patch4:		%{name}-menu_icon.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.4.0
 BuildRequires:	ORBit2-devel >= 2.8.1
@@ -90,6 +91,7 @@ Statyczne biblioteki panelu GNOME.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 %build
 intltoolize --copy --force

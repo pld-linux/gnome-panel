@@ -39,7 +39,7 @@ BuildRequires:	libgnomeui-devel >= 2.6.1.1
 BuildRequires:	libpng-devel >= 1.2.0
 BuildRequires:	libtool
 BuildRequires:	libwnck-devel >= 2.6.2
-BuildRequires:	pango-devel >= 1.4.0
+BuildRequires:	pango-devel >= 1:1.4.0
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig >= 0.15.0
 BuildRequires:	rpm-build >= 4.1-10

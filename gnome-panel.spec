@@ -1,18 +1,18 @@
 Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl):	Podstawowe programy ¶rodowiska graficznego GNOME
 Name:		gnome-panel
-Version:	2.3.2.1
+Version:	2.3.3
 Release:	1
 License:	LGPL
 Group:		X11/Applications
-# Source0-md5:	b7684e5382ec39b732103572a23f014b
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/2.3/%{name}-%{version}.tar.bz2
+# Source0-md5:	531922aec5c75ad3e697fc6192fee16c
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	GConf2-devel >= 2.3.0
 BuildRequires:	glib2-devel >= 2.2.0
-BuildRequires:	gnome-desktop-devel >= 2.3.2
+BuildRequires:	gnome-desktop-devel >= 2.3.3
 BuildRequires:	gnome-common >= 1.2.4
 BuildRequires:	gtk+2-devel >= 2.2.0
 BuildRequires:  gtk-doc >= 1.0
@@ -30,7 +30,7 @@ BuildConflicts:	GConf-devel < 1.0.9-7
 Requires(post,postun): scrollkeeper
 Requires(post,postun): /sbin/ldconfig
 Requires(post):	GConf2 >= 2.3.0
-Requires:	gnome-desktop >= 2.3.2
+Requires:	gnome-desktop >= 2.3.3
 Requires:	libgnomeui >= 2.3.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -82,13 +82,13 @@ Statyczne biblioteki panelu GNOME.
 %setup -q
 
 %build
-intltoolize --copy --force
-%{__libtoolize}
-glib-gettextize --copy --force
-%{__aclocal} -I %{_aclocaldir}/gnome2-macros
-%{__autoheader}
-%{__autoconf}
-%{__automake}
+#intltoolize --copy --force
+#$%{__libtoolize}
+#glib-gettextize --copy --force
+#$%{__aclocal} -I %{_aclocaldir}/gnome2-macros
+#$%{__autoheader}
+#$%{__autoconf}
+#$%{__automake}
 %configure \
 	--enable-gtk-doc \
 	--with-html-dir=%{_gtkdocdir}
@@ -135,8 +135,6 @@ scrollkeeper-update
 %attr(755,root,root) %{_libdir}/notification-area-applet
 %{_libdir}/bonobo/servers/*
 %{_datadir}/control-center-2.0/capplets/*
-%{_datadir}/fish
-%{_datadir}/gen_util
 %{_datadir}/gnome/panel
 %{_datadir}/gnome-2.0/ui/*
 %{_datadir}/gnome-panel

@@ -17,6 +17,8 @@ Patch4:		%{name}-menu_icon.patch
 Patch5:		%{name}-action-stock.patch
 Patch6:		%{name}-applet-categories.patch
 Patch7:		%{name}-menu-stripe.patch
+Patch8:		%{name}-notification_area_applet.patch
+Patch9:		%{name}-top_panel_size.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.4.0
 BuildRequires:	ORBit2-devel >= 2.8.1
@@ -100,6 +102,8 @@ Statyczne biblioteki panelu GNOME.
 %patch5 -p1
 %patch6 -p1
 %patch7 -p1
+%patch8 -p1
+%patch9 -p1
 
 %build
 intltoolize --copy --force

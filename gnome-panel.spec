@@ -12,20 +12,20 @@ Patch1:		%{name}-no_launchers_on_panel.patch
 Patch3:		%{name}-finalize-memleak.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.4.0
-BuildRequires:	ORBit2-devel >= 1:2.9.1
+BuildRequires:	ORBit2-devel >= 1:2.9.2
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	glib2-devel >= 2.3.0
+BuildRequires:	glib2-devel >= 2.3.1
 BuildRequires:	gnome-common >= 2.3.0
 BuildRequires:	gnome-desktop-devel >= 2.5.1
-BuildRequires:	gtk+2-devel >= 1:2.3.0
+BuildRequires:	gtk+2-devel >= 1:2.3.1
 BuildRequires:	gtk-doc >= 1.1
-BuildRequires:	intltool >= 0.27.2
+BuildRequires:	intltool >= 0.28
 BuildRequires:	libart_lgpl-devel >= 2.3.15
-BuildRequires:	libglade2-devel >= 1:2.3.0
-BuildRequires:	libgnomeui-devel >= 2.5.0
+BuildRequires:	libglade2-devel >= 1:2.3.1
+BuildRequires:	libgnomeui-devel >= 2.5.1
 BuildRequires:	libtool
-BuildRequires:	libwnck-devel >= 2.4.0
+BuildRequires:	libwnck-devel >= 2.5.1
 BuildRequires:	pkgconfig >= 0.15.0
 BuildRequires:	rpm-build >= 4.1-10
 BuildRequires:	scrollkeeper >= 0.3.11
@@ -33,10 +33,10 @@ BuildConflicts:	GConf-devel < 1.0.9-7
 Requires(post,postun):	/sbin/ldconfig
 Requires(post,postun):	scrollkeeper
 Requires(post):	GConf2 >= 2.4.0
-Requires:	gnome-desktop >= 2.5.1
-Requires:	gnome-icon-theme >= 1.1.1
-Requires:	libgnomeui >= 2.5.0
-Requires:	librsvg >= 2.4.0-3
+Requires:	gnome-desktop >= 2.5.2
+Requires:	gnome-icon-theme >= 1.1.3
+Requires:	libgnomeui >= 2.5.1
+Requires:	librsvg >= 2.5.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -85,7 +85,7 @@ Statyczne biblioteki panelu GNOME.
 
 %prep
 %setup -q
-%patch0 -p1 -b .wiget
+%patch0 -p1
 %patch1 -p1
 %patch3 -p1
 

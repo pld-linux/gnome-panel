@@ -2,7 +2,7 @@ Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl):	Podstawowe programy ¶rodowiska graficznego GNOME
 Name:		gnome-panel
 Version:	2.5.91
-Release:	1
+Release:	2
 License:	LGPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/2.5/%{name}-%{version}.tar.bz2
@@ -19,7 +19,7 @@ BuildRequires:	GConf2-devel >= 2.5.0
 BuildRequires:	ORBit2-devel >= 1:2.9.2
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	evolution-data-server-devel >= 0.0.7
+BuildRequires:	evolution-data-server-devel >= 0.0.90
 BuildRequires:	gnome-common >= 2.4.0
 BuildRequires:	gnome-desktop-devel >= 2.5.90
 BuildRequires:	gnome-vfs2-devel >= 2.5.6

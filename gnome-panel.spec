@@ -1,7 +1,7 @@
 Summary:	The core programs for the GNOME GUI desktop environment.
 Name:		gnome-panel
-Version:	1.5.18
-Release:	0.2
+Version:	1.5.19
+Release:	0.1
 License:	LGPL
 Group:		X11/Applications
 Source0:	ftp://ftp.gnome.org/pub/gnome/pre-gnome2/sources/%{name}/%{name}-%{version}.tar.bz2
@@ -13,7 +13,7 @@ BuildRequires:	ORBit2-devel
 BuildRequires:	gtk+2-devel
 BuildRequires:	libgnomeui-devel
 BuildRequires:	libwnck-devel
-BuildRequires:	gnome-desktop-devel
+BuildRequires:	gnome-desktop-devel >= 1.5.18
 BuildRequires:	libglade2-devel
 BuildRequires:	gnome-vfs2-devel
 

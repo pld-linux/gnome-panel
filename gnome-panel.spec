@@ -8,7 +8,7 @@ Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/2.1/%{name}-%{version}.tar.bz2
 URL:		http://www.gnome.org/
 BuildRequires:	ORBit2-devel >= 2.4.3
-Buildrequires:	gdk-pixbuf-devel >= 2.1.0
+#Buildrequires:	gdk-pixbuf-devel >= 2.1.0
 BuildRequires:	glib2-devel >= 2.1.0
 BuildRequires:	gnome-desktop-devel >= 2.1.0
 BuildRequires:  gtk-doc
@@ -66,7 +66,7 @@ Pliki nag³ówkowe bibliotek panelu GNOME.
 Summary:	GNOME panel static libraries
 Summary(pl):	Statyczne biblioteki panelu GNOME
 Group:		X11/Development/Libraries
-Requires:	%{name} = %{version}-devel
+Requires:	%{name}-devel = %{version}
 
 %description static
 Panel static libraries.

@@ -26,6 +26,7 @@ BuildRequires:	ORBit2-devel >= 2.6.0
 BuildRequires:	pkgconfig >= 0.12.0
 BuildRequires:	rpm-build >= 4.1-10
 BuildRequires:	scrollkeeper >= 0.3.11
+BuildRequires:	XFree86-xrender-devel
 BuildConflicts:	GConf-devel < 1.0.9-7
 Requires(post,postun): scrollkeeper
 Requires(post,postun): /sbin/ldconfig

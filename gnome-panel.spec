@@ -1,38 +1,38 @@
 Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl):	Podstawowe programy ¶rodowiska graficznego GNOME
 Name:		gnome-panel
-Version:	2.3.91
+Version:	2.4.0
 Release:	1
 License:	LGPL
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/2.3/%{name}-%{version}.tar.bz2
-# Source0-md5:	26c831f7280eb408f458ba854d5357f5
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/2.4/%{name}-%{version}.tar.bz2
+# Source0-md5:	9a81f7ebbb450611a28783900f5f2cbc
 Patch0:		%{name}-clock.patch
 URL:		http://www.gnome.org/
-BuildRequires:	GConf2-devel >= 2.3.3
-BuildRequires:	ORBit2-devel >= 2.8.0
+BuildRequires:	GConf2-devel >= 2.4.0
+BuildRequires:	ORBit2-devel >= 2.8.1
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	glib2-devel >= 2.2.3
 BuildRequires:	gnome-common >= 2.3.0
-BuildRequires:	gnome-desktop-devel >= 2.3.90
-BuildRequires:	gtk+2-devel >= 2.2.3
+BuildRequires:	gnome-desktop-devel >= 2.4.0
+BuildRequires:	gtk+2-devel >= 2.2.4
 BuildRequires:	gtk-doc >= 1.1
 BuildRequires:	intltool >= 0.27.2
 BuildRequires:	libart_lgpl-devel >= 2.3.15
 BuildRequires:	libglade2-devel >= 2.0.1
-BuildRequires:	libgnomeui-devel >= 2.3.7
+BuildRequires:	libgnomeui-devel >= 2.4.0.1
 BuildRequires:	libtool
-BuildRequires:	libwnck-devel >= 2.3.1
+BuildRequires:	libwnck-devel >= 2.4.0
 BuildRequires:	pkgconfig >= 0.15.0
 BuildRequires:	rpm-build >= 4.1-10
 BuildRequires:	scrollkeeper >= 0.3.11
 BuildConflicts:	GConf-devel < 1.0.9-7
 Requires(post,postun):	/sbin/ldconfig
 Requires(post,postun):	scrollkeeper
-Requires(post):	GConf2 >= 2.3.3
-Requires:	gnome-desktop >= 2.3.90
-Requires:	libgnomeui >= 2.3.7
+Requires(post):	GConf2 >= 2.4.0
+Requires:	gnome-desktop >= 2.4.0
+Requires:	libgnomeui >= 2.4.0.1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -58,8 +58,8 @@ Summary:	GNOME panel includes, and more
 Summary(pl):	Pliki nag³ówkowe biblioteki panelu GNOME
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}
-Requires:	libgnomeui-devel >= 2.3.7
 Requires:	gtk-doc-common
+Requires:	libgnomeui-devel >= 2.4.0.1
 
 %description devel
 Panel header files for creating GNOME panels.

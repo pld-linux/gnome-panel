@@ -41,7 +41,7 @@ applications and desktop tools to be used in conjunction with a window
 manager for the X Window System. GNOME is similar in purpose and scope
 to CDE and KDE, but GNOME is based completely on free software.
 
-The GNOME panel packages provides the gnome panel, menus and some
+The gnome-panel packages provides the GNOME panel, menus and some
 basic applets for the panel.
 
 %description -l pl

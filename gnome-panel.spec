@@ -8,18 +8,19 @@
 Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl):	Podstawowe programy ¶rodowiska graficznego GNOME
 Name:		gnome-panel
-Version:	2.10.0
-Release:	3
+Version:	2.10.1
+Release:	1
 License:	LGPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/gnome-panel/2.10/%{name}-%{version}.tar.bz2
-# Source0-md5:	398e95097aeb7b8be2b6b47a0f9affe0
+# Source0-md5:	a2719f5c79a9e48bca086f08a77a6889
 Source1:	pld-desktop-stripe.png
 # Source1-md5:	4b8b299a8aa7b95a606e7c4d8debd60c
 Patch0:		%{name}-no_launchers_on_panel.patch
 Patch1:		%{name}-finalize-memleak.patch
 %{?with_menu_stripe:Patch2:		%{name}-menu-stripe.patch}
 Patch3:		%{name}-notification_area_applet.patch
+Patch4:		%{name}-no_mixer_applet.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.10.0
 BuildRequires:	ORBit2-devel >= 1:2.12.1
@@ -47,7 +48,7 @@ BuildRequires:	scrollkeeper >= 0.3.11
 BuildConflicts:	GConf-devel < 1.0.9-7
 Requires(post,postun):	/sbin/ldconfig
 Requires(post,postun):	scrollkeeper
-Requires(post):	GConf2 >= 2.10.0
+Requires(post,preun):	GConf2 >= 2.10.0
 Requires:	gnome-desktop >= 2.10.0-2
 Requires:	gnome-icon-theme >= 2.10.0
 Requires:	libgnomeui >= 2.10.0-2
@@ -104,6 +105,7 @@ Statyczne biblioteki panelu GNOME.
 %patch1 -p1
 %{?with_menu_stripe:%patch2 -p1}
 %patch3 -p1
+%patch4 -p1
 
 %build
 cp /usr/share/gnome-common/data/omf.make .
@@ -145,8 +147,16 @@ rm -rf $RPM_BUILD_ROOT
 
 %post
 /sbin/ldconfig
-scrollkeeper-update
-%gconf_schema_install
+/usr/bin/scrollkeeper-update -q
+%gconf_schema_install /etc/gconf/schemas/clock.schemas
+%gconf_schema_install /etc/gconf/schemas/fish.schemas
+%gconf_schema_install /etc/gconf/schemas/panel-compatibility.schemas
+%gconf_schema_install /etc/gconf/schemas/panel-general.schemas
+%gconf_schema_install /etc/gconf/schemas/panel-global.schemas
+%gconf_schema_install /etc/gconf/schemas/panel-object.schemas
+%gconf_schema_install /etc/gconf/schemas/panel-toplevel.schemas
+%gconf_schema_install /etc/gconf/schemas/window-list.schemas
+%gconf_schema_install /etc/gconf/schemas/workspace-switcher.schemas
 %{_bindir}/gconftool-2 --direct \
 	--config-source="`%{_bindir}/gconftool-2 --get-default-source`" \
 	--load %{_datadir}/%{name}/panel-default-setup.entries > /dev/null
@@ -157,9 +167,24 @@ scrollkeeper-update
 For full functionality, you need to install gnome-utils.
 EOF
 
+%preun
+if [ $1 = 0 ]; then
+	%gconf_schema_uninstall /etc/gconf/schemas/clock.schemas
+	%gconf_schema_uninstall /etc/gconf/schemas/fish.schemas
+	%gconf_schema_uninstall /etc/gconf/schemas/panel-compatibility.schemas
+	%gconf_schema_uninstall /etc/gconf/schemas/panel-general.schemas
+	%gconf_schema_uninstall /etc/gconf/schemas/panel-global.schemas
+	%gconf_schema_uninstall /etc/gconf/schemas/panel-object.schemas
+	%gconf_schema_uninstall /etc/gconf/schemas/panel-toplevel.schemas
+	%gconf_schema_uninstall /etc/gconf/schemas/window-list.schemas
+	%gconf_schema_uninstall /etc/gconf/schemas/workspace-switcher.schemas
+fi
+
 %postun
-/sbin/ldconfig
-scrollkeeper-update
+if [ $1 = 0 ]; then
+	/sbin/ldconfig
+	/usr/bin/scrollkeeper-update -q
+fi
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)

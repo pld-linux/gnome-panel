@@ -66,7 +66,7 @@ panelu GNOME2.
 Summary:	GNOME panel includes, and more
 Summary(pl):	Pliki nag³ówkowe biblioteki panelu GNOME
 Group:		X11/Development/Libraries
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{version}-%{release}
 Requires:	gtk-doc-common
 Requires:	libgnomeui-devel >= 2.5.0
 
@@ -80,7 +80,7 @@ Pliki nag³ówkowe bibliotek panelu GNOME.
 Summary:	GNOME panel static libraries
 Summary(pl):	Statyczne biblioteki panelu GNOME
 Group:		X11/Development/Libraries
-Requires:	%{name}-devel = %{version}
+Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Panel static libraries.

@@ -9,7 +9,7 @@ Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl):	Podstawowe programy ¶rodowiska graficznego GNOME
 Name:		gnome-panel
 Version:	2.10.0
-Release:	1
+Release:	2
 License:	LGPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/gnome-panel/2.10/%{name}-%{version}.tar.bz2
@@ -27,15 +27,15 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	evolution-data-server-devel >= 1.2.0
 BuildRequires:	gnome-common >= 2.8.0-2
-BuildRequires:	gnome-desktop-devel >= 2.10.0
+BuildRequires:	gnome-desktop-devel >= 2.10.0-2
 BuildRequires:	gnome-menus-devel >= 2.10.0
-BuildRequires:	gnome-vfs2-devel >= 2.10.0
+BuildRequires:	gnome-vfs2-devel >= 2.10.0-2
 BuildRequires:	gtk+2-devel >= 2:2.6.2
 BuildRequires:	gtk-doc >= 1.1
 BuildRequires:	intltool >= 0.31
 BuildRequires:	libart_lgpl-devel >= 2.3.15
 BuildRequires:	libglade2-devel >= 1:2.5.0
-BuildRequires:	libgnomeui-devel >= 2.10.0
+BuildRequires:	libgnomeui-devel >= 2.10.0-2
 BuildRequires:	libtool
 BuildRequires:	libwnck-devel >= 2.10.0
 BuildRequires:	pango-devel >= 1:1.8.0
@@ -47,9 +47,9 @@ BuildConflicts:	GConf-devel < 1.0.9-7
 Requires(post,postun):	/sbin/ldconfig
 Requires(post,postun):	scrollkeeper
 Requires(post):	GConf2 >= 2.10.0
-Requires:	gnome-desktop >= 2.10.0
+Requires:	gnome-desktop >= 2.10.0-2
 Requires:	gnome-icon-theme >= 2.10.0
-Requires:	libgnomeui >= 2.10.0
+Requires:	libgnomeui >= 2.10.0-2
 Requires:	librsvg >= 1:2.9.5
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -77,7 +77,7 @@ Summary(pl):	Pliki nag³ówkowe biblioteki panelu GNOME
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	gtk-doc-common
-Requires:	libgnomeui-devel >= 2.10.0
+Requires:	libgnomeui-devel >= 2.10.0-2
 
 %description devel
 Panel header files for creating GNOME panels.

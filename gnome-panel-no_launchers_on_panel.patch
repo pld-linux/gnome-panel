@@ -1,6 +1,6 @@
 diff -urN gnome-panel-2.9.92.orig/gnome-panel/panel-compatibility.schemas gnome-panel-2.9.92/gnome-panel/panel-compatibility.schemas
---- gnome-panel-2.9.92.orig/gnome-panel/panel-compatibility.schemas	2005-03-01 12:56:44.872746256 +0100
-+++ gnome-panel-2.9.92/gnome-panel/panel-compatibility.schemas	2005-03-01 13:02:11.575079952 +0100
+--- gnome-panel-2.9.92.orig/gnome-panel/panel-compatibility.schemas	2005-03-01 13:12:22.444621344 +0100
++++ gnome-panel-2.9.92/gnome-panel/panel-compatibility.schemas	2005-03-01 13:13:09.123525072 +0100
 @@ -182,14 +182,6 @@
        </schema>
       
@@ -16,24 +16,24 @@ diff -urN gnome-panel-2.9.92.orig/gnome-panel/panel-compatibility.schemas gnome-
          <key>/schemas/apps/panel/default_profiles/medium/objects/00000001/panel_id</key>
          <owner>panel</owner>
          <type>string</type>
-@@ -222,14 +214,6 @@
+@@ -220,14 +212,6 @@
+         <default>launcher-object</default>
+ 	<locale name="C"/>
        </schema>
- 
-       <schema>
+-
+-      <schema>
 -        <key>/schemas/apps/panel/default_profiles/medium/objects/00000002/launcher_location</key>
 -        <owner>panel</owner>
 -        <type>string</type>
 -        <default>applications:///System/gnome-terminal.desktop</default>
 -	<locale name="C"/>
 -      </schema>
--     
--      <schema>
+      
+       <schema>
          <key>/schemas/apps/panel/default_profiles/medium/objects/00000002/panel_id</key>
-         <owner>panel</owner>
-         <type>string</type>
 diff -urN gnome-panel-2.9.92.orig/gnome-panel/panel-default-setup.entries.in gnome-panel-2.9.92/gnome-panel/panel-default-setup.entries.in
---- gnome-panel-2.9.92.orig/gnome-panel/panel-default-setup.entries.in	2005-03-01 12:56:44.876745648 +0100
-+++ gnome-panel-2.9.92/gnome-panel/panel-default-setup.entries.in	2005-03-01 13:00:04.572387296 +0100
+--- gnome-panel-2.9.92.orig/gnome-panel/panel-default-setup.entries.in	2005-03-01 13:12:22.445621192 +0100
++++ gnome-panel-2.9.92/gnome-panel/panel-default-setup.entries.in	2005-03-01 13:14:29.082369480 +0100
 @@ -29,12 +29,6 @@
            <value>
              <string>menu_bar</string>

@@ -18,19 +18,6 @@ diff -aurN gnome-panel-2.4.2.orig/gnome-panel/ChangeLog gnome-panel-2.4.2/gnome-
 diff -aurN gnome-panel-2.4.2.orig/gnome-panel/menu.c gnome-panel-2.4.2/gnome-panel/menu.c
 --- gnome-panel-2.4.2.orig/gnome-panel/menu.c	2003-10-14 12:46:30.000000000 +0200
 +++ gnome-panel-2.4.2/gnome-panel/menu.c	2004-01-15 18:41:41.280852800 +0100
-@@ -2680,10 +2680,10 @@
- {
- 	int c;
- 
--	if ((c = strcmp (a->category, b->category)))
-+	if ((c = g_utf8_collate (a->category, b->category)))
- 		return c;
- 
--	return strcmp (a->name, b->name);
-+	return g_utf8_collate (a->name, b->name);
- }
- 
- static GSList *
 @@ -2711,7 +2711,7 @@
  {
  	GtkWidget         *prev_menu = NULL;

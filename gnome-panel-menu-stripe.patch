@@ -1,6 +1,6 @@
 diff -Nuard gnome-panel-2.4.1.orig/gnome-panel/Makefile.am gnome-panel-2.4.1/gnome-panel/Makefile.am
 --- gnome-panel-2.4.1.orig/gnome-panel/Makefile.am	2003-09-05 14:35:53.000000000 +0200
-+++ gnome-panel-2.4.1/gnome-panel/Makefile.am	2003-11-30 16:24:10.000000000 +0100
++++ gnome-panel-2.4.1/gnome-panel/Makefile.am	2003-12-02 22:42:53.000000000 +0100
 @@ -98,6 +98,8 @@
  	panel-typebuiltins.h	\
  	panel-marshal.c		\
@@ -12,7 +12,7 @@ diff -Nuard gnome-panel-2.4.1.orig/gnome-panel/Makefile.am gnome-panel-2.4.1/gno
  	button-widget.c  	\
 diff -Nuard gnome-panel-2.4.1.orig/gnome-panel/menu.c gnome-panel-2.4.1/gnome-panel/menu.c
 --- gnome-panel-2.4.1.orig/gnome-panel/menu.c	2003-10-14 12:46:30.000000000 +0200
-+++ gnome-panel-2.4.1/gnome-panel/menu.c	2003-11-30 16:24:10.000000000 +0100
++++ gnome-panel-2.4.1/gnome-panel/menu.c	2003-12-02 22:42:53.000000000 +0100
 @@ -44,6 +44,7 @@
  #include "menu-fentry.h"
  #include "menu-util.h"
@@ -106,7 +106,7 @@ diff -Nuard gnome-panel-2.4.1.orig/gnome-panel/menu.c gnome-panel-2.4.1/gnome-pa
  
 diff -Nuard gnome-panel-2.4.1.orig/gnome-panel/panel-config-global.c gnome-panel-2.4.1/gnome-panel/panel-config-global.c
 --- gnome-panel-2.4.1.orig/gnome-panel/panel-config-global.c	2003-03-05 02:11:34.000000000 +0100
-+++ gnome-panel-2.4.1/gnome-panel/panel-config-global.c	2003-11-30 16:24:10.000000000 +0100
++++ gnome-panel-2.4.1/gnome-panel/panel-config-global.c	2003-12-02 22:42:53.000000000 +0100
 @@ -45,6 +45,7 @@
  	guint               drawer_auto_close : 1;
  	guint               confirm_panel_remove : 1;
@@ -141,7 +141,7 @@ diff -Nuard gnome-panel-2.4.1.orig/gnome-panel/panel-config-global.c gnome-panel
  		g_warning ("%s not handled", key);
 diff -Nuard gnome-panel-2.4.1.orig/gnome-panel/panel-config-global.h gnome-panel-2.4.1/gnome-panel/panel-config-global.h
 --- gnome-panel-2.4.1.orig/gnome-panel/panel-config-global.h	2003-03-05 02:11:34.000000000 +0100
-+++ gnome-panel-2.4.1/gnome-panel/panel-config-global.h	2003-11-30 16:24:10.000000000 +0100
++++ gnome-panel-2.4.1/gnome-panel/panel-config-global.h	2003-12-02 22:42:53.000000000 +0100
 @@ -37,6 +37,7 @@
  gboolean panel_global_config_get_drawer_auto_close    (void);
  gboolean panel_global_config_get_tooltips_enabled     (void);
@@ -152,7 +152,7 @@ diff -Nuard gnome-panel-2.4.1.orig/gnome-panel/panel-config-global.h gnome-panel
  
 diff -Nuard gnome-panel-2.4.1.orig/gnome-panel/panel-global.schemas.in gnome-panel-2.4.1/gnome-panel/panel-global.schemas.in
 --- gnome-panel-2.4.1.orig/gnome-panel/panel-global.schemas.in	2003-07-07 15:27:58.000000000 +0200
-+++ gnome-panel-2.4.1/gnome-panel/panel-global.schemas.in	2003-11-30 16:24:10.000000000 +0100
++++ gnome-panel-2.4.1/gnome-panel/panel-global.schemas.in	2003-12-02 22:42:53.000000000 +0100
 @@ -93,6 +93,18 @@
        </schema>
  
@@ -174,18 +174,18 @@ diff -Nuard gnome-panel-2.4.1.orig/gnome-panel/panel-global.schemas.in gnome-pan
          <owner>panel</owner>
 diff -Nuard gnome-panel-2.4.1.orig/gnome-panel/panel-menu.c gnome-panel-2.4.1/gnome-panel/panel-menu.c
 --- gnome-panel-2.4.1.orig/gnome-panel/panel-menu.c	1970-01-01 01:00:00.000000000 +0100
-+++ gnome-panel-2.4.1/gnome-panel/panel-menu.c	2003-11-30 16:24:11.000000000 +0100
-@@ -0,0 +1,786 @@
++++ gnome-panel-2.4.1/gnome-panel/panel-menu.c	2003-12-03 01:30:49.228495360 +0100
+@@ -0,0 +1,773 @@
 +/*
 + * To set this up insert something like this in your ~/.gtkrc-2.0
 + *
++ * Copyright (C) 2003 Marcin Krzy¿anowski
 + * Copyright (C) 2002 Ximian, Inc. 
 + * Copyright (C) 2001 Havoc Pennington
 + * Copyright (C) 1997-2000 Dan Pascu and Alfredo Kojima
 + * 
 + * style "default"
 + * {
-+ *   PanelMenu::default_scale_image = "/tmp/stripe.png"
 + *   PanelMenu::default_side_image = "/tmp/stripelogo.png"
 + *   PanelMenu::gradient_bg = true
 + * }
@@ -194,8 +194,8 @@ diff -Nuard gnome-panel-2.4.1.orig/gnome-panel/panel-menu.c gnome-panel-2.4.1/gn
 + * Authors:
 + *       Thomas, Michael Meeks
 + *       GtkMenu code by the GTK+ team
-+ *       Gradient code from WindowMaker by Dan Pascu and Alfredo Kojima, 
-+ *         by way of metacity by Havoc Pennington.
++ *       Gradient code from WindowMaker by Dan Pascu and Alfredo Kojima, by way of metacity by Havoc Pennington.
++ *	 Marcin Krzy¿anowski
 + */
 +#include <config.h>
 +#include <string.h>
@@ -765,22 +765,27 @@ diff -Nuard gnome-panel-2.4.1.orig/gnome-panel/panel-menu.c gnome-panel-2.4.1/gn
 +	}
 +    }
 +/* inserted for panel-menu.c */
++
 +  {
-+    int scaled_height = height;
 +    PanelMenu *pm = PANEL_MENU (widget);
++    
++    gint scaled_height = height;
++    
 +    if (pm->side_image && widget->allocation.height > gdk_pixbuf_get_height (pm->side_image)) 
 +      {
 +	scaled_height -= gdk_pixbuf_get_height (pm->side_image);
-+      }
-+    
-+    if (pm->side_image && pm->unscaled_image) 
-+      {
-+	pm->scaled_image = gdk_pixbuf_scale_simple (pm->unscaled_image,
-+						    gdk_pixbuf_get_width (pm->side_image),
-+						    scaled_height,
-+						    GDK_INTERP_BILINEAR);
 +      } 
-+    else 
++
++    if (pm->side_image && widget->allocation.height < gdk_pixbuf_get_height (pm->side_image))
++      {
++    	gint scaled_width = ((scaled_height * gdk_pixbuf_get_width (pm->side_image)) / gdk_pixbuf_get_height (pm->side_image));
++	
++	pm->scaled_image = gdk_pixbuf_scale_simple (pm->side_image,
++						    scaled_width,
++						    scaled_height,
++						    GDK_INTERP_BILINEAR); /* maybe HYPER ? */
++      } 
++    else
 +      {
 +	gboolean draw_gradient;
 +	gtk_widget_style_get (GTK_WIDGET (pm),
@@ -816,16 +821,12 @@ diff -Nuard gnome-panel-2.4.1.orig/gnome-panel/panel-menu.c gnome-panel-2.4.1/gn
 +		g_object_unref (pm->side_image);
 +		pm->side_image = NULL;
 +	}
-+	
-+	if (pm->unscaled_image) {
-+		g_object_unref (pm->unscaled_image);
-+		pm->side_image = NULL;
-+	}
 +
 +	if (pm->scaled_image) {
 +		g_object_unref (pm->scaled_image);
 +		pm->scaled_image = NULL;
 +	}
++
 +}
 +
 +static GdkPixbuf *
@@ -861,15 +862,9 @@ diff -Nuard gnome-panel-2.4.1.orig/gnome-panel/panel-menu.c gnome-panel-2.4.1/gn
 +
 +	unload_images (pm);
 +	
-+	image = get_stripe_image (pm, "default_side_image",
++	pm->side_image = get_stripe_image (pm, "default_side_image",
 +				  "pld-desktop-stripe.png");
-+	pm->side_image = image;
-+	
-+	if (image) {
-+		pm->unscaled_image = get_stripe_image 
-+			(pm, "default_scale_image", 
-+			 "pld-desktop-stripe-end.png");
-+	}
++
 +}
 +
 +static void
@@ -908,14 +903,6 @@ diff -Nuard gnome-panel-2.4.1.orig/gnome-panel/panel-menu.c gnome-panel-2.4.1/gn
 +               g_param_spec_string ("default_side_image",
 +                                    _("Default Side Image"),
 +                                    _("Filename of logo down the side of applications menu"),
-+                                    NULL,
-+                                    G_PARAM_READWRITE));
-+
-+       gtk_widget_class_install_style_property (
-+               widget_class,
-+               g_param_spec_string ("default_scale_image",
-+                                    _("Default Scales Image"),
-+                                    _("Filename of scaleable image down the side of applications menu"),
 +                                    NULL,
 +                                    G_PARAM_READWRITE));
 +
@@ -964,8 +951,8 @@ diff -Nuard gnome-panel-2.4.1.orig/gnome-panel/panel-menu.c gnome-panel-2.4.1/gn
 +}
 diff -Nuard gnome-panel-2.4.1.orig/gnome-panel/panel-menu.h gnome-panel-2.4.1/gnome-panel/panel-menu.h
 --- gnome-panel-2.4.1.orig/gnome-panel/panel-menu.h	1970-01-01 01:00:00.000000000 +0100
-+++ gnome-panel-2.4.1/gnome-panel/panel-menu.h	2003-11-30 16:24:11.000000000 +0100
-@@ -0,0 +1,32 @@
++++ gnome-panel-2.4.1/gnome-panel/panel-menu.h	2003-12-03 01:22:39.710913344 +0100
+@@ -0,0 +1,31 @@
 +#include <gtk/gtkmenu.h>
 +#include <gtk/gtkimage.h>
 +
@@ -985,8 +972,7 @@ diff -Nuard gnome-panel-2.4.1.orig/gnome-panel/panel-menu.h gnome-panel-2.4.1/gn
 +       GtkMenu parent;
 +
 +       GdkPixbuf *side_image;
-+       GdkPixbuf *unscaled_image;
-+       GdkPixbuf *scaled_image;
++       GdkPixbuf *scaled_image; 
 +
 +	GdkRegion *navigation_region;
 +};

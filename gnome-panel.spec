@@ -7,15 +7,12 @@ License:	LGPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/2.7/%{name}-%{version}.tar.bz2
 # Source0-md5:	6e8f9cda75e5d7eb10444cc12c565f26
-Source1:	pld-desktop-stripe.png
-# Source1-md5:	4b8b299a8aa7b95a606e7c4d8debd60c
 Patch0:		%{name}-no_launchers_on_panel.patch
 Patch1:		%{name}-finalize-memleak.patch
 Patch2:		%{name}-locale-names.patch
-Patch3:		%{name}-menu-stripe.patch
-Patch4:		%{name}-notification_area_applet.patch
-Patch5:		%{name}-applet-categories.patch
-Patch6:		%{name}-schemas.patch
+Patch3:		%{name}-notification_area_applet.patch
+Patch4:		%{name}-applet-categories.patch
+Patch5:		%{name}-schemas.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.7.1
 BuildRequires:	ORBit2-devel >= 1:2.10.0
@@ -102,7 +99,6 @@ Statyczne biblioteki panelu GNOME.
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
-%patch6 -p1
 
 mv po/{no,nb}.po
 

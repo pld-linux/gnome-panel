@@ -1,21 +1,21 @@
 Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl):	Podstawowe programy ¶rodowiska graficznego GNOME
 Name:		gnome-panel
-Version:	1.5.19
+Version:	1.5.20
 Release:	0.1
 License:	LGPL
 Group:		X11/Applications
 Source0:	ftp://ftp.gnome.org/pub/gnome/pre-gnome2/sources/%{name}/%{name}-%{version}.tar.bz2
 Patch0:		%{name}-am.patch
 URL:		http://www.gnome.org/
-BuildRequires:	ORBit2-devel
+BuildRequires:	ORBit2-devel >= 2.3.108
 BuildRequires:	gnome-desktop-devel >= 1.5.18
-BuildRequires:	gnome-vfs2-devel
-BuildRequires:	gtk+2-devel
-BuildRequires:	libglade2-devel
-BuildRequires:	libgnomeui-devel
-BuildRequires:	libwnck-devel
-BuildRequires:	pkgconfig
+BuildRequires:	gnome-vfs2-devel >= 1.9.14
+BuildRequires:	gtk+2-devel >= 2.0.2
+BuildRequires:	libglade2-devel >= 1.99.12
+BuildRequires:	libgnomeui-devel >= 1.116.1
+BuildRequires:	libwnck-devel >= 0.8
+BuildRequires:	pkgconfig >= 0.12.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define         _prefix         /usr/X11R6
@@ -111,28 +111,27 @@ GCONF_CONFIG_SOURCE=`%{_bindir}/gconftool-2 --get-default-source`; export GCONF_
 %config %{_sysconfdir}/gconf/schemas/*
 %config %{_sysconfdir}/sound/events/*
 %attr(755,root,root) %{_bindir}/*
-%attr(755,root,root) %{_libdir}/lib*.so.*.*
+%attr(755,root,root) %{_libdir}/libpanel-applet*.so.*.*
+%attr(755,root,root) %{_libdir}/libgen_util_applet*.so
 %{_libdir}/bonobo/servers/*
-%{_datadir}/applications/*
 %{_datadir}/control-center-2.0/capplets/*
 %{_datadir}/gen_util
 %{_datadir}/gnome/panel
-%{_datadir}/gnome-2.0
+%{_datadir}/gnome/help/*
+%{_datadir}/gnome-2.0/ui/*
 %{_datadir}/gnome-panel
 %{_datadir}/gtk-doc/html/panel-applet
 %{_datadir}/idl/gnome-panel-2.0
-%{_datadir}/pixmaps/fish
-%{_datadir}/pixmaps/mailcheck
-%{_datadir}/pixmaps/*.png
+%{_datadir}/pixmaps/*
 %{_omf_dest_dir}/%{name}
 %{_mandir}/man1/*
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/lib*.??
+%attr(755,root,root) %{_libdir}/libpanel-applet*.??
 %{_includedir}/panel-2.0
 %{_pkgconfigdir}/*.pc
 
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/*.a
+%{_libdir}/libpanel-applet*.a

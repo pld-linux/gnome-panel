@@ -1,26 +1,24 @@
 Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl):	Podstawowe programy ¶rodowiska graficznego GNOME
 Name:		gnome-panel
-Version:	2.5.2
+Version:	2.5.3
 Release:	1
 License:	LGPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/2.5/%{name}-%{version}.tar.bz2
-# Source0-md5:	0459e76ce9bd31f29e6bff1134710f4e
-Patch0:		%{name}-clock.patch
-Patch1:		%{name}-no_launchers_on_panel.patch
-Patch3:		%{name}-finalize-memleak.patch
+# Source0-md5:	3d2040c08689897c324dd3373d01a695
+Patch0:		%{name}-no_launchers_on_panel.patch
+Patch1:		%{name}-finalize-memleak.patch
 URL:		http://www.gnome.org/
-BuildRequires:	GConf2-devel >= 2.4.0
+BuildRequires:	GConf2-devel >= 2.5.0
 BuildRequires:	ORBit2-devel >= 1:2.9.2
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	glib2-devel >= 2.3.1
-BuildRequires:	gnome-common >= 2.3.0
-BuildRequires:	gnome-desktop-devel >= 2.5.1
-BuildRequires:	gtk+2-devel >= 1:2.3.1
+BuildRequires:	gnome-common >= 2.4.0
+BuildRequires:	gnome-desktop-devel >= 2.5.3
+BuildRequires:	gtk+2-devel >= 1:2.3.1-2.20040114.1
 BuildRequires:	gtk-doc >= 1.1
-BuildRequires:	intltool >= 0.28
+BuildRequires:	intltool >= 0.29
 BuildRequires:	libart_lgpl-devel >= 2.3.15
 BuildRequires:	libglade2-devel >= 1:2.3.1
 BuildRequires:	libgnomeui-devel >= 2.5.1
@@ -32,9 +30,9 @@ BuildRequires:	scrollkeeper >= 0.3.11
 BuildConflicts:	GConf-devel < 1.0.9-7
 Requires(post,postun):	/sbin/ldconfig
 Requires(post,postun):	scrollkeeper
-Requires(post):	GConf2 >= 2.4.0
-Requires:	gnome-desktop >= 2.5.2
-Requires:	gnome-icon-theme >= 1.1.3
+Requires(post):	GConf2 >= 2.5.0
+Requires:	gnome-desktop >= 2.5.3
+Requires:	gnome-icon-theme >= 1.1.4
 Requires:	libgnomeui >= 2.5.1
 Requires:	librsvg >= 2.5.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -87,7 +85,6 @@ Statyczne biblioteki panelu GNOME.
 %setup -q
 %patch0 -p1
 %patch1 -p1
-%patch3 -p1
 
 %build
 intltoolize --copy --force
@@ -141,7 +138,7 @@ scrollkeeper-update
 %attr(755,root,root) %{_bindir}/*
 %attr(755,root,root) %{_libdir}/fish-applet-2
 %attr(755,root,root) %{_libdir}/libpanel-applet*.so.*.*
-%attr(755,root,root) %{_libdir}/libclock-applet*.so
+%attr(755,root,root) %{_libdir}/clock-applet
 %attr(755,root,root) %{_libdir}/wnck-applet
 %attr(755,root,root) %{_libdir}/notification-area-applet
 %{_libdir}/bonobo/servers/*

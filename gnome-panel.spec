@@ -12,13 +12,13 @@ Patch1:		%{name}-no_launchers_on_panel.patch
 Patch3:		%{name}-finalize-memleak.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.4.0
-BuildRequires:	ORBit2-devel >= 2.9.1
+BuildRequires:	ORBit2-devel >= 1:2.9.1
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	glib2-devel >= 2.3.0
 BuildRequires:	gnome-common >= 2.3.0
 BuildRequires:	gnome-desktop-devel >= 2.5.1
-BuildRequires:	gtk+2-devel >= 2.3.0
+BuildRequires:	gtk+2-devel >= 1:2.3.0
 BuildRequires:	gtk-doc >= 1.1
 BuildRequires:	intltool >= 0.27.2
 BuildRequires:	libart_lgpl-devel >= 2.3.15

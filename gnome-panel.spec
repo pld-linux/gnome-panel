@@ -14,7 +14,7 @@ BuildRequires:	gnome-vfs2-devel >= 1.9.14
 BuildRequires:	gtk+2-devel >= 2.0.2
 BuildRequires:	libglade2-devel >= 1.99.12
 BuildRequires:	libgnomeui-devel >= 1.116.1
-BuildRequires:	libwnck-devel >= 0.8
+BuildRequires:	libwnck-devel >= 0.9
 BuildRequires:	pkgconfig >= 0.12.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 

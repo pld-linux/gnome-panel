@@ -1,4 +1,5 @@
-Summary:	The core programs for the GNOME GUI desktop environment.
+Summary:	The core programs for the GNOME GUI desktop environment
+Summary(pl):	Podstawowe programy ¶rodowiska graficznego GNOME
 Name:		gnome-panel
 Version:	1.5.19
 Release:	0.1
@@ -6,16 +7,16 @@ License:	LGPL
 Group:		X11/Applications
 Source0:	ftp://ftp.gnome.org/pub/gnome/pre-gnome2/sources/%{name}/%{name}-%{version}.tar.bz2
 Patch0:		%{name}-am.patch
-BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 URL:		http://www.gnome.org/
-BuildRequires:	pkgconfig
 BuildRequires:	ORBit2-devel
+BuildRequires:	gnome-desktop-devel >= 1.5.18
+BuildRequires:	gnome-vfs2-devel
 BuildRequires:	gtk+2-devel
+BuildRequires:	libglade2-devel
 BuildRequires:	libgnomeui-devel
 BuildRequires:	libwnck-devel
-BuildRequires:	gnome-desktop-devel >= 1.5.18
-BuildRequires:	libglade2-devel
-BuildRequires:	gnome-vfs2-devel
+BuildRequires:	pkgconfig
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define         _prefix         /usr/X11R6
 %define         _mandir         %{_prefix}/man
@@ -26,28 +27,43 @@ BuildRequires:	gnome-vfs2-devel
 GNOME (GNU Network Object Model Environment) is a user-friendly set of
 applications and desktop tools to be used in conjunction with a window
 manager for the X Window System. GNOME is similar in purpose and scope
-to CDE and KDE, but GNOME is based completely on free software. The
-gnome-core package includes the basic programs and libraries that are
-needed to install GNOME.
+to CDE and KDE, but GNOME is based completely on free software.
 
-The GNOME panel packages provides the gnome panel, menu's and some
+The GNOME panel packages provides the gnome panel, menus and some
 basic applets for the panel.
 
+%description -l pl
+GNOME (GNU Network Object Model Environment) to zestaw przyjaznych
+dla u¿ytkownika aplikacji i narzêdzi do u¿ywania w po³±czeniu z
+zarz±dc± okien pod X. GNOME ma podobny cel jak CDE i KDE, ale bazuje
+ca³kowicie na wolnym oprogramowaniu.
+
+Ten pakiet dostarcza panel GNOME2, menu oraz podstawowe aplety dla
+panelu GNOME2.
+
 %package devel
-Summary:	GNOME panel libraries, includes, and more.
+Summary:	GNOME panel includes, and more
+Summary(pl):	Pliki nag³ówkowe biblioteki panelu GNOME
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}
 
 %description devel
-Panel libraries and header files for creating GNOME panels.
+Panel header files for creating GNOME panels.
+
+%description devel -l pl
+Pliki nag³ówkowe bibliotek panelu GNOME.
 
 %package static
-Summary:	GNOME panel libraries, includes, and more.
+Summary:	GNOME panel static libraries
+Summary(pl):	Statyczne biblioteki panelu GNOME
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-devel
 
 %description static
-Panel libraries and header files for creating GNOME panels.
+Panel static libraries.
+
+%description static -l pl
+Statyczne biblioteki panelu GNOME.
 
 %prep
 %setup -q
@@ -66,7 +82,6 @@ fi
 %configure  CPPFLAGS="$CPPFLAGS" \
 	--enable-gtk-doc=no
 %{__make}
-
 
 %install
 rm -rf $RPM_BUILD_ROOT

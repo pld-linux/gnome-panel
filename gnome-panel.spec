@@ -21,7 +21,7 @@ BuildRequires:	GConf2-devel >= 2.5.90
 BuildRequires:	ORBit2-devel >= 1:2.10.0
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	evolution-data-server-devel >= 0.0.90
+#BuildRequires:	evolution-data-server-devel >= 0.0.90
 BuildRequires:	gnome-common >= 2.4.0
 BuildRequires:	gnome-desktop-devel >= 2.6.0
 BuildRequires:	gnome-vfs2-devel >= 2.6.0

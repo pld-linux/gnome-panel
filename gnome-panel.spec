@@ -5,7 +5,7 @@ Version:	2.0.9
 Release:	3
 License:	LGPL
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/2.0.1/sources/%{name}/%{name}-%{version}.tar.bz2
+Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/2.0/%{name}-%{version}.tar.bz2
 Patch0:		%{name}-clock-C_omf.patch
 URL:		http://www.gnome.org/
 BuildRequires:	ORBit2-devel >= 2.4.3
@@ -19,6 +19,7 @@ BuildRequires:	libgnomeui-devel >= 2.0.5
 BuildRequires:	libwnck-devel >= 0.17
 BuildRequires:	pkgconfig >= 0.12.0
 BuildRequires:	scrollkeeper >= 0.3.11
+BuildConflicts:	GConf-devel < 1.0.9-7
 Requires(post,postun): scrollkeeper
 Requires(post,postun): /sbin/ldconfig
 Requires(post):	GConf2

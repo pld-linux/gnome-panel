@@ -35,7 +35,7 @@ basic applets for the panel.
 
 %package devel
 Summary:	GNOME panel libraries, includes, and more.
-Group:		Development/Libraries
+Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}
 
 %description devel
@@ -43,7 +43,7 @@ Panel libraries and header files for creating GNOME panels.
 
 %package static
 Summary:	GNOME panel libraries, includes, and more.
-Group:		Development/Libraries
+Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-devel
 
 %description static

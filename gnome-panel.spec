@@ -91,6 +91,7 @@ rm -rf $RPM_BUILD_ROOT
 	omf_dest_dir=%{_omf_dest_dir}/%{name} \
 	pkgconfigdir=%{_pkgconfigdir}
 
+mv ChangeLog main-ChangeLog
 find . -name ChangeLog |awk '{src=$0; dst=$0;sub("^./","",dst);gsub("/","-",dst); print "cp " src " " dst}'|sh
 
 %find_lang %{name} --with-gnome --all-name

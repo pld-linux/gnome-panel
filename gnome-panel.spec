@@ -1,7 +1,7 @@
 Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl):	Podstawowe programy ¶rodowiska graficznego GNOME
 Name:		gnome-panel
-Version:	2.1.90
+Version:	2.1.90.1
 Release:	1
 License:	LGPL
 Group:		X11/Applications
@@ -99,7 +99,7 @@ rm -rf $RPM_BUILD_ROOT
 	pkgconfigdir=%{_pkgconfigdir} \
 	HTML_DIR=%{_gtkdocdir}
 
-mv ChangeLog main-ChangeLog
+#mv ChangeLog main-ChangeLog
 find . -name ChangeLog |awk '{src=$0; dst=$0;sub("^./","",dst);gsub("/","-",dst); print "cp " src " " dst}'|sh
 
 %find_lang %{name} --with-gnome --all-name
@@ -118,16 +118,15 @@ scrollkeeper-update
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc AUTHORS *ChangeLog NEWS README
+%doc AUTHORS NEWS README
 %config %{_sysconfdir}/gconf/schemas/*
 %config %{_sysconfdir}/sound/events/*
 %attr(755,root,root) %{_bindir}/*
 %attr(755,root,root) %{_libdir}/fish-applet-2
 %attr(755,root,root) %{_libdir}/libpanel-applet*.so.*.*
 %attr(755,root,root) %{_libdir}/libgen_util_applet*.so
-%attr(755,root,root) %{_libdir}/%{name}/libnotification-area-applet.so
+%attr(755,root,root) %{_libdir}/notification-area-applet
 %{_libdir}/libgen_util_applet*.la
-%{_libdir}/%{name}/libnotification-area-applet.la
 %{_libdir}/bonobo/servers/*
 %{_datadir}/control-center-2.0/capplets/*
 %{_datadir}/fish/*
@@ -151,4 +150,3 @@ scrollkeeper-update
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/lib*.a
-%{_libdir}/%{name}/*.a

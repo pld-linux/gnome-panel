@@ -1,38 +1,38 @@
 Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl):	Podstawowe programy ¶rodowiska graficznego GNOME
 Name:		gnome-panel
-Version:	2.3.6.2
+Version:	2.3.7
 Release:	1
 License:	LGPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/2.3/%{name}-%{version}.tar.bz2
-# Source0-md5:	e6f3ef68a56bf8ec0d76e4f2d61e1053
+# Source0-md5:	e2e63580a64806970ad9b2f83db1803c
 Patch0:		%{name}-clock.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.3.3
-BuildRequires:	ORBit2-devel >= 2.7.5-1
+BuildRequires:	ORBit2-devel >= 2.7.6
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	glib2-devel >= 2.2.1
+BuildRequires:	glib2-devel >= 2.2.2
 BuildRequires:	gnome-common >= 2.3.0
-BuildRequires:	gnome-desktop-devel >= 2.3.6
-BuildRequires:	gtk+2-devel >= 2.2.1
-BuildRequires:	gtk-doc >= 1.0
-BuildRequires:	intltool >= 0.23
-BuildRequires:	libart_lgpl-devel >= 2.3.13
+BuildRequires:	gnome-desktop-devel >= 2.3.7
+BuildRequires:	gtk+2-devel >= 2.2.2
+BuildRequires:	gtk-doc >= 1.1
+BuildRequires:	intltool >= 0.27.2
+BuildRequires:	libart_lgpl-devel >= 2.3.14
 BuildRequires:	libglade2-devel >= 2.0.1
-BuildRequires:	libgnomeui-devel >= 2.3.3.1-2
+BuildRequires:	libgnomeui-devel >= 2.3.6
 BuildRequires:	libtool
-BuildRequires:	libwnck-devel >= 2.3.0
-BuildRequires:	pkgconfig >= 0.12.0
+BuildRequires:	libwnck-devel >= 2.3.1
+BuildRequires:	pkgconfig >= 0.15.0
 BuildRequires:	rpm-build >= 4.1-10
 BuildRequires:	scrollkeeper >= 0.3.11
 BuildConflicts:	GConf-devel < 1.0.9-7
 Requires(post,postun):	/sbin/ldconfig
 Requires(post,postun):	scrollkeeper
 Requires(post):	GConf2 >= 2.3.3
-Requires:	gnome-desktop >= 2.3.6
-Requires:	libgnomeui >= 2.3.3.1-2
+Requires:	gnome-desktop >= 2.3.7
+Requires:	libgnomeui >= 2.3.6
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -58,7 +58,7 @@ Summary:	GNOME panel includes, and more
 Summary(pl):	Pliki nag³ówkowe biblioteki panelu GNOME
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}
-Requires:	libgnomeui-devel >= 2.3.3.1-2
+Requires:	libgnomeui-devel >= 2.3.6
 Requires:	gtk-doc-common
 
 %description devel

@@ -7,10 +7,10 @@ License:	LGPL
 Group:		X11/Applications
 Source0:	ftp://ftp.gnome.org/pub/gnome/2.0.0/sources/%{name}/%{name}-%{version}.tar.bz2
 URL:		http://www.gnome.org/
-Requires:	gnome-desktop >= 2.0.1
+Requires:	gnome-desktop >= 2.0.3
 BuildRequires:	ORBit2-devel >= 2.4.0
 BuildRequires:	glib2-devel >= 2.0.4
-BuildRequires:	gnome-desktop-devel >= 2.0.0
+BuildRequires:	gnome-desktop-devel >= 2.0.3
 BuildRequires:	gtk+2-devel >= 2.0.3
 BuildRequires:	libglade2-devel >= 2.0.0
 BuildRequires:	libgnomeui-devel >= 2.0.1

@@ -127,8 +127,6 @@ rm -rf $RPM_BUILD_ROOT
 
 install %{name}/panel-default-setup.entries $RPM_BUILD_ROOT%{_datadir}/%{name}
 
-install %{SOURCE1} $RPM_BUILD_ROOT%{_pixmapsdir}
-
 install -d $RPM_BUILD_ROOT%{_datadir}/gnome/capplets
 mv $RPM_BUILD_ROOT%{_datadir}/control-center-2.0/capplets/*.desktop $RPM_BUILD_ROOT%{_datadir}/gnome/capplets
 

@@ -1,0 +1,30 @@
+diff -Nuard gnome-panel-2.4.1.orig/gnome-panel/menu.c gnome-panel-2.4.1/gnome-panel/menu.c
+--- gnome-panel-2.4.1.orig/gnome-panel/menu.c	2003-10-14 12:46:30.000000000 +0200
++++ gnome-panel-2.4.1/gnome-panel/menu.c	2003-10-29 21:59:14.000000000 +0100
+@@ -2242,10 +2242,10 @@
+ 
+ 	if (fr->type == FILE_REC_DIR) {
+ 		if (!gnome_folder)
+-			gnome_folder = gnome_program_locate_file (NULL, 
+-								  GNOME_FILE_DOMAIN_PIXMAP, 
+-								  "gnome-folder.png", 
+-								  TRUE, NULL);
++			gnome_folder = gnome_icon_theme_lookup_icon (
++						panel_icon_theme,
++						"gnome-fs-directory.png",
++						48, 0);
+ 		if (!icon)
+ 			icon = gnome_folder;
+ 		else
+diff -Nuard gnome-panel-2.4.1.orig/gnome-panel/panel.c gnome-panel-2.4.1/gnome-panel/panel.c
+--- gnome-panel-2.4.1.orig/gnome-panel/panel.c	2003-10-14 12:46:36.000000000 +0200
++++ gnome-panel-2.4.1/gnome-panel/panel.c	2003-10-29 21:56:01.000000000 +0100
+@@ -508,7 +508,7 @@
+ 
+ 	if (panel_is_program_in_path ("nautilus")) {
+ 		/* nautilus */
+-		return drop_nautilus_uri (panel, pos, dir, "gnome-folder.png");
++		return drop_nautilus_uri (panel, pos, dir, "gnome-fs-directory.png");
+ 	} else {
+ 		return drop_menu (panel, pos, dir);
+ 	}

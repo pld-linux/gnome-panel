@@ -1,12 +1,12 @@
 Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl):	Podstawowe programy ¶rodowiska graficznego GNOME
 Name:		gnome-panel
-Version:	2.7.3
+Version:	2.7.4
 Release:	1
 License:	LGPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/2.7/%{name}-%{version}.tar.bz2
-# Source0-md5:	1d15bf4adf661512e73ef64ed3a62bdc
+# Source0-md5:	18b8516122940400223f0e43f0b1028f
 Patch0:		%{name}-no_launchers_on_panel.patch
 Patch1:		%{name}-finalize-memleak.patch
 Patch2:		%{name}-locale-names.patch
@@ -20,9 +20,9 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	evolution-data-server-devel >= 0.0.95
 BuildRequires:	gnome-common >= 2.4.0
-BuildRequires:	gnome-desktop-devel >= 2.7.3
-BuildRequires:	gnome-vfs2-devel >= 2.7.1
-BuildRequires:	gtk+2-devel >= 2:2.4.3
+BuildRequires:	gnome-desktop-devel >= 2.7.4
+BuildRequires:	gnome-vfs2-devel >= 2.7.3
+BuildRequires:	gtk+2-devel >= 2:2.4.4
 BuildRequires:	gtk-doc >= 1.1
 BuildRequires:	intltool >= 0.29
 BuildRequires:	libart_lgpl-devel >= 2.3.15
@@ -41,8 +41,8 @@ BuildConflicts:	GConf-devel < 1.0.9-7
 Requires(post,postun):	/sbin/ldconfig
 Requires(post,postun):	scrollkeeper
 Requires(post):	GConf2 >= 2.7.3
-Requires:	gnome-desktop >= 2.7.3
-Requires:	gnome-icon-theme >= 1.3.4
+Requires:	gnome-desktop >= 2.7.4
+Requires:	gnome-icon-theme >= 1.3.5
 Requires:	libgnomeui >= 2.7.1
 Requires:	librsvg >= 1:2.7.2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)

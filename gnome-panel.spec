@@ -122,6 +122,7 @@ scrollkeeper-update
 %config %{_sysconfdir}/gconf/schemas/*
 %config %{_sysconfdir}/sound/events/*
 %attr(755,root,root) %{_bindir}/*
+%attr(755,root,root) %{_libdir}/fish-applet-2
 %attr(755,root,root) %{_libdir}/libpanel-applet*.so.*.*
 %attr(755,root,root) %{_libdir}/libgen_util_applet*.so
 %attr(755,root,root) %{_libdir}/libgen_util_applet*.la
@@ -145,4 +146,4 @@ scrollkeeper-update
 
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/libpanel-applet*.a
+%{_libdir}/lib*.a

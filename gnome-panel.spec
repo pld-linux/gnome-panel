@@ -14,6 +14,7 @@ BuildRequires:	ORBit2-devel >= 2.8.1
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	glib2-devel >= 2.2.3
+BuildRequires:	gnome-common >= 2.3.0
 BuildRequires:	gnome-desktop-devel >= 2.4.0
 BuildRequires:	gtk+2-devel >= 2.2.4
 BuildRequires:	gtk-doc >= 1.1

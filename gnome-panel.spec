@@ -101,7 +101,7 @@ glib-gettextize --copy --force
 rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT 
+	DESTDIR=$RPM_BUILD_ROOT
 
 install %{name}/panel-default-setup.entries $RPM_BUILD_ROOT%{_datadir}/%{name}
 
@@ -121,7 +121,7 @@ scrollkeeper-update
 --config-source="`%{_bindir}/gconftool-2 --get-default-source`" \
 --load %{_datadir}/%{name}/panel-default-setup.entries > /dev/null
 
-%postun	
+%postun
 /sbin/ldconfig
 scrollkeeper-update
 

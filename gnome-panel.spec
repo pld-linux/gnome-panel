@@ -2,7 +2,7 @@ Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl):	Podstawowe programy ¶rodowiska graficznego GNOME
 Name:		gnome-panel
 Version:	2.3.1
-Release:	3
+Release:	4
 License:	LGPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/2.3/%{name}-%{version}.tar.bz2
@@ -104,6 +104,8 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT 
 
+install %{name}/install-defaults.sh $RPM_BUILD_ROOT%{_datadir}/%{name}
+
 mv ChangeLog main-ChangeLog
 find . -name ChangeLog |awk '{src=$0; dst=$0;sub("^./","",dst);gsub("/","-",dst); print "cp " src " " dst}'|sh
 
@@ -116,6 +118,8 @@ rm -rf $RPM_BUILD_ROOT
 /sbin/ldconfig
 scrollkeeper-update
 %gconf_schema_install
+GCONF_CONFIG_SOURCE="`%{_bindir}/gconftool-2 --get-default-source`" \
+GCONFTOOL=%{_bindir}/gconftool-2 %{_datadir}/%{name}/install-defaults.sh
 
 %postun	
 /sbin/ldconfig
@@ -131,13 +135,16 @@ scrollkeeper-update
 %attr(755,root,root) %{_libdir}/libclock-applet*.so
 %attr(755,root,root) %{_libdir}/wnck-applet
 %attr(755,root,root) %{_libdir}/notification-area-applet
+%attr(755,root,root) %{_datadir}/%{name}/install-defaults.sh
+%dir %{_datadir}/%{name}
 %{_libdir}/bonobo/servers/*
 %{_datadir}/control-center-2.0/capplets/*
 %{_datadir}/fish
 %{_datadir}/gen_util
 %{_datadir}/gnome/panel
 %{_datadir}/gnome-2.0/ui/*
-%{_datadir}/gnome-panel*
+%{_datadir}/gnome-panel/glade
+%{_datadir}/gnome-panelrc
 %{_datadir}/idl/gnome-panel-2.0
 %{_pixmapsdir}/*
 %{_omf_dest_dir}/%{name}

@@ -9,6 +9,7 @@ Source0:	ftp://ftp.gnome.org/pub/gnome/pre-gnome2/sources/%{name}/%{name}-%{vers
 URL:		http://www.gnome.org/
 Requires:	gnome-desktop >= 2.0.1
 BuildRequires:	ORBit2-devel >= 2.4.0
+BuildRequires:	glib2-devel >= 2.0.4
 BuildRequires:	gnome-desktop-devel >= 2.0.0
 BuildRequires:	gtk+2-devel >= 2.0.3
 BuildRequires:	libglade2-devel >= 2.0.0

@@ -6,7 +6,7 @@ Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl):	Podstawowe programy ¶rodowiska graficznego GNOME
 Name:		gnome-panel
 Version:	2.9.91
-Release:	0.1
+Release:	1
 License:	LGPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-panel/2.9/%{name}-%{version}.tar.bz2
@@ -17,7 +17,6 @@ Patch0:		%{name}-no_launchers_on_panel.patch
 Patch1:		%{name}-finalize-memleak.patch
 %{?with_menu_stripe:Patch2:		%{name}-menu-stripe.patch}
 Patch3:		%{name}-notification_area_applet.patch
-#Patch4:		%{name}-all_applications.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.9.2
 BuildRequires:	ORBit2-devel >= 1:2.12.1
@@ -47,7 +46,6 @@ Requires(post,postun):	scrollkeeper
 Requires(post):	GConf2 >= 2.9.2
 Requires:	gnome-desktop >= 2.9.91
 Requires:	gnome-icon-theme >= 2.9.90
-#Requires:	gnome-vfs-menu-module
 Requires:	libgnomeui >= 2.9.1
 Requires:	librsvg >= 1:2.9.5
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -102,7 +100,6 @@ Statyczne biblioteki panelu GNOME.
 %patch1 -p1
 %{?with_menu_stripe:%patch2 -p1}
 %patch3 -p1
-##%patch4 -p1
 
 %build
 cp /usr/share/gnome-common/data/omf.make .

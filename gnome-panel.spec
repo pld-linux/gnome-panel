@@ -5,12 +5,12 @@
 Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl):	Podstawowe programy ¶rodowiska graficznego GNOME
 Name:		gnome-panel
-Version:	2.8.0
-Release:	2
+Version:	2.8.0.1
+Release:	1
 License:	LGPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/2.8/%{name}-%{version}.tar.bz2
-# Source0-md5:	e52dccf538a07917d2840e95864fddfd
+# Source0-md5:	1ac59cd4d0b3423a963aaf5c4ae556a1
 Source1:	pld-desktop-stripe.png
 # Source1-md5:	4b8b299a8aa7b95a606e7c4d8debd60c
 Patch0:		%{name}-no_launchers_on_panel.patch
@@ -23,10 +23,10 @@ BuildRequires:	GConf2-devel >= 2.8.0.1
 BuildRequires:	ORBit2-devel >= 1:2.11.2
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	evolution-data-server-devel >= 1.0.0
+BuildRequires:	evolution-data-server-devel >= 1.0.1
 BuildRequires:	gnome-common >= 2.8.0
 BuildRequires:	gnome-desktop-devel >= 2.8.0
-BuildRequires:	gnome-vfs2-devel >= 2.8.0
+BuildRequires:	gnome-vfs2-devel >= 2.8.1
 BuildRequires:	gtk+2-devel >= 2:2.4.4
 BuildRequires:	gtk-doc >= 1.1
 BuildRequires:	intltool >= 0.31
@@ -35,7 +35,7 @@ BuildRequires:	libglade2-devel >= 1:2.4.0
 BuildRequires:	libgnomeui-devel >= 2.8.0
 BuildRequires:	libpng-devel >= 1.2.0
 BuildRequires:	libtool
-BuildRequires:	libwnck-devel >= 2.7.91
+BuildRequires:	libwnck-devel >= 2.8.0.1
 BuildRequires:	pango-devel >= 1:1.6.0
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig >= 0.15.0

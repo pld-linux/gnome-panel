@@ -2,7 +2,7 @@ Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl):	Podstawowe programy ¶rodowiska graficznego GNOME
 Name:		gnome-panel
 Version:	2.1.4
-Release:	1
+Release:	2
 License:	LGPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/2.1/%{name}-%{version}.tar.bz2
@@ -14,6 +14,7 @@ BuildRequires:	gnome-desktop-devel >= 2.1.4
 BuildRequires:	gtk+2-devel >= 2.1.3
 BuildRequires:  gtk-doc >= 0.9-4
 BuildRequires:	intltool >= 0.23
+BuildRequires:	libart_lgpl-devel >= 2.3.11
 BuildRequires:	libglade2-devel >= 2.0.1
 BuildRequires:	libgnomeui-devel >= 2.1.4
 BuildRequires:	libtool
@@ -125,6 +126,8 @@ scrollkeeper-update
 %attr(755,root,root) %{_libdir}/libpanel-applet*.so.*.*
 %attr(755,root,root) %{_libdir}/libgen_util_applet*.so
 %attr(755,root,root) %{_libdir}/%{name}/libnotification-area-applet.so
+%{_libdir}/libgen_util_applet*.la
+%{_libdir}/%{name}/libnotification-area-applet.la
 %{_libdir}/bonobo/servers/*
 %{_datadir}/control-center-2.0/capplets/*
 %{_datadir}/fish/*
@@ -139,12 +142,11 @@ scrollkeeper-update
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libpanel-applet*.??
+%attr(755,root,root) %{_libdir}/libpanel-applet*.so
+%{_libdir}/libpanel-applet*.la
 %{_gtkdocdir}/panel-applet
 %{_includedir}/panel-2.0
 %{_pkgconfigdir}/*.pc
-%{_libdir}/libgen_util_applet*.la
-%{_libdir}/%{name}/libnotification-area-applet.la
 
 %files static
 %defattr(644,root,root,755)

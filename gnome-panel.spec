@@ -119,7 +119,7 @@ rm -rf $RPM_BUILD_ROOT
 scrollkeeper-update
 %gconf_schema_install
 GCONF_CONFIG_SOURCE="`%{_bindir}/gconftool-2 --get-default-source`" \
-GCONFTOOL=%{_bindir}/gconftool-2 %{_datadir}/%{name}/install-defaults.sh
+GCONFTOOL=%{_bindir}/gconftool-2 %{_datadir}/%{name}/install-defaults.sh > /dev/null
 
 %postun	
 /sbin/ldconfig

@@ -38,6 +38,7 @@ BuildRequires:	libwnck-devel >= 2.4.0
 BuildRequires:	pkgconfig >= 0.15.0
 BuildRequires:	rpm-build >= 4.1-10
 BuildRequires:	scrollkeeper >= 0.3.11
+BuildRequires:	libpng-devel >= 1.2.0
 BuildConflicts:	GConf-devel < 1.0.9-7
 Requires(post,postun):	/sbin/ldconfig
 Requires(post,postun):	scrollkeeper

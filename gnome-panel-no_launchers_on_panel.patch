@@ -1,0 +1,150 @@
+diff -aurN gnome-panel-2.4.0.orig/gnome-panel/panel-compatibility.schemas gnome-panel-2.4.0/gnome-panel/panel-compatibility.schemas
+--- gnome-panel-2.4.0.orig/gnome-panel/panel-compatibility.schemas	2003-09-05 15:22:02.000000000 +0200
++++ gnome-panel-2.4.0/gnome-panel/panel-compatibility.schemas	2003-10-01 23:53:03.202850264 +0200
+@@ -182,14 +182,6 @@
+       </schema>
+      
+       <schema>
+-        <key>/schemas/apps/panel/default_profiles/medium/objects/00000001/launcher_location</key>
+-        <owner>panel</owner>
+-        <type>string</type>
+-        <default>applications:///nautilus.desktop</default>
+-	<locale name="C"/>
+-      </schema>
+-     
+-      <schema>
+         <key>/schemas/apps/panel/default_profiles/medium/objects/00000001/panel_id</key>
+         <owner>panel</owner>
+         <type>string</type>
+@@ -220,14 +212,6 @@
+         <default>launcher-object</default>
+ 	<locale name="C"/>
+       </schema>
+-
+-      <schema>
+-        <key>/schemas/apps/panel/default_profiles/medium/objects/00000002/launcher_location</key>
+-        <owner>panel</owner>
+-        <type>string</type>
+-        <default>applications:///System/gnome-terminal.desktop</default>
+-	<locale name="C"/>
+-      </schema>
+      
+       <schema>
+         <key>/schemas/apps/panel/default_profiles/medium/objects/00000002/panel_id</key>
+diff -aurN gnome-panel-2.4.0.orig/gnome-panel/panel-default-setup.entries gnome-panel-2.4.0/gnome-panel/panel-default-setup.entries
+--- gnome-panel-2.4.0.orig/gnome-panel/panel-default-setup.entries	2003-07-01 16:25:01.000000000 +0200
++++ gnome-panel-2.4.0/gnome-panel/panel-default-setup.entries	2003-10-01 23:54:41.656882976 +0200
+@@ -29,12 +29,6 @@
+           <value>
+             <string>menu_bar</string>
+           </value>
+-          <value>
+-            <string>nautilus_launcher</string>
+-          </value>
+-          <value>
+-            <string>terminal_launcher</string>
+-          </value>
+         </list>
+       </value>
+     </entry>
+@@ -176,100 +170,6 @@
+     </entry>
+   </entrylist>
+ 
+-  <!-- Nautilus Launcher -->
+-
+-  <entrylist base="/apps/panel/default_setup/objects/nautilus_launcher">
+-    <entry>
+-      <key>object_type</key>
+-      <schema_key>/schemas/apps/panel/objects/object_type</schema_key>
+-      <value>
+-        <string>launcher-object</string>
+-      </value>
+-    </entry>
+-    <entry>
+-      <key>toplevel_id</key>
+-      <schema_key>/schemas/apps/panel/objects/toplevel_id</schema_key>
+-      <value>
+-        <string>top_panel</string>
+-      </value>
+-    </entry>
+-    <entry>
+-      <key>position</key>
+-      <schema_key>/schemas/apps/panel/objects/position</schema_key>
+-      <value>
+-        <int>1</int>
+-      </value>
+-    </entry>
+-    <entry>
+-      <key>panel_right_stick</key>
+-      <schema_key>/schemas/apps/panel/objects/panel_right_stick_type</schema_key>
+-      <value>
+-        <bool>false</bool>
+-      </value>
+-    </entry>
+-    <entry>
+-      <key>locked</key>
+-      <schema_key>/schemas/apps/panel/objects/locked</schema_key>
+-      <value>
+-        <bool>true</bool>
+-      </value>
+-    </entry>
+-    <entry>
+-      <key>launcher_location</key>
+-      <schema_key>/schemas/apps/panel/objects/launcher_location</schema_key>
+-      <value>
+-        <string>applications:///nautilus.desktop</string>
+-      </value>
+-    </entry>
+-  </entrylist>
+-
+-  <!-- Terminal Launcher -->
+-
+-  <entrylist base="/apps/panel/default_setup/objects/terminal_launcher">
+-    <entry>
+-      <key>object_type</key>
+-      <schema_key>/schemas/apps/panel/objects/object_type</schema_key>
+-      <value>
+-        <string>launcher-object</string>
+-      </value>
+-    </entry>
+-    <entry>
+-      <key>toplevel_id</key>
+-      <schema_key>/schemas/apps/panel/objects/toplevel_id</schema_key>
+-      <value>
+-        <string>top_panel</string>
+-      </value>
+-    </entry>
+-    <entry>
+-      <key>position</key>
+-      <schema_key>/schemas/apps/panel/objects/position</schema_key>
+-      <value>
+-        <int>2</int>
+-      </value>
+-    </entry>
+-    <entry>
+-      <key>panel_right_stick</key>
+-      <schema_key>/schemas/apps/panel/objects/panel_right_stick_type</schema_key>
+-      <value>
+-        <bool>false</bool>
+-      </value>
+-    </entry>
+-    <entry>
+-      <key>locked</key>
+-      <schema_key>/schemas/apps/panel/objects/locked</schema_key>
+-      <value>
+-        <bool>true</bool>
+-      </value>
+-    </entry>
+-    <entry>
+-      <key>launcher_location</key>
+-      <schema_key>/schemas/apps/panel/objects/launcher_location</schema_key>
+-      <value>
+-        <string>applications:///System/gnome-terminal.desktop</string>
+-      </value>
+-    </entry>
+-  </entrylist>
+-
+   <!-- Window Menu Applet -->
+ 
+   <entrylist base="/apps/panel/default_setup/applets/window_menu">

@@ -2,7 +2,7 @@ Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl):	Podstawowe programy ¶rodowiska graficznego GNOME
 Name:		gnome-panel
 Version:	2.1.3
-Release:	2
+Release:	3
 License:	LGPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/2.1/%{name}-%{version}.tar.bz2
@@ -10,7 +10,7 @@ URL:		http://www.gnome.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	glib2-devel >= 2.1.0
-BuildRequires:	gnome-desktop-devel >= 2.1.3
+BuildRequires:	gnome-desktop-devel >= 2.1.3-2
 BuildRequires:	gtk+2-devel >= 2.1.0
 BuildRequires:  gtk-doc >= 0.9-4
 BuildRequires:	intltool >= 0.23
@@ -20,7 +20,7 @@ BuildRequires:	libtool
 BuildRequires:	libwnck-devel >= 2.1.3
 BuildRequires:	ORBit2-devel >= 2.4.3
 BuildRequires:	pkgconfig >= 0.12.0
-BuildRequires:	rpm-build >= 4.1-7
+BuildRequires:	rpm-build >= 4.1-8.2
 BuildRequires:	scrollkeeper >= 0.3.11
 BuildConflicts:	GConf-devel < 1.0.9-7
 Requires(post,postun): scrollkeeper
@@ -29,11 +29,6 @@ Requires(post):	GConf2
 Requires:	gnome-desktop >= 2.1.2
 Requires:	libgnomeui >= 2.1.2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-
-%define         _prefix         /usr/X11R6
-%define         _mandir         %{_prefix}/man
-%define         _sysconfdir     /etc/X11/GNOME2
-%define		_gtkdocdir	%{_defaultdocdir}/gtk-doc/html
 
 %description
 GNOME (GNU Network Object Model Environment) is a user-friendly set of

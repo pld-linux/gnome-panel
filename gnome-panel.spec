@@ -1,21 +1,25 @@
 Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl):	Podstawowe programy ¶rodowiska graficznego GNOME
 Name:		gnome-panel
-Version:	1.5.23
+Version:	2.0.0
 Release:	1
 License:	LGPL
 Group:		X11/Applications
 Source0:	ftp://ftp.gnome.org/pub/gnome/pre-gnome2/sources/%{name}/%{name}-%{version}.tar.bz2
 URL:		http://www.gnome.org/
-Requires:	gnome-desktop >= 1.5.21
-BuildRequires:	ORBit2-devel >= 2.3.108
-BuildRequires:	gnome-desktop-devel >= 1.5.21
-BuildRequires:	gtk+2-devel >= 2.0.2
-BuildRequires:	libglade2-devel >= 1.99.12
-BuildRequires:	libgnomeui-devel >= 1.117.0
-BuildRequires:	libwnck-devel >= 0.12
+Requires:	gnome-desktop >= 2.0.0
+BuildRequires:	ORBit2-devel >= 2.4.0
+BuildRequires:	gnome-desktop-devel >= 2.0.0
+BuildRequires:	gtk+2-devel >= 2.0.3
+BuildRequires:	libglade2-devel >= 2.0.0
+BuildRequires:	libgnomeui-devel >= 2.0.0
+BuildRequires:	libwnck-devel >= 0.13
 BuildRequires:	pkgconfig >= 0.12.0
-BuildRequires:	intltool >= 0.21
+BuildRequires:	intltool >= 0.22
+BuildRequires:	scrollkeeper >= 0.3.6
+Requires(post,postun): scrollkeeper
+Requires(post,postun): /sbin/ldconfig
+Requires(post):	GConf2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define         _prefix         /usr/X11R6
@@ -96,10 +100,13 @@ rm -rf $RPM_BUILD_ROOT
 
 %post
 /sbin/ldconfig
+scrollkeeper-update
 GCONF_CONFIG_SOURCE="" \
 %{_bindir}/gconftool-2 --makefile-install-rule %{_sysconfdir}/gconf/schemas/*.schemas > /dev/null 
 
-%postun	-p /sbin/ldconfig
+%postun	
+/sbin/ldconfig
+scrollkeeper-update
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)

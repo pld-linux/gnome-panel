@@ -18,6 +18,7 @@ BuildRequires:	libwnck-devel >= 0.14
 BuildRequires:	pkgconfig >= 0.12.0
 BuildRequires:	intltool >= 0.22
 BuildRequires:	scrollkeeper >= 0.3.6
+BuildRequires:  gtk-doc
 Requires(post,postun): scrollkeeper
 Requires(post,postun): /sbin/ldconfig
 Requires(post):	GConf2
@@ -82,8 +83,8 @@ glib-gettextize --copy --force
 %{__aclocal} -I %{_aclocaldir}/gnome2-macros
 %{__autoconf}
 %{__automake}
-%configure  \
-	--enable-gtk-doc=no
+%configure  
+#	--enable-gtk-doc=no
 %{__make}
 
 %install
@@ -135,7 +136,8 @@ scrollkeeper-update
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libpanel-applet*.??
-%{_gtkdocdir}/panel-applet
+%{_datadir}/gtk-doc/html/panel-applet
+#%{_gtkdocdir}/panel-applet
 %{_includedir}/panel-2.0
 %{_pkgconfigdir}/*.pc
 

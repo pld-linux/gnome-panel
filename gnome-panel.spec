@@ -7,25 +7,20 @@ License:	LGPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/2.0/%{name}-%{version}.tar.bz2
 URL:		http://www.gnome.org/
-BuildRequires:	ORBit2-devel >= 2.4.3
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	glib2-devel >= 2.0.6
-BuildRequires:	gnome-desktop-devel >= 2.0.8
+BuildRequires:	gnome-desktop-devel
 BuildRequires:  gtk-doc
-BuildRequires:	gtk+2-devel >= 2.0.6
 BuildRequires:	intltool >= 0.23
-BuildRequires:	libglade2-devel >= 2.0.1
-BuildRequires:	libgnomeui-devel >= 2.0.5
+BuildRequires:	libglade2-devel
+BuildRequires:	libpng-devel
 BuildRequires:	libtool
-BuildRequires:	libwnck-devel >= 0.17
-BuildRequires:	pkgconfig >= 0.12.0
-BuildRequires:	scrollkeeper >= 0.3.11
-BuildConflicts:	GConf-devel < 1.0.9-7
+BuildRequires:	libwnck-devel
+BuildRequires:	pkgconfig
+BuildRequires:	scrollkeeper
 Requires(post,postun): scrollkeeper
 Requires(post,postun): /sbin/ldconfig
 Requires(post):	GConf2
-Requires:	gnome-desktop >= 2.0.8
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define         _prefix         /usr/X11R6
@@ -57,7 +52,11 @@ Summary:	GNOME panel includes, and more
 Summary(pl):	Pliki nag³ówkowe biblioteki panelu GNOME
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}
+Requires:	gnome-desktop-devel
 Requires:	gtk-doc-common
+Requires:	libglade2-devel
+Requires:	libpng-devel
+Requires:	libwnck-devel
 
 %description devel
 Panel header files for creating GNOME panels.
@@ -129,7 +128,6 @@ scrollkeeper-update
 %attr(755,root,root) %{_libdir}/fish-applet-2
 %attr(755,root,root) %{_libdir}/libpanel-applet*.so.*.*
 %attr(755,root,root) %{_libdir}/libgen_util_applet*.so
-%attr(755,root,root) %{_libdir}/libgen_util_applet*.la
 %{_libdir}/bonobo/servers/*
 %{_datadir}/control-center-2.0/capplets/*
 %{_datadir}/gen_util
@@ -143,7 +141,9 @@ scrollkeeper-update
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libpanel-applet*.??
+%{_libdir}/libgen_util_applet*.la
+%attr(755,root,root) %{_libdir}/libpanel-applet*.so
+%{_libdir}/libpanel-applet*.la
 %{_gtkdocdir}/panel-applet
 %{_includedir}/panel-2.0
 %{_pkgconfigdir}/*.pc

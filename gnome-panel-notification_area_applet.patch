@@ -1,0 +1,91 @@
+diff -Nuard gnome-panel-2.4.1.orig/gnome-panel/panel-default-setup.entries gnome-panel-2.4.1/gnome-panel/panel-default-setup.entries
+--- gnome-panel-2.4.1.orig/gnome-panel/panel-default-setup.entries	2003-07-01 16:29:54.000000000 +0200
++++ gnome-panel-2.4.1/gnome-panel/panel-default-setup.entries	2003-12-03 02:20:27.254766552 +0100
+@@ -56,6 +56,9 @@
+             <string>clock</string>
+           </value>
+           <value>
++            <string>notification_area</string>
++          </value>
++          <value>
+             <string>show_desktop_button</string>
+           </value>
+           <value>
+@@ -98,7 +101,7 @@
+       <key>size</key>
+       <schema_key>/schemas/apps/panel/toplevels/size</schema_key>
+       <value>
+-        <int>32</int>
++        <int>24</int>
+       </value>
+     </entry>
+   </entrylist>
+@@ -317,6 +320,7 @@
+     </entry>
+   </entrylist>
+ 
++
+   <!-- Mixer Applet -->
+ 
+   <entrylist base="/apps/panel/default_setup/applets/mixer">
+@@ -411,6 +415,53 @@
+     </entry>
+   </entrylist>
+ 
++  <!-- Notification Area Applet -->
++
++  <entrylist base="/apps/panel/default_setup/applets/notification_area">
++    <entry>
++      <key>object_type</key>
++      <schema_key>/schemas/apps/panel/objects/object_type</schema_key>
++      <value>
++        <string>bonobo-applet</string>
++      </value>
++    </entry>
++    <entry>
++      <key>toplevel_id</key>
++      <schema_key>/schemas/apps/panel/objects/toplevel_id</schema_key>
++      <value>
++        <string>top_panel</string>
++      </value>
++    </entry>
++    <entry>
++      <key>position</key>
++      <schema_key>/schemas/apps/panel/objects/position</schema_key>
++      <value>
++        <int>3</int>
++      </value>
++    </entry>
++    <entry>
++      <key>panel_right_stick</key>
++      <schema_key>/schemas/apps/panel/objects/panel_right_stick_type</schema_key>
++      <value>
++        <bool>true</bool>
++      </value>
++    </entry>
++    <entry>
++      <key>locked</key>
++      <schema_key>/schemas/apps/panel/objects/locked</schema_key>
++      <value>
++        <bool>true</bool>
++      </value>
++    </entry>
++    <entry>
++      <key>bonobo_iid</key>
++      <schema_key>/schemas/apps/panel/objects/bonobo_iid_type</schema_key>
++      <value>
++        <string>OAFIID:GNOME_NotificationAreaApplet</string>
++      </value>
++    </entry>
++  </entrylist>
++
+   <!-- Show Desktop Applet -->
+ 
+   <entrylist base="/apps/panel/default_setup/applets/show_desktop_button">
+@@ -552,4 +603,6 @@
+     </entry>
+   </entrylist>
+ 
++
++
+ </gconfentryfile>

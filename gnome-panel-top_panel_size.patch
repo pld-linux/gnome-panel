@@ -1,0 +1,12 @@
+diff -Nuard gnome-panel-2.4.1.orig/gnome-panel/panel-default-setup.entries gnome-panel-2.4.1/gnome-panel/panel-default-setup.entries
+--- gnome-panel-2.4.1.orig/gnome-panel/panel-default-setup.entries	2003-07-01 16:29:54.000000000 +0200
++++ gnome-panel-2.4.1/gnome-panel/panel-default-setup.entries	2003-12-03 02:20:27.254766552 +0100
+@@ -98,7 +101,7 @@
+       <key>size</key>
+       <schema_key>/schemas/apps/panel/toplevels/size</schema_key>
+       <value>
+-        <int>32</int>
++        <int>24</int>
+       </value>
+     </entry>
+   </entrylist>

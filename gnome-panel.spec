@@ -1,14 +1,15 @@
 Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl):	Podstawowe programy ¶rodowiska graficznego GNOME
 Name:		gnome-panel
-Version:	2.5.4
-Release:	2
+Version:	2.5.5
+Release:	1
 License:	LGPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/2.5/%{name}-%{version}.tar.bz2
-# Source0-md5:	97576e8b23291db743590136650b65f3
+# Source0-md5:	4166df918c8db22ac5e6eb235701b072
 Patch0:		%{name}-no_launchers_on_panel.patch
 Patch1:		%{name}-finalize-memleak.patch
+Patch2:		%{name}-locale-names.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.5.0
 BuildRequires:	ORBit2-devel >= 1:2.9.2
@@ -16,23 +17,28 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	evolution-data-server-devel >= 0.0.7
 BuildRequires:	gnome-common >= 2.4.0
-BuildRequires:	gnome-desktop-devel >= 2.5.4
-BuildRequires:	gtk+2-devel >= 1:2.3.1-2.20040114.1
+BuildRequires:	gnome-desktop-devel >= 2.5.5
+BuildRequires:	gnome-bfs2-devel >= 2.5.6
+BuildRequires:	gtk+2-devel >= 1:2.3.2
 BuildRequires:	gtk-doc >= 1.1
 BuildRequires:	intltool >= 0.29
 BuildRequires:	libart_lgpl-devel >= 2.3.15
 BuildRequires:	libglade2-devel >= 1:2.3.1
-BuildRequires:	libgnomeui-devel >= 2.5.1
+BuildRequires:	libgnomeui-devel >= 2.5.4
+BuildRequires:	libpng-devel
 BuildRequires:	libtool
 BuildRequires:	libwnck-devel >= 2.5.1
+BuildRequires:	pango-devel >= 1.3.0
+BuildRequires:	perl-base
 BuildRequires:	pkgconfig >= 0.15.0
 BuildRequires:	rpm-build >= 4.1-10
 BuildRequires:	scrollkeeper >= 0.3.11
+BuildRequires:	zlib-devel
 BuildConflicts:	GConf-devel < 1.0.9-7
 Requires(post,postun):	/sbin/ldconfig
 Requires(post,postun):	scrollkeeper
 Requires(post):	GConf2 >= 2.5.0
-Requires:	gnome-desktop >= 2.5.4
+Requires:	gnome-desktop >= 2.5.5
 Requires:	gnome-icon-theme >= 1.1.4
 Requires:	libgnomeui >= 2.5.1
 Requires:	librsvg >= 2.5.0
@@ -86,6 +92,9 @@ Statyczne biblioteki panelu GNOME.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
+
+mv po/{no,nb}.po
 
 %build
 intltoolize --copy --force
@@ -97,7 +106,9 @@ glib-gettextize --copy --force
 %{__automake}
 %configure \
 	--enable-gtk-doc \
-	--with-html-dir=%{_gtkdocdir}
+	--with-html-dir=%{_gtkdocdir} \
+	--enable-eds \
+	--disable-schemas-install
 
 %{__make}
 
@@ -105,7 +116,8 @@ glib-gettextize --copy --force
 rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT
+	DESTDIR=$RPM_BUILD_ROOT \
+	GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1
 
 install %{name}/panel-default-setup.entries $RPM_BUILD_ROOT%{_datadir}/%{name}
 

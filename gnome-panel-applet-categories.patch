@@ -1,20 +1,23 @@
-diff -Nuard gnome-panel-2.4.1.orig/gnome-panel/ChangeLog gnome-panel-2.4.1/gnome-panel/ChangeLog
---- gnome-panel-2.4.1.orig/gnome-panel/ChangeLog	2003-10-14 12:46:22.000000000 +0200
-+++ gnome-panel-2.4.1/gnome-panel/ChangeLog	2003-11-28 00:41:15.065892216 +0100
-@@ -1,3 +1,10 @@
+diff -aurN gnome-panel-2.4.2.orig/gnome-panel/ChangeLog gnome-panel-2.4.2/gnome-panel/ChangeLog
+--- gnome-panel-2.4.2.orig/gnome-panel/ChangeLog	2004-01-15 13:48:07.000000000 +0100
++++ gnome-panel-2.4.2/gnome-panel/ChangeLog	2004-01-15 18:40:24.351547832 +0100
+@@ -131,6 +131,13 @@
+ 
+ ==================== 2.4.1 ====================
+ 
 +2003-11-28  Marcin Krzyzanowski  <krzak@linux.net.pl>
 +
-+	* menu.c: (create_applets_menu):
-+	Guess untranslated categories based on translated ones, what give
-+	us better menu order with translated and untranslated (the same)
-+	categories. Fix bug #127732
++       * menu.c: (create_applets_menu):
++       Guess untranslated categories based on translated ones, what give
++       us better menu order with translated and untranslated (the same)
++       categories. Fix bug #127732
 +
  2003-10-13 Owen Taylor <otaylor@redhat.com>
  
  	* gnome-panel/panel-stock-icons.c (panel_init_stock_icons):
-diff -Nuard gnome-panel-2.4.1.orig/gnome-panel/menu.c gnome-panel-2.4.1/gnome-panel/menu.c
---- gnome-panel-2.4.1.orig/gnome-panel/menu.c	2003-10-14 12:46:30.000000000 +0200
-+++ gnome-panel-2.4.1/gnome-panel/menu.c	2003-11-28 00:28:09.436326064 +0100
+diff -aurN gnome-panel-2.4.2.orig/gnome-panel/menu.c gnome-panel-2.4.2/gnome-panel/menu.c
+--- gnome-panel-2.4.2.orig/gnome-panel/menu.c	2003-10-14 12:46:30.000000000 +0200
++++ gnome-panel-2.4.2/gnome-panel/menu.c	2004-01-15 18:41:41.280852800 +0100
 @@ -2680,10 +2680,10 @@
  {
  	int c;

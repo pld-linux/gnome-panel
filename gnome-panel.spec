@@ -5,52 +5,49 @@
 Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl):	Podstawowe programy ¶rodowiska graficznego GNOME
 Name:		gnome-panel
-Version:	2.8.3
+Version:	2.10.0
 Release:	1
 License:	LGPL
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-panel/2.8/%{name}-%{version}.tar.bz2
-# Source0-md5:	d76a09c321e02c18e0fdecb86677550d
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-panel/2.10/%{name}-%{version}.tar.bz2
+# Source0-md5:	398e95097aeb7b8be2b6b47a0f9affe0
 Source1:	pld-desktop-stripe.png
 # Source1-md5:	4b8b299a8aa7b95a606e7c4d8debd60c
 Patch0:		%{name}-no_launchers_on_panel.patch
 Patch1:		%{name}-finalize-memleak.patch
 %{?with_menu_stripe:Patch2:		%{name}-menu-stripe.patch}
 Patch3:		%{name}-notification_area_applet.patch
-Patch4:		%{name}-all_applications.patch
 URL:		http://www.gnome.org/
-BuildRequires:	GConf2-devel >= 2.8.0.1
-BuildRequires:	ORBit2-devel >= 1:2.11.2
+BuildRequires:	GConf2-devel >= 2.10.0
+BuildRequires:	ORBit2-devel >= 1:2.12.1
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	evolution-data-server-devel >= 1.0.1
+BuildRequires:	evolution-data-server-devel >= 1.2.0
 BuildRequires:	gnome-common >= 2.8.0-2
-BuildRequires:	gnome-desktop-devel >= 2.8.0
-BuildRequires:	gnome-vfs2-devel >= 2.8.1
-BuildRequires:	gtk+2-devel >= 2:2.4.4
+BuildRequires:	gnome-desktop-devel >= 2.10.0
+BuildRequires:	gnome-menus-devel >= 2.10.0
+BuildRequires:	gnome-vfs2-devel >= 2.10.0
+BuildRequires:	gtk+2-devel >= 2:2.6.2
 BuildRequires:	gtk-doc >= 1.1
 BuildRequires:	intltool >= 0.31
 BuildRequires:	libart_lgpl-devel >= 2.3.15
-BuildRequires:	libglade2-devel >= 1:2.4.0
-BuildRequires:	libgnomeui-devel >= 2.8.0
-BuildRequires:	libpng-devel >= 1.2.0
+BuildRequires:	libglade2-devel >= 1:2.5.0
+BuildRequires:	libgnomeui-devel >= 2.10.0
 BuildRequires:	libtool
-BuildRequires:	libwnck-devel >= 2.8.0.1
-BuildRequires:	pango-devel >= 1:1.6.0
+BuildRequires:	libwnck-devel >= 2.10.0
+BuildRequires:	pango-devel >= 1:1.8.0
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig >= 1:0.15.0
 BuildRequires:	rpm-build >= 4.1-10
 BuildRequires:	scrollkeeper >= 0.3.11
-BuildRequires:	zlib-devel
 BuildConflicts:	GConf-devel < 1.0.9-7
 Requires(post,postun):	/sbin/ldconfig
 Requires(post,postun):	scrollkeeper
-Requires(post):	GConf2 >= 2.8.0
-Requires:	gnome-desktop >= 2.8.0
-Requires:	gnome-icon-theme >= 2.8.0
-Requires:	gnome-vfs-menu-module
-Requires:	libgnomeui >= 2.8.0
-Requires:	librsvg >= 1:2.8.1
+Requires(post):	GConf2 >= 2.10.0
+Requires:	gnome-desktop >= 2.10.0
+Requires:	gnome-icon-theme >= 2.10.0
+Requires:	libgnomeui >= 2.10.0
+Requires:	librsvg >= 1:2.9.5
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -77,7 +74,7 @@ Summary(pl):	Pliki nag³ówkowe biblioteki panelu GNOME
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	gtk-doc-common
-Requires:	libgnomeui-devel >= 2.8.0
+Requires:	libgnomeui-devel >= 2.10.0
 
 %description devel
 Panel header files for creating GNOME panels.
@@ -103,7 +100,6 @@ Statyczne biblioteki panelu GNOME.
 %patch1 -p1
 %{?with_menu_stripe:%patch2 -p1}
 %patch3 -p1
-%patch4 -p1
 
 %build
 cp /usr/share/gnome-common/data/omf.make .
@@ -119,11 +115,11 @@ glib-gettextize --copy --force
 	--with-html-dir=%{_gtkdocdir} \
 	--enable-eds \
 	--disable-schemas-install
-
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT{%{_pixmapsdir},%{_datadir}/%{name}}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
@@ -175,6 +171,7 @@ scrollkeeper-update
 %{_datadir}/gnome-panelrc
 %{_datadir}/idl/gnome-panel-2.0
 %{_pixmapsdir}/*
+%{_iconsdir}/*/*/apps/*.png
 %{_omf_dest_dir}/%{name}
 %{_mandir}/man1/*
 

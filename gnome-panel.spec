@@ -1,12 +1,12 @@
 Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl):	Podstawowe programy ¶rodowiska graficznego GNOME
 Name:		gnome-panel
-Version:	2.7.4.1
-Release:	2
+Version:	2.7.90
+Release:	1
 License:	LGPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/2.7/%{name}-%{version}.tar.bz2
-# Source0-md5:	3aef81994d3b8d9f280362ddefb51d65
+# Source0-md5:	17cf99e0d6b8980bd5be912f449378dd
 Patch0:		%{name}-no_launchers_on_panel.patch
 Patch1:		%{name}-finalize-memleak.patch
 Patch2:		%{name}-locale-names.patch
@@ -15,14 +15,14 @@ Patch3:		%{name}-notification_area_applet.patch
 Patch5:		%{name}-schemas.patch
 Patch6:		%{name}-desktop.patch
 URL:		http://www.gnome.org/
-BuildRequires:	GConf2-devel >= 2.7.3
-BuildRequires:	ORBit2-devel >= 1:2.10.3
+BuildRequires:	GConf2-devel >= 2.7.90
+BuildRequires:	ORBit2-devel >= 1:2.11.1
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	evolution-data-server-devel >= 0.0.96
+BuildRequires:	evolution-data-server-devel >= 0.0.97
 BuildRequires:	gnome-common >= 2.4.0
-BuildRequires:	gnome-desktop-devel >= 2.7.4
-BuildRequires:	gnome-vfs2-devel >= 2.7.3
+BuildRequires:	gnome-desktop-devel >= 2.7.90
+BuildRequires:	gnome-vfs2-devel >= 2.7.90
 BuildRequires:	gtk+2-devel >= 2:2.4.4
 BuildRequires:	gtk-doc >= 1.1
 BuildRequires:	intltool >= 0.29
@@ -31,8 +31,8 @@ BuildRequires:	libglade2-devel >= 1:2.4.0
 BuildRequires:	libgnomeui-devel >= 2.7.2
 BuildRequires:	libpng-devel >= 1.2.0
 BuildRequires:	libtool
-BuildRequires:	libwnck-devel >= 2.6.2.1
-BuildRequires:	pango-devel >= 1.4.0
+BuildRequires:	libwnck-devel >= 2.7.90
+BuildRequires:	pango-devel >= 1.5.2
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig >= 0.15.0
 BuildRequires:	rpm-build >= 4.1-10
@@ -41,9 +41,10 @@ BuildRequires:	zlib-devel
 BuildConflicts:	GConf-devel < 1.0.9-7
 Requires(post,postun):	/sbin/ldconfig
 Requires(post,postun):	scrollkeeper
-Requires(post):	GConf2 >= 2.7.3
-Requires:	gnome-desktop >= 2.7.4
-Requires:	gnome-icon-theme >= 1.3.5
+Requires(post):	GConf2 >= 2.7.90
+Requires:	gnome-desktop >= 2.7.90
+Requires:	gnome-icon-theme >= 1.3.6
+Requires:	gnome-vfs-menu-module
 Requires:	libgnomeui >= 2.7.2
 Requires:	librsvg >= 1:2.7.2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)

@@ -5,12 +5,12 @@
 Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl):	Podstawowe programy ¶rodowiska graficznego GNOME
 Name:		gnome-panel
-Version:	2.8.1
+Version:	2.8.2
 Release:	1
 License:	LGPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/2.8/%{name}-%{version}.tar.bz2
-# Source0-md5:	77aea214467da238170ed10dbc825799
+# Source0-md5:	8637a859fd84cd3f9373cfe107131023
 Source1:	pld-desktop-stripe.png
 # Source1-md5:	4b8b299a8aa7b95a606e7c4d8debd60c
 Patch0:		%{name}-no_launchers_on_panel.patch
@@ -24,7 +24,7 @@ BuildRequires:	ORBit2-devel >= 1:2.11.2
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	evolution-data-server-devel >= 1.0.1
-BuildRequires:	gnome-common >= 2.8.0
+BuildRequires:	gnome-common >= 2.8.0-2
 BuildRequires:	gnome-desktop-devel >= 2.8.0
 BuildRequires:	gnome-vfs2-devel >= 2.8.1
 BuildRequires:	gtk+2-devel >= 2:2.4.4
@@ -106,6 +106,7 @@ Statyczne biblioteki panelu GNOME.
 %patch4 -p1
 
 %build
+cp /usr/share/gnome-common/data/omf.make .
 intltoolize --copy --force
 %{__libtoolize}
 glib-gettextize --copy --force

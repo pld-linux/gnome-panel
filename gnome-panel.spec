@@ -1,31 +1,29 @@
 Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl):	Podstawowe programy ¶rodowiska graficznego GNOME
 Name:		gnome-panel
-Version:	2.4.1
-Release:	3
+Version:	2.5.1
+Release:	1
 License:	LGPL
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/2.4/%{name}-%{version}.tar.bz2
-# Source0-md5:	bdef7c238e1d1eb7976f2bca3b0c8aca
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/2.5/%{name}-%{version}.tar.bz2
+# Source0-md5:	fdebfb61eedb7afb2e119bbd575b880c
 Patch0:		%{name}-clock.patch
 Patch1:		%{name}-no_launchers_on_panel.patch
-Patch2:		%{name}-focus.patch
 Patch3:		%{name}-finalize-memleak.patch
-Patch4:		%{name}-menu_icon.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.4.0
-BuildRequires:	ORBit2-devel >= 2.8.1
+BuildRequires:	ORBit2-devel >= 2.9.1
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	glib2-devel >= 2.2.3
+BuildRequires:	glib2-devel >= 2.3.0
 BuildRequires:	gnome-common >= 2.3.0
-BuildRequires:	gnome-desktop-devel >= 2.4.0
-BuildRequires:	gtk+2-devel >= 2.2.4
+BuildRequires:	gnome-desktop-devel >= 2.5.1
+BuildRequires:	gtk+2-devel >= 2.3.0
 BuildRequires:	gtk-doc >= 1.1
 BuildRequires:	intltool >= 0.27.2
 BuildRequires:	libart_lgpl-devel >= 2.3.15
-BuildRequires:	libglade2-devel >= 2.0.1
-BuildRequires:	libgnomeui-devel >= 2.4.0.1
+BuildRequires:	libglade2-devel >= 2.3.0
+BuildRequires:	libgnomeui-devel >= 2.5.0
 BuildRequires:	libtool
 BuildRequires:	libwnck-devel >= 2.4.0
 BuildRequires:	pkgconfig >= 0.15.0
@@ -35,9 +33,9 @@ BuildConflicts:	GConf-devel < 1.0.9-7
 Requires(post,postun):	/sbin/ldconfig
 Requires(post,postun):	scrollkeeper
 Requires(post):	GConf2 >= 2.4.0
-Requires:	gnome-desktop >= 2.4.0
-Requires:	gnome-icon-theme >= 1.0.9
-Requires:	libgnomeui >= 2.4.0.1
+Requires:	gnome-desktop >= 2.5.1
+Requires:	gnome-icon-theme >= 1.1.1
+Requires:	libgnomeui >= 2.5.0
 Requires:	librsvg >= 2.4.0-3
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -65,7 +63,7 @@ Summary(pl):	Pliki nag³ówkowe biblioteki panelu GNOME
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}
 Requires:	gtk-doc-common
-Requires:	libgnomeui-devel >= 2.4.0.1
+Requires:	libgnomeui-devel >= 2.5.0
 
 %description devel
 Panel header files for creating GNOME panels.
@@ -87,11 +85,9 @@ Statyczne biblioteki panelu GNOME.
 
 %prep
 %setup -q
-%patch0 -p1
+%patch0 -p1 -b .wiget
 %patch1 -p1
-%patch2 -p1
 %patch3 -p1
-%patch4 -p1
 
 %build
 intltoolize --copy --force

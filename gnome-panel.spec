@@ -8,17 +8,17 @@ Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/2.3/%{name}-%{version}.tar.bz2
 # Source0-md5:	74118d98b3546b799269b349d1d2c657
 URL:		http://www.gnome.org/
-BuildRequires:	GConf2-devel >= 2.3.0
+BuildRequires:	GConf2-devel >= 2.3.3
 BuildRequires:	ORBit2-devel >= 2.7.5-1
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	glib2-devel >= 2.2.0
+BuildRequires:	glib2-devel >= 2.2.1
 BuildRequires:	gnome-common >= 2.3.0
 BuildRequires:	gnome-desktop-devel >= 2.3.6
-BuildRequires:	gtk+2-devel >= 2.2.0
+BuildRequires:	gtk+2-devel >= 2.2.1
 BuildRequires:  gtk-doc >= 1.0
 BuildRequires:	intltool >= 0.23
-BuildRequires:	libart_lgpl-devel >= 2.3.11
+BuildRequires:	libart_lgpl-devel >= 2.3.13
 BuildRequires:	libglade2-devel >= 2.0.1
 BuildRequires:	libgnomeui-devel >= 2.3.3.1-2
 BuildRequires:	libtool
@@ -29,7 +29,7 @@ BuildRequires:	scrollkeeper >= 0.3.11
 BuildConflicts:	GConf-devel < 1.0.9-7
 Requires(post,postun): /sbin/ldconfig
 Requires(post,postun): scrollkeeper
-Requires(post):	GConf2 >= 2.3.0
+Requires(post):	GConf2 >= 2.3.3
 Requires:	gnome-desktop >= 2.3.6
 Requires:	libgnomeui >= 2.3.3.1-2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)

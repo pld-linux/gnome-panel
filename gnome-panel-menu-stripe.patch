@@ -1,7 +1,7 @@
-diff -Nuard gnome-panel-2.4.1.orig/gnome-panel/Makefile.am gnome-panel-2.4.1/gnome-panel/Makefile.am
---- gnome-panel-2.4.1.orig/gnome-panel/Makefile.am	2003-09-05 14:35:53.000000000 +0200
-+++ gnome-panel-2.4.1/gnome-panel/Makefile.am	2003-12-02 22:42:53.000000000 +0100
-@@ -98,6 +98,8 @@
+diff -Nuard gnome-panel-2.4.2.orig/gnome-panel/Makefile.am gnome-panel-2.4.2/gnome-panel/Makefile.am
+--- gnome-panel-2.4.2.orig/gnome-panel/Makefile.am	2004-01-15 13:45:58.000000000 +0100
++++ gnome-panel-2.4.2/gnome-panel/Makefile.am	2004-03-22 23:54:13.738819800 +0100
+@@ -89,6 +89,8 @@
  	panel-typebuiltins.h	\
  	panel-marshal.c		\
  	panel-marshal.h		\
@@ -10,9 +10,9 @@ diff -Nuard gnome-panel-2.4.1.orig/gnome-panel/Makefile.am gnome-panel-2.4.1/gno
  	main.c			\
  	panel-widget.c  	\
  	button-widget.c  	\
-diff -Nuard gnome-panel-2.4.1.orig/gnome-panel/menu.c gnome-panel-2.4.1/gnome-panel/menu.c
---- gnome-panel-2.4.1.orig/gnome-panel/menu.c	2003-10-14 12:46:30.000000000 +0200
-+++ gnome-panel-2.4.1/gnome-panel/menu.c	2003-12-02 22:42:53.000000000 +0100
+diff -Nuard gnome-panel-2.4.2.orig/gnome-panel/menu.c gnome-panel-2.4.2/gnome-panel/menu.c
+--- gnome-panel-2.4.2.orig/gnome-panel/menu.c	2003-10-14 12:46:30.000000000 +0200
++++ gnome-panel-2.4.2/gnome-panel/menu.c	2004-03-22 23:54:13.740819496 +0100
 @@ -44,6 +44,7 @@
  #include "menu-fentry.h"
  #include "menu-util.h"
@@ -104,9 +104,9 @@ diff -Nuard gnome-panel-2.4.1.orig/gnome-panel/menu.c gnome-panel-2.4.1/gnome-pa
  
  	g_object_set_data (G_OBJECT (root_menu), "menu_panel", panel);
  
-diff -Nuard gnome-panel-2.4.1.orig/gnome-panel/panel-config-global.c gnome-panel-2.4.1/gnome-panel/panel-config-global.c
---- gnome-panel-2.4.1.orig/gnome-panel/panel-config-global.c	2003-03-05 02:11:34.000000000 +0100
-+++ gnome-panel-2.4.1/gnome-panel/panel-config-global.c	2003-12-02 22:42:53.000000000 +0100
+diff -Nuard gnome-panel-2.4.2.orig/gnome-panel/panel-config-global.c gnome-panel-2.4.2/gnome-panel/panel-config-global.c
+--- gnome-panel-2.4.2.orig/gnome-panel/panel-config-global.c	2003-03-05 02:11:34.000000000 +0100
++++ gnome-panel-2.4.2/gnome-panel/panel-config-global.c	2004-03-22 23:54:13.741819344 +0100
 @@ -45,6 +45,7 @@
  	guint               drawer_auto_close : 1;
  	guint               confirm_panel_remove : 1;
@@ -139,9 +139,9 @@ diff -Nuard gnome-panel-2.4.1.orig/gnome-panel/panel-config-global.c gnome-panel
  #if 0
  	else
  		g_warning ("%s not handled", key);
-diff -Nuard gnome-panel-2.4.1.orig/gnome-panel/panel-config-global.h gnome-panel-2.4.1/gnome-panel/panel-config-global.h
---- gnome-panel-2.4.1.orig/gnome-panel/panel-config-global.h	2003-03-05 02:11:34.000000000 +0100
-+++ gnome-panel-2.4.1/gnome-panel/panel-config-global.h	2003-12-02 22:42:53.000000000 +0100
+diff -Nuard gnome-panel-2.4.2.orig/gnome-panel/panel-config-global.h gnome-panel-2.4.2/gnome-panel/panel-config-global.h
+--- gnome-panel-2.4.2.orig/gnome-panel/panel-config-global.h	2003-03-05 02:11:34.000000000 +0100
++++ gnome-panel-2.4.2/gnome-panel/panel-config-global.h	2004-03-22 23:54:13.741819344 +0100
 @@ -37,6 +37,7 @@
  gboolean panel_global_config_get_drawer_auto_close    (void);
  gboolean panel_global_config_get_tooltips_enabled     (void);
@@ -150,9 +150,9 @@ diff -Nuard gnome-panel-2.4.1.orig/gnome-panel/panel-config-global.h gnome-panel
  
  G_END_DECLS
  
-diff -Nuard gnome-panel-2.4.1.orig/gnome-panel/panel-global.schemas.in gnome-panel-2.4.1/gnome-panel/panel-global.schemas.in
---- gnome-panel-2.4.1.orig/gnome-panel/panel-global.schemas.in	2003-07-07 15:27:58.000000000 +0200
-+++ gnome-panel-2.4.1/gnome-panel/panel-global.schemas.in	2003-12-02 22:42:53.000000000 +0100
+diff -Nuard gnome-panel-2.4.2.orig/gnome-panel/panel-global.schemas.in gnome-panel-2.4.2/gnome-panel/panel-global.schemas.in
+--- gnome-panel-2.4.2.orig/gnome-panel/panel-global.schemas.in	2003-07-07 15:27:58.000000000 +0200
++++ gnome-panel-2.4.2/gnome-panel/panel-global.schemas.in	2004-03-22 23:54:13.742819192 +0100
 @@ -93,6 +93,18 @@
        </schema>
  
@@ -172,10 +172,10 @@ diff -Nuard gnome-panel-2.4.1.orig/gnome-panel/panel-global.schemas.in gnome-pan
          <key>/schemas/apps/panel/global/enable_key_bindings</key>
          <applyto>/apps/panel/global/enable_key_bindings</applyto>
          <owner>panel</owner>
-diff -Nuard gnome-panel-2.4.1.orig/gnome-panel/panel-menu.c gnome-panel-2.4.1/gnome-panel/panel-menu.c
---- gnome-panel-2.4.1.orig/gnome-panel/panel-menu.c	1970-01-01 01:00:00.000000000 +0100
-+++ gnome-panel-2.4.1/gnome-panel/panel-menu.c	2003-12-03 01:30:49.228495360 +0100
-@@ -0,0 +1,778 @@
+diff -Nuard gnome-panel-2.4.2.orig/gnome-panel/panel-menu.c gnome-panel-2.4.2/gnome-panel/panel-menu.c
+--- gnome-panel-2.4.2.orig/gnome-panel/panel-menu.c	1970-01-01 01:00:00.000000000 +0100
++++ gnome-panel-2.4.2/gnome-panel/panel-menu.c	2004-03-22 23:52:53.000000000 +0100
+@@ -0,0 +1,813 @@
 +/*
 + * To set this up insert something like this in your ~/.gtkrc-2.0
 + *
@@ -231,8 +231,13 @@ diff -Nuard gnome-panel-2.4.1.orig/gnome-panel/panel-menu.c gnome-panel-2.4.1/gn
 +       GTK_WIDGET_CLASS (parent_class)->size_request (widget, requisition);
 +
 +       if (panel_global_config_get_menu_stripe () && pm->side_image != NULL)
++       {
 +               requisition->width += gdk_pixbuf_get_width (pm->side_image)
 +		       + gtk_widget_get_style (widget)->xthickness;
++		       
++	    if (pm->height > 0)
++	       requisition->height = pm->height + 2 * (GTK_CONTAINER (widget)->border_width + widget->style->ythickness);
++       }
 +}
 +
 +static GdkColor *
@@ -326,7 +331,7 @@ diff -Nuard gnome-panel-2.4.1.orig/gnome-panel/panel-menu.c gnome-panel-2.4.1/gn
 +       if (widget->allocation.height >= gdk_pixbuf_get_height (pm->side_image)) {
 +	       if (gdk_rectangle_intersect (&event->area,
 +					    &position,
-+					    &exposed)) {
++					    &exposed))  {
 +		       gdk_pixbuf_render_to_drawable (
 +			       pm->side_image, window,
 +			       widget->style->black_gc,
@@ -340,7 +345,35 @@ diff -Nuard gnome-panel-2.4.1.orig/gnome-panel/panel-menu.c gnome-panel-2.4.1/gn
 +       }
 +               
 +       position = widget->allocation;
++/*     g_print("position.height %d, gdk_pixbuf_get_height (pm->side_image) %d\n",position.height,gdk_pixbuf_get_height (pm->side_image));
++       g_print("exposed.y - position.y %d\n",exposed.y - position.y);
++       g_print("exposed.y = %d, position.y = %d\n",exposed.y,position.y);
++*/
 +       if (position.height != gdk_pixbuf_get_height (pm->side_image)) {
++               position.width = gdk_pixbuf_get_width (pm->side_image);
++	       if (position.height > gdk_pixbuf_get_height (pm->side_image)) {
++		       position.height = bin_height - gdk_pixbuf_get_height (pm->side_image);
++	       } else {
++		       position.height = bin_height;
++	       }
++	       
++               if (pm->scaled_image && gdk_rectangle_intersect (&event->area,
++								&position,
++								&exposed) && (exposed.y - position.y + exposed.height > gdk_pixbuf_get_height (pm->scaled_image))) {
++      
++                       gdk_draw_pixbuf (window,
++                               widget->style->black_gc,
++                               pm->scaled_image, 
++                               exposed.x - position.x,
++                               exposed.y - position.y,
++                               exposed.x, exposed.y,
++                               exposed.width, exposed.height,
++                               GDK_RGB_DITHER_NORMAL,
++                               exposed.x, exposed.y);
++               }
++       }
++
++/*       if (position.height != gdk_pixbuf_get_height (pm->side_image)) {
 +               position.width = gdk_pixbuf_get_width (pm->side_image);
 +	       if (position.height > gdk_pixbuf_get_height (pm->side_image)) {
 +		       position.height = bin_height - gdk_pixbuf_get_height (pm->side_image);
@@ -363,7 +396,7 @@ diff -Nuard gnome-panel-2.4.1.orig/gnome-panel/panel-menu.c gnome-panel-2.4.1/gn
 +                               exposed.x, exposed.y);
 +               }
 +       }
-+
++*/
 +       return TRUE;
 +}
 +
@@ -381,7 +414,7 @@ diff -Nuard gnome-panel-2.4.1.orig/gnome-panel/panel-menu.c gnome-panel-2.4.1/gn
 +  int rowstride;
 +
 +  g_return_val_if_fail (width > 0, NULL);
-+  g_return_val_if_fail (height > 0, NULL);
++  if (height <= 0) return NULL;
 +
 +  if (no_padding)
 +    rowstride = width * 3;
@@ -636,7 +669,7 @@ diff -Nuard gnome-panel-2.4.1.orig/gnome-panel/panel-menu.c gnome-panel-2.4.1/gn
 +  if (menu->lower_arrow_visible && !menu->tearoff_active)
 +    height -= MENU_SCROLL_ARROW_HEIGHT;
 +  
-+  if (GTK_WIDGET_REALIZED (widget))
++/*  if (GTK_WIDGET_REALIZED (widget))
 +    {
 +      gdk_window_move_resize (widget->window,
 +			      allocation->x, allocation->y,
@@ -648,7 +681,7 @@ diff -Nuard gnome-panel-2.4.1.orig/gnome-panel/panel-menu.c gnome-panel-2.4.1/gn
 +			      width,
 +			      height);
 +    }
-+
++*/
 +  if (menu_shell->children)
 +    {
 +      child_allocation.x = 0;
@@ -702,6 +735,7 @@ diff -Nuard gnome-panel-2.4.1.orig/gnome-panel/panel-menu.c gnome-panel-2.4.1/gn
 +					  allocation->width, 
 +					  child_allocation.height);
 +		}
++
 +/* end panel-menu.c */
 +
 +	      gtk_widget_queue_draw (child);
@@ -709,19 +743,15 @@ diff -Nuard gnome-panel-2.4.1.orig/gnome-panel/panel-menu.c gnome-panel-2.4.1/gn
 +	      child_allocation.y += child_allocation.height;
 +	    }
 +	}
++    	PANEL_MENU(widget)->height = child_allocation.y;
++
 +      
 +      /* Resize the item window */
 +      if (GTK_WIDGET_REALIZED (widget))
 +	{
-+/* inserted for panel-menu.c */
 +	  gdk_window_resize (menu->bin_window,
-+#if 0
-+			     child_allocation.width,
-+#else
 +			     allocation->width,
-+#endif
 +			     child_allocation.y);
-+/* end panel-menu.c */
 +	}
 +
 +
@@ -769,7 +799,8 @@ diff -Nuard gnome-panel-2.4.1.orig/gnome-panel/panel-menu.c gnome-panel-2.4.1/gn
 +  {
 +    PanelMenu *pm = PANEL_MENU (widget);
 +    
-+    gint scaled_height = height;
++//    gint scaled_height = height;
++    gint scaled_height = child_allocation.y;
 +    
 +    if (pm->side_image && widget->allocation.height > gdk_pixbuf_get_height (pm->side_image)) 
 +      {
@@ -783,12 +814,16 @@ diff -Nuard gnome-panel-2.4.1.orig/gnome-panel/panel-menu.c gnome-panel-2.4.1/gn
 +	if (pm->scaled_image)
 +		gdk_pixbuf_unref(pm->scaled_image);
 +	
-+	pm->scaled_image = gdk_pixbuf_scale_simple (pm->side_image,
++	if (pm->side_image)
++	{
++	    pm->scaled_image = gdk_pixbuf_scale_simple (pm->side_image,
 +						    scaled_width,
 +						    scaled_height,
 +						    GDK_INTERP_BILINEAR); /* maybe HYPER ? */
-+	gdk_pixbuf_unref(pm->side_image);
-+	pm->side_image = pm->scaled_image;
++	    gdk_pixbuf_unref(pm->side_image);
++	    
++	    pm->side_image = pm->scaled_image;
++	}
 +      } 
 +    else
 +      {
@@ -954,10 +989,10 @@ diff -Nuard gnome-panel-2.4.1.orig/gnome-panel/panel-menu.c gnome-panel-2.4.1/gn
 +		GDK_ENTER_NOTIFY_MASK | GDK_LEAVE_NOTIFY_MASK |
 +		GDK_POINTER_MOTION_MASK);
 +}
-diff -Nuard gnome-panel-2.4.1.orig/gnome-panel/panel-menu.h gnome-panel-2.4.1/gnome-panel/panel-menu.h
---- gnome-panel-2.4.1.orig/gnome-panel/panel-menu.h	1970-01-01 01:00:00.000000000 +0100
-+++ gnome-panel-2.4.1/gnome-panel/panel-menu.h	2003-12-03 01:22:39.710913344 +0100
-@@ -0,0 +1,31 @@
+diff -Nuard gnome-panel-2.4.2.orig/gnome-panel/panel-menu.h gnome-panel-2.4.2/gnome-panel/panel-menu.h
+--- gnome-panel-2.4.2.orig/gnome-panel/panel-menu.h	1970-01-01 01:00:00.000000000 +0100
++++ gnome-panel-2.4.2/gnome-panel/panel-menu.h	2004-03-22 21:43:11.000000000 +0100
+@@ -0,0 +1,32 @@
 +#include <gtk/gtkmenu.h>
 +#include <gtk/gtkimage.h>
 +
@@ -978,6 +1013,7 @@ diff -Nuard gnome-panel-2.4.1.orig/gnome-panel/panel-menu.h gnome-panel-2.4.1/gn
 +
 +       GdkPixbuf *side_image;
 +       GdkPixbuf *scaled_image; 
++       gint height;
 +
 +	GdkRegion *navigation_region;
 +};

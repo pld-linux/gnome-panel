@@ -1,28 +1,28 @@
 Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl):	Podstawowe programy ¶rodowiska graficznego GNOME
 Name:		gnome-panel
-Version:	2.0.9
-Release:	3
+Version:	2.1.0
+Release:	1
 License:	LGPL
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/2.0.1/sources/%{name}/%{name}-%{version}.tar.bz2
-Patch0:		%{name}-clock-C_omf.patch
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/2.1/%{name}-%{version}.tar.bz2
 URL:		http://www.gnome.org/
 BuildRequires:	ORBit2-devel >= 2.4.3
-BuildRequires:	glib2-devel >= 2.0.6
-BuildRequires:	gnome-desktop-devel >= 2.0.8
+Buildrequires:	gdk-pixbuf-devel >= 2.1.0
+BuildRequires:	glib2-devel >= 2.1.0
+BuildRequires:	gnome-desktop-devel >= 2.1.0
 BuildRequires:  gtk-doc
-BuildRequires:	gtk+2-devel >= 2.0.6
+BuildRequires:	gtk+2-devel >= 2.1.0
 BuildRequires:	intltool >= 0.22
 BuildRequires:	libglade2-devel >= 2.0.1
-BuildRequires:	libgnomeui-devel >= 2.0.5
-BuildRequires:	libwnck-devel >= 0.17
+BuildRequires:	libgnomeui-devel >= 2.1.0
+BuildRequires:	libwnck-devel >= 2.1.1
 BuildRequires:	pkgconfig >= 0.12.0
 BuildRequires:	scrollkeeper >= 0.3.11
 Requires(post,postun): scrollkeeper
 Requires(post,postun): /sbin/ldconfig
 Requires(post):	GConf2
-Requires:	gnome-desktop >= 2.0.8
+Requires:	gnome-desktop >= 2.1.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define         _prefix         /usr/X11R6
@@ -76,7 +76,6 @@ Statyczne biblioteki panelu GNOME.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 intltoolize --copy --force

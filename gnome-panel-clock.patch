@@ -1,5 +1,6 @@
---- gnome-panel-2.5.1/applets/clock/clock.c.wiget	2003-11-06 13:50:06.000000000 +0100
-+++ gnome-panel-2.5.1/applets/clock/clock.c	2003-11-14 10:31:16.115504722 +0100
+diff -Nru gnome-panel-2.5.2.orig/applets/clock/clock.c gnome-panel-2.5.2/applets/clock/clock.c
+--- gnome-panel-2.5.2.orig/applets/clock/clock.c	2003-12-04 23:57:00.000000000 +0100
++++ gnome-panel-2.5.2/applets/clock/clock.c	2003-12-16 14:22:34.924356800 +0100
 @@ -37,6 +37,7 @@
  #include <dirent.h>
  #include <string.h>
@@ -12,12 +13,12 @@
  
  #define NEVER_SENSITIVE "never_sensitive"
  
-+#define FIRST_WEEKDAY_IS_MONDAY 1
++#define FIRST_WEEKDAY_IS_MONDAY	1
 +
- static const char* KEY_HOUR_FORMAT   = "hour_format";
+ static const char* KEY_FORMAT        = "format";
  static const char* KEY_SHOW_SECONDS  = "show_seconds";
  static const char* KEY_SHOW_DATE     = "show_date";
-@@ -463,6 +466,10 @@
+@@ -479,6 +482,10 @@
  	GtkWindow *window;
  	GtkWidget *calendar;
  	GtkCalendarDisplayOptions options;
@@ -28,7 +29,7 @@
  
  	window = GTK_WINDOW (gtk_window_new (GTK_WINDOW_TOPLEVEL));
  
-@@ -482,6 +489,9 @@
+@@ -498,6 +505,9 @@
  
  	options = gtk_calendar_get_display_options (GTK_CALENDAR (calendar));
  	options |= GTK_CALENDAR_SHOW_WEEK_NUMBERS;

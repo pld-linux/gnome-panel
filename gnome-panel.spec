@@ -1,12 +1,12 @@
 Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl):	Podstawowe programy ¶rodowiska graficznego GNOME
 Name:		gnome-panel
-Version:	2.3.3.2
+Version:	2.3.3.3
 Release:	1
 License:	LGPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/2.3/%{name}-%{version}.tar.bz2
-# Source0-md5:	44db1c5d2af6d8570da49198161c8f7e
+# Source0-md5:	7193e5ea4d9f6e584e40f8965fd876d6
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf
 BuildRequires:	automake

@@ -17,7 +17,6 @@ Patch0:		%{name}-no_launchers_on_panel.patch
 Patch1:		%{name}-finalize-memleak.patch
 %{?with_menu_stripe:Patch2:		%{name}-menu-stripe.patch}
 Patch3:		%{name}-notification_area_applet.patch
-#Patch4:		%{name}-wnck_workspace_activate.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.9.2
 BuildRequires:	ORBit2-devel >= 1:2.12.1
@@ -101,7 +100,6 @@ Statyczne biblioteki panelu GNOME.
 %patch1 -p1
 %{?with_menu_stripe:%patch2 -p1}
 %patch3 -p1
-#%patch4 -p1
 
 %build
 cp /usr/share/gnome-common/data/omf.make .

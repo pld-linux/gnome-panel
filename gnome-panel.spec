@@ -14,7 +14,7 @@ BuildRequires:	glib2-devel >= 2.0.6
 BuildRequires:	gnome-desktop-devel >= 2.0.8
 BuildRequires:  gtk-doc
 BuildRequires:	gtk+2-devel >= 2.0.6
-BuildRequires:	intltool >= 0.22
+BuildRequires:	intltool >= 0.23
 BuildRequires:	libglade2-devel >= 2.0.1
 BuildRequires:	libgnomeui-devel >= 2.0.5
 BuildRequires:	libtool

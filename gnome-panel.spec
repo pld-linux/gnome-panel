@@ -1,7 +1,7 @@
 Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl):	Podstawowe programy ¶rodowiska graficznego GNOME
 Name:		gnome-panel
-Version:	2.1.0
+Version:	2.1.1
 Release:	1
 License:	LGPL
 Group:		X11/Applications
@@ -10,7 +10,6 @@ URL:		http://www.gnome.org/
 BuildRequires:	ORBit2-devel >= 2.4.3
 BuildRequires:	autoconf
 BuildRequires:	automake
-#Buildrequires:	gdk-pixbuf-devel >= 2.1.0
 BuildRequires:	glib2-devel >= 2.1.0
 BuildRequires:	gnome-desktop-devel >= 2.1.0
 BuildRequires:  gtk-doc >= 0.9-4

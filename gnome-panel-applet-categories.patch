@@ -1,0 +1,12 @@
+diff -Nuard gnome-panel-2.4.1.orig/gnome-panel/menu.c gnome-panel-2.4.1/gnome-panel/menu.c
+--- gnome-panel-2.4.1.orig/gnome-panel/menu.c	2003-10-14 12:46:30.000000000 +0200
++++ gnome-panel-2.4.1/gnome-panel/menu.c	2003-11-23 13:30:56.224085392 +0100
+@@ -2680,7 +2680,7 @@
+ {
+ 	int c;
+ 
+-	if ((c = strcmp (a->category, b->category)))
++	if ((c = strcmp (a->untranslated_category, b->untranslated_category)))
+ 		return c;
+ 
+ 	return strcmp (a->name, b->name);

@@ -1,27 +1,27 @@
 Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl):	Podstawowe programy ¶rodowiska graficznego GNOME
 Name:		gnome-panel
-Version:	2.3.7
+Version:	2.3.90
 Release:	1
 License:	LGPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/2.3/%{name}-%{version}.tar.bz2
-# Source0-md5:	e2e63580a64806970ad9b2f83db1803c
+# Source0-md5:	a3046ccbc27b98685cad896e7ff5a56d
 Patch0:		%{name}-clock.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.3.3
-BuildRequires:	ORBit2-devel >= 2.7.6
+BuildRequires:	ORBit2-devel >= 2.8.0
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	glib2-devel >= 2.2.2
+BuildRequires:	glib2-devel >= 2.2.3
 BuildRequires:	gnome-common >= 2.3.0
-BuildRequires:	gnome-desktop-devel >= 2.3.7
-BuildRequires:	gtk+2-devel >= 2.2.2
+BuildRequires:	gnome-desktop-devel >= 2.3.90
+BuildRequires:	gtk+2-devel >= 2.2.3
 BuildRequires:	gtk-doc >= 1.1
 BuildRequires:	intltool >= 0.27.2
-BuildRequires:	libart_lgpl-devel >= 2.3.14
+BuildRequires:	libart_lgpl-devel >= 2.3.15
 BuildRequires:	libglade2-devel >= 2.0.1
-BuildRequires:	libgnomeui-devel >= 2.3.6
+BuildRequires:	libgnomeui-devel >= 2.3.7
 BuildRequires:	libtool
 BuildRequires:	libwnck-devel >= 2.3.1
 BuildRequires:	pkgconfig >= 0.15.0
@@ -31,8 +31,8 @@ BuildConflicts:	GConf-devel < 1.0.9-7
 Requires(post,postun):	/sbin/ldconfig
 Requires(post,postun):	scrollkeeper
 Requires(post):	GConf2 >= 2.3.3
-Requires:	gnome-desktop >= 2.3.7
-Requires:	libgnomeui >= 2.3.6
+Requires:	gnome-desktop >= 2.3.90
+Requires:	libgnomeui >= 2.3.7
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -58,7 +58,7 @@ Summary:	GNOME panel includes, and more
 Summary(pl):	Pliki nag³ówkowe biblioteki panelu GNOME
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}
-Requires:	libgnomeui-devel >= 2.3.6
+Requires:	libgnomeui-devel >= 2.3.7
 Requires:	gtk-doc-common
 
 %description devel

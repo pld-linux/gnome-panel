@@ -126,10 +126,9 @@ scrollkeeper-update
 %attr(755,root,root) %{_libdir}/libclock-applet*.so
 %attr(755,root,root) %{_libdir}/wnck-applet
 %attr(755,root,root) %{_libdir}/notification-area-applet
-%{_libdir}/libclock-applet*.la
 %{_libdir}/bonobo/servers/*
 %{_datadir}/control-center-2.0/capplets/*
-%{_datadir}/fish/*
+%{_datadir}/fish
 %{_datadir}/gen_util
 %{_datadir}/gnome/panel
 %{_datadir}/gnome-2.0/ui/*
@@ -142,7 +141,7 @@ scrollkeeper-update
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libpanel-applet*.so
-%{_libdir}/libpanel-applet*.la
+%{_libdir}/*.la
 %{_gtkdocdir}/panel-applet
 %{_includedir}/panel-2.0
 %{_pkgconfigdir}/*.pc

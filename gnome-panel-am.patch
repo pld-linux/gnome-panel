@@ -1,0 +1,9 @@
+diff -Nur gnome-panel-1.5.18/applets/fish/Makefile.am gnome-panel-1.5.18.new/applets/fish/Makefile.am
+--- gnome-panel-1.5.18/applets/fish/Makefile.am	Sat Feb 16 21:56:35 2002
++++ gnome-panel-1.5.18.new/applets/fish/Makefile.am	Sun Apr 28 22:32:44 2002
+@@ -49,5 +49,3 @@
+ 
+ @INTLTOOL_SERVER_RULE@
+ 
+-install-data-local:
+-	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(srcdir)/$(schema_DATA)

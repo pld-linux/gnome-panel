@@ -1,14 +1,15 @@
 Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl):	Podstawowe programy ¶rodowiska graficznego GNOME
 Name:		gnome-panel
-Version:	1.5.22
+Version:	1.5.23
 Release:	1
 License:	LGPL
 Group:		X11/Applications
 Source0:	ftp://ftp.gnome.org/pub/gnome/pre-gnome2/sources/%{name}/%{name}-%{version}.tar.bz2
 URL:		http://www.gnome.org/
+Requires:	gnome-desktop >= 1.5.21
 BuildRequires:	ORBit2-devel >= 2.3.108
-BuildRequires:	gnome-desktop-devel >= 1.5.20
+BuildRequires:	gnome-desktop-devel >= 1.5.21
 BuildRequires:	gtk+2-devel >= 2.0.2
 BuildRequires:	libglade2-devel >= 1.99.12
 BuildRequires:	libgnomeui-devel >= 1.117.0
@@ -70,14 +71,11 @@ Statyczne biblioteki panelu GNOME.
 %build
 intltoolize --copy --force
 %{__libtoolize}
-%{__gettextize}
+glib-gettextize --copy --force
 %{__aclocal} -I %{_aclocaldir}/gnome2-macros
 %{__autoconf}
 %{__automake}
-if [ -f %{_pkgconfigdir}/libpng12.pc ] ; then
-        CPPFLAGS="`pkg-config libpng12 --cflags`"
-fi
-%configure  CPPFLAGS="$CPPFLAGS" \
+%configure  \
 	--enable-gtk-doc=no
 %{__make}
 
@@ -89,6 +87,8 @@ rm -rf $RPM_BUILD_ROOT
 	omf_dest_dir=%{_omf_dest_dir}/%{name} \
 	pkgconfigdir=%{_pkgconfigdir}
 
+find . -name ChangeLog |awk '{src=$0; dst=$0;sub("^./","",dst);gsub("/","-",dst); print "cp " src " " dst}'|sh
+
 %find_lang %{name} --with-gnome --all-name
 
 %clean
@@ -96,14 +96,14 @@ rm -rf $RPM_BUILD_ROOT
 
 %post
 /sbin/ldconfig
-GCONF_CONFIG_SOURCE=`%{_bindir}/gconftool-2 --get-default-source`; export GCONF_CONFIG_SOURCE
+GCONF_CONFIG_SOURCE="" \
 %{_bindir}/gconftool-2 --makefile-install-rule %{_sysconfdir}/gconf/schemas/*.schemas > /dev/null 
 
 %postun	-p /sbin/ldconfig
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog NEWS README
+%doc AUTHORS *ChangeLog NEWS README
 %config %{_sysconfdir}/gconf/schemas/*
 %config %{_sysconfdir}/sound/events/*
 %attr(755,root,root) %{_bindir}/*
@@ -115,7 +115,7 @@ GCONF_CONFIG_SOURCE=`%{_bindir}/gconftool-2 --get-default-source`; export GCONF_
 %{_datadir}/gen_util
 %{_datadir}/gnome/panel
 %{_datadir}/gnome-2.0/ui/*
-%{_datadir}/gnome-panel
+%{_datadir}/gnome-panel*
 %{_datadir}/gtk-doc/html/panel-applet
 %{_datadir}/idl/gnome-panel-2.0
 %{_datadir}/pixmaps/*

@@ -118,7 +118,7 @@ scrollkeeper-update
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc AUTHORS NEWS README
+%doc AUTHORS NEWS README *ChangeLog
 %config %{_sysconfdir}/gconf/schemas/*
 %config %{_sysconfdir}/sound/events/*
 %attr(755,root,root) %{_bindir}/*

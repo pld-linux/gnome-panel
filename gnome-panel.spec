@@ -2,10 +2,11 @@ Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl):	Podstawowe programy ¶rodowiska graficznego GNOME
 Name:		gnome-panel
 Version:	2.3.1
-Release:	1
+Release:	2
 License:	LGPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/2.3/%{name}-%{version}.tar.bz2
+Patch0:		%{name}-locale-sp.patch
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -78,6 +79,9 @@ Statyczne biblioteki panelu GNOME.
 
 %prep
 %setup -q
+%patch -p1
+
+mv -f po/{sp,sr@cyrillic}.po
 
 %build
 intltoolize --copy --force
@@ -134,7 +138,7 @@ scrollkeeper-update
 %{_datadir}/gnome-2.0/ui/*
 %{_datadir}/gnome-panel*
 %{_datadir}/idl/gnome-panel-2.0
-%{_datadir}/pixmaps/*
+%{_pixmapsdir}/*
 %{_omf_dest_dir}/%{name}
 %{_mandir}/man1/*
 

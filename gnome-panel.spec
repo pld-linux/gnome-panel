@@ -39,6 +39,7 @@ Requires:	gnome-desktop >= 2.4.0
 Requires:	gnome-icon-theme >= 1.0.9
 Requires:	libgnomeui >= 2.4.0.1
 Requires:	librsvg >= 2.4.0-3
+Requires:	glibc-localedb-all
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description

@@ -1,12 +1,12 @@
 Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl):	Podstawowe programy ¶rodowiska graficznego GNOME
 Name:		gnome-panel
-Version:	2.7.91
+Version:	2.7.91.1
 Release:	1
 License:	LGPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/2.7/%{name}-%{version}.tar.bz2
-# Source0-md5:	edc16bb9f8b71545558d042ea0fd002e
+# Source0-md5:	8fc96be055fdf3d6a3f0067fec99cae0
 Patch0:		%{name}-no_launchers_on_panel.patch
 Patch1:		%{name}-finalize-memleak.patch
 Patch2:		%{name}-locale-names.patch
@@ -15,7 +15,7 @@ Patch3:		%{name}-notification_area_applet.patch
 #Patch5:		%{name}-schemas.patch 
 #Patch6:		%{name}-desktop.patch
 URL:		http://www.gnome.org/
-BuildRequires:	GConf2-devel >= 2.7.91
+BuildRequires:	GConf2-devel >= 2.7.91.1
 BuildRequires:	ORBit2-devel >= 1:2.11.1
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -32,7 +32,7 @@ BuildRequires:	libgnomeui-devel >= 2.7.91
 BuildRequires:	libpng-devel >= 1.2.0
 BuildRequires:	libtool
 BuildRequires:	libwnck-devel >= 2.7.91
-BuildRequires:	pango-devel >= 1.5.2
+BuildRequires:	pango-devel >= 1:1.5.2
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig >= 0.15.0
 BuildRequires:	rpm-build >= 4.1-10
@@ -41,7 +41,7 @@ BuildRequires:	zlib-devel
 BuildConflicts:	GConf-devel < 1.0.9-7
 Requires(post,postun):	/sbin/ldconfig
 Requires(post,postun):	scrollkeeper
-Requires(post):	GConf2 >= 2.7.91
+Requires(post):	GConf2 >= 2.7.91.1
 Requires:	gnome-desktop >= 2.7.91
 Requires:	gnome-icon-theme >= 1.3.7
 Requires:	gnome-vfs-menu-module

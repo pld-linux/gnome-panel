@@ -7,21 +7,21 @@ License:	LGPL
 Group:		X11/Applications
 Source0:	ftp://ftp.gnome.org/pub/gnome/2.0.0/sources/%{name}/%{name}-%{version}.tar.bz2
 URL:		http://www.gnome.org/
-Requires:	gnome-desktop >= 2.0.3
 BuildRequires:	ORBit2-devel >= 2.4.0
 BuildRequires:	glib2-devel >= 2.0.4
 BuildRequires:	gnome-desktop-devel >= 2.0.3
+BuildRequires:  gtk-doc
 BuildRequires:	gtk+2-devel >= 2.0.3
+BuildRequires:	intltool >= 0.22
 BuildRequires:	libglade2-devel >= 2.0.0
 BuildRequires:	libgnomeui-devel >= 2.0.1
 BuildRequires:	libwnck-devel >= 0.14
 BuildRequires:	pkgconfig >= 0.12.0
-BuildRequires:	intltool >= 0.22
 BuildRequires:	scrollkeeper >= 0.3.6
-BuildRequires:  gtk-doc
 Requires(post,postun): scrollkeeper
 Requires(post,postun): /sbin/ldconfig
 Requires(post):	GConf2
+Requires:	gnome-desktop >= 2.0.3
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define         _prefix         /usr/X11R6
@@ -83,8 +83,10 @@ glib-gettextize --copy --force
 %{__aclocal} -I %{_aclocaldir}/gnome2-macros
 %{__autoconf}
 %{__automake}
-%configure  
-#	--enable-gtk-doc=no
+%configure \
+	--enable-gtk-doc \
+	--with-html-path=%{_gtkdocdir}
+
 %{__make}
 
 %install
@@ -93,7 +95,8 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
 	omf_dest_dir=%{_omf_dest_dir}/%{name} \
-	pkgconfigdir=%{_pkgconfigdir}
+	pkgconfigdir=%{_pkgconfigdir} \
+	HTML_DIR=%{_gtkdocdir}
 
 mv ChangeLog main-ChangeLog
 find . -name ChangeLog |awk '{src=$0; dst=$0;sub("^./","",dst);gsub("/","-",dst); print "cp " src " " dst}'|sh
@@ -136,8 +139,7 @@ scrollkeeper-update
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libpanel-applet*.??
-%{_datadir}/gtk-doc/html/panel-applet
-#%{_gtkdocdir}/panel-applet
+%{_gtkdocdir}/panel-applet
 %{_includedir}/panel-2.0
 %{_pkgconfigdir}/*.pc
 

@@ -1,7 +1,7 @@
 Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl):	Podstawowe programy ¶rodowiska graficznego GNOME
 Name:		gnome-panel
-Version:	2.2.0
+Version:	2.2.0.1
 Release:	1
 License:	LGPL
 Group:		X11/Applications

@@ -12,7 +12,7 @@ diff -Nuard gnome-panel-2.4.1.orig/gnome-panel/menu.c gnome-panel-2.4.1/gnome-pa
 +			gnome_folder = gnome_icon_theme_lookup_icon (
 +						panel_icon_theme,
 +						"gnome-fs-directory.png",
-+						48, 0);
++						48, NULL, NULL);
  		if (!icon)
  			icon = gnome_folder;
  		else

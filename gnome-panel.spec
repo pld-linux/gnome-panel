@@ -11,7 +11,7 @@ BuildRequires:	ORBit2-devel >= 2.4.3
 #Buildrequires:	gdk-pixbuf-devel >= 2.1.0
 BuildRequires:	glib2-devel >= 2.1.0
 BuildRequires:	gnome-desktop-devel >= 2.1.0
-BuildRequires:  gtk-doc
+BuildRequires:  gtk-doc >= 0.9-4
 BuildRequires:	gtk+2-devel >= 2.1.0
 BuildRequires:	intltool >= 0.22
 BuildRequires:	libglade2-devel >= 2.0.1

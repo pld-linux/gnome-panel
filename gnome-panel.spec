@@ -2,7 +2,7 @@ Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl):	Podstawowe programy ¶rodowiska graficznego GNOME
 Name:		gnome-panel
 Version:	2.6.0
-Release:	0.1
+Release:	1
 License:	LGPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/2.6/%{name}-%{version}.tar.bz2
@@ -12,7 +12,7 @@ Source1:	pld-desktop-stripe.png
 Patch0:		%{name}-no_launchers_on_panel.patch
 Patch1:		%{name}-finalize-memleak.patch
 Patch2:		%{name}-locale-names.patch
-#Patch3:		%{name}-menu-stripe.patch
+Patch3:		%{name}-menu-stripe.patch
 Patch4:		%{name}-notification_area_applet.patch
 Patch5:		%{name}-applet-categories.patch
 Patch6:		%{name}-schemas.patch
@@ -99,7 +99,7 @@ Statyczne biblioteki panelu GNOME.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
-##%patch3 -p1
+%patch3 -p1
 %patch4 -p1
 %patch5 -p1
 %patch6 -p1

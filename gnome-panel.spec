@@ -55,8 +55,7 @@ Panel libraries and header files for creating GNOME panels.
 if [ -f %{_pkgconfigdir}/libpng12.pc ] ; then
         CPPFLAGS="`pkg-config libpng12 --cflags`"
 fi
-
-%configure \
+%configure  CPPFLAGS="$CPPFLAGS" \
 	--enable-gtk-doc=no
 %{__make}
 

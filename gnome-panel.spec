@@ -2,7 +2,7 @@ Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl):	Podstawowe programy ¶rodowiska graficznego GNOME
 Name:		gnome-panel
 Version:	2.0.1
-Release:	2
+Release:	3
 License:	LGPL
 Group:		X11/Applications
 Source0:	ftp://ftp.gnome.org/pub/gnome/pre-gnome2/sources/%{name}/%{name}-%{version}.tar.bz2
@@ -26,7 +26,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define         _prefix         /usr/X11R6
 %define         _mandir         %{_prefix}/man
 %define         _sysconfdir     /etc/X11/GNOME2
-%define		_gtkdocdir	/usr/share/doc/gtk-doc/html
+%define		_gtkdocdir	%{_defaultdocdir}/gtk-doc/html
 %define         _omf_dest_dir   %(scrollkeeper-config --omfdir)
 
 %description
@@ -52,6 +52,7 @@ Summary:	GNOME panel includes, and more
 Summary(pl):	Pliki nag³ówkowe biblioteki panelu GNOME
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}
+Requires:	gtk-doc-common
 
 %description devel
 Panel header files for creating GNOME panels.

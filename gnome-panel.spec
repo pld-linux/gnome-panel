@@ -2,7 +2,7 @@ Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl):	Podstawowe programy ¶rodowiska graficznego GNOME
 Name:		gnome-panel
 Version:	2.5.1
-Release:	1
+Release:	2
 License:	LGPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/2.5/%{name}-%{version}.tar.bz2
@@ -22,7 +22,7 @@ BuildRequires:	gtk+2-devel >= 1:2.3.0
 BuildRequires:	gtk-doc >= 1.1
 BuildRequires:	intltool >= 0.27.2
 BuildRequires:	libart_lgpl-devel >= 2.3.15
-BuildRequires:	libglade2-devel >= 2.3.0
+BuildRequires:	libglade2-devel >= 1:2.3.0
 BuildRequires:	libgnomeui-devel >= 2.5.0
 BuildRequires:	libtool
 BuildRequires:	libwnck-devel >= 2.4.0

@@ -38,7 +38,7 @@ BuildRequires:	libtool
 BuildRequires:	libwnck-devel >= 2.8.0.1
 BuildRequires:	pango-devel >= 1:1.6.0
 BuildRequires:	perl-base
-BuildRequires:	pkgconfig >= 0.15.0
+BuildRequires:	pkgconfig >= 1:0.15.0
 BuildRequires:	rpm-build >= 4.1-10
 BuildRequires:	scrollkeeper >= 0.3.11
 BuildRequires:	zlib-devel

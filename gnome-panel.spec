@@ -1,14 +1,15 @@
 Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl):	Podstawowe programy ¶rodowiska graficznego GNOME
 Name:		gnome-panel
-Version:	2.0.9
-Release:	3
+Version:	2.0.10
+Release:	1
 License:	LGPL
 Group:		X11/Applications
 Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/2.0/%{name}-%{version}.tar.bz2
-Patch0:		%{name}-clock-C_omf.patch
 URL:		http://www.gnome.org/
 BuildRequires:	ORBit2-devel >= 2.4.3
+BuildRequires:	autoconf
+BuildRequires:	automake
 BuildRequires:	glib2-devel >= 2.0.6
 BuildRequires:	gnome-desktop-devel >= 2.0.8
 BuildRequires:  gtk-doc
@@ -16,6 +17,7 @@ BuildRequires:	gtk+2-devel >= 2.0.6
 BuildRequires:	intltool >= 0.22
 BuildRequires:	libglade2-devel >= 2.0.1
 BuildRequires:	libgnomeui-devel >= 2.0.5
+BuildRequires:	libtool
 BuildRequires:	libwnck-devel >= 0.17
 BuildRequires:	pkgconfig >= 0.12.0
 BuildRequires:	scrollkeeper >= 0.3.11
@@ -67,7 +69,7 @@ Pliki nag³ówkowe bibliotek panelu GNOME.
 Summary:	GNOME panel static libraries
 Summary(pl):	Statyczne biblioteki panelu GNOME
 Group:		X11/Development/Libraries
-Requires:	%{name} = %{version}-devel
+Requires:	%{name}-devel = %{version}
 
 %description static
 Panel static libraries.
@@ -77,7 +79,6 @@ Statyczne biblioteki panelu GNOME.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 intltoolize --copy --force

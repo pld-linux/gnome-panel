@@ -1,0 +1,62 @@
+--- gnome-panel-2.6.0/gnome-panel/panel-run-dialog.c.use-correct-applications-uri	2004-04-07 16:18:57.668576976 +0100
++++ gnome-panel-2.6.0/gnome-panel/panel-run-dialog.c	2004-04-07 17:37:15.309427016 +0100
+@@ -681,12 +681,39 @@
+ 	return TRUE;
+ }
+ 
++static GSList *
++get_all_applications (GSList  *all_applications,
++		      FileRec *dir)
++{
++	GSList *l;
++
++	g_assert (dir != NULL);
++	g_assert (dir->type == FILE_REC_DIR);
++
++	for (l = ((DirRec *)dir)->recs; l; l = l->next) {
++		FileRec *file = l->data;
++
++		switch (file->type) {
++		case FILE_REC_FILE:
++			all_applications = g_slist_append (all_applications, file);
++			break;
++		case FILE_REC_DIR:
++			if (!((DirRec *)file)->recs)
++				fr_check_and_reread (file);
++			all_applications = get_all_applications (all_applications, file);
++			break;
++		default:
++			break;
++		}
++	}
++}
++
+ static gboolean
+ panel_run_dialog_add_items_idle (PanelRunDialog *dialog)
+ {
+ 	GtkCellRenderer   *renderer;
+ 	GtkTreeViewColumn *column;
+-	FileRec           *all_dir;
++	FileRec *dir;
+ 	GSList            *tmp;
+ 	GSList            *files;
+ 	GSList            *prev;
+@@ -701,12 +728,15 @@
+ 							 G_TYPE_STRING,
+ 							 G_TYPE_STRING);
+ 
+-	all_dir = fr_get_dir ("all-applications:/");
+-	if (!all_dir)
++	dir = fr_get_dir ("applications:/");
++	if (!dir)
++		return FALSE;
++
++	files = get_all_applications (NULL, dir);
++	if (!files)
+ 		return FALSE;
+ 	
+ 	/* Collate */
+-	files = g_slist_copy (((DirRec *) all_dir)->recs);
+ 	files = g_slist_sort (files, (GCompareFunc) fr_compare);
+ 
+ 	/* Strip duplicates */

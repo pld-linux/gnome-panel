@@ -15,6 +15,7 @@ BuildRequires:	automake
 BuildRequires:	GConf2-devel >= 2.3.0
 BuildRequires:	glib2-devel >= 2.2.0
 BuildRequires:	gnome-desktop-devel >= 2.2.1
+BuildRequires:	gnome-common >= 1.2.4
 BuildRequires:	gtk+2-devel >= 2.2.0
 BuildRequires:  gtk-doc >= 1.0
 BuildRequires:	intltool >= 0.23

@@ -5,7 +5,7 @@ Version:	2.0.2
 Release:	1
 License:	LGPL
 Group:		X11/Applications
-Source0:	ftp://ftp.gnome.org/pub/gnome/2.0.2/sources/%{name}/%{name}-%{version}.tar.bz2
+Source0:	ftp://ftp.gnome.org/pub/gnome/2.0.0/sources/%{name}/%{name}-%{version}.tar.bz2
 URL:		http://www.gnome.org/
 Requires:	gnome-desktop >= 2.0.1
 BuildRequires:	ORBit2-devel >= 2.4.0

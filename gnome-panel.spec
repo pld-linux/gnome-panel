@@ -117,7 +117,6 @@ GCONF_CONFIG_SOURCE=`%{_bindir}/gconftool-2 --get-default-source`; export GCONF_
 %{_datadir}/control-center-2.0/capplets/*
 %{_datadir}/gen_util
 %{_datadir}/gnome/panel
-%{_datadir}/gnome/help/*
 %{_datadir}/gnome-2.0/ui/*
 %{_datadir}/gnome-panel
 %{_datadir}/gtk-doc/html/panel-applet

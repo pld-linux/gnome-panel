@@ -11,7 +11,7 @@ BuildRequires:	ORBit2-devel >= 2.4.3
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	glib2-devel >= 2.1.0
-BuildRequires:	gnome-desktop-devel >= 2.1.2
+BuildRequires:	gnome-desktop-devel >= 2.1.3
 BuildRequires:  gtk-doc >= 0.9-4
 BuildRequires:	gtk+2-devel >= 2.1.0
 BuildRequires:	intltool >= 0.23

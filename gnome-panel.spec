@@ -2,7 +2,7 @@ Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl):	Podstawowe programy ¶rodowiska graficznego GNOME
 Name:		gnome-panel
 Version:	2.1.2
-Release:	1
+Release:	2
 License:	LGPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/2.1/%{name}-%{version}.tar.bz2
@@ -34,6 +34,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define         _sysconfdir     /etc/X11/GNOME2
 %define		_gtkdocdir	%{_defaultdocdir}/gtk-doc/html
 %define         _omf_dest_dir   %(scrollkeeper-config --omfdir)
+%define		_serverdir	/usr/lib/bonobo/servers
 
 %description
 GNOME (GNU Network Object Model Environment) is a user-friendly set of
@@ -101,7 +102,8 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT \
 	omf_dest_dir=%{_omf_dest_dir}/%{name} \
 	pkgconfigdir=%{_pkgconfigdir} \
-	HTML_DIR=%{_gtkdocdir}
+	HTML_DIR=%{_gtkdocdir} \
+	serverdir=%{_serverdir}
 
 mv ChangeLog main-ChangeLog
 find . -name ChangeLog |awk '{src=$0; dst=$0;sub("^./","",dst);gsub("/","-",dst); print "cp " src " " dst}'|sh
@@ -131,7 +133,7 @@ scrollkeeper-update
 %attr(755,root,root) %{_libdir}/libpanel-applet*.so.*.*
 %attr(755,root,root) %{_libdir}/libgen_util_applet*.so
 %attr(755,root,root) %{_libdir}/%{name}/libnotification-area-applet.so
-%{_libdir}/bonobo/servers/*
+%{_serverdir}/*
 %{_datadir}/control-center-2.0/capplets/*
 %{_datadir}/gen_util
 %{_datadir}/gnome/panel

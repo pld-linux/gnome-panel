@@ -1,34 +1,31 @@
 Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl):	Podstawowe programy ¶rodowiska graficznego GNOME
 Name:		gnome-panel
-Version:	2.7.91.1
-Release:	2
+Version:	2.7.92
+Release:	1
 License:	LGPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/2.7/%{name}-%{version}.tar.bz2
-# Source0-md5:	8fc96be055fdf3d6a3f0067fec99cae0
+# Source0-md5:	14b0d65cb8d441dba0c66d9c150272e6
 Patch0:		%{name}-no_launchers_on_panel.patch
 Patch1:		%{name}-finalize-memleak.patch
-Patch2:		%{name}-locale-names.patch
-Patch3:		%{name}-notification_area_applet.patch
-#Patch4:		%{name}-applet-categories.patch
-#Patch5:		%{name}-schemas.patch 
-#Patch6:		%{name}-desktop.patch
+Patch2:		%{name}-notification_area_applet.patch
+#Patch3:		%{name}-applet-categories.patch
 URL:		http://www.gnome.org/
-BuildRequires:	GConf2-devel >= 2.7.91.1
-BuildRequires:	ORBit2-devel >= 1:2.11.1
+BuildRequires:	GConf2-devel >= 2.7.92
+BuildRequires:	ORBit2-devel >= 1:2.11.2
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	evolution-data-server-devel >= 0.0.98
 BuildRequires:	gnome-common >= 2.4.0
-BuildRequires:	gnome-desktop-devel >= 2.7.91
-BuildRequires:	gnome-vfs2-devel >= 2.7.91
+BuildRequires:	gnome-desktop-devel >= 2.7.92
+BuildRequires:	gnome-vfs2-devel >= 2.7.92
 BuildRequires:	gtk+2-devel >= 2:2.4.4
 BuildRequires:	gtk-doc >= 1.1
 BuildRequires:	intltool >= 0.31
 BuildRequires:	libart_lgpl-devel >= 2.3.15
 BuildRequires:	libglade2-devel >= 1:2.4.0
-BuildRequires:	libgnomeui-devel >= 2.7.91
+BuildRequires:	libgnomeui-devel >= 2.7.92
 BuildRequires:	libpng-devel >= 1.2.0
 BuildRequires:	libtool
 BuildRequires:	libwnck-devel >= 2.7.91
@@ -41,11 +38,11 @@ BuildRequires:	zlib-devel
 BuildConflicts:	GConf-devel < 1.0.9-7
 Requires(post,postun):	/sbin/ldconfig
 Requires(post,postun):	scrollkeeper
-Requires(post):	GConf2 >= 2.7.91.1
-Requires:	gnome-desktop >= 2.7.91
-Requires:	gnome-icon-theme >= 1.3.7
+Requires(post):	GConf2 >= 2.7.92
+Requires:	gnome-desktop >= 2.7.92
+Requires:	gnome-icon-theme >= 2.7.90
 Requires:	gnome-vfs-menu-module
-Requires:	libgnomeui >= 2.7.91
+Requires:	libgnomeui >= 2.7.92
 Requires:	librsvg >= 1:2.7.2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -73,7 +70,7 @@ Summary(pl):	Pliki nag³ówkowe biblioteki panelu GNOME
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	gtk-doc-common
-Requires:	libgnomeui-devel >= 2.7.91
+Requires:	libgnomeui-devel >= 2.7.92
 
 %description devel
 Panel header files for creating GNOME panels.
@@ -98,12 +95,7 @@ Statyczne biblioteki panelu GNOME.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1
-##%patch4 -p1
-#%patch5 -p1 //probably obsoleted
-#%patch6 -p1 //probably obsoleted
-
-rm po/no.po
+##%patch3 -p1
 
 %build
 intltoolize --copy --force
@@ -130,11 +122,10 @@ rm -rf $RPM_BUILD_ROOT
 
 install %{name}/panel-default-setup.entries $RPM_BUILD_ROOT%{_datadir}/%{name}
 
-#install -d $RPM_BUILD_ROOT%{_datadir}/gnome/capplets
-#mv $RPM_BUILD_ROOT%{_datadir}/control-center-2.0/capplets/*.desktop $RPM_BUILD_ROOT%{_datadir}/gnome/capplets
-
 #mv ChangeLog main-ChangeLog
 find . -name ChangeLog |awk '{src=$0; dst=$0;sub("^./","",dst);gsub("/","-",dst); print "cp " src " " dst}'|sh
+
+rm -r $RPM_BUILD_ROOT%{_datadir}/locale/no
 
 %find_lang %{name} --with-gnome --all-name
 
@@ -167,7 +158,6 @@ scrollkeeper-update
 %attr(755,root,root) %{_libdir}/wnck-applet
 %attr(755,root,root) %{_libdir}/notification-area-applet
 %{_libdir}/bonobo/servers/*
-#%{_datadir}/gnome/capplets/*
 %{_datadir}/gnome/panel
 %{_datadir}/gnome-2.0/ui/*
 %{_datadir}/gnome-panel

@@ -2,14 +2,18 @@ Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl):	Podstawowe programy ¶rodowiska graficznego GNOME
 Name:		gnome-panel
 Version:	2.5.5
-Release:	1
+Release:	2
 License:	LGPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/2.5/%{name}-%{version}.tar.bz2
 # Source0-md5:	4166df918c8db22ac5e6eb235701b072
+Source1:	pld-desktop-stripe.png
+# Source1-md5:	4b8b299a8aa7b95a606e7c4d8debd60c
 Patch0:		%{name}-no_launchers_on_panel.patch
 Patch1:		%{name}-finalize-memleak.patch
 Patch2:		%{name}-locale-names.patch
+Patch3:		%{name}-menu-stripe.patch
+Patch4:		%{name}-notification_area_applet.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.5.0
 BuildRequires:	ORBit2-devel >= 1:2.9.2
@@ -93,6 +97,8 @@ Statyczne biblioteki panelu GNOME.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
+%patch4 -p1
 
 mv po/{no,nb}.po
 
@@ -120,6 +126,8 @@ rm -rf $RPM_BUILD_ROOT
 	GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1
 
 install %{name}/panel-default-setup.entries $RPM_BUILD_ROOT%{_datadir}/%{name}
+
+install %{SOURCE1} $RPM_BUILD_ROOT%{_pixmapsdir}
 
 install -d $RPM_BUILD_ROOT%{_datadir}/gnome/capplets
 mv $RPM_BUILD_ROOT%{_datadir}/control-center-2.0/capplets/*.desktop $RPM_BUILD_ROOT%{_datadir}/gnome/capplets

@@ -1,0 +1,11 @@
+--- gnome-panel-2.0.0/po/pt_BR.po.wiget	Wed Jun 12 17:31:36 2002
++++ gnome-panel-2.0.0/po/pt_BR.po	Wed Jun 12 17:33:09 2002
+@@ -703,7 +703,7 @@
+ #: applets/gen_util/mailcheck.schemas.in.h:21
+ msgid "This is how we check the mail, check the mail, check the mail..."
+ msgstr ""
+-"É assim que nós verficamos o correio, verficamos o correio,< verficamos o "
++"É assim que nós verficamos o correio, verficamos o correio, verficamos o "
+ "correio..."
+ 
+ #: applets/gen_util/mailcheck.schemas.in.h:22

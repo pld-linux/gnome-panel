@@ -6,6 +6,7 @@ Release:	1
 License:	LGPL
 Group:		X11/Applications
 Source0:	ftp://ftp.gnome.org/pub/gnome/pre-gnome2/sources/%{name}/%{name}-%{version}.tar.bz2
+Patch0:		%{name}-pt_BR.patch
 URL:		http://www.gnome.org/
 Requires:	gnome-desktop >= 2.0.0
 BuildRequires:	ORBit2-devel >= 2.4.0
@@ -71,6 +72,7 @@ Statyczne biblioteki panelu GNOME.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 intltoolize --copy --force

@@ -18,7 +18,7 @@ BuildRequires:	automake
 BuildRequires:	evolution-data-server-devel >= 0.0.7
 BuildRequires:	gnome-common >= 2.4.0
 BuildRequires:	gnome-desktop-devel >= 2.5.5
-BuildRequires:	gnome-bfs2-devel >= 2.5.6
+BuildRequires:	gnome-vfs2-devel >= 2.5.6
 BuildRequires:	gtk+2-devel >= 1:2.3.2
 BuildRequires:	gtk-doc >= 1.1
 BuildRequires:	intltool >= 0.29

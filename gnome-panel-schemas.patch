@@ -1,0 +1,13 @@
+diff -urN aa/gnome-panel-2.6.0/applets/clock/clock.schemas.in gnome-panel-2.6.0/applets/clock/clock.schemas.in
+--- aa/gnome-panel-2.6.0/applets/clock/clock.schemas.in	2004-01-09 13:56:03.000000000 +0100
++++ gnome-panel-2.6.0/applets/clock/clock.schemas.in	2004-03-23 02:25:29.397225544 +0100
+@@ -108,8 +108,8 @@
+         <key>/schemas/apps/clock_applet/prefs/hour_format</key>
+         <owner>clock-applet</owner>
+         <type>int</type>
++        <default>24</default>
+         <locale name="C">
+-          <default>24</default>
+           <short>Hour format</short>
+           <long>
+ 	    The use of this key was deprecated in GNOME 2.6 in favour of the

@@ -1,12 +1,12 @@
 Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl):	Podstawowe programy ¶rodowiska graficznego GNOME
 Name:		gnome-panel
-Version:	2.3.3
+Version:	2.3.3.1
 Release:	1
 License:	LGPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/2.3/%{name}-%{version}.tar.bz2
-# Source0-md5:	531922aec5c75ad3e697fc6192fee16c
+# Source0-md5:	aee093829c97e21993941d90ce5494a1
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -82,13 +82,13 @@ Statyczne biblioteki panelu GNOME.
 %setup -q
 
 %build
-#intltoolize --copy --force
-#$%{__libtoolize}
-#glib-gettextize --copy --force
-#$%{__aclocal} -I %{_aclocaldir}/gnome2-macros
-#$%{__autoheader}
-#$%{__autoconf}
-#$%{__automake}
+intltoolize --copy --force
+%{__libtoolize}
+glib-gettextize --copy --force
+%{__aclocal} -I %{_aclocaldir}/gnome2-macros
+%{__autoheader}
+%{__autoconf}
+%{__automake}
 %configure \
 	--enable-gtk-doc \
 	--with-html-dir=%{_gtkdocdir}

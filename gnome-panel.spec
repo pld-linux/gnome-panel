@@ -1,12 +1,12 @@
 Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl):	Podstawowe programy ¶rodowiska graficznego GNOME
 Name:		gnome-panel
-Version:	2.5.1
-Release:	2
+Version:	2.5.2
+Release:	1
 License:	LGPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/2.5/%{name}-%{version}.tar.bz2
-# Source0-md5:	fdebfb61eedb7afb2e119bbd575b880c
+# Source0-md5:	0459e76ce9bd31f29e6bff1134710f4e
 Patch0:		%{name}-clock.patch
 Patch1:		%{name}-no_launchers_on_panel.patch
 Patch3:		%{name}-finalize-memleak.patch

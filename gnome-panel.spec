@@ -9,11 +9,10 @@ Source0:	ftp://ftp.gnome.org/pub/gnome/pre-gnome2/sources/%{name}/%{name}-%{vers
 Patch0:		%{name}-am.patch
 URL:		http://www.gnome.org/
 BuildRequires:	ORBit2-devel >= 2.3.108
-BuildRequires:	gnome-desktop-devel >= 1.5.18
-BuildRequires:	gnome-vfs2-devel >= 1.9.14
+BuildRequires:	gnome-desktop-devel >= 1.5.19
 BuildRequires:	gtk+2-devel >= 2.0.2
 BuildRequires:	libglade2-devel >= 1.99.12
-BuildRequires:	libgnomeui-devel >= 1.116.1
+BuildRequires:	libgnomeui-devel >= 1.117.0
 BuildRequires:	libwnck-devel >= 0.9
 BuildRequires:	pkgconfig >= 0.12.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)

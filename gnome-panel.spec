@@ -33,7 +33,7 @@ BuildConflicts:	GConf-devel < 1.0.9-7
 Requires(post,postun):	/sbin/ldconfig
 Requires(post,postun):	scrollkeeper
 Requires(post):	GConf2 >= 2.4.0
-Requires:	gnome-applets >= 2.4.1
+#Requires:	gnome-applets >= 2.4.1
 Requires:	gnome-desktop >= 2.4.0
 Requires:	gnome-icon-theme >= 1.0.9
 Requires:	libgnomeui >= 2.4.0.1

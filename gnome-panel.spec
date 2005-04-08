@@ -43,12 +43,12 @@ BuildRequires:	pango-devel >= 1:1.8.0
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig >= 1:0.15.0
 BuildRequires:	rpm-build >= 4.1-10
-BuildRequires:	rpmbuild(macros) >= 1.196
+BuildRequires:	rpmbuild(macros) >= 1.197
 BuildRequires:	scrollkeeper >= 0.3.11
 BuildConflicts:	GConf-devel < 1.0.9-7
 Requires(post,postun):	/sbin/ldconfig
-Requires(post,postun):	scrollkeeper
 Requires(post,preun):	GConf2 >= 2.10.0
+Requires(post,postun):	scrollkeeper
 Requires:	gnome-desktop >= 2.10.0-2
 Requires:	gnome-icon-theme >= 2.10.0
 Requires:	libgnomeui >= 2.10.0-2
@@ -109,9 +109,9 @@ Statyczne biblioteki panelu GNOME.
 
 %build
 cp /usr/share/gnome-common/data/omf.make .
-intltoolize --copy --force
+%{__intltoolize}
 %{__libtoolize}
-glib-gettextize --copy --force
+%{__glib_gettextize}
 %{__aclocal}
 %{__autoheader}
 %{__autoconf}
@@ -146,17 +146,17 @@ rm -r $RPM_BUILD_ROOT%{_datadir}/locale/no
 rm -rf $RPM_BUILD_ROOT
 
 %post
-/sbin/ldconfig
-/usr/bin/scrollkeeper-update -q
-%gconf_schema_install /etc/gconf/schemas/clock.schemas
-%gconf_schema_install /etc/gconf/schemas/fish.schemas
-%gconf_schema_install /etc/gconf/schemas/panel-compatibility.schemas
-%gconf_schema_install /etc/gconf/schemas/panel-general.schemas
-%gconf_schema_install /etc/gconf/schemas/panel-global.schemas
-%gconf_schema_install /etc/gconf/schemas/panel-object.schemas
-%gconf_schema_install /etc/gconf/schemas/panel-toplevel.schemas
-%gconf_schema_install /etc/gconf/schemas/window-list.schemas
-%gconf_schema_install /etc/gconf/schemas/workspace-switcher.schemas
+%ldconfig_post
+%scrollkeeper_update_post
+%gconf_schema_install clock.schemas
+%gconf_schema_install fish.schemas
+%gconf_schema_install panel-compatibility.schemas
+%gconf_schema_install panel-general.schemas
+%gconf_schema_install panel-global.schemas
+%gconf_schema_install panel-object.schemas
+%gconf_schema_install panel-toplevel.schemas
+%gconf_schema_install window-list.schemas
+%gconf_schema_install workspace-switcher.schemas
 %{_bindir}/gconftool-2 --direct \
 	--config-source="`%{_bindir}/gconftool-2 --get-default-source`" \
 	--load %{_datadir}/%{name}/panel-default-setup.entries > /dev/null
@@ -168,23 +168,19 @@ For full functionality, you need to install gnome-utils.
 EOF
 
 %preun
-if [ $1 = 0 ]; then
-	%gconf_schema_uninstall /etc/gconf/schemas/clock.schemas
-	%gconf_schema_uninstall /etc/gconf/schemas/fish.schemas
-	%gconf_schema_uninstall /etc/gconf/schemas/panel-compatibility.schemas
-	%gconf_schema_uninstall /etc/gconf/schemas/panel-general.schemas
-	%gconf_schema_uninstall /etc/gconf/schemas/panel-global.schemas
-	%gconf_schema_uninstall /etc/gconf/schemas/panel-object.schemas
-	%gconf_schema_uninstall /etc/gconf/schemas/panel-toplevel.schemas
-	%gconf_schema_uninstall /etc/gconf/schemas/window-list.schemas
-	%gconf_schema_uninstall /etc/gconf/schemas/workspace-switcher.schemas
-fi
+%gconf_schema_uninstall clock.schemas
+%gconf_schema_uninstall fish.schemas
+%gconf_schema_uninstall panel-compatibility.schemas
+%gconf_schema_uninstall panel-general.schemas
+%gconf_schema_uninstall panel-global.schemas
+%gconf_schema_uninstall panel-object.schemas
+%gconf_schema_uninstall panel-toplevel.schemas
+%gconf_schema_uninstall window-list.schemas
+%gconf_schema_uninstall workspace-switcher.schemas
 
 %postun
-if [ $1 = 0 ]; then
-	/sbin/ldconfig
-	/usr/bin/scrollkeeper-update -q
-fi
+%ldconfig_postun
+%scrollkeeper_update_postun
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)

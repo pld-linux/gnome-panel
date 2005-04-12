@@ -146,7 +146,7 @@ rm -r $RPM_BUILD_ROOT%{_datadir}/locale/no
 rm -rf $RPM_BUILD_ROOT
 
 %post
-%ldconfig_post
+/sbin/ldconfig
 %scrollkeeper_update_post
 %gconf_schema_install clock.schemas
 %gconf_schema_install fish.schemas
@@ -179,7 +179,7 @@ EOF
 %gconf_schema_uninstall workspace-switcher.schemas
 
 %postun
-%ldconfig_postun
+/sbin/ldconfig
 %scrollkeeper_update_postun
 
 %files -f %{name}.lang

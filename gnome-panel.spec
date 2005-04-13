@@ -9,7 +9,7 @@ Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl):	Podstawowe programy ¶rodowiska graficznego GNOME
 Name:		gnome-panel
 Version:	2.10.1
-Release:	1
+Release:	2
 License:	LGPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/gnome-panel/2.10/%{name}-%{version}.tar.bz2
@@ -18,7 +18,7 @@ Source1:	pld-desktop-stripe.png
 # Source1-md5:	4b8b299a8aa7b95a606e7c4d8debd60c
 Patch0:		%{name}-no_launchers_on_panel.patch
 Patch1:		%{name}-finalize-memleak.patch
-%{?with_menu_stripe:Patch2:		%{name}-menu-stripe.patch}
+%{?with_menu_stripe:Patch2:	%{name}-menu-stripe.patch}
 Patch3:		%{name}-notification_area_applet.patch
 Patch4:		%{name}-no_mixer_applet.patch
 URL:		http://www.gnome.org/
@@ -65,10 +65,10 @@ The gnome-panel packages provides the GNOME panel, menus and some
 basic applets for the panel.
 
 %description -l pl
-GNOME (GNU Network Object Model Environment) to zestaw przyjaznych
-dla u¿ytkownika aplikacji i narzêdzi do u¿ywania w po³±czeniu z
-zarz±dc± okien pod X. GNOME ma podobny cel jak CDE i KDE, ale bazuje
-ca³kowicie na wolnym oprogramowaniu.
+GNOME (GNU Network Object Model Environment) to zestaw przyjaznych dla
+u¿ytkownika aplikacji i narzêdzi do u¿ywania w po³±czeniu z zarz±dc±
+okien pod X. GNOME ma podobny cel jak CDE i KDE, ale bazuje ca³kowicie
+na wolnym oprogramowaniu.
 
 Ten pakiet dostarcza panel GNOME2, menu oraz podstawowe aplety dla
 panelu GNOME2.
@@ -164,7 +164,8 @@ rm -rf $RPM_BUILD_ROOT
 	--config-source="`%{_bindir}/gconftool-2 --get-default-source`" \
 	--load %{_datadir}/%{name}/panel-default-setup.entries /apps/panel/profiles/default > /dev/null
 %banner %{name} -e << EOF
-For full functionality, you need to install gnome-utils.
+For full functionality, you need to install
+gnome-utils-screenshot and gnome-utils-search-tool.
 EOF
 
 %preun

@@ -8,18 +8,19 @@
 Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl):	Podstawowe programy ¶rodowiska graficznego GNOME
 Name:		gnome-panel
-Version:	2.10.0
-Release:	3
+Version:	2.10.2
+Release:	1
 License:	LGPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/gnome-panel/2.10/%{name}-%{version}.tar.bz2
-# Source0-md5:	398e95097aeb7b8be2b6b47a0f9affe0
+# Source0-md5:	c1756cac74a4c8b45ce3b9a884515baa
 Source1:	pld-desktop-stripe.png
 # Source1-md5:	4b8b299a8aa7b95a606e7c4d8debd60c
 Patch0:		%{name}-no_launchers_on_panel.patch
 Patch1:		%{name}-finalize-memleak.patch
-%{?with_menu_stripe:Patch2:		%{name}-menu-stripe.patch}
+%{?with_menu_stripe:Patch2:	%{name}-menu-stripe.patch}
 Patch3:		%{name}-notification_area_applet.patch
+Patch4:		%{name}-no_mixer_applet.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.10.0
 BuildRequires:	ORBit2-devel >= 1:2.12.1
@@ -42,16 +43,17 @@ BuildRequires:	pango-devel >= 1:1.8.0
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig >= 1:0.15.0
 BuildRequires:	rpm-build >= 4.1-10
-BuildRequires:	rpmbuild(macros) >= 1.177
+BuildRequires:	rpmbuild(macros) >= 1.197
 BuildRequires:	scrollkeeper >= 0.3.11
 BuildConflicts:	GConf-devel < 1.0.9-7
 Requires(post,postun):	/sbin/ldconfig
+Requires(post,preun):	GConf2 >= 2.10.0
 Requires(post,postun):	scrollkeeper
-Requires(post):	GConf2 >= 2.10.0
 Requires:	gnome-desktop >= 2.10.0-2
 Requires:	gnome-icon-theme >= 2.10.0
 Requires:	libgnomeui >= 2.10.0-2
 Requires:	librsvg >= 1:2.9.5
+Requires:	xdg-menus
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -64,10 +66,10 @@ The gnome-panel packages provides the GNOME panel, menus and some
 basic applets for the panel.
 
 %description -l pl
-GNOME (GNU Network Object Model Environment) to zestaw przyjaznych
-dla u¿ytkownika aplikacji i narzêdzi do u¿ywania w po³±czeniu z
-zarz±dc± okien pod X. GNOME ma podobny cel jak CDE i KDE, ale bazuje
-ca³kowicie na wolnym oprogramowaniu.
+GNOME (GNU Network Object Model Environment) to zestaw przyjaznych dla
+u¿ytkownika aplikacji i narzêdzi do u¿ywania w po³±czeniu z zarz±dc±
+okien pod X. GNOME ma podobny cel jak CDE i KDE, ale bazuje ca³kowicie
+na wolnym oprogramowaniu.
 
 Ten pakiet dostarcza panel GNOME2, menu oraz podstawowe aplety dla
 panelu GNOME2.
@@ -104,12 +106,13 @@ Statyczne biblioteki panelu GNOME.
 %patch1 -p1
 %{?with_menu_stripe:%patch2 -p1}
 %patch3 -p1
+%patch4 -p1
 
 %build
 cp /usr/share/gnome-common/data/omf.make .
-intltoolize --copy --force
+%{__intltoolize}
 %{__libtoolize}
-glib-gettextize --copy --force
+%{__glib_gettextize}
 %{__aclocal}
 %{__autoheader}
 %{__autoconf}
@@ -145,8 +148,16 @@ rm -rf $RPM_BUILD_ROOT
 
 %post
 /sbin/ldconfig
-scrollkeeper-update
-%gconf_schema_install
+%scrollkeeper_update_post
+%gconf_schema_install clock.schemas
+%gconf_schema_install fish.schemas
+%gconf_schema_install panel-compatibility.schemas
+%gconf_schema_install panel-general.schemas
+%gconf_schema_install panel-global.schemas
+%gconf_schema_install panel-object.schemas
+%gconf_schema_install panel-toplevel.schemas
+%gconf_schema_install window-list.schemas
+%gconf_schema_install workspace-switcher.schemas
 %{_bindir}/gconftool-2 --direct \
 	--config-source="`%{_bindir}/gconftool-2 --get-default-source`" \
 	--load %{_datadir}/%{name}/panel-default-setup.entries > /dev/null
@@ -154,12 +165,24 @@ scrollkeeper-update
 	--config-source="`%{_bindir}/gconftool-2 --get-default-source`" \
 	--load %{_datadir}/%{name}/panel-default-setup.entries /apps/panel/profiles/default > /dev/null
 %banner %{name} -e << EOF
-For full functionality, you need to install gnome-utils.
+For full functionality, you need to install
+gnome-utils-screenshot and gnome-utils-search-tool.
 EOF
+
+%preun
+%gconf_schema_uninstall clock.schemas
+%gconf_schema_uninstall fish.schemas
+%gconf_schema_uninstall panel-compatibility.schemas
+%gconf_schema_uninstall panel-general.schemas
+%gconf_schema_uninstall panel-global.schemas
+%gconf_schema_uninstall panel-object.schemas
+%gconf_schema_uninstall panel-toplevel.schemas
+%gconf_schema_uninstall window-list.schemas
+%gconf_schema_uninstall workspace-switcher.schemas
 
 %postun
 /sbin/ldconfig
-scrollkeeper-update
+%scrollkeeper_update_postun
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)

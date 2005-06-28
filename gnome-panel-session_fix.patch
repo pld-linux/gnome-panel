@@ -1,0 +1,21 @@
+diff -aurN gnome-panel-2.10.2.orig/gnome-panel/main.c gnome-panel-2.10.2/gnome-panel/main.c
+--- gnome-panel-2.10.2.orig/gnome-panel/main.c	2005-06-27 18:32:51.000000000 +0200
++++ gnome-panel-2.10.2/gnome-panel/main.c	2005-06-28 22:33:37.000000000 +0200
+@@ -71,8 +71,6 @@
+ 	panel_multiscreen_init ();
+ 	panel_init_stock_icons_and_items ();
+ 
+-	panel_session_init ();
+-
+ 	gconf_client_add_dir (panel_gconf_get_client (),
+ 			      "/desktop/gnome/interface",
+ 			      GCONF_CLIENT_PRELOAD_NONE,
+@@ -82,6 +80,8 @@
+ 	panel_lockdown_init ();
+ 	panel_profile_load ();
+ 
++	panel_session_init ();
++
+ 	/*add forbidden lists to ALL panels*/
+ 	g_slist_foreach (panels,
+ 			 (GFunc)panel_widget_add_forbidden,

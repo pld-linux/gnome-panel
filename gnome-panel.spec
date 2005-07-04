@@ -1,6 +1,7 @@
 #
 # TODO
 # - fix menu-stripe patch
+# - import session fix from AC-branch
 #
 # Conditional build:
 %bcond_with     menu_stripe	# build with menu-stripe.patch

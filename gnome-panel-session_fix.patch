@@ -1,6 +1,6 @@
-diff -aurN gnome-panel-2.10.2.orig/gnome-panel/main.c gnome-panel-2.10.2/gnome-panel/main.c
---- gnome-panel-2.10.2.orig/gnome-panel/main.c	2005-06-27 18:32:51.000000000 +0200
-+++ gnome-panel-2.10.2/gnome-panel/main.c	2005-06-28 22:33:37.000000000 +0200
+diff -aurN gnome-panel-2.11.4.orig/gnome-panel/main.c gnome-panel-2.11.4/gnome-panel/main.c
+--- gnome-panel-2.11.4.orig/gnome-panel/main.c	2005-07-02 12:00:31.000000000 +0200
++++ gnome-panel-2.11.4/gnome-panel/main.c	2005-07-05 15:48:13.021834736 +0200
 @@ -71,8 +71,6 @@
  	panel_multiscreen_init ();
  	panel_init_stock_icons_and_items ();
@@ -19,3 +19,18 @@ diff -aurN gnome-panel-2.10.2.orig/gnome-panel/main.c gnome-panel-2.10.2/gnome-p
  	/*add forbidden lists to ALL panels*/
  	g_slist_foreach (panels,
  			 (GFunc)panel_widget_add_forbidden,
+diff -aurN gnome-panel-2.11.4.orig/gnome-panel/panel-session.c gnome-panel-2.11.4/gnome-panel/panel-session.c
+--- gnome-panel-2.11.4.orig/gnome-panel/panel-session.c	2005-07-02 12:00:31.000000000 +0200
++++ gnome-panel-2.11.4/gnome-panel/panel-session.c	2005-07-05 15:48:26.584772856 +0200
+@@ -74,11 +74,6 @@
+ {
+ 	GnomeClient *client;
+ 
+-	/* We don't want the WM to try and save/restore our
+-	 * window position
+-	 */
+-	gdk_set_sm_client_id (NULL);
+-
+ 	client = gnome_master_client ();
+ 
+         if (!getenv ("GNOME_PANEL_DEBUG"))

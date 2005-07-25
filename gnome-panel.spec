@@ -1,7 +1,7 @@
 #
 # TODO
 # - fix menu-stripe patch
-# - import session fix from AC-branch
+#   (if nobody cares, it will be removed before 2.12.x)
 #
 # Conditional build:
 %bcond_with     menu_stripe	# build with menu-stripe.patch
@@ -10,7 +10,7 @@ Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl):	Podstawowe programy ¶rodowiska graficznego GNOME
 Name:		gnome-panel
 Version:	2.11.5
-Release:	1
+Release:	2
 License:	LGPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/gnome-panel/2.11/%{name}-%{version}.tar.bz2
@@ -22,6 +22,7 @@ Patch1:		%{name}-menu-stripe.patch
 Patch2:		%{name}-notification_area_applet.patch
 Patch3:		%{name}-no_mixer_applet.patch
 Patch4:		%{name}-session_fix.patch
+Patch5:		%{name}-no_launchers_on_panel.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.10.0
 BuildRequires:	ORBit2-devel >= 1:2.12.1
@@ -109,6 +110,7 @@ Statyczne biblioteki panelu GNOME.
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
+%patch5 -p1
 
 %build
 cp /usr/share/gnome-common/data/omf.make .
@@ -120,10 +122,10 @@ cp /usr/share/gnome-common/data/omf.make .
 %{__autoconf}
 %{__automake}
 %configure \
-	--enable-gtk-doc \
-	--with-html-dir=%{_gtkdocdir} \
+	--disable-schemas-install \
 	--enable-eds \
-	--disable-schemas-install
+	--enable-gtk-doc \
+	--with-html-dir=%{_gtkdocdir}
 %{__make}
 
 %install
@@ -138,6 +140,7 @@ install %{name}/panel-default-setup.entries $RPM_BUILD_ROOT%{_datadir}/%{name}
 
 install %{SOURCE1} $RPM_BUILD_ROOT%{_pixmapsdir}
 
+# short circuit stopper (fix me!)
 mv ChangeLog main-ChangeLog
 find . -name ChangeLog |awk '{src=$0; dst=$0;sub("^./","",dst);gsub("/","-",dst); print "cp " src " " dst}'|sh
 
@@ -189,23 +192,23 @@ EOF
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS NEWS README *ChangeLog
-%config %{_sysconfdir}/gconf/schemas/*
+%{_sysconfdir}/gconf/schemas/*
 %attr(755,root,root) %{_bindir}/*
+%attr(755,root,root) %{_libdir}/clock-applet
 %attr(755,root,root) %{_libdir}/fish-applet-2
 %attr(755,root,root) %{_libdir}/libpanel-applet*.so.*.*
-%attr(755,root,root) %{_libdir}/clock-applet
-%attr(755,root,root) %{_libdir}/wnck-applet
 %attr(755,root,root) %{_libdir}/notification-area-applet
-%{_libdir}/bonobo/servers/*
-%{_datadir}/gnome/panel
+%attr(755,root,root) %{_libdir}/wnck-applet
 %{_datadir}/gnome-2.0/ui/*
 %{_datadir}/gnome-panel
+%{_datadir}/gnome/panel
 %{_datadir}/gnome-panelrc
 %{_datadir}/idl/gnome-panel-2.0
-%{_pixmapsdir}/*
 %{_iconsdir}/*/*/apps/*.png
-%{_omf_dest_dir}/%{name}
+%{_libdir}/bonobo/servers/*
 %{_mandir}/man1/*
+%{_omf_dest_dir}/%{name}
+%{_pixmapsdir}/*
 
 %files devel
 %defattr(644,root,root,755)

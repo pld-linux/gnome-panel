@@ -1,10 +1,12 @@
-diff -urN gnome-panel-2.9.92.orig/gnome-panel/panel-compatibility.schemas gnome-panel-2.9.92/gnome-panel/panel-compatibility.schemas
---- gnome-panel-2.9.92.orig/gnome-panel/panel-compatibility.schemas	2005-03-01 13:12:22.444621344 +0100
-+++ gnome-panel-2.9.92/gnome-panel/panel-compatibility.schemas	2005-03-01 13:13:09.123525072 +0100
-@@ -182,14 +182,6 @@
+diff -aurN gnome-panel-2.11.5.orig/gnome-panel/panel-compatibility.schemas gnome-panel-2.11.5/gnome-panel/panel-compatibility.schemas
+--- gnome-panel-2.11.5.orig/gnome-panel/panel-compatibility.schemas	2003-09-05 14:35:53.000000000 +0200
++++ gnome-panel-2.11.5/gnome-panel/panel-compatibility.schemas	2005-07-25 10:56:57.000000000 +0200
+@@ -180,15 +180,7 @@
+         <default>launcher-object</default>
+ 	<locale name="C"/>
        </schema>
-      
-       <schema>
+-     
+-      <schema>
 -        <key>/schemas/apps/panel/default_profiles/medium/objects/00000001/launcher_location</key>
 -        <owner>panel</owner>
 -        <type>string</type>
@@ -12,10 +14,10 @@ diff -urN gnome-panel-2.9.92.orig/gnome-panel/panel-compatibility.schemas gnome-
 -	<locale name="C"/>
 -      </schema>
 -     
--      <schema>
++
+       <schema>
          <key>/schemas/apps/panel/default_profiles/medium/objects/00000001/panel_id</key>
          <owner>panel</owner>
-         <type>string</type>
 @@ -220,14 +212,6 @@
          <default>launcher-object</default>
  	<locale name="C"/>
@@ -31,134 +33,47 @@ diff -urN gnome-panel-2.9.92.orig/gnome-panel/panel-compatibility.schemas gnome-
       
        <schema>
          <key>/schemas/apps/panel/default_profiles/medium/objects/00000002/panel_id</key>
-diff -urN gnome-panel-2.9.92.orig/gnome-panel/panel-default-setup.entries.in gnome-panel-2.9.92/gnome-panel/panel-default-setup.entries.in
---- gnome-panel-2.9.92.orig/gnome-panel/panel-default-setup.entries.in	2005-03-01 13:12:22.445621192 +0100
-+++ gnome-panel-2.9.92/gnome-panel/panel-default-setup.entries.in	2005-03-01 13:14:29.082369480 +0100
+diff -aurN gnome-panel-2.11.5.orig/gnome-panel/panel-default-setup.entries.in gnome-panel-2.11.5/gnome-panel/panel-default-setup.entries.in
+--- gnome-panel-2.11.5.orig/gnome-panel/panel-default-setup.entries.in	2005-06-14 21:59:02.000000000 +0200
++++ gnome-panel-2.11.5/gnome-panel/panel-default-setup.entries.in	2005-07-25 10:58:44.000000000 +0200
 @@ -29,12 +29,6 @@
            <value>
              <string>menu_bar</string>
            </value>
 -          <value>
--            <string>nautilus_launcher</string>
+-            <string>browser_launcher</string>
 -          </value>
 -          <value>
--            <string>terminal_launcher</string>
+-            <string>email_launcher</string>
 -          </value>
          </list>
        </value>
      </entry>
-@@ -208,114 +202,6 @@
-     <entry><key>objects/menu_bar/launcher_location</key><schema_key>/schemas/apps/panel/objects/launcher_location</schema_key></entry>
-     <entry><key>objects/menu_bar/action_type</key><schema_key>/schemas/apps/panel/objects/action_type</schema_key></entry>
- 
--  <!-- Nautilus Launcher -->
--
+@@ -245,13 +239,6 @@
+         <bool>true</bool>
+       </value>
+     </entry>
 -    <entry>
--      <key>objects/nautilus_launcher/object_type</key>
--      <schema_key>/schemas/apps/panel/objects/object_type</schema_key>
--      <value>
--        <string>launcher-object</string>
--      </value>
--    </entry>
--    <entry>
--      <key>objects/nautilus_launcher/toplevel_id</key>
--      <schema_key>/schemas/apps/panel/objects/toplevel_id</schema_key>
--      <value>
--        <string>top_panel</string>
--      </value>
--    </entry>
--    <entry>
--      <key>objects/nautilus_launcher/position</key>
--      <schema_key>/schemas/apps/panel/objects/position</schema_key>
--      <value>
--        <int>1</int>
--      </value>
--    </entry>
--    <entry>
--      <key>objects/nautilus_launcher/panel_right_stick</key>
--      <schema_key>/schemas/apps/panel/objects/panel_right_stick</schema_key>
--      <value>
--        <bool>false</bool>
--      </value>
--    </entry>
--    <entry>
--      <key>objects/nautilus_launcher/locked</key>
--      <schema_key>/schemas/apps/panel/objects/locked</schema_key>
--      <value>
--        <bool>true</bool>
--      </value>
--    </entry>
--    <entry>
--      <key>objects/nautilus_launcher/launcher_location</key>
+-      <key>objects/browser_launcher/launcher_location</key>
 -      <schema_key>/schemas/apps/panel/objects/launcher_location</schema_key>
 -      <value>
--        <string>@DATADIR@/applications/nautilus.desktop</string>
+-        <string>@DATADIR@/applications/epiphany.desktop</string>
 -      </value>
 -    </entry>
--
--    <entry><key>objects/nautilus_launcher/bonobo_iid</key><schema_key>/schemas/apps/panel/objects/bonobo_iid</schema_key></entry>
--    <entry><key>objects/nautilus_launcher/attached_toplevel_id</key><schema_key>/schemas/apps/panel/objects/attached_toplevel_id</schema_key> </entry>
--    <entry><key>objects/nautilus_launcher/tooltip</key><schema_key>/schemas/apps/panel/objects/tooltip</schema_key></entry>
--    <entry><key>objects/nautilus_launcher/use_custom_icon</key><schema_key>/schemas/apps/panel/objects/use_custom_icon</schema_key></entry>
--    <entry><key>objects/nautilus_launcher/custom_icon</key><schema_key>/schemas/apps/panel/objects/custom_icon</schema_key></entry>
--    <entry><key>objects/nautilus_launcher/use_menu_path</key><schema_key>/schemas/apps/panel/objects/use_menu_path</schema_key></entry>
--    <entry><key>objects/nautilus_launcher/menu_path</key><schema_key>/schemas/apps/panel/objects/menu_path</schema_key></entry>
--    <entry><key>objects/nautilus_launcher/action_type</key><schema_key>/schemas/apps/panel/objects/action_type</schema_key></entry>
--
--  <!-- Terminal Launcher -->
--
+ 
+     <entry><key>objects/browser_launcher/bonobo_iid</key><schema_key>/schemas/apps/panel/objects/bonobo_iid</schema_key></entry>
+     <entry><key>objects/browser_launcher/attached_toplevel_id</key><schema_key>/schemas/apps/panel/objects/attached_toplevel_id</schema_key> </entry>
+@@ -299,13 +286,6 @@
+         <bool>true</bool>
+       </value>
+     </entry>
 -    <entry>
--      <key>objects/terminal_launcher/object_type</key>
--      <schema_key>/schemas/apps/panel/objects/object_type</schema_key>
--      <value>
--        <string>launcher-object</string>
--      </value>
--    </entry>
--    <entry>
--      <key>objects/terminal_launcher/toplevel_id</key>
--      <schema_key>/schemas/apps/panel/objects/toplevel_id</schema_key>
--      <value>
--        <string>top_panel</string>
--      </value>
--    </entry>
--    <entry>
--      <key>objects/terminal_launcher/position</key>
--      <schema_key>/schemas/apps/panel/objects/position</schema_key>
--      <value>
--        <int>2</int>
--      </value>
--    </entry>
--    <entry>
--      <key>objects/terminal_launcher/panel_right_stick</key>
--      <schema_key>/schemas/apps/panel/objects/panel_right_stick</schema_key>
--      <value>
--        <bool>false</bool>
--      </value>
--    </entry>
--    <entry>
--      <key>objects/terminal_launcher/locked</key>
--      <schema_key>/schemas/apps/panel/objects/locked</schema_key>
--      <value>
--        <bool>true</bool>
--      </value>
--    </entry>
--    <entry>
--      <key>objects/terminal_launcher/launcher_location</key>
+-      <key>objects/email_launcher/launcher_location</key>
 -      <schema_key>/schemas/apps/panel/objects/launcher_location</schema_key>
 -      <value>
--        <string>@DATADIR@/applications/gnome-terminal.desktop</string>
+-        <string>@DATADIR@/applications/evolution-mail.desktop</string>
 -      </value>
 -    </entry>
--
--    <entry><key>objects/terminal_launcher/bonobo_iid</key><schema_key>/schemas/apps/panel/objects/bonobo_iid</schema_key></entry>
--    <entry><key>objects/terminal_launcher/attached_toplevel_id</key><schema_key>/schemas/apps/panel/objects/attached_toplevel_id</schema_key> </entry>
--    <entry><key>objects/terminal_launcher/tooltip</key><schema_key>/schemas/apps/panel/objects/tooltip</schema_key></entry>
--    <entry><key>objects/terminal_launcher/use_custom_icon</key><schema_key>/schemas/apps/panel/objects/use_custom_icon</schema_key></entry>
--    <entry><key>objects/terminal_launcher/custom_icon</key><schema_key>/schemas/apps/panel/objects/custom_icon</schema_key></entry>
--    <entry><key>objects/terminal_launcher/use_menu_path</key><schema_key>/schemas/apps/panel/objects/use_menu_path</schema_key></entry>
--    <entry><key>objects/terminal_launcher/menu_path</key><schema_key>/schemas/apps/panel/objects/menu_path</schema_key></entry>
--    <entry><key>objects/terminal_launcher/action_type</key><schema_key>/schemas/apps/panel/objects/action_type</schema_key></entry>
--
-   <!-- Window Menu Applet -->
  
-     <entry>
+     <entry><key>objects/email_launcher/bonobo_iid</key><schema_key>/schemas/apps/panel/objects/bonobo_iid</schema_key></entry>
+     <entry><key>objects/email_launcher/attached_toplevel_id</key><schema_key>/schemas/apps/panel/objects/attached_toplevel_id</schema_key> </entry>

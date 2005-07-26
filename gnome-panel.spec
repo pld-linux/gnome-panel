@@ -9,20 +9,19 @@
 Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl):	Podstawowe programy ¶rodowiska graficznego GNOME
 Name:		gnome-panel
-Version:	2.11.5
-Release:	2
+Version:	2.11.90
+Release:	1
 License:	LGPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/gnome-panel/2.11/%{name}-%{version}.tar.bz2
-# Source0-md5:	bc1356213a86a89b188d01f707799469
+# Source0-md5:	fbf0357b195fb9e2e925f18a3fd6f0b3
 Source1:	pld-desktop-stripe.png
 # Source1-md5:	4b8b299a8aa7b95a606e7c4d8debd60c
 Patch0:		%{name}-finalize-memleak.patch
 Patch1:		%{name}-menu-stripe.patch
 Patch2:		%{name}-notification_area_applet.patch
 Patch3:		%{name}-no_mixer_applet.patch
-Patch4:		%{name}-session_fix.patch
-Patch5:		%{name}-no_launchers_on_panel.patch
+Patch4:		%{name}-no_launchers_on_panel.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.10.0
 BuildRequires:	ORBit2-devel >= 1:2.12.1
@@ -30,10 +29,11 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	evolution-data-server-devel >= 1.2.0
 BuildRequires:	gnome-common >= 2.8.0-2
+BuildRequires:	gnome-doc-utils >= 0.3.1-2
 BuildRequires:	gnome-desktop-devel >= 2.10.0-2
 BuildRequires:	gnome-menus-devel >= 2.11.1
 BuildRequires:	gnome-vfs2-devel >= 2.10.0-2
-BuildRequires:	gtk+2-devel >= 2:2.6.2
+BuildRequires:	gtk+2-devel >= 2:2.7.1
 BuildRequires:	gtk-doc >= 1.1
 BuildRequires:	intltool >= 0.31
 BuildRequires:	libart_lgpl-devel >= 2.3.15
@@ -44,6 +44,7 @@ BuildRequires:	libwnck-devel >= 2.10.0
 BuildRequires:	pango-devel >= 1:1.8.0
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig >= 1:0.15.0
+BuildRequires:	python-libxml2
 BuildRequires:	rpm-build >= 4.1-10
 BuildRequires:	rpmbuild(macros) >= 1.197
 BuildRequires:	scrollkeeper >= 0.3.11
@@ -53,6 +54,7 @@ Requires(post,preun):	GConf2 >= 2.10.0
 Requires(post,postun):	scrollkeeper
 Requires:	gnome-desktop >= 2.10.0-2
 Requires:	gnome-icon-theme >= 2.10.0
+Requires:	gnome-session >= 2.11.90
 Requires:	libgnomeui >= 2.10.0-2
 Requires:	librsvg >= 1:2.9.5
 Requires:	xdg-menus
@@ -110,10 +112,10 @@ Statyczne biblioteki panelu GNOME.
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
-%patch5 -p1
 
 %build
-cp /usr/share/gnome-common/data/omf.make .
+gnome-doc-prepare --copy --force
+%{__gnome_doc_common}
 %{__intltoolize}
 %{__libtoolize}
 %{__glib_gettextize}
@@ -207,7 +209,11 @@ EOF
 %{_iconsdir}/*/*/apps/*.png
 %{_libdir}/bonobo/servers/*
 %{_mandir}/man1/*
+%{_omf_dest_dir}/clock
+%{_omf_dest_dir}/fish
 %{_omf_dest_dir}/%{name}
+%{_omf_dest_dir}/window-list
+%{_omf_dest_dir}/workspace-switcher
 %{_pixmapsdir}/*
 
 %files devel

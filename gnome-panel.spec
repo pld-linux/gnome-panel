@@ -3,7 +3,7 @@
 # - fix menu-stripe patch
 #
 # Conditional build:
-%bcond_with     menu_stripe	# build with menu-stripe.patch
+%bcond_with	menu_stripe	# build with menu-stripe.patch
 #
 Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl):	Podstawowe programy ¶rodowiska graficznego GNOME

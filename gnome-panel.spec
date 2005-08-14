@@ -1,27 +1,16 @@
-#
-# TODO
-# - fix menu-stripe patch
-#   (if nobody cares, it will be removed before 2.12.x)
-#
-# Conditional build:
-%bcond_with     menu_stripe	# build with menu-stripe.patch
-#
 Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl):	Podstawowe programy ¶rodowiska graficznego GNOME
 Name:		gnome-panel
 Version:	2.11.91
-Release:	1
+Release:	2
 License:	LGPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/gnome-panel/2.11/%{name}-%{version}.tar.bz2
 # Source0-md5:	6b44787f4970f10c42e031176aa65da7
-Source1:	pld-desktop-stripe.png
-# Source1-md5:	4b8b299a8aa7b95a606e7c4d8debd60c
 Patch0:		%{name}-finalize-memleak.patch
-Patch1:		%{name}-menu-stripe.patch
-Patch2:		%{name}-notification_area_applet.patch
-Patch3:		%{name}-no_mixer_applet.patch
-Patch4:		%{name}-no_launchers_on_panel.patch
+Patch1:		%{name}-notification_area_applet.patch
+Patch2:		%{name}-no_mixer_applet.patch
+Patch3:		%{name}-no_launchers_on_panel.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.10.0
 BuildRequires:	ORBit2-devel >= 1:2.12.1
@@ -52,11 +41,10 @@ BuildConflicts:	GConf-devel < 1.0.9-7
 Requires(post,postun):	/sbin/ldconfig
 Requires(post,preun):	GConf2 >= 2.10.0
 Requires(post,postun):	scrollkeeper
+Requires:	%{name}-libs = %{version}-%{release}
 Requires:	gnome-desktop >= 2.10.0-2
 Requires:	gnome-icon-theme >= 2.10.0
 Requires:	gnome-session >= 2.11.90
-Requires:	libgnomeui >= 2.10.0-2
-Requires:	librsvg >= 1:2.9.5
 Requires:	xdg-menus
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -79,11 +67,10 @@ Ten pakiet dostarcza panel GNOME2, menu oraz podstawowe aplety dla
 panelu GNOME2.
 
 %package devel
-
 Summary:	GNOME panel includes, and more
 Summary(pl):	Pliki nag³ówkowe biblioteki panelu GNOME
 Group:		X11/Development/Libraries
-Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}-libs = %{version}-%{release}
 Requires:	gtk-doc-common
 Requires:	libgnomeui-devel >= 2.10.0-2
 
@@ -105,13 +92,25 @@ Panel static libraries.
 %description static -l pl
 Statyczne biblioteki panelu GNOME.
 
+%package libs
+Summary:	GNOME panel library
+Summary(pl):	Biblioteka panelu GNOME
+Group:		X11/Libraries
+Requires:	libgnomeui >= 2.10.0-2
+Requires:	librsvg >= 1:2.9.5
+
+%description libs
+GNOME panel library.
+
+%description libs -l pl
+Biblioteka panelu GNOME.
+
 %prep
 %setup -q
 %patch0 -p1
-%{?with_menu_stripe:%patch1 -p1}
+%patch1 -p1
 %patch2 -p1
 %patch3 -p1
-%patch4 -p1
 
 %build
 gnome-doc-prepare --copy --force
@@ -140,8 +139,6 @@ install -d $RPM_BUILD_ROOT{%{_pixmapsdir},%{_datadir}/%{name}}
 
 install %{name}/panel-default-setup.entries $RPM_BUILD_ROOT%{_datadir}/%{name}
 
-install %{SOURCE1} $RPM_BUILD_ROOT%{_pixmapsdir}
-
 # short circuit stopper (fix me!)
 mv ChangeLog main-ChangeLog
 find . -name ChangeLog |awk '{src=$0; dst=$0;sub("^./","",dst);gsub("/","-",dst); print "cp " src " " dst}'|sh
@@ -155,7 +152,6 @@ rm -f $RPM_BUILD_ROOT%{_sysconfdir}/gconf/schemas/panel-default-setup.entries
 rm -rf $RPM_BUILD_ROOT
 
 %post
-/sbin/ldconfig
 %scrollkeeper_update_post
 %gconf_schema_install clock.schemas
 %gconf_schema_install fish.schemas
@@ -189,25 +185,17 @@ EOF
 %gconf_schema_uninstall workspace-switcher.schemas
 
 %postun
-/sbin/ldconfig
 %scrollkeeper_update_postun
+
+%post	libs -p /sbin/ldconfig
+%postun	libs -p /sbin/ldconfig
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS NEWS README *ChangeLog
-%{_sysconfdir}/gconf/schemas/clock.schemas
-%{_sysconfdir}/gconf/schemas/fish.schemas
-%{_sysconfdir}/gconf/schemas/panel-compatibility.schemas
-%{_sysconfdir}/gconf/schemas/panel-general.schemas
-%{_sysconfdir}/gconf/schemas/panel-global.schemas
-%{_sysconfdir}/gconf/schemas/panel-object.schemas
-%{_sysconfdir}/gconf/schemas/panel-toplevel.schemas
-%{_sysconfdir}/gconf/schemas/window-list.schemas
-%{_sysconfdir}/gconf/schemas/workspace-switcher.schemas
 %attr(755,root,root) %{_bindir}/*
 %attr(755,root,root) %{_libdir}/clock-applet
 %attr(755,root,root) %{_libdir}/fish-applet-2
-%attr(755,root,root) %{_libdir}/libpanel-applet*.so.*.*
 %attr(755,root,root) %{_libdir}/notification-area-applet
 %attr(755,root,root) %{_libdir}/wnck-applet
 %{_datadir}/gnome-2.0/ui/*
@@ -223,7 +211,15 @@ EOF
 %{_omf_dest_dir}/%{name}
 %{_omf_dest_dir}/window-list
 %{_omf_dest_dir}/workspace-switcher
-%{_pixmapsdir}/*
+%{_sysconfdir}/gconf/schemas/clock.schemas
+%{_sysconfdir}/gconf/schemas/fish.schemas
+%{_sysconfdir}/gconf/schemas/panel-compatibility.schemas
+%{_sysconfdir}/gconf/schemas/panel-general.schemas
+%{_sysconfdir}/gconf/schemas/panel-global.schemas
+%{_sysconfdir}/gconf/schemas/panel-object.schemas
+%{_sysconfdir}/gconf/schemas/panel-toplevel.schemas
+%{_sysconfdir}/gconf/schemas/window-list.schemas
+%{_sysconfdir}/gconf/schemas/workspace-switcher.schemas
 
 %files devel
 %defattr(644,root,root,755)
@@ -236,3 +232,7 @@ EOF
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/lib*.a
+
+%files libs
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/libpanel-applet*.so.*.*

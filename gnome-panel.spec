@@ -1,16 +1,15 @@
 Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl):	Podstawowe programy ¶rodowiska graficznego GNOME
 Name:		gnome-panel
-Version:	2.11.91
-Release:	3
+Version:	2.11.92
+Release:	1
 License:	LGPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/gnome-panel/2.11/%{name}-%{version}.tar.bz2
-# Source0-md5:	6b44787f4970f10c42e031176aa65da7
+# Source0-md5:	595c10d159deb0ff3126e8b9793d7013
 Patch0:		%{name}-finalize-memleak.patch
-Patch1:		%{name}-notification_area_applet.patch
-Patch2:		%{name}-no_mixer_applet.patch
-Patch3:		%{name}-no_launchers_on_panel.patch
+Patch1:		%{name}-no_mixer_applet.patch
+Patch2:		%{name}-no_launchers_on_panel.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.11.90-2
 BuildRequires:	ORBit2-devel >= 1:2.12.1
@@ -110,7 +109,6 @@ Biblioteka panelu GNOME.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1
 
 %build
 gnome-doc-prepare --copy --force

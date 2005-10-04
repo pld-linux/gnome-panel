@@ -1,12 +1,12 @@
 Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl):	Podstawowe programy ¶rodowiska graficznego GNOME
 Name:		gnome-panel
-Version:	2.12.0
+Version:	2.12.1
 Release:	1
 License:	LGPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/gnome-panel/2.12/%{name}-%{version}.tar.bz2
-# Source0-md5:	d8d883b91aae4e7e8065d3b6ea322483
+# Source0-md5:	a532717e8ac7f67b7198c256909cd7dd
 Patch0:		%{name}-finalize-memleak.patch
 Patch1:		%{name}-no_mixer_applet.patch
 Patch2:		%{name}-no_launchers_on_panel.patch
@@ -15,21 +15,21 @@ BuildRequires:	GConf2-devel >= 2.12.0
 BuildRequires:	ORBit2-devel >= 1:2.12.3
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	evolution-data-server-devel >= 1.4.0
+BuildRequires:	evolution-data-server-devel >= 1.4.1
 BuildRequires:	gnome-common >= 2.8.0-2
-BuildRequires:	gnome-doc-utils >= 0.4.0
-BuildRequires:	gnome-desktop-devel >= 2.12.0
+BuildRequires:	gnome-doc-utils >= 0.4.2
+BuildRequires:	gnome-desktop-devel >= 2.12.1
 BuildRequires:	gnome-menus-devel >= 2.12.0
-BuildRequires:	gnome-vfs2-devel >= 2.12.0
-BuildRequires:	gtk+2-devel >= 2:2.8.3
+BuildRequires:	gnome-vfs2-devel >= 2.12.1
+BuildRequires:	gtk+2-devel >= 2:2.8.6
 BuildRequires:	gtk-doc >= 1.4
 BuildRequires:	intltool >= 0.31
 BuildRequires:	libart_lgpl-devel >= 2.3.15
 BuildRequires:	libglade2-devel >= 1:2.5.0
 BuildRequires:	libgnomeui-devel >= 2.12.0
 BuildRequires:	libtool
-BuildRequires:	libwnck-devel >= 2.12.0
-BuildRequires:	pango-devel >= 1:1.10.0
+BuildRequires:	libwnck-devel >= 2.12.1
+BuildRequires:	pango-devel >= 1:1.10.1
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig >= 1:0.15.0
 BuildRequires:	python-libxml2
@@ -41,8 +41,8 @@ Requires(post,postun):	/sbin/ldconfig
 Requires(post,preun):	GConf2 >= 2.12.0
 Requires(post,postun):	scrollkeeper
 Requires:	%{name}-libs = %{version}-%{release}
-Requires:	gnome-desktop >= 2.12.0
-Requires:	gnome-icon-theme >= 2.12.0
+Requires:	gnome-desktop >= 2.12.1
+Requires:	gnome-icon-theme >= 2.12.1
 Requires:	gnome-session >= 2.12.0
 Requires:	xdg-menus
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)

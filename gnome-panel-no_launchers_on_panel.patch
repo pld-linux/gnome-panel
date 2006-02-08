@@ -1,0 +1,79 @@
+diff -urN gnome-panel-2.12.0.orig/gnome-panel/panel-compatibility.schemas gnome-panel-2.12.0/gnome-panel/panel-compatibility.schemas
+--- gnome-panel-2.12.0.orig/gnome-panel/panel-compatibility.schemas	2005-09-06 15:14:47.749805808 +0200
++++ gnome-panel-2.12.0/gnome-panel/panel-compatibility.schemas	2005-09-06 15:15:02.122620808 +0200
+@@ -180,15 +180,7 @@
+         <default>launcher-object</default>
+ 	<locale name="C"/>
+       </schema>
+-     
+-      <schema>
+-        <key>/schemas/apps/panel/default_profiles/medium/objects/00000001/launcher_location</key>
+-        <owner>panel</owner>
+-        <type>string</type>
+-        <default>applications:///nautilus.desktop</default>
+-	<locale name="C"/>
+-      </schema>
+-     
++
+       <schema>
+         <key>/schemas/apps/panel/default_profiles/medium/objects/00000001/panel_id</key>
+         <owner>panel</owner>
+@@ -220,14 +212,6 @@
+         <default>launcher-object</default>
+ 	<locale name="C"/>
+       </schema>
+-
+-      <schema>
+-        <key>/schemas/apps/panel/default_profiles/medium/objects/00000002/launcher_location</key>
+-        <owner>panel</owner>
+-        <type>string</type>
+-        <default>applications:///System/gnome-terminal.desktop</default>
+-	<locale name="C"/>
+-      </schema>
+      
+       <schema>
+         <key>/schemas/apps/panel/default_profiles/medium/objects/00000002/panel_id</key>
+diff -urN gnome-panel-2.12.0.orig/gnome-panel/panel-default-setup.entries.in gnome-panel-2.12.0/gnome-panel/panel-default-setup.entries.in
+--- gnome-panel-2.12.0.orig/gnome-panel/panel-default-setup.entries.in	2005-09-06 15:14:47.752805352 +0200
++++ gnome-panel-2.12.0/gnome-panel/panel-default-setup.entries.in	2005-09-06 15:17:04.029088208 +0200
+@@ -29,12 +29,6 @@
+           <value>
+             <string>menu_bar</string>
+           </value>
+-          <value>
+-            <string>browser_launcher</string>
+-          </value>
+-          <value>
+-            <string>email_launcher</string>
+-          </value>
+         </list>
+       </value>
+     </entry>
+@@ -248,13 +242,6 @@
+         <bool>true</bool>
+       </value>
+     </entry>
+-    <entry>
+-      <key>objects/browser_launcher/launcher_location</key>
+-      <schema_key>/schemas/apps/panel/objects/launcher_location</schema_key>
+-      <value>
+-        <string>@DATADIR@/applications/epiphany.desktop</string>
+-      </value>
+-    </entry>
+ 
+     <entry><key>objects/browser_launcher/bonobo_iid</key><schema_key>/schemas/apps/panel/objects/bonobo_iid</schema_key></entry>
+     <entry><key>objects/browser_launcher/attached_toplevel_id</key><schema_key>/schemas/apps/panel/objects/attached_toplevel_id</schema_key> </entry>
+@@ -302,13 +289,6 @@
+         <bool>true</bool>
+       </value>
+     </entry>
+-    <entry>
+-      <key>objects/email_launcher/launcher_location</key>
+-      <schema_key>/schemas/apps/panel/objects/launcher_location</schema_key>
+-      <value>
+-        <string>@DATADIR@/applications/evolution.desktop</string>
+-      </value>
+-    </entry>
+ 
+     <entry><key>objects/email_launcher/bonobo_iid</key><schema_key>/schemas/apps/panel/objects/bonobo_iid</schema_key></entry>
+     <entry><key>objects/email_launcher/attached_toplevel_id</key><schema_key>/schemas/apps/panel/objects/attached_toplevel_id</schema_key> </entry>

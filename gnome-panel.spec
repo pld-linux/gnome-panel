@@ -112,7 +112,6 @@ gnome-doc-prepare --copy --force
 %{__gnome_doc_common}
 %{__intltoolize}
 %{__libtoolize}
-%{__glib_gettextize}
 %{__aclocal}
 %{__autoheader}
 %{__autoconf}

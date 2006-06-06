@@ -1,12 +1,12 @@
 Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl):	Podstawowe programy ¶rodowiska graficznego GNOME
 Name:		gnome-panel
-Version:	2.14.1
+Version:	2.14.2
 Release:	1
 License:	LGPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/gnome-panel/2.14/%{name}-%{version}.tar.bz2
-# Source0-md5:	1f5bc59c7c49cf90a797d892ab3ea05f
+# Source0-md5:	7db1afb3f6cbca12acecc49c68b4a655
 Patch0:		%{name}-finalize-memleak.patch
 Patch1:		%{name}-no_launchers_on_panel.patch
 URL:		http://www.gnome.org/
@@ -14,21 +14,21 @@ BuildRequires:	GConf2-devel >= 2.12.0
 BuildRequires:	ORBit2-devel >= 1:2.12.3
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	evolution-data-server-devel >= 1.4.1
+BuildRequires:	evolution-data-server-devel >= 1.6.1
 BuildRequires:	gnome-common >= 2.8.0-2
 BuildRequires:	gnome-doc-utils >= 0.4.2
-BuildRequires:	gnome-desktop-devel >= 2.12.1
+BuildRequires:	gnome-desktop-devel >= 2.12.2
 BuildRequires:	gnome-menus-devel >= 2.12.0
-BuildRequires:	gnome-vfs2-devel >= 2.12.1
-BuildRequires:	gtk+2-devel >= 2:2.8.6
+BuildRequires:	gnome-vfs2-devel >= 2.12.2
+BuildRequires:	gtk+2-devel >= 2:2.8.18
 BuildRequires:	gtk-doc >= 1.4
-BuildRequires:	intltool >= 0.31
+BuildRequires:	intltool >= 0.35
 BuildRequires:	libart_lgpl-devel >= 2.3.15
-BuildRequires:	libglade2-devel >= 1:2.5.0
-BuildRequires:	libgnomeui-devel >= 2.13.0
+BuildRequires:	libglade2-devel >= 1:2.5.1
+BuildRequires:	libgnomeui-devel >= 2.14.1
 BuildRequires:	libtool
-BuildRequires:	libwnck-devel >= 2.13.5
-BuildRequires:	pango-devel >= 1:1.10.1
+BuildRequires:	libwnck-devel >= 2.14.2
+BuildRequires:	pango-devel >= 1:1.12.3
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig >= 1:0.15.0
 BuildRequires:	python-libxml2
@@ -40,7 +40,7 @@ Requires(post,preun):	GConf2 >= 2.12.0
 Requires(post,postun):	scrollkeeper
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	hicolor-icon-theme
-Requires:	gnome-desktop >= 2.12.1
+Requires:	gnome-desktop >= 2.12.2
 Requires:	gnome-icon-theme >= 2.12.1
 Requires:	xdg-menus
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -69,7 +69,7 @@ Summary(pl):	Pliki nag³ówkowe biblioteki panelu GNOME
 Group:		X11/Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	gtk-doc-common
-Requires:	libgnomeui-devel >= 2.12.0
+Requires:	libgnomeui-devel >= 2.12.1
 
 %description devel
 Panel header files for creating GNOME panels.
@@ -93,7 +93,7 @@ Statyczne biblioteki panelu GNOME.
 Summary:	GNOME panel library
 Summary(pl):	Biblioteka panelu GNOME
 Group:		X11/Libraries
-Requires:	libgnomeui >= 2.13.0
+Requires:	libgnomeui >= 2.14.1
 Requires:	librsvg >= 1:2.11.0
 
 %description libs

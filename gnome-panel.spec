@@ -14,21 +14,21 @@ BuildRequires:	GConf2-devel >= 2.12.0
 BuildRequires:	ORBit2-devel >= 1:2.14.0
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	evolution-data-server-devel >= 1.7.2
-BuildRequires:	gnome-common >= 2.8.0-2
-BuildRequires:	gnome-doc-utils >= 0.4.2
-BuildRequires:	gnome-desktop-devel >= 2.14.0
-BuildRequires:	gnome-menus-devel >= 2.14.0
-BuildRequires:	gnome-vfs2-devel >= 2.15.1
-BuildRequires:	gtk+2-devel >= 2:2.9.2
-BuildRequires:	gtk-doc >= 1.4
+BuildRequires:	evolution-data-server-devel >= 1.7.4
+BuildRequires:	gnome-common >= 2.12.0
+BuildRequires:	gnome-doc-utils >= 0.7.1
+BuildRequires:	gnome-desktop-devel >= 2.15.4
+BuildRequires:	gnome-menus-devel >= 2.15.4.1
+BuildRequires:	gnome-vfs2-devel >= 2.15.3
+BuildRequires:	gtk+2-devel >= 2:2.10.0
+BuildRequires:	gtk-doc >= 1.6
 BuildRequires:	intltool >= 0.35
 BuildRequires:	libart_lgpl-devel >= 2.3.15
-BuildRequires:	libglade2-devel >= 1:2.5.1
-BuildRequires:	libgnomeui-devel >= 2.15.1
+BuildRequires:	libglade2-devel >= 1:2.6.0
+BuildRequires:	libgnomeui-devel >= 2.15.2
 BuildRequires:	libtool
-BuildRequires:	libwnck-devel >= 2.14.2
-BuildRequires:	pango-devel >= 1:1.13.1
+BuildRequires:	libwnck-devel >= 2.15.4
+BuildRequires:	pango-devel >= 1:1.13.3
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig >= 1:0.15.0
 BuildRequires:	python-libxml2
@@ -40,8 +40,8 @@ Requires(post,preun):	GConf2 >= 2.14.0
 Requires(post,postun):	scrollkeeper
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	hicolor-icon-theme
-Requires:	gnome-desktop >= 2.14.0
-Requires:	gnome-icon-theme >= 2.15.2
+Requires:	gnome-desktop >= 2.15.4
+Requires:	gnome-icon-theme >= 2.15.4
 Requires:	xdg-menus
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -69,7 +69,7 @@ Summary(pl):	Pliki nag³ówkowe biblioteki panelu GNOME
 Group:		X11/Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	gtk-doc-common
-Requires:	libgnomeui-devel >= 2.15.1
+Requires:	libgnomeui-devel >= 2.15.2
 
 %description devel
 Panel header files for creating GNOME panels.
@@ -93,7 +93,7 @@ Statyczne biblioteki panelu GNOME.
 Summary:	GNOME panel library
 Summary(pl):	Biblioteka panelu GNOME
 Group:		X11/Libraries
-Requires:	libgnomeui >= 2.15.1
+Requires:	libgnomeui >= 2.15.2
 Requires:	librsvg >= 1:2.15.0
 
 %description libs
@@ -116,6 +116,7 @@ gnome-doc-prepare --copy --force
 %{__autoheader}
 %{__autoconf}
 %{__automake}
+LDFLAGS="%{rpmldflags} -Wl,--as-needed"
 %configure \
 	--disable-schemas-install \
 	--enable-eds \
@@ -161,6 +162,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/gconftool-2 --direct \
 	--config-source="`%{_bindir}/gconftool-2 --get-default-source`" \
 	--load %{_datadir}/%{name}/panel-default-setup.entries /apps/panel/profiles/default > /dev/null
+gtk-update-icon-cache -qf %{_datadir}/icons/hicolor
 %banner %{name} -e << EOF
 For full functionality, you need to install
 gnome-utils-screenshot and gnome-utils-search-tool.
@@ -179,6 +181,7 @@ EOF
 
 %postun
 %scrollkeeper_update_postun
+gtk-update-icon-cache -qf %{_datadir}/icons/hicolor
 
 %post	libs -p /sbin/ldconfig
 %postun	libs -p /sbin/ldconfig

@@ -2,7 +2,7 @@ Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl):	Podstawowe programy ¶rodowiska graficznego GNOME
 Name:		gnome-panel
 Version:	2.14.2
-Release:	4
+Release:	5
 License:	LGPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/gnome-panel/2.14/%{name}-%{version}.tar.bz2
@@ -41,7 +41,7 @@ Requires(post,postun):	scrollkeeper
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	hicolor-icon-theme
 Requires:	gnome-desktop >= 2.15.4
-Requires:	gnome-icon-theme >= 2.15.4
+Requires:	gnome-icon-theme >= 2.15.3
 Requires:	xdg-menus
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 

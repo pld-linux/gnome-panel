@@ -1,47 +1,47 @@
 Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl):	Podstawowe programy ¶rodowiska graficznego GNOME
 Name:		gnome-panel
-Version:	2.14.2
-Release:	5
+Version:	2.15.90
+Release:	1
 License:	LGPL
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/gnome/sources/gnome-panel/2.14/%{name}-%{version}.tar.bz2
-# Source0-md5:	7db1afb3f6cbca12acecc49c68b4a655
+Source0:	http://ftp.gnome.org/pub/gnome/sources/gnome-panel/2.15/%{name}-%{version}.tar.bz2
+# Source0-md5:	e3e7d3924fdfea18131b26fd3b321cbd
 Patch0:		%{name}-finalize-memleak.patch
 Patch1:		%{name}-no_launchers_on_panel.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.12.0
-BuildRequires:	ORBit2-devel >= 1:2.14.0
+BuildRequires:	ORBit2-devel >= 1:2.14.2
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	evolution-data-server-devel >= 1.7.4
+BuildRequires:	evolution-data-server-devel >= 1.7.90.1
 BuildRequires:	gnome-common >= 2.12.0
 BuildRequires:	gnome-doc-utils >= 0.7.1
-BuildRequires:	gnome-desktop-devel >= 2.15.4
-BuildRequires:	gnome-menus-devel >= 2.15.4.1
-BuildRequires:	gnome-vfs2-devel >= 2.15.3
-BuildRequires:	gtk+2-devel >= 2:2.10.0
+BuildRequires:	gnome-desktop-devel >= 2.15.90
+BuildRequires:	gnome-menus-devel >= 2.15.90
+BuildRequires:	gnome-vfs2-devel >= 2.15.90
+BuildRequires:	gtk+2-devel >= 2:2.10.1
 BuildRequires:	gtk-doc >= 1.6
 BuildRequires:	intltool >= 0.35
 BuildRequires:	libart_lgpl-devel >= 2.3.15
 BuildRequires:	libglade2-devel >= 1:2.6.0
-BuildRequires:	libgnomeui-devel >= 2.15.2
+BuildRequires:	libgnomeui-devel >= 2.15.90
 BuildRequires:	libtool
-BuildRequires:	libwnck-devel >= 2.15.4
-BuildRequires:	pango-devel >= 1:1.13.3
+BuildRequires:	libwnck-devel >= 2.15.90
+BuildRequires:	pango-devel >= 1:1.13.4
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig >= 1:0.15.0
 BuildRequires:	python-libxml2
 BuildRequires:	rpm-build >= 4.1-10
-BuildRequires:	rpmbuild(macros) >= 1.197
+BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	scrollkeeper >= 0.3.11
 BuildConflicts:	GConf-devel < 1.0.9-7
 Requires(post,preun):	GConf2 >= 2.14.0
 Requires(post,postun):	scrollkeeper
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	hicolor-icon-theme
-Requires:	gnome-desktop >= 2.15.4
-Requires:	gnome-icon-theme >= 2.15.3
+Requires:	gnome-desktop >= 2.15.90
+Requires:	gnome-icon-theme >= 2.15.90
 Requires:	xdg-menus
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -93,7 +93,7 @@ Statyczne biblioteki panelu GNOME.
 Summary:	GNOME panel library
 Summary(pl):	Biblioteka panelu GNOME
 Group:		X11/Libraries
-Requires:	libgnomeui >= 2.15.2
+Requires:	libgnomeui >= 2.15.90
 Requires:	librsvg >= 1:2.15.0
 
 %description libs
@@ -108,7 +108,7 @@ Biblioteka panelu GNOME.
 %patch1 -p1
 
 %build
-gnome-doc-prepare --copy --force
+%{__gnome_doc_prepare}
 %{__gnome_doc_common}
 %{__intltoolize}
 %{__libtoolize}
@@ -116,7 +116,6 @@ gnome-doc-prepare --copy --force
 %{__autoheader}
 %{__autoconf}
 %{__automake}
-LDFLAGS="%{rpmldflags} -Wl,--as-needed"
 %configure \
 	--disable-schemas-install \
 	--enable-eds \
@@ -156,13 +155,15 @@ rm -rf $RPM_BUILD_ROOT
 %gconf_schema_install panel-toplevel.schemas
 %gconf_schema_install window-list.schemas
 %gconf_schema_install workspace-switcher.schemas
+%update_icon_cache hicolor
+
 %{_bindir}/gconftool-2 --direct \
 	--config-source="`%{_bindir}/gconftool-2 --get-default-source`" \
 	--load %{_datadir}/%{name}/panel-default-setup.entries > /dev/null
 %{_bindir}/gconftool-2 --direct \
 	--config-source="`%{_bindir}/gconftool-2 --get-default-source`" \
 	--load %{_datadir}/%{name}/panel-default-setup.entries /apps/panel/profiles/default > /dev/null
-gtk-update-icon-cache -qf %{_datadir}/icons/hicolor
+
 %banner %{name} -e << EOF
 For full functionality, you need to install
 gnome-utils-screenshot and gnome-utils-search-tool.
@@ -181,7 +182,7 @@ EOF
 
 %postun
 %scrollkeeper_update_postun
-gtk-update-icon-cache -qf %{_datadir}/icons/hicolor
+%update_icon_cache hicolor
 
 %post	libs -p /sbin/ldconfig
 %postun	libs -p /sbin/ldconfig

@@ -155,13 +155,13 @@ rm -rf $RPM_BUILD_ROOT
 %gconf_schema_install panel-toplevel.schemas
 %gconf_schema_install window-list.schemas
 %gconf_schema_install workspace-switcher.schemas
-%update_icon_cache hicolor
 %{_bindir}/gconftool-2 --direct \
 	--config-source="`%{_bindir}/gconftool-2 --get-default-source`" \
 	--load %{_datadir}/%{name}/panel-default-setup.entries > /dev/null
 %{_bindir}/gconftool-2 --direct \
 	--config-source="`%{_bindir}/gconftool-2 --get-default-source`" \
 	--load %{_datadir}/%{name}/panel-default-setup.entries /apps/panel/profiles/default > /dev/null
+%update_icon_cache hicolor
 %banner %{name} -e << EOF
 For full functionality, you need to install
 gnome-utils-screenshot and gnome-utils-search-tool.

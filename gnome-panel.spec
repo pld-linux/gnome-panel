@@ -1,12 +1,12 @@
 Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl):	Podstawowe programy ¶rodowiska graficznego GNOME
 Name:		gnome-panel
-Version:	2.16.0
+Version:	2.16.1
 Release:	1
 License:	LGPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/gnome-panel/2.16/%{name}-%{version}.tar.bz2
-# Source0-md5:	3ad554554e504ec7b1857cd4acbbd661
+# Source0-md5:	d0131e0b33a63b17b22b4d78b00291f8
 Patch0:		%{name}-finalize-memleak.patch
 Patch1:		%{name}-no_launchers_on_panel.patch
 URL:		http://www.gnome.org/
@@ -14,21 +14,21 @@ BuildRequires:	GConf2-devel >= 2.12.0
 BuildRequires:	ORBit2-devel >= 1:2.14.3
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	evolution-data-server-devel >= 1.8.0
+BuildRequires:	evolution-data-server-devel >= 1.8.1
 BuildRequires:	gnome-common >= 2.12.0
-BuildRequires:	gnome-doc-utils >= 0.7.2
-BuildRequires:	gnome-desktop-devel >= 2.16.0
+BuildRequires:	gnome-doc-utils >= 0.8.0
+BuildRequires:	gnome-desktop-devel >= 2.16.1
 BuildRequires:	gnome-menus-devel >= 2.16.0
-BuildRequires:	gnome-vfs2-devel >= 2.16.0
-BuildRequires:	gtk+2-devel >= 2:2.10.2
+BuildRequires:	gnome-vfs2-devel >= 2.16.1
+BuildRequires:	gtk+2-devel >= 2:2.10.5
 BuildRequires:	gtk-doc >= 1.7
 BuildRequires:	intltool >= 0.35
 BuildRequires:	libart_lgpl-devel >= 2.3.17
 BuildRequires:	libglade2-devel >= 1:2.6.0
 BuildRequires:	libgnomeui-devel >= 2.16.0
 BuildRequires:	libtool
-BuildRequires:	libwnck-devel >= 2.16.0
-BuildRequires:	pango-devel >= 1:1.14.2
+BuildRequires:	libwnck-devel >= 2.16.1
+BuildRequires:	pango-devel >= 1:1.14.5
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig >= 1:0.15.0
 BuildRequires:	python-libxml2 >= 1:2.6.26
@@ -40,8 +40,8 @@ Requires(post,preun):	GConf2 >= 2.14.0
 Requires(post,postun):	scrollkeeper
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	hicolor-icon-theme
-Requires:	gnome-desktop >= 2.16.0
-Requires:	gnome-icon-theme >= 2.16.0
+Requires:	gnome-desktop >= 2.16.1
+Requires:	gnome-icon-theme >= 2.16.0.1
 Requires:	xdg-menus
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 

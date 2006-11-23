@@ -1,12 +1,12 @@
 Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl):	Podstawowe programy ¶rodowiska graficznego GNOME
 Name:		gnome-panel
-Version:	2.16.1
+Version:	2.16.2
 Release:	1
 License:	LGPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/gnome-panel/2.16/%{name}-%{version}.tar.bz2
-# Source0-md5:	d0131e0b33a63b17b22b4d78b00291f8
+# Source0-md5:	82b98a9b2685cca2d381e185cae47596
 Patch0:		%{name}-finalize-memleak.patch
 Patch1:		%{name}-no_launchers_on_panel.patch
 URL:		http://www.gnome.org/
@@ -15,6 +15,7 @@ BuildRequires:	ORBit2-devel >= 1:2.14.3
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	evolution-data-server-devel >= 1.8.1
+BuildRequires:	gamin-static
 BuildRequires:	gnome-common >= 2.12.0
 BuildRequires:	gnome-doc-utils >= 0.8.0
 BuildRequires:	gnome-desktop-devel >= 2.16.1
@@ -35,6 +36,7 @@ BuildRequires:	python-libxml2 >= 1:2.6.26
 BuildRequires:	rpm-build >= 4.1-10
 BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	scrollkeeper >= 0.3.11
+BuildRequires:	xorg-lib-libXres-devel
 BuildConflicts:	GConf-devel < 1.0.9-7
 Requires(post,preun):	GConf2 >= 2.14.0
 Requires(post,postun):	scrollkeeper

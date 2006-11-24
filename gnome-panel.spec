@@ -15,7 +15,6 @@ BuildRequires:	ORBit2-devel >= 1:2.14.3
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	evolution-data-server-devel >= 1.8.1
-BuildRequires:	gamin-static
 BuildRequires:	gnome-common >= 2.12.0
 BuildRequires:	gnome-doc-utils >= 0.8.0
 BuildRequires:	gnome-desktop-devel >= 2.16.1
@@ -36,7 +35,6 @@ BuildRequires:	python-libxml2 >= 1:2.6.26
 BuildRequires:	rpm-build >= 4.1-10
 BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	scrollkeeper >= 0.3.11
-BuildRequires:	xorg-lib-libXres-devel
 BuildConflicts:	GConf-devel < 1.0.9-7
 Requires(post,preun):	GConf2 >= 2.14.0
 Requires(post,postun):	scrollkeeper

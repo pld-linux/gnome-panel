@@ -1,46 +1,46 @@
 Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl):	Podstawowe programy ¶rodowiska graficznego GNOME
 Name:		gnome-panel
-Version:	2.16.2
-Release:	1.1
+Version:	2.16.3
+Release:	1
 License:	LGPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/gnome-panel/2.16/%{name}-%{version}.tar.bz2
-# Source0-md5:	82b98a9b2685cca2d381e185cae47596
+# Source0-md5:	4af0a1ecb940f2bb27a27db50e3071c8
 Patch0:		%{name}-finalize-memleak.patch
 Patch1:		%{name}-no_launchers_on_panel.patch
 URL:		http://www.gnome.org/
-BuildRequires:	GConf2-devel >= 2.12.0
-BuildRequires:	ORBit2-devel >= 1:2.14.3
+BuildRequires:	GConf2-devel >= 2.16.0
+BuildRequires:	ORBit2-devel >= 1:2.14.5
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	evolution-data-server-devel >= 1.8.1
+BuildRequires:	evolution-data-server-devel >= 1.8.3
 BuildRequires:	gnome-common >= 2.12.0
+BuildRequires:	gnome-desktop-devel >= 2.16.3
 BuildRequires:	gnome-doc-utils >= 0.8.0
-BuildRequires:	gnome-desktop-devel >= 2.16.1
-BuildRequires:	gnome-menus-devel >= 2.16.0
-BuildRequires:	gnome-vfs2-devel >= 2.16.1
-BuildRequires:	gtk+2-devel >= 2:2.10.5
+BuildRequires:	gnome-menus-devel >= 2.16.1
+BuildRequires:	gnome-vfs2-devel >= 2.16.3
+BuildRequires:	gtk+2-devel >= 2:2.10.9
 BuildRequires:	gtk-doc >= 1.7
-BuildRequires:	intltool >= 0.35
+BuildRequires:	intltool >= 0.35.0
 BuildRequires:	libart_lgpl-devel >= 2.3.17
 BuildRequires:	libglade2-devel >= 1:2.6.0
-BuildRequires:	libgnomeui-devel >= 2.16.0
+BuildRequires:	libgnomeui-devel >= 2.16.1
 BuildRequires:	libtool
-BuildRequires:	libwnck-devel >= 2.16.1
-BuildRequires:	pango-devel >= 1:1.14.5
+BuildRequires:	libwnck-devel >= 2.16.3
+BuildRequires:	pango-devel >= 1:1.14.10
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig >= 1:0.15.0
-BuildRequires:	python-libxml2 >= 1:2.6.26
+BuildRequires:	python-libxml2 >= 1:2.6.27
 BuildRequires:	rpm-build >= 4.1-10
 BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	scrollkeeper >= 0.3.11
 BuildConflicts:	GConf-devel < 1.0.9-7
-Requires(post,preun):	GConf2 >= 2.14.0
+Requires(post,postun):	hicolor-icon-theme
 Requires(post,postun):	scrollkeeper
+Requires(post,preun):	GConf2 >= 2.16.0
 Requires:	%{name}-libs = %{version}-%{release}
-Requires:	hicolor-icon-theme
-Requires:	gnome-desktop >= 2.16.1
+Requires:	gnome-desktop >= 2.16.3
 Requires:	gnome-icon-theme >= 2.16.0.1
 Requires:	xdg-menus
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -68,7 +68,7 @@ Summary:	GNOME panel includes, and more
 Summary(pl):	Pliki nag³ówkowe biblioteki panelu GNOME
 Group:		X11/Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
-Requires:	libgnomeui-devel >= 2.16.0
+Requires:	libgnomeui-devel >= 2.16.1
 
 %description devel
 Panel header files for creating GNOME panels.
@@ -92,7 +92,7 @@ Statyczne biblioteki panelu GNOME.
 Summary:	GNOME panel library
 Summary(pl):	Biblioteka panelu GNOME
 Group:		X11/Libraries
-Requires:	libgnomeui >= 2.16.0
+Requires:	libgnomeui >= 2.16.1
 Requires:	librsvg >= 1:2.16.0
 
 %description libs
@@ -201,7 +201,9 @@ EOF
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS NEWS README *ChangeLog
-%attr(755,root,root) %{_bindir}/*
+%attr(755,root,root) %{_bindir}/gnome-desktop-item-edit
+%attr(755,root,root) %{_bindir}/gnome-panel
+%attr(755,root,root) %{_bindir}/panel-test-applets
 %attr(755,root,root) %{_libdir}/clock-applet
 %attr(755,root,root) %{_libdir}/fish-applet-2
 %attr(755,root,root) %{_libdir}/notification-area-applet
@@ -211,12 +213,12 @@ EOF
 %{_datadir}/gnome/panel
 %{_datadir}/gnome-panelrc
 %{_datadir}/idl/gnome-panel-2.0
-%{_iconsdir}/*/*/apps/*
+%{_iconsdir}/hicolor/*/apps/*
 %{_libdir}/bonobo/servers/*
 %{_mandir}/man1/*
 %{_omf_dest_dir}/clock
 %{_omf_dest_dir}/fish
-%{_omf_dest_dir}/%{name}
+%{_omf_dest_dir}/gnome-panel
 %{_omf_dest_dir}/window-list
 %{_omf_dest_dir}/workspace-switcher
 %{_sysconfdir}/gconf/schemas/clock.schemas
@@ -231,18 +233,18 @@ EOF
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libpanel-applet*.so
-%{_libdir}/*.la
+%attr(755,root,root) %{_libdir}/libpanel-applet-2.so
+%{_libdir}/libpanel-applet-2.la
 %{_includedir}/panel-2.0
-%{_pkgconfigdir}/*.pc
+%{_pkgconfigdir}/libpanelapplet-2.0.pc
 
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/lib*.a
+%{_libdir}/libpanel-applet-2.a
 
 %files libs
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libpanel-applet*.so.*.*
+%attr(755,root,root) %{_libdir}/libpanel-applet-2.so.*.*.*
 
 %files apidocs
 %defattr(644,root,root,755)

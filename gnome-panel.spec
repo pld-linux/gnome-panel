@@ -1,5 +1,5 @@
 Summary:	The core programs for the GNOME GUI desktop environment
-Summary(pl):	Podstawowe programy ¶rodowiska graficznego GNOME
+Summary(pl.UTF-8):   Podstawowe programy Å›rodowiska graficznego GNOME
 Name:		gnome-panel
 Version:	2.16.3
 Release:	1
@@ -54,10 +54,10 @@ to CDE and KDE, but GNOME is based completely on free software.
 The gnome-panel packages provides the GNOME panel, menus and some
 basic applets for the panel.
 
-%description -l pl
+%description -l pl.UTF-8
 GNOME (GNU Network Object Model Environment) to zestaw przyjaznych dla
-u¿ytkownika aplikacji i narzêdzi do u¿ywania w po³±czeniu z zarz±dc±
-okien pod X. GNOME ma podobny cel jak CDE i KDE, ale bazuje ca³kowicie
+uÅ¼ytkownika aplikacji i narzÄ™dzi do uÅ¼ywania w poÅ‚Ä…czeniu z zarzÄ…dcÄ…
+okien pod X. GNOME ma podobny cel jak CDE i KDE, ale bazuje caÅ‚kowicie
 na wolnym oprogramowaniu.
 
 Ten pakiet dostarcza panel GNOME2, menu oraz podstawowe aplety dla
@@ -65,7 +65,7 @@ panelu GNOME2.
 
 %package devel
 Summary:	GNOME panel includes, and more
-Summary(pl):	Pliki nag³ówkowe biblioteki panelu GNOME
+Summary(pl.UTF-8):   Pliki nagÅ‚Ã³wkowe biblioteki panelu GNOME
 Group:		X11/Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	libgnomeui-devel >= 2.16.1
@@ -73,24 +73,24 @@ Requires:	libgnomeui-devel >= 2.16.1
 %description devel
 Panel header files for creating GNOME panels.
 
-%description devel -l pl
-Pliki nag³ówkowe bibliotek panelu GNOME.
+%description devel -l pl.UTF-8
+Pliki nagÅ‚Ã³wkowe bibliotek panelu GNOME.
 
 %package static
 Summary:	GNOME panel static libraries
-Summary(pl):	Statyczne biblioteki panelu GNOME
+Summary(pl.UTF-8):   Statyczne biblioteki panelu GNOME
 Group:		X11/Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Panel static libraries.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Statyczne biblioteki panelu GNOME.
 
 %package libs
 Summary:	GNOME panel library
-Summary(pl):	Biblioteka panelu GNOME
+Summary(pl.UTF-8):   Biblioteka panelu GNOME
 Group:		X11/Libraries
 Requires:	libgnomeui >= 2.16.1
 Requires:	librsvg >= 1:2.16.0
@@ -98,19 +98,19 @@ Requires:	librsvg >= 1:2.16.0
 %description libs
 GNOME panel library.
 
-%description libs -l pl
+%description libs -l pl.UTF-8
 Biblioteka panelu GNOME.
 
 %package apidocs
 Summary:	panel-applet API documentation
-Summary(pl):	Dokumentacja API panel-applet
+Summary(pl.UTF-8):   Dokumentacja API panel-applet
 Group:		Documentation
 Requires:	gtk-doc-common
 
 %description apidocs
 panel-applet API documentation.
 
-%description apidocs -l pl
+%description apidocs -l pl.UTF-8
 Dokumentacja API panel-applet.
 
 %prep

@@ -1,5 +1,5 @@
 Summary:	The core programs for the GNOME GUI desktop environment
-Summary(pl.UTF-8):   Podstawowe programy środowiska graficznego GNOME
+Summary(pl.UTF-8):	Podstawowe programy środowiska graficznego GNOME
 Name:		gnome-panel
 Version:	2.16.3
 Release:	1
@@ -65,7 +65,7 @@ panelu GNOME2.
 
 %package devel
 Summary:	GNOME panel includes, and more
-Summary(pl.UTF-8):   Pliki nagłówkowe biblioteki panelu GNOME
+Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki panelu GNOME
 Group:		X11/Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	libgnomeui-devel >= 2.16.1
@@ -78,7 +78,7 @@ Pliki nagłówkowe bibliotek panelu GNOME.
 
 %package static
 Summary:	GNOME panel static libraries
-Summary(pl.UTF-8):   Statyczne biblioteki panelu GNOME
+Summary(pl.UTF-8):	Statyczne biblioteki panelu GNOME
 Group:		X11/Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
@@ -90,7 +90,7 @@ Statyczne biblioteki panelu GNOME.
 
 %package libs
 Summary:	GNOME panel library
-Summary(pl.UTF-8):   Biblioteka panelu GNOME
+Summary(pl.UTF-8):	Biblioteka panelu GNOME
 Group:		X11/Libraries
 Requires:	libgnomeui >= 2.16.1
 Requires:	librsvg >= 1:2.16.0
@@ -103,7 +103,7 @@ Biblioteka panelu GNOME.
 
 %package apidocs
 Summary:	panel-applet API documentation
-Summary(pl.UTF-8):   Dokumentacja API panel-applet
+Summary(pl.UTF-8):	Dokumentacja API panel-applet
 Group:		Documentation
 Requires:	gtk-doc-common
 

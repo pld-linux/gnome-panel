@@ -1,34 +1,34 @@
 Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl.UTF-8):	Podstawowe programy środowiska graficznego GNOME
 Name:		gnome-panel
-Version:	2.16.3
+Version:	2.17.92
 Release:	1
 License:	LGPL
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/gnome/sources/gnome-panel/2.16/%{name}-%{version}.tar.bz2
-# Source0-md5:	4af0a1ecb940f2bb27a27db50e3071c8
+Source0:	http://ftp.gnome.org/pub/gnome/sources/gnome-panel/2.17/%{name}-%{version}.tar.bz2
+# Source0-md5:	42fc3d0aa43c7b1e84c5219a65ad5869
 Patch0:		%{name}-finalize-memleak.patch
 Patch1:		%{name}-no_launchers_on_panel.patch
 URL:		http://www.gnome.org/
-BuildRequires:	GConf2-devel >= 2.16.0
-BuildRequires:	ORBit2-devel >= 1:2.14.5
+BuildRequires:	GConf2-devel >= 2.16.1
+BuildRequires:	ORBit2-devel >= 1:2.14.7
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	evolution-data-server-devel >= 1.8.3
+BuildRequires:	evolution-data-server-devel >= 1.9.92
 BuildRequires:	gnome-common >= 2.12.0
-BuildRequires:	gnome-desktop-devel >= 2.16.3
-BuildRequires:	gnome-doc-utils >= 0.8.0
-BuildRequires:	gnome-menus-devel >= 2.16.1
-BuildRequires:	gnome-vfs2-devel >= 2.16.3
+BuildRequires:	gnome-desktop-devel >= 2.17.92
+BuildRequires:	gnome-doc-utils >= 0.9.2
+BuildRequires:	gnome-menus-devel >= 2.17.92
+BuildRequires:	gnome-vfs2-devel >= 2.17.91
 BuildRequires:	gtk+2-devel >= 2:2.10.9
-BuildRequires:	gtk-doc >= 1.7
-BuildRequires:	intltool >= 0.35.0
-BuildRequires:	libart_lgpl-devel >= 2.3.17
+BuildRequires:	gtk-doc >= 1.8
+BuildRequires:	intltool >= 0.35.5
+BuildRequires:	libart_lgpl-devel >= 2.3.19
 BuildRequires:	libglade2-devel >= 1:2.6.0
-BuildRequires:	libgnomeui-devel >= 2.16.1
+BuildRequires:	libgnomeui-devel >= 2.17.92
 BuildRequires:	libtool
-BuildRequires:	libwnck-devel >= 2.16.3
-BuildRequires:	pango-devel >= 1:1.14.10
+BuildRequires:	libwnck-devel >= 2.17.92
+BuildRequires:	pango-devel >= 1:1.16.0
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig >= 1:0.15.0
 BuildRequires:	python-libxml2 >= 1:2.6.27
@@ -38,10 +38,10 @@ BuildRequires:	scrollkeeper >= 0.3.11
 BuildConflicts:	GConf-devel < 1.0.9-7
 Requires(post,postun):	hicolor-icon-theme
 Requires(post,postun):	scrollkeeper
-Requires(post,preun):	GConf2 >= 2.16.0
+Requires(post,preun):	GConf2 >= 2.16.1
 Requires:	%{name}-libs = %{version}-%{release}
-Requires:	gnome-desktop >= 2.16.3
-Requires:	gnome-icon-theme >= 2.16.0.1
+Requires:	gnome-desktop >= 2.17.92
+Requires:	gnome-icon-theme >= 2.17.91
 Requires:	xdg-menus
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -68,7 +68,7 @@ Summary:	GNOME panel includes, and more
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki panelu GNOME
 Group:		X11/Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
-Requires:	libgnomeui-devel >= 2.16.1
+Requires:	libgnomeui-devel >= 2.17.92
 
 %description devel
 Panel header files for creating GNOME panels.
@@ -92,8 +92,8 @@ Statyczne biblioteki panelu GNOME.
 Summary:	GNOME panel library
 Summary(pl.UTF-8):	Biblioteka panelu GNOME
 Group:		X11/Libraries
-Requires:	libgnomeui >= 2.16.1
-Requires:	librsvg >= 1:2.16.0
+Requires:	libgnomeui >= 2.17.92
+Requires:	librsvg >= 1:2.16.1
 
 %description libs
 GNOME panel library.
@@ -200,7 +200,7 @@ EOF
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc AUTHORS NEWS README *ChangeLog
+%doc AUTHORS MAINTAINERS NEWS README *ChangeLog
 %attr(755,root,root) %{_bindir}/gnome-desktop-item-edit
 %attr(755,root,root) %{_bindir}/gnome-panel
 %attr(755,root,root) %{_bindir}/panel-test-applets

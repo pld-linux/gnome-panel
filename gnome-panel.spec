@@ -6,7 +6,7 @@ Release:	1
 License:	LGPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/gnome-panel/2.18/%{name}-%{version}.tar.bz2
-# Source0-md5:	42fc3d0aa43c7b1e84c5219a65ad5869
+# Source0-md5:	67ab5a4df1817fe14572d9e366664665
 Patch0:		%{name}-finalize-memleak.patch
 Patch1:		%{name}-no_launchers_on_panel.patch
 URL:		http://www.gnome.org/

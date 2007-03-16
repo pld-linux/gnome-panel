@@ -2,13 +2,14 @@ Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl.UTF-8):	Podstawowe programy środowiska graficznego GNOME
 Name:		gnome-panel
 Version:	2.18.0
-Release:	1
+Release:	2
 License:	LGPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/gnome-panel/2.18/%{name}-%{version}.tar.bz2
 # Source0-md5:	67ab5a4df1817fe14572d9e366664665
 Patch0:		%{name}-finalize-memleak.patch
 Patch1:		%{name}-no_launchers_on_panel.patch
+Patch2:		%{name}-desktop.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.18.0.1
 BuildRequires:	ORBit2-devel >= 1:2.14.7
@@ -117,6 +118,7 @@ Dokumentacja API panel-applet.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 %{__gnome_doc_prepare}

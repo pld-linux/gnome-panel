@@ -1,9 +1,0 @@
-diff -urN gnome-panel-2.18.0/gnome-panel/gnome-panel.desktop.in gnome-panel-2.18.0.new/gnome-panel/gnome-panel.desktop.in
---- gnome-panel-2.18.0/gnome-panel/gnome-panel.desktop.in	2007-03-12 19:48:44.000000000 +0100
-+++ gnome-panel-2.18.0.new/gnome-panel/gnome-panel.desktop.in	2007-03-16 08:41:45.000000000 +0100
-@@ -13,4 +13,4 @@
- X-GNOME-Bugzilla-Version=@VERSION@
- Categories=GNOME;GTK;Utility;Core;
- OnlyShowIn=GNOME;
--NoDisplay=True
-+NoDisplay=true

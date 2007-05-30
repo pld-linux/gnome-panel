@@ -1,12 +1,12 @@
 Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl.UTF-8):	Podstawowe programy środowiska graficznego GNOME
 Name:		gnome-panel
-Version:	2.18.1
+Version:	2.18.2
 Release:	1
 License:	LGPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/gnome-panel/2.18/%{name}-%{version}.tar.bz2
-# Source0-md5:	6c325f5b5f9f424faa494665720bcfb9
+# Source0-md5:	5db34402d672afd41870946c38092b7f
 Patch0:		%{name}-finalize-memleak.patch
 Patch1:		%{name}-no_launchers_on_panel.patch
 URL:		http://www.gnome.org/
@@ -14,11 +14,11 @@ BuildRequires:	GConf2-devel >= 2.18.0.1
 BuildRequires:	ORBit2-devel >= 1:2.14.7
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	evolution-data-server-devel >= 1.10.1
+BuildRequires:	evolution-data-server-devel >= 1.10.2
 BuildRequires:	gnome-common >= 2.18.0
-BuildRequires:	gnome-desktop-devel >= 2.18.0
+BuildRequires:	gnome-desktop-devel >= 2.18.2
 BuildRequires:	gnome-doc-utils >= 0.10.3
-BuildRequires:	gnome-menus-devel >= 2.18.0
+BuildRequires:	gnome-menus-devel >= 2.18.2
 BuildRequires:	gnome-vfs2-devel >= 2.18.1
 BuildRequires:	gtk+2-devel >= 2:2.10.10
 BuildRequires:	gtk-doc >= 1.8
@@ -40,7 +40,7 @@ Requires(post,postun):	hicolor-icon-theme
 Requires(post,postun):	scrollkeeper
 Requires(post,preun):	GConf2
 Requires:	%{name}-libs = %{version}-%{release}
-Requires:	gnome-desktop >= 2.18.0
+Requires:	gnome-desktop >= 2.18.2
 Requires:	gnome-icon-theme >= 2.18.0
 Requires:	xdg-menus
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)

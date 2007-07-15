@@ -63,6 +63,19 @@ na wolnym oprogramowaniu.
 Ten pakiet dostarcza panel GNOME2, menu oraz podstawowe aplety dla
 panelu GNOME2.
 
+%package libs
+Summary:	GNOME panel library
+Summary(pl.UTF-8):	Biblioteka panelu GNOME
+Group:		X11/Libraries
+Requires:	libgnomeui >= 2.18.1
+Requires:	librsvg >= 1:2.16.1
+
+%description libs
+GNOME panel library.
+
+%description libs -l pl.UTF-8
+Biblioteka panelu GNOME.
+
 %package devel
 Summary:	GNOME panel includes, and more
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki panelu GNOME
@@ -87,19 +100,6 @@ Panel static libraries.
 
 %description static -l pl.UTF-8
 Statyczne biblioteki panelu GNOME.
-
-%package libs
-Summary:	GNOME panel library
-Summary(pl.UTF-8):	Biblioteka panelu GNOME
-Group:		X11/Libraries
-Requires:	libgnomeui >= 2.18.1
-Requires:	librsvg >= 1:2.16.1
-
-%description libs
-GNOME panel library.
-
-%description libs -l pl.UTF-8
-Biblioteka panelu GNOME.
 
 %package apidocs
 Summary:	panel-applet API documentation
@@ -232,6 +232,10 @@ EOF
 %{_sysconfdir}/gconf/schemas/window-list.schemas
 %{_sysconfdir}/gconf/schemas/workspace-switcher.schemas
 
+%files libs
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/libpanel-applet-2.so.*.*.*
+
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libpanel-applet-2.so
@@ -242,10 +246,6 @@ EOF
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/libpanel-applet-2.a
-
-%files libs
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libpanel-applet-2.so.*.*.*
 
 %files apidocs
 %defattr(644,root,root,755)

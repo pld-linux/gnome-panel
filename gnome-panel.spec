@@ -1,12 +1,12 @@
 Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl.UTF-8):	Podstawowe programy środowiska graficznego GNOME
 Name:		gnome-panel
-Version:	2.18.3
+Version:	2.19.6
 Release:	1
 License:	LGPL
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/gnome/sources/gnome-panel/2.18/%{name}-%{version}.tar.bz2
-# Source0-md5:	545348de234fa8222e328fa7f3a5ba71
+Source0:	http://ftp.gnome.org/pub/gnome/sources/gnome-panel/2.19/%{name}-%{version}.tar.bz2
+# Source0-md5:	b9cf4ab373b8d7970c477091b44ace0f
 Patch0:		%{name}-finalize-memleak.patch
 Patch1:		%{name}-no_launchers_on_panel.patch
 URL:		http://www.gnome.org/
@@ -20,14 +20,14 @@ BuildRequires:	gnome-desktop-devel >= 2.18.2
 BuildRequires:	gnome-doc-utils >= 0.10.3
 BuildRequires:	gnome-menus-devel >= 2.18.2
 BuildRequires:	gnome-vfs2-devel >= 2.18.1
-BuildRequires:	gtk+2-devel >= 2:2.10.14
+BuildRequires:	gtk+2-devel >= 2:2.11.3
 BuildRequires:	gtk-doc >= 1.8
 BuildRequires:	intltool >= 0.35.5
 BuildRequires:	libart_lgpl-devel >= 2.3.19
 BuildRequires:	libglade2-devel >= 1:2.6.0
 BuildRequires:	libgnomeui-devel >= 2.18.1
 BuildRequires:	libtool
-BuildRequires:	libwnck-devel >= 2.18.0
+BuildRequires:	libwnck-devel >= 2.19.5
 BuildRequires:	pango-devel >= 1:1.16.0
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig >= 1:0.15.0
@@ -210,7 +210,6 @@ EOF
 %attr(755,root,root) %{_libdir}/wnck-applet
 %{_datadir}/gnome-2.0/ui/*
 %{_datadir}/gnome-panel
-%{_datadir}/gnome/panel
 %{_datadir}/gnome-panelrc
 %{_datadir}/idl/gnome-panel-2.0
 %{_desktopdir}/gnome-panel.desktop

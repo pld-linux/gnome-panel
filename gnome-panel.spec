@@ -216,11 +216,6 @@ EOF
 %{_iconsdir}/hicolor/*/apps/*
 %{_libdir}/bonobo/servers/*
 %{_mandir}/man1/*
-%{_omf_dest_dir}/clock
-%{_omf_dest_dir}/fish
-%{_omf_dest_dir}/gnome-panel
-%{_omf_dest_dir}/window-list
-%{_omf_dest_dir}/workspace-switcher
 %{_sysconfdir}/gconf/schemas/clock.schemas
 %{_sysconfdir}/gconf/schemas/fish.schemas
 %{_sysconfdir}/gconf/schemas/panel-compatibility.schemas
@@ -230,6 +225,73 @@ EOF
 %{_sysconfdir}/gconf/schemas/panel-toplevel.schemas
 %{_sysconfdir}/gconf/schemas/window-list.schemas
 %{_sysconfdir}/gconf/schemas/workspace-switcher.schemas
+%dir %{_omf_dest_dir}/clock
+%{_omf_dest_dir}/clock/clock-C.omf
+%lang(ca) %{_omf_dest_dir}/clock/clock-ca.omf
+%lang(de) %{_omf_dest_dir}/clock/clock-de.omf
+%lang(es) %{_omf_dest_dir}/clock/clock-es.omf
+%lang(fr) %{_omf_dest_dir}/clock/clock-fr.omf
+%lang(it) %{_omf_dest_dir}/clock/clock-it.omf
+%lang(ja) %{_omf_dest_dir}/clock/clock-ja.omf
+%lang(ko) %{_omf_dest_dir}/clock/clock-ko.omf
+%lang(nl) %{_omf_dest_dir}/clock/clock-nl.omf
+%lang(oc) %{_omf_dest_dir}/clock/clock-oc.omf
+%lang(pa) %{_omf_dest_dir}/clock/clock-pa.omf
+%lang(ru) %{_omf_dest_dir}/clock/clock-ru.omf
+%lang(sr) %{_omf_dest_dir}/clock/clock-sr.omf
+%lang(sv) %{_omf_dest_dir}/clock/clock-sv.omf
+%lang(uk) %{_omf_dest_dir}/clock/clock-uk.omf
+%lang(zh_CN) %{_omf_dest_dir}/clock/clock-zh_CN.omf
+%lang(zh_TW) %{_omf_dest_dir}/clock/clock-zh_TW.omf
+%dir %{_omf_dest_dir}/fish
+%{_omf_dest_dir}/fish/fish-C.omf
+%lang(ca) %{_omf_dest_dir}/fish/fish-ca.omf
+%lang(es) %{_omf_dest_dir}/fish/fish-es.omf
+%lang(fr) %{_omf_dest_dir}/fish/fish-fr.omf
+%lang(it) %{_omf_dest_dir}/fish/fish-it.omf
+%lang(ko) %{_omf_dest_dir}/fish/fish-ko.omf
+%lang(oc) %{_omf_dest_dir}/fish/fish-oc.omf
+%lang(sv) %{_omf_dest_dir}/fish/fish-sv.omf
+%lang(uk) %{_omf_dest_dir}/fish/fish-uk.omf
+%dir %{_omf_dest_dir}/gnome-panel
+%lang(de) %{_omf_dest_dir}/gnome-panel/fish-applet-2-de.omf
+%lang(ja) %{_omf_dest_dir}/gnome-panel/fish-applet-2-ja.omf
+%lang(zh_CN) %{_omf_dest_dir}/gnome-panel/fish-applet-2-zh_CN.omf
+%lang(zh_TW) %{_omf_dest_dir}/gnome-panel/fish-applet-2-zh_TW.omf
+%lang(de) %{_omf_dest_dir}/gnome-panel/window-list-de.omf
+%lang(ja) %{_omf_dest_dir}/gnome-panel/window-list-ja.omf
+%lang(zh_TW) %{_omf_dest_dir}/gnome-panel/window-list-zh_TW.omf
+%lang(de) %{_omf_dest_dir}/gnome-panel/workspace-switcher-de.omf
+%lang(ja) %{_omf_dest_dir}/gnome-panel/workspace-switcher-ja.omf
+%lang(zh_CN) %{_omf_dest_dir}/gnome-panel/workspace-switcher-zh_CN.omf
+%lang(zh_TW) %{_omf_dest_dir}/gnome-panel/workspace-switcher-zh_TW.omf
+%dir %{_omf_dest_dir}/window-list
+%{_omf_dest_dir}/window-list/window-list-C.omf
+%lang(ca) %{_omf_dest_dir}/window-list/window-list-ca.omf
+%lang(es) %{_omf_dest_dir}/window-list/window-list-es.omf
+%lang(fr) %{_omf_dest_dir}/window-list/window-list-fr.omf
+%lang(it) %{_omf_dest_dir}/window-list/window-list-it.omf
+%lang(ko) %{_omf_dest_dir}/window-list/window-list-ko.omf
+%lang(oc) %{_omf_dest_dir}/window-list/window-list-oc.omf
+%lang(pa) %{_omf_dest_dir}/window-list/window-list-pa.omf
+%lang(ru) %{_omf_dest_dir}/window-list/window-list-ru.omf
+%lang(sv) %{_omf_dest_dir}/window-list/window-list-sv.omf
+%lang(uk) %{_omf_dest_dir}/window-list/window-list-uk.omf
+%lang(zh_CN) %{_omf_dest_dir}/window-list/window-list-zh_CN.omf
+%dir %{_omf_dest_dir}/workspace-switcher
+%{_omf_dest_dir}/workspace-switcher/workspace-switcher-C.omf
+%lang(ca) %{_omf_dest_dir}/workspace-switcher/workspace-switcher-ca.omf
+%lang(es) %{_omf_dest_dir}/workspace-switcher/workspace-switcher-es.omf
+%lang(fr) %{_omf_dest_dir}/workspace-switcher/workspace-switcher-fr.omf
+%lang(it) %{_omf_dest_dir}/workspace-switcher/workspace-switcher-it.omf
+%lang(ko) %{_omf_dest_dir}/workspace-switcher/workspace-switcher-ko.omf
+%lang(nl) %{_omf_dest_dir}/workspace-switcher/workspace-switcher-nl.omf
+%lang(oc) %{_omf_dest_dir}/workspace-switcher/workspace-switcher-oc.omf
+%lang(pa) %{_omf_dest_dir}/workspace-switcher/workspace-switcher-pa.omf
+%lang(ru) %{_omf_dest_dir}/workspace-switcher/workspace-switcher-ru.omf
+%lang(sv) %{_omf_dest_dir}/workspace-switcher/workspace-switcher-sv.omf
+%lang(uk) %{_omf_dest_dir}/workspace-switcher/workspace-switcher-uk.omf
+%lang(vi) %{_omf_dest_dir}/workspace-switcher/workspace-switcher-vi.omf
 
 %files libs
 %defattr(644,root,root,755)

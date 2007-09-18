@@ -43,6 +43,8 @@ Requires:	%{name}-libs = %{version}-%{release}
 Requires:	gnome-desktop >= 2.20.0
 Requires:	gnome-icon-theme >= 2.20.0
 Requires:	xdg-menus
+Suggests:	gnome-utils-screenshot
+Suggests:	gnome-utils-search-tool
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -174,11 +176,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/gconftool-2 --direct \
 	--config-source="`%{_bindir}/gconftool-2 --get-default-source`" \
 	--load %{_datadir}/%{name}/panel-default-setup.entries /apps/panel/profiles/default > /dev/null
-
-%banner %{name} -e << EOF
-For full functionality, you need to install
-gnome-utils-screenshot and gnome-utils-search-tool.
-EOF
 
 %preun
 %gconf_schema_uninstall clock.schemas

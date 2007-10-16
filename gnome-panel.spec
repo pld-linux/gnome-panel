@@ -1,16 +1,16 @@
 Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl.UTF-8):	Podstawowe programy środowiska graficznego GNOME
 Name:		gnome-panel
-Version:	2.20.0.1
+Version:	2.20.1
 Release:	1
 License:	LGPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-panel/2.20/%{name}-%{version}.tar.bz2
-# Source0-md5:	bead455015de6bd86bb7259e6276af9e
+# Source0-md5:	87ef96c2cbb8ecaa328420c0d31cc4c0
 Patch0:		%{name}-finalize-memleak.patch
 Patch1:		%{name}-no_launchers_on_panel.patch
 URL:		http://www.gnome.org/
-BuildRequires:	GConf2-devel >= 2.19.1
+BuildRequires:	GConf2-devel >= 2.20.0
 BuildRequires:	ORBit2-devel >= 1:2.14.9
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -25,7 +25,7 @@ BuildRequires:	gtk-doc >= 1.8
 BuildRequires:	intltool >= 0.36.2
 BuildRequires:	libart_lgpl-devel >= 2.3.19
 BuildRequires:	libglade2-devel >= 1:2.6.2
-BuildRequires:	libgnomeui-devel >= 2.19.1
+BuildRequires:	libgnomeui-devel >= 2.20.0
 BuildRequires:	libtool
 BuildRequires:	libwnck-devel >= 2.20.0
 BuildRequires:	pango-devel >= 1:1.18.2
@@ -69,7 +69,7 @@ panelu GNOME2.
 Summary:	GNOME panel library
 Summary(pl.UTF-8):	Biblioteka panelu GNOME
 Group:		X11/Libraries
-Requires:	libgnomeui >= 2.19.1
+Requires:	libgnomeui >= 2.20.0
 Requires:	librsvg >= 1:2.18.1
 
 %description libs
@@ -83,7 +83,7 @@ Summary:	GNOME panel includes, and more
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki panelu GNOME
 Group:		X11/Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
-Requires:	libgnomeui-devel >= 2.19.1
+Requires:	libgnomeui-devel >= 2.20.0
 
 %description devel
 Panel header files for creating GNOME panels.
@@ -267,6 +267,7 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_omf_dest_dir}/window-list
 %{_omf_dest_dir}/window-list/window-list-C.omf
 %lang(ca) %{_omf_dest_dir}/window-list/window-list-ca.omf
+%lang(de) %{_omf_dest_dir}/window-list/window-list-de.omf
 %lang(el) %{_omf_dest_dir}/window-list/window-list-el.omf
 %lang(es) %{_omf_dest_dir}/window-list/window-list-es.omf
 %lang(fr) %{_omf_dest_dir}/window-list/window-list-fr.omf
@@ -281,6 +282,7 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_omf_dest_dir}/workspace-switcher
 %{_omf_dest_dir}/workspace-switcher/workspace-switcher-C.omf
 %lang(ca) %{_omf_dest_dir}/workspace-switcher/workspace-switcher-ca.omf
+%lang(de) %{_omf_dest_dir}/workspace-switcher/workspace-switcher-de.omf
 %lang(el) %{_omf_dest_dir}/workspace-switcher/workspace-switcher-el.omf
 %lang(es) %{_omf_dest_dir}/workspace-switcher/workspace-switcher-es.omf
 %lang(fr) %{_omf_dest_dir}/workspace-switcher/workspace-switcher-fr.omf

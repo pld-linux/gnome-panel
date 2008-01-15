@@ -1,17 +1,21 @@
 Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl.UTF-8):	Podstawowe programy środowiska graficznego GNOME
 Name:		gnome-panel
-Version:	2.20.3
+Version:	2.21.5
 Release:	1
 License:	LGPL
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-panel/2.20/%{name}-%{version}.tar.bz2
-# Source0-md5:	0ddf04cea0859570216319d6f1f8c4d8
-Patch0:		%{name}-finalize-memleak.patch
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-panel/2.21/%{name}-%{version}.tar.bz2
+# Source0-md5:	967f0fc60b069921095ee642fcea1f55
+Source1:	%{name}-clock-mechanism.conf
+Source2:	%{name}-clock-mechanism.service.in
+Source3:	%{name}-clock-mechanism.policy
+Patch0:		%{name}-clock.patch
 Patch1:		%{name}-no_launchers_on_panel.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.20.0
 BuildRequires:	ORBit2-devel >= 1:2.14.9
+BuildRequires:	PolicyKit-gnome-devel >= 0.7
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	evolution-data-server-devel >= 1.12.0
@@ -21,11 +25,12 @@ BuildRequires:	gnome-doc-utils >= 0.12.0
 BuildRequires:	gnome-menus-devel >= 2.20.0
 BuildRequires:	gnome-vfs2-devel >= 2.20.0
 BuildRequires:	gtk+2-devel >= 2:2.12.0
-BuildRequires:	gtk-doc >= 1.8
+BuildRequires:	gtk-doc >= 1.9
 BuildRequires:	intltool >= 0.36.2
 BuildRequires:	libart_lgpl-devel >= 2.3.19
 BuildRequires:	libglade2-devel >= 1:2.6.2
 BuildRequires:	libgnomeui-devel >= 2.20.0
+BuildRequires:	libgweather-devel
 BuildRequires:	libtool
 BuildRequires:	libwnck-devel >= 2.20.0
 BuildRequires:	pango-devel >= 1:1.18.2
@@ -126,6 +131,13 @@ Dokumentacja API panel-applet.
 
 sed -i -e 's#sr\@Latn#sr\@latin#' po/LINGUAS
 mv po/sr\@{Latn,latin}.po
+install %SOURCE1 applets/clock/org.gnome.ClockApplet.Mechanism.conf
+install %SOURCE2 applets/clock/org.gnome.ClockApplet.Mechanism.service.in
+install %SOURCE3 applets/clock/gnome-clock-applet-mechanism.policy
+
+# short circuit stopper (fix me!)
+mv ChangeLog main-ChangeLog
+find . -name ChangeLog |awk '{src=$0; dst=$0;sub("^./","",dst);gsub("/","-",dst); print "cp " src " " dst}'|sh
 
 %build
 %{__gnome_doc_prepare}
@@ -152,10 +164,6 @@ install -d $RPM_BUILD_ROOT{%{_pixmapsdir},%{_datadir}/%{name}}
 	GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1
 
 install %{name}/panel-default-setup.entries $RPM_BUILD_ROOT%{_datadir}/%{name}
-
-# short circuit stopper (fix me!)
-mv ChangeLog main-ChangeLog
-find . -name ChangeLog |awk '{src=$0; dst=$0;sub("^./","",dst);gsub("/","-",dst); print "cp " src " " dst}'|sh
 
 rm -f $RPM_BUILD_ROOT%{_sysconfdir}/gconf/schemas/panel-default-setup.entries
 
@@ -210,8 +218,11 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/panel-test-applets
 %attr(755,root,root) %{_libdir}/clock-applet
 %attr(755,root,root) %{_libdir}/fish-applet-2
+%attr(755,root,root) %{_libdir}/gnome-clock-applet-mechanism
 %attr(755,root,root) %{_libdir}/notification-area-applet
 %attr(755,root,root) %{_libdir}/wnck-applet
+%{_datadir}/PolicyKit/policy/gnome-clock-applet-mechanism.policy
+%{_datadir}/dbus-1/system-services/org.gnome.ClockApplet.Mechanism.service
 %{_datadir}/gnome-2.0/ui/*
 %{_datadir}/gnome-panel
 %{_datadir}/gnome-panelrc
@@ -220,6 +231,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/hicolor/*/apps/*
 %{_libdir}/bonobo/servers/*
 %{_mandir}/man1/*
+%{_sysconfdir}/dbus-1/system.d/org.gnome.ClockApplet.Mechanism.conf
 %{_sysconfdir}/gconf/schemas/clock.schemas
 %{_sysconfdir}/gconf/schemas/fish.schemas
 %{_sysconfdir}/gconf/schemas/panel-compatibility.schemas

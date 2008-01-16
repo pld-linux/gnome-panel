@@ -9,3 +9,25 @@
  #else
    xml = xmlNewTextReaderFilename ("/usr/share/gnome-applets/gweather/Locations.xml");
  #endif
+--- gnome-panel-2.21.5/configure.in~	2008-01-15 00:17:08.000000000 +0100
++++ gnome-panel-2.21.5/configure.in	2008-01-16 18:22:26.605078093 +0100
+@@ -113,6 +113,9 @@
+ AC_SUBST(CLOCK_CFLAGS)
+ AC_SUBST(CLOCK_LIBS)
+ 
++LIBGWEATHER_LOCATIONS=`pkg-config --variable=locations_file gweather`
++AC_SUBST(LIBGWEATHER_LOCATIONS)
++
+ dnl Hmm, we already checked for these above.  Is there a way to avoid checking twice?
+ PKG_CHECK_MODULES(CLOCK_MECHANISM, [ gthread-2.0 dbus-glib-1 ])
+ AC_SUBST(CLOCK_MECHANISM_CFLAGS)
+--- gnome-panel-2.21.5/applets/clock/Makefile.am~	2008-01-16 18:16:54.000000000 +0100
++++ gnome-panel-2.21.5/applets/clock/Makefile.am	2008-01-16 18:24:57.594700919 +0100
+@@ -10,6 +10,7 @@
+ 	$(POLKIT_GNOME_CFLAGS)					\
+ 	$(LIBPANEL_APPLET_CFLAGS)				\
+ 	-DGWEATHER_I_KNOW_THIS_IS_UNSTABLE			\
++	-DGWEATHER_XML_LOCATION=\"$(LIBGWEATHER_LOCATIONS)\"	\
+ 	-DDATADIR=\""$(datadir)"\"				\
+ 	-DGLADEDIR=\""$(datadir)/gnome-panel/glade"\"		\
+ 	-DICONDIR=\""$(datadir)/gnome-panel/pixmaps"\"		\

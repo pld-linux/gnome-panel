@@ -12,6 +12,7 @@ Source2:	%{name}-clock-mechanism.service.in
 Source3:	%{name}-clock-mechanism.policy
 Patch0:		%{name}-clock.patch
 Patch1:		%{name}-no_launchers_on_panel.patch
+Patch2:		%{name}-gweather.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.20.0
 BuildRequires:	ORBit2-devel >= 1:2.14.9
@@ -128,6 +129,7 @@ Dokumentacja API panel-applet.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 sed -i -e 's#sr\@Latn#sr\@latin#' po/LINGUAS
 mv po/sr\@{Latn,latin}.po

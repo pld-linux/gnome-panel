@@ -165,6 +165,8 @@ install %{name}/panel-default-setup.entries $RPM_BUILD_ROOT%{_datadir}/%{name}
 
 rm -f $RPM_BUILD_ROOT%{_sysconfdir}/gconf/schemas/panel-default-setup.entries
 
+rm -rf $RPM_BUILD_ROOT%{_datadir}/locale/ps
+
 %find_lang %{name} --with-gnome --with-omf --all-name
 
 %clean

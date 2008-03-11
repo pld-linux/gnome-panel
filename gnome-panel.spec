@@ -1,49 +1,56 @@
+# TODO:
+# - NetworkManager bcond
+#
 Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl.UTF-8):	Podstawowe programy środowiska graficznego GNOME
 Name:		gnome-panel
-Version:	2.20.3
+Version:	2.22.0
 Release:	1
 License:	LGPL
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-panel/2.20/%{name}-%{version}.tar.bz2
-# Source0-md5:	0ddf04cea0859570216319d6f1f8c4d8
-Patch0:		%{name}-finalize-memleak.patch
-Patch1:		%{name}-no_launchers_on_panel.patch
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-panel/2.22/%{name}-%{version}.tar.bz2
+# Source0-md5:	fe10c920c1f182a2bd5dba98863c786c
+Patch0:		%{name}-no_launchers_on_panel.patch
 URL:		http://www.gnome.org/
-BuildRequires:	GConf2-devel >= 2.20.0
+BuildRequires:	GConf2-devel >= 2.22.0
 BuildRequires:	ORBit2-devel >= 1:2.14.9
+BuildRequires:	PolicyKit-gnome-devel >= 0.7
 BuildRequires:	autoconf
-BuildRequires:	automake
-BuildRequires:	evolution-data-server-devel >= 1.12.0
+BuildRequires:	automake > 1:1.9
+BuildRequires:	dbus-devel >= 1.1.2
+BuildRequires:	dbus-glib-devel >= 0.74
+BuildRequires:	evolution-data-server-devel >= 2.22.0
+BuildRequires:	gettext-devel
+BuildRequires:	glib2-devel >= 1:2.16.0
 BuildRequires:	gnome-common >= 2.20.0
-BuildRequires:	gnome-desktop-devel >= 2.20.0
+BuildRequires:	gnome-desktop-devel >= 2.22.0
 BuildRequires:	gnome-doc-utils >= 0.12.0
-BuildRequires:	gnome-menus-devel >= 2.20.0
-BuildRequires:	gnome-vfs2-devel >= 2.20.0
-BuildRequires:	gtk+2-devel >= 2:2.12.0
-BuildRequires:	gtk-doc >= 1.8
-BuildRequires:	intltool >= 0.36.2
-BuildRequires:	libart_lgpl-devel >= 2.3.19
+BuildRequires:	gnome-menus-devel >= 2.22.0
+BuildRequires:	gtk+2-devel >= 2:2.12.5
+BuildRequires:	gtk-doc >= 1.9
+BuildRequires:	intltool >= 0.37.0
 BuildRequires:	libglade2-devel >= 1:2.6.2
-BuildRequires:	libgnomeui-devel >= 2.20.0
+BuildRequires:	libgnomeui-devel >= 2.22.0
+BuildRequires:	libgweather-devel
+BuildRequires:	librsvg-devel >= 2.18.2
 BuildRequires:	libtool
-BuildRequires:	libwnck-devel >= 2.20.0
-BuildRequires:	pango-devel >= 1:1.18.2
+BuildRequires:	libwnck-devel >= 2.22.0
+BuildRequires:	libxml2-devel >= 1:2.6.31
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig >= 1:0.15.0
-BuildRequires:	python-libxml2 >= 1:2.6.30
 BuildRequires:	rpm-build >= 4.1-10
 BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	scrollkeeper >= 0.3.11
 BuildRequires:	sed >= 4.0
 BuildConflicts:	GConf-devel < 1.0.9-7
+Requires(post,postun):	gtk+2
 Requires(post,postun):	hicolor-icon-theme
 Requires(post,postun):	scrollkeeper
 Requires(post,preun):	GConf2
 Requires:	%{name}-libs = %{version}-%{release}
-Requires:	gnome-desktop >= 2.20.0
-Requires:	gnome-icon-theme >= 2.20.0
+Requires:	gnome-desktop >= 2.22.0
+Requires:	gnome-icon-theme >= 2.22.0
 Requires:	xdg-menus
 Suggests:	gnome-utils-screenshot
 Suggests:	gnome-utils-search-tool
@@ -73,8 +80,8 @@ panelu GNOME2.
 Summary:	GNOME panel library
 Summary(pl.UTF-8):	Biblioteka panelu GNOME
 Group:		X11/Libraries
-Requires:	libgnomeui >= 2.20.0
-Requires:	librsvg >= 1:2.18.1
+Requires:	libgnomeui >= 2.22.0
+Requires:	librsvg >= 1:2.18.2
 
 %description libs
 GNOME panel library.
@@ -87,7 +94,7 @@ Summary:	GNOME panel includes, and more
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki panelu GNOME
 Group:		X11/Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
-Requires:	libgnomeui-devel >= 2.20.0
+Requires:	libgnomeui-devel >= 2.22.0
 
 %description devel
 Panel header files for creating GNOME panels.
@@ -122,10 +129,13 @@ Dokumentacja API panel-applet.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
 
-sed -i -e 's#sr\@Latn#sr\@latin#' po/LINGUAS
-mv po/sr\@{Latn,latin}.po
+sed -i -e 's#sr@Latn#sr@latin#' po/LINGUAS
+mv po/sr@{Latn,latin}.po
+
+# short circuit stopper (fix me!)
+mv ChangeLog main-ChangeLog
+find . -name ChangeLog |awk '{src=$0; dst=$0;sub("^./","",dst);gsub("/","-",dst); print "cp " src " " dst}'|sh
 
 %build
 %{__gnome_doc_prepare}
@@ -133,8 +143,8 @@ mv po/sr\@{Latn,latin}.po
 %{__intltoolize}
 %{__libtoolize}
 %{__aclocal}
-%{__autoheader}
 %{__autoconf}
+%{__autoheader}
 %{__automake}
 %configure \
 	--disable-schemas-install \
@@ -153,11 +163,9 @@ install -d $RPM_BUILD_ROOT{%{_pixmapsdir},%{_datadir}/%{name}}
 
 install %{name}/panel-default-setup.entries $RPM_BUILD_ROOT%{_datadir}/%{name}
 
-# short circuit stopper (fix me!)
-mv ChangeLog main-ChangeLog
-find . -name ChangeLog |awk '{src=$0; dst=$0;sub("^./","",dst);gsub("/","-",dst); print "cp " src " " dst}'|sh
-
 rm -f $RPM_BUILD_ROOT%{_sysconfdir}/gconf/schemas/panel-default-setup.entries
+
+rm -rf $RPM_BUILD_ROOT%{_datadir}/locale/ps
 
 %find_lang %{name} --with-gnome --with-omf --all-name
 
@@ -210,16 +218,20 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/panel-test-applets
 %attr(755,root,root) %{_libdir}/clock-applet
 %attr(755,root,root) %{_libdir}/fish-applet-2
+%attr(755,root,root) %{_libdir}/gnome-clock-applet-mechanism
 %attr(755,root,root) %{_libdir}/notification-area-applet
 %attr(755,root,root) %{_libdir}/wnck-applet
-%{_datadir}/gnome-2.0/ui/*
+%{_datadir}/PolicyKit/policy/gnome-clock-applet-mechanism.policy
+%{_datadir}/dbus-1/system-services/org.gnome.ClockApplet.Mechanism.service
+%{_datadir}/gnome-2.0/ui/*.xml
 %{_datadir}/gnome-panel
 %{_datadir}/gnome-panelrc
 %{_datadir}/idl/gnome-panel-2.0
 %{_desktopdir}/gnome-panel.desktop
 %{_iconsdir}/hicolor/*/apps/*
-%{_libdir}/bonobo/servers/*
-%{_mandir}/man1/*
+%{_libdir}/bonobo/servers/*.server
+%{_mandir}/man1/*.1*
+%{_sysconfdir}/dbus-1/system.d/org.gnome.ClockApplet.Mechanism.conf
 %{_sysconfdir}/gconf/schemas/clock.schemas
 %{_sysconfdir}/gconf/schemas/fish.schemas
 %{_sysconfdir}/gconf/schemas/panel-compatibility.schemas
@@ -233,6 +245,7 @@ rm -rf $RPM_BUILD_ROOT
 %files libs
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libpanel-applet-2.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libpanel-applet-2.so.0
 
 %files devel
 %defattr(644,root,root,755)

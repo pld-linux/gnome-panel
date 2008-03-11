@@ -4,37 +4,37 @@
 Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl.UTF-8):	Podstawowe programy środowiska graficznego GNOME
 Name:		gnome-panel
-Version:	2.21.91
+Version:	2.22.0
 Release:	1
 License:	LGPL
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-panel/2.21/%{name}-%{version}.tar.bz2
-# Source0-md5:	4b2a79d02110fdb38e1573c13e85ab7a
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-panel/2.22/%{name}-%{version}.tar.bz2
+# Source0-md5:	fe10c920c1f182a2bd5dba98863c786c
 Patch0:		%{name}-no_launchers_on_panel.patch
 URL:		http://www.gnome.org/
-BuildRequires:	GConf2-devel >= 2.21.90
+BuildRequires:	GConf2-devel >= 2.22.0
 BuildRequires:	ORBit2-devel >= 1:2.14.9
 BuildRequires:	PolicyKit-gnome-devel >= 0.7
 BuildRequires:	autoconf
 BuildRequires:	automake > 1:1.9
 BuildRequires:	dbus-devel >= 1.1.2
 BuildRequires:	dbus-glib-devel >= 0.74
-BuildRequires:	evolution-data-server-devel >= 2.21.90
+BuildRequires:	evolution-data-server-devel >= 2.22.0
 BuildRequires:	gettext-devel
 BuildRequires:	glib2-devel >= 1:2.15.5
 BuildRequires:	gnome-common >= 2.20.0
-BuildRequires:	gnome-desktop-devel >= 2.21.91
+BuildRequires:	gnome-desktop-devel >= 2.22.0
 BuildRequires:	gnome-doc-utils >= 0.12.0
-BuildRequires:	gnome-menus-devel >= 2.21.91
+BuildRequires:	gnome-menus-devel >= 2.22.0
 BuildRequires:	gtk+2-devel >= 2:2.12.5
 BuildRequires:	gtk-doc >= 1.9
 BuildRequires:	intltool >= 0.37.0
 BuildRequires:	libglade2-devel >= 1:2.6.2
-BuildRequires:	libgnomeui-devel >= 2.21.91
+BuildRequires:	libgnomeui-devel >= 2.22.0
 BuildRequires:	libgweather-devel
 BuildRequires:	librsvg-devel >= 2.18.2
 BuildRequires:	libtool
-BuildRequires:	libwnck-devel >= 2.21.91
+BuildRequires:	libwnck-devel >= 2.22.0
 BuildRequires:	libxml2-devel >= 1:2.6.31
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig >= 1:0.15.0
@@ -49,8 +49,8 @@ Requires(post,postun):	hicolor-icon-theme
 Requires(post,postun):	scrollkeeper
 Requires(post,preun):	GConf2
 Requires:	%{name}-libs = %{version}-%{release}
-Requires:	gnome-desktop >= 2.21.91
-Requires:	gnome-icon-theme >= 2.20.0
+Requires:	gnome-desktop >= 2.22.0
+Requires:	gnome-icon-theme >= 2.22.0
 Requires:	xdg-menus
 Suggests:	gnome-utils-screenshot
 Suggests:	gnome-utils-search-tool
@@ -80,7 +80,7 @@ panelu GNOME2.
 Summary:	GNOME panel library
 Summary(pl.UTF-8):	Biblioteka panelu GNOME
 Group:		X11/Libraries
-Requires:	libgnomeui >= 2.21.91
+Requires:	libgnomeui >= 2.22.0
 Requires:	librsvg >= 1:2.18.2
 
 %description libs
@@ -94,7 +94,7 @@ Summary:	GNOME panel includes, and more
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki panelu GNOME
 Group:		X11/Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
-Requires:	libgnomeui-devel >= 2.21.91
+Requires:	libgnomeui-devel >= 2.22.0
 
 %description devel
 Panel header files for creating GNOME panels.

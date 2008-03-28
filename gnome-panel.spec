@@ -51,6 +51,7 @@ Requires(post,preun):	GConf2
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	gnome-desktop >= 2.22.0
 Requires:	gnome-icon-theme >= 2.22.0
+Requires:	tzdata
 Requires:	xdg-menus
 Suggests:	gnome-utils-screenshot
 Suggests:	gnome-utils-search-tool

@@ -54,6 +54,7 @@ Requires:	gnome-desktop >= 2.22.0
 Requires:	gnome-icon-theme >= 2.22.0
 Requires:	tzdata
 Requires:	xdg-menus
+Suggests:	PolicyKit-gnome >= 0.7
 Suggests:	gnome-utils-screenshot
 Suggests:	gnome-utils-search-tool
 # sr@Latn vs. sr@latin

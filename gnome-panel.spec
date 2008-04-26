@@ -5,12 +5,13 @@ Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl.UTF-8):	Podstawowe programy środowiska graficznego GNOME
 Name:		gnome-panel
 Version:	2.22.1.3
-Release:	1
+Release:	2
 License:	LGPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-panel/2.22/%{name}-%{version}.tar.bz2
 # Source0-md5:	af5e33b27c4b4a8f932baa8530dd79b9
 Patch0:		%{name}-no_launchers_on_panel.patch
+Patch1:		%{name}-use-sysconfig-timezone.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.22.0
 BuildRequires:	NetworkManager-devel >= 0.6
@@ -52,7 +53,7 @@ Requires(post,preun):	GConf2
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	gnome-desktop >= 2.22.0
 Requires:	gnome-icon-theme >= 2.22.0
-Requires:	tzdata
+Requires:	tzdata >= 2008b-4
 Requires:	xdg-menus
 Suggests:	PolicyKit-gnome >= 0.7
 Suggests:	gnome-utils-screenshot
@@ -132,6 +133,7 @@ Dokumentacja API panel-applet.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p0
 
 sed -i -e 's#sr@Latn#sr@latin#' po/LINGUAS
 mv po/sr@{Latn,latin}.po

@@ -4,12 +4,12 @@
 Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl.UTF-8):	Podstawowe programy środowiska graficznego GNOME
 Name:		gnome-panel
-Version:	2.22.1.3
-Release:	2
+Version:	2.23.1
+Release:	1
 License:	LGPL
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-panel/2.22/%{name}-%{version}.tar.bz2
-# Source0-md5:	af5e33b27c4b4a8f932baa8530dd79b9
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-panel/2.23/%{name}-%{version}.tar.bz2
+# Source0-md5:	315e85cbd56c838d538fefe7f4aa9868
 Patch0:		%{name}-no_launchers_on_panel.patch
 Patch1:		%{name}-use-sysconfig-timezone.patch
 URL:		http://www.gnome.org/
@@ -226,7 +226,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/gnome-clock-applet-mechanism
 %attr(755,root,root) %{_libdir}/notification-area-applet
 %attr(755,root,root) %{_libdir}/wnck-applet
-%{_datadir}/PolicyKit/policy/gnome-clock-applet-mechanism.policy
+%{_datadir}/PolicyKit/policy/org.gnome.clockapplet.mechanism.policy
 %{_datadir}/dbus-1/system-services/org.gnome.ClockApplet.Mechanism.service
 %{_datadir}/gnome-2.0/ui/*.xml
 %{_datadir}/gnome-panel

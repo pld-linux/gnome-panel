@@ -226,6 +226,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/gnome-clock-applet-mechanism
 %attr(755,root,root) %{_libdir}/notification-area-applet
 %attr(755,root,root) %{_libdir}/wnck-applet
+%{_datadir}/PolicyKit/policy/org.gnome.clockapplet.mechanism.policy
 %{_datadir}/dbus-1/system-services/org.gnome.ClockApplet.Mechanism.service
 %{_datadir}/gnome-2.0/ui/*.xml
 %{_datadir}/gnome-panel

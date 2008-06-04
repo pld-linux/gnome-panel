@@ -25,7 +25,7 @@ BuildRequires:	evolution-data-server-devel >= 2.22.0
 BuildRequires:	gettext-devel
 BuildRequires:	glib2-devel >= 1:2.16.0
 BuildRequires:	gnome-common >= 2.20.0
-BuildRequires:	gnome-desktop-devel >= 2.22.0
+BuildRequires:	gnome-desktop-devel >= 2.23.3
 BuildRequires:	gnome-doc-utils >= 0.12.0
 BuildRequires:	gnome-menus-devel >= 2.22.0
 BuildRequires:	gtk+2-devel >= 2:2.12.5

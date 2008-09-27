@@ -9,7 +9,7 @@ Release:	1
 License:	LGPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-panel/2.24/%{name}-%{version}.tar.bz2
-# Source0-md5:	8720f9b42692904ce7df371715248255
+# Source0-md5:	0d246880611a4c58fe2ff99614b96918
 Patch0:		%{name}-no_launchers_on_panel.patch
 # http://bugzilla.gnome.org/show_bug.cgi?id=552049
 Patch1:		%{name}-use-sysconfig-timezone.patch

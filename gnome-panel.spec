@@ -2,7 +2,7 @@ Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl.UTF-8):	Podstawowe programy środowiska graficznego GNOME
 Name:		gnome-panel
 Version:	2.14.3
-Release:	1
+Release:	2
 License:	LGPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/gnome-panel/2.14/%{name}-%{version}.tar.bz2
@@ -63,6 +63,19 @@ na wolnym oprogramowaniu.
 Ten pakiet dostarcza panel GNOME2, menu oraz podstawowe aplety dla
 panelu GNOME2.
 
+%package libs
+Summary:	GNOME panel library
+Summary(pl.UTF-8):	Biblioteka panelu GNOME
+Group:		X11/Libraries
+Requires:	libgnomeui >= 2.14.0
+Requires:	librsvg >= 1:2.14.0
+
+%description libs
+GNOME panel library.
+
+%description libs -l pl.UTF-8
+Biblioteka panelu GNOME.
+
 %package devel
 Summary:	GNOME panel includes, and more
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki panelu GNOME
@@ -89,23 +102,26 @@ Panel static libraries.
 %description static -l pl.UTF-8
 Statyczne biblioteki panelu GNOME.
 
-%package libs
-Summary:	GNOME panel library
-Summary(pl.UTF-8):	Biblioteka panelu GNOME
-Group:		X11/Libraries
-Requires:	libgnomeui >= 2.14.0
-Requires:	librsvg >= 1:2.14.0
+%package apidocs
+Summary:	panel-applet API documentation
+Summary(pl.UTF-8):	Dokumentacja API panel-applet
+Group:		Documentation
+Requires:	gtk-doc-common
 
-%description libs
-GNOME panel library.
+%description apidocs
+panel-applet API documentation.
 
-%description libs -l pl.UTF-8
-Biblioteka panelu GNOME.
+%description apidocs -l pl.UTF-8
+Dokumentacja API panel-applet.
 
 %prep
 %setup -q
 %patch0 -p1
 %patch1 -p1
+
+# short circuit stopper (fix me!)
+mv ChangeLog main-ChangeLog
+find . -name ChangeLog |awk '{src=$0; dst=$0;sub("^./","",dst);gsub("/","-",dst); print "cp " src " " dst}'|sh
 
 %build
 %{__gnome_doc_prepare}
@@ -113,8 +129,8 @@ Biblioteka panelu GNOME.
 %{__intltoolize}
 %{__libtoolize}
 %{__aclocal}
-%{__autoheader}
 %{__autoconf}
+%{__autoheader}
 %{__automake}
 %configure \
 	--disable-schemas-install \
@@ -132,10 +148,6 @@ install -d $RPM_BUILD_ROOT{%{_pixmapsdir},%{_datadir}/%{name}}
 	GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1
 
 install %{name}/panel-default-setup.entries $RPM_BUILD_ROOT%{_datadir}/%{name}
-
-# short circuit stopper (fix me!)
-mv ChangeLog main-ChangeLog
-find . -name ChangeLog |awk '{src=$0; dst=$0;sub("^./","",dst);gsub("/","-",dst); print "cp " src " " dst}'|sh
 
 rm -f $RPM_BUILD_ROOT%{_sysconfdir}/gconf/schemas/panel-default-setup.entries
 
@@ -155,17 +167,14 @@ rm -rf $RPM_BUILD_ROOT
 %gconf_schema_install panel-toplevel.schemas
 %gconf_schema_install window-list.schemas
 %gconf_schema_install workspace-switcher.schemas
+%update_icon_cache hicolor
+
 %{_bindir}/gconftool-2 --direct \
 	--config-source="`%{_bindir}/gconftool-2 --get-default-source`" \
 	--load %{_datadir}/%{name}/panel-default-setup.entries > /dev/null
 %{_bindir}/gconftool-2 --direct \
 	--config-source="`%{_bindir}/gconftool-2 --get-default-source`" \
 	--load %{_datadir}/%{name}/panel-default-setup.entries /apps/panel/profiles/default > /dev/null
-%update_icon_cache hicolor
-%banner %{name} -e << EOF
-For full functionality, you need to install
-gnome-utils-screenshot and gnome-utils-search-tool.
-EOF
 
 %preun
 %gconf_schema_uninstall clock.schemas
@@ -216,18 +225,22 @@ EOF
 %{_sysconfdir}/gconf/schemas/window-list.schemas
 %{_sysconfdir}/gconf/schemas/workspace-switcher.schemas
 
+%files libs
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/libpanel-applet-2.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libpanel-applet-2.so.0
+
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libpanel-applet*.so
-%{_libdir}/*.la
-%{_gtkdocdir}/panel-applet
+%attr(755,root,root) %{_libdir}/libpanel-applet-2.so
+%{_libdir}/libpanel-applet-2.la
 %{_includedir}/panel-2.0
-%{_pkgconfigdir}/*.pc
+%{_pkgconfigdir}/libpanelapplet-2.0.pc
 
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/lib*.a
+%{_libdir}/libpanel-applet-2.a
 
-%files libs
+%files apidocs
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libpanel-applet*.so.*.*
+%{_gtkdocdir}/panel-applet

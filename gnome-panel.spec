@@ -4,12 +4,12 @@
 Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl.UTF-8):	Podstawowe programy środowiska graficznego GNOME
 Name:		gnome-panel
-Version:	2.24.0
+Version:	2.24.1
 Release:	1
 License:	LGPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-panel/2.24/%{name}-%{version}.tar.bz2
-# Source0-md5:	0d246880611a4c58fe2ff99614b96918
+# Source0-md5:	37742d8fcb909965d5e18f351a7c4578
 Patch0:		%{name}-no_launchers_on_panel.patch
 # http://bugzilla.gnome.org/show_bug.cgi?id=552049
 Patch1:		%{name}-use-sysconfig-timezone.patch
@@ -25,27 +25,26 @@ BuildRequires:	dbus-glib-devel >= 0.74
 BuildRequires:	evolution-data-server-devel >= 2.24.0
 BuildRequires:	gettext-devel
 BuildRequires:	glib2-devel >= 1:2.18.0
-BuildRequires:	gnome-common >= 2.20.0
+BuildRequires:	gnome-common >= 2.24.0
 BuildRequires:	gnome-desktop-devel >= 2.24.0
-BuildRequires:	gnome-doc-utils >= 0.12.0
+BuildRequires:	gnome-doc-utils >= 0.14.0
 BuildRequires:	gnome-menus-devel >= 2.24.0
 BuildRequires:	gtk+2-devel >= 2:2.14.0
 BuildRequires:	gtk-doc >= 1.9
-BuildRequires:	intltool >= 0.37.0
+BuildRequires:	intltool >= 0.40.0
+BuildRequires:	libbonoboui-devel >= 2.24.0
 BuildRequires:	libglade2-devel >= 1:2.6.2
 BuildRequires:	libgnomeui-devel >= 2.24.0
-BuildRequires:	libgweather-devel >= 2.24.0
+BuildRequires:	libgweather-devel >= 2.24.1
 BuildRequires:	librsvg-devel >= 2.22.0
 BuildRequires:	libtool
 BuildRequires:	libwnck-devel >= 2.24.0
-BuildRequires:	libxml2-devel >= 1:2.6.31
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig >= 1:0.15.0
 BuildRequires:	rpm-build >= 4.1-10
 BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	scrollkeeper >= 0.3.11
-BuildRequires:	sed >= 4.0
 BuildConflicts:	GConf-devel < 1.0.9-7
 Requires(post,postun):	gtk+2
 Requires(post,postun):	hicolor-icon-theme
@@ -99,6 +98,8 @@ Summary:	GNOME panel includes, and more
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki panelu GNOME
 Group:		X11/Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
+Requires:	gtk+2-devel >= 2:2.14.0
+Requires:	libbonoboui-devel >= 2.24.0
 Requires:	libgnomeui-devel >= 2.24.0
 
 %description devel

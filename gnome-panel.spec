@@ -1,22 +1,19 @@
 Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl.UTF-8):	Podstawowe programy środowiska graficznego GNOME
 Name:		gnome-panel
-Version:	2.27.4
+Version:	2.27.91
 Release:	1
 License:	LGPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-panel/2.27/%{name}-%{version}.tar.bz2
-# Source0-md5:	8878c295b927f9a42273ff414a8bfdd8
+# Source0-md5:	9453fed0d5fec7b9904b408e3f2826f7
 Patch0:		%{name}-no_launchers_on_panel.patch
 # http://bugzilla.gnome.org/show_bug.cgi?id=552049
 Patch1:		%{name}-use-sysconfig-timezone.patch
-Patch2:		%{name}-logout.patch
-Patch3:		%{name}-logout-po.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.26.0
 BuildRequires:	NetworkManager-devel >= 0.6
 BuildRequires:	ORBit2-devel >= 1:2.14.9
-BuildRequires:	PolicyKit-gnome-devel >= 0.7
 BuildRequires:	autoconf
 BuildRequires:	automake > 1:1.9
 BuildRequires:	dbus-devel >= 1.1.2
@@ -34,12 +31,13 @@ BuildRequires:	intltool >= 0.40.0
 BuildRequires:	libbonoboui-devel >= 2.24.0
 BuildRequires:	libglade2-devel >= 1:2.6.2
 BuildRequires:	libgnomeui-devel >= 2.24.0
-BuildRequires:	libgweather-devel >= 2.24.1
+BuildRequires:	libgweather-devel >= 2.27.90
 BuildRequires:	librsvg-devel >= 2.22.0
 BuildRequires:	libtool
 BuildRequires:	libwnck-devel >= 2.26.0
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig >= 1:0.15.0
+BuildRequires:	polkit-gnome-devel >= 0.93
 BuildRequires:	rpm-build >= 4.1-10
 BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.311
@@ -54,9 +52,9 @@ Requires:	gnome-desktop >= 2.26.0
 Requires:	gnome-icon-theme >= 2.26.0
 Requires:	tzdata >= 2008b-4
 Requires:	xdg-menus
-Suggests:	PolicyKit-gnome >= 0.7
 Suggests:	gnome-utils-screenshot
 Suggests:	gnome-utils-search-tool
+Suggests:	polkit-gnome >= 0.93
 # sr@Latn vs. sr@latin
 Conflicts:	glibc-misc < 6:2.7
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -135,9 +133,6 @@ Dokumentacja API panel-applet.
 %setup -q
 %patch0 -p1
 %patch1 -p0
-%patch2 -p1
-# needs update!
-#%patch3 -p1
 
 # short circuit stopper (fix me!)
 mv ChangeLog main-ChangeLog
@@ -222,17 +217,18 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/gnome-desktop-item-edit
 %attr(755,root,root) %{_bindir}/gnome-panel
 %attr(755,root,root) %{_bindir}/panel-test-applets
-%attr(755,root,root) %{_libdir}/clock-applet
-%attr(755,root,root) %{_libdir}/fish-applet-2
-%attr(755,root,root) %{_libdir}/gnome-clock-applet-mechanism
-%attr(755,root,root) %{_libdir}/notification-area-applet
-%attr(755,root,root) %{_libdir}/wnck-applet
-%{_datadir}/PolicyKit/policy/org.gnome.clockapplet.mechanism.policy
+%attr(755,root,root) %{_libexecdir}/clock-applet
+%attr(755,root,root) %{_libexecdir}/fish-applet-2
+%attr(755,root,root) %{_libexecdir}/gnome-clock-applet-mechanism
+%attr(755,root,root) %{_libexecdir}/gnome-panel-add
+%attr(755,root,root) %{_libexecdir}/notification-area-applet
+%attr(755,root,root) %{_libexecdir}/wnck-applet
 %{_datadir}/dbus-1/system-services/org.gnome.ClockApplet.Mechanism.service
 %{_datadir}/gnome-2.0/ui/*.xml
 %{_datadir}/gnome-panel
 %{_datadir}/gnome-panelrc
 %{_datadir}/idl/gnome-panel-2.0
+%{_datadir}/polkit-1/actions/org.gnome.clockapplet.mechanism.policy
 %{_desktopdir}/gnome-panel.desktop
 %{_iconsdir}/hicolor/*/apps/*
 %{_libdir}/bonobo/servers/*.server

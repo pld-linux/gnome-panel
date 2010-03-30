@@ -1,12 +1,12 @@
 Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl.UTF-8):	Podstawowe programy środowiska graficznego GNOME
 Name:		gnome-panel
-Version:	2.28.0
-Release:	4
+Version:	2.30.0
+Release:	1
 License:	LGPL
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-panel/2.28/%{name}-%{version}.tar.bz2
-# Source0-md5:	9f0ea283d44bbcce67dc2e8a02fe9fad
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-panel/2.30/%{name}-%{version}.tar.bz2
+# Source0-md5:	e17f25417b2c9011ed1c3ebd75706de6
 Patch0:		%{name}-no_launchers_on_panel.patch
 # http://bugzilla.gnome.org/show_bug.cgi?id=552049
 Patch1:		%{name}-use-sysconfig-timezone.patch
@@ -15,24 +15,23 @@ BuildRequires:	GConf2-devel >= 2.26.0
 BuildRequires:	NetworkManager-devel >= 0.6
 BuildRequires:	ORBit2-devel >= 1:2.14.9
 BuildRequires:	autoconf
-BuildRequires:	automake > 1:1.9
+BuildRequires:	automake >= 1:1.9
 BuildRequires:	dbus-devel >= 1.1.2
 BuildRequires:	dbus-glib-devel >= 0.74
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	evolution-data-server-devel >= 2.24.0
 BuildRequires:	gettext-devel
-BuildRequires:	glib2-devel >= 1:2.19.7
+BuildRequires:	glib2-devel >= 1:2.20.0
 BuildRequires:	gnome-common >= 2.24.0
-BuildRequires:	gnome-desktop-devel >= 2.26.0
+BuildRequires:	gnome-desktop-devel >= 2.30.0
 BuildRequires:	gnome-doc-utils >= 0.14.0
-BuildRequires:	gnome-menus-devel >= 2.27.92
+BuildRequires:	gnome-menus-devel >= 2.30.0
 BuildRequires:	gtk+2-devel >= 2:2.18.0
 BuildRequires:	gtk-doc >= 1.9
 BuildRequires:	intltool >= 0.40.0
 BuildRequires:	libbonoboui-devel >= 2.24.0
-BuildRequires:	libglade2-devel >= 1:2.6.2
-BuildRequires:	libgnomeui-devel >= 2.24.0
-BuildRequires:	libgweather-devel >= 2.27.90
+BuildRequires:	libcanberra-gtk-devel
+BuildRequires:	libgweather-devel >= 2.28.0
 BuildRequires:	librsvg-devel >= 2.22.0
 BuildRequires:	libtool
 BuildRequires:	libwnck-devel >= 2.26.0
@@ -44,14 +43,15 @@ BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	scrollkeeper >= 0.3.11
+BuildRequires:	xorg-lib-libSM-devel
 BuildConflicts:	GConf-devel < 1.0.9-7
 Requires(post,postun):	gtk+2
 Requires(post,postun):	hicolor-icon-theme
 Requires(post,postun):	scrollkeeper
 Requires(post,preun):	GConf2
 Requires:	%{name}-libs = %{version}-%{release}
-Requires:	gnome-desktop >= 2.26.0
-Requires:	gnome-icon-theme >= 2.26.0
+Requires:	gnome-desktop >= 2.30.0
+Requires:	gnome-icon-theme >= 2.28.0
 Requires:	tzdata >= 2008b-4
 Requires:	xdg-menus
 Suggests:	gnome-utils-screenshot
@@ -83,7 +83,6 @@ panelu GNOME2.
 Summary:	GNOME panel library
 Summary(pl.UTF-8):	Biblioteka panelu GNOME
 Group:		X11/Libraries
-Requires:	libgnomeui >= 2.24.0
 Requires:	librsvg >= 1:2.22.0
 
 %description libs
@@ -97,9 +96,9 @@ Summary:	GNOME panel includes, and more
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki panelu GNOME
 Group:		X11/Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
-Requires:	gtk+2-devel >= 2:2.16.0
+Requires:	GConf2-devel >= 2.26.0
+Requires:	gtk+2-devel >= 2:2.18.0
 Requires:	libbonoboui-devel >= 2.24.0
-Requires:	libgnomeui-devel >= 2.24.0
 
 %description devel
 Panel header files for creating GNOME panels.
@@ -135,6 +134,8 @@ Dokumentacja API panel-applet.
 %setup -q
 %patch0 -p1
 %patch1 -p0
+sed -i s#^en@shaw## po/LINGUAS
+rm po/en@shaw.po
 
 # short circuit stopper (fix me!)
 mv ChangeLog main-ChangeLog
@@ -152,6 +153,7 @@ find . -name ChangeLog |awk '{src=$0; dst=$0;sub("^./","",dst);gsub("/","-",dst)
 %{__automake}
 %configure \
 	--disable-schemas-install \
+	--disable-silent-rules \
 	--enable-eds \
 	--enable-gtk-doc \
 	--with-html-dir=%{_gtkdocdir}
@@ -168,7 +170,6 @@ install -d $RPM_BUILD_ROOT{%{_pixmapsdir},%{_datadir}/%{name}}
 install %{name}/panel-default-setup.entries $RPM_BUILD_ROOT%{_datadir}/%{name}
 
 rm -f $RPM_BUILD_ROOT%{_sysconfdir}/gconf/schemas/panel-default-setup.entries
-rm -rf $RPM_BUILD_ROOT%{_datadir}/locale/la
 
 %find_lang %{name} --with-gnome --with-omf --all-name
 

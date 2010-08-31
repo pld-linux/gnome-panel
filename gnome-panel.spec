@@ -1,12 +1,12 @@
 Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl.UTF-8):	Podstawowe programy środowiska graficznego GNOME
 Name:		gnome-panel
-Version:	2.30.2
+Version:	2.31.90
 Release:	1
 License:	LGPL
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-panel/2.30/%{name}-%{version}.tar.bz2
-# Source0-md5:	11b6db12223c70a218a2f4602b1683cc
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-panel/2.31/%{name}-%{version}.tar.bz2
+# Source0-md5:	0ced6cb95c57d156cc86d78d34c0325c
 Patch0:		%{name}-no_launchers_on_panel.patch
 # http://bugzilla.gnome.org/show_bug.cgi?id=552049
 Patch1:		%{name}-use-sysconfig-timezone.patch
@@ -21,11 +21,12 @@ BuildRequires:	dbus-glib-devel >= 0.74
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	evolution-data-server-devel >= 2.24.0
 BuildRequires:	gettext-devel
-BuildRequires:	glib2-devel >= 1:2.20.0
+BuildRequires:	glib2-devel >= 1:2.25.12
 BuildRequires:	gnome-common >= 2.24.0
 BuildRequires:	gnome-desktop-devel >= 2.30.0
 BuildRequires:	gnome-doc-utils >= 0.14.0
 BuildRequires:	gnome-menus-devel >= 2.30.0
+BuildRequires:	gobject-introspection-devel
 BuildRequires:	gtk+2-devel >= 2:2.18.0
 BuildRequires:	gtk-doc >= 1.9
 BuildRequires:	intltool >= 0.40.0
@@ -220,23 +221,26 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/gnome-desktop-item-edit
 %attr(755,root,root) %{_bindir}/gnome-panel
 %attr(755,root,root) %{_bindir}/panel-test-applets
+%attr(755,root,root) %{_bindir}/panel-test-applets-bonobo
 %attr(755,root,root) %{_libexecdir}/clock-applet
-%attr(755,root,root) %{_libexecdir}/fish-applet-2
-%attr(755,root,root) %{_libexecdir}/gnome-clock-applet-mechanism
+%attr(755,root,root) %{_libexecdir}/fish-applet
 %attr(755,root,root) %{_libexecdir}/gnome-panel-add
 %attr(755,root,root) %{_libexecdir}/notification-area-applet
 %attr(755,root,root) %{_libexecdir}/wnck-applet
-%{_datadir}/dbus-1/system-services/org.gnome.ClockApplet.Mechanism.service
+%dir %{_libdir}/gnome-panel
+%dir %{_libdir}/gnome-panel/modules
+%{_libdir}/gnome-panel/modules/libpanel-applets-bonobo.so
+%{_datadir}/dbus-1/services/org.gnome.panel.applet.ClockAppletFactory.service
+%{_datadir}/dbus-1/services/org.gnome.panel.applet.FishAppletFactory.service
+%{_datadir}/dbus-1/services/org.gnome.panel.applet.NotificationAreaAppletFactory.service
+%{_datadir}/dbus-1/services/org.gnome.panel.applet.WnckletFactory.service
 %{_datadir}/gnome-2.0/ui/*.xml
 %{_datadir}/gnome-panel
 %{_datadir}/gnome-panelrc
 %{_datadir}/idl/gnome-panel-2.0
-%{_datadir}/polkit-1/actions/org.gnome.clockapplet.mechanism.policy
 %{_desktopdir}/gnome-panel.desktop
 %{_iconsdir}/hicolor/*/apps/*
-%{_libdir}/bonobo/servers/*.server
 %{_mandir}/man1/*.1*
-/etc/dbus-1/system.d/org.gnome.ClockApplet.Mechanism.conf
 %{_sysconfdir}/gconf/schemas/clock.schemas
 %{_sysconfdir}/gconf/schemas/fish.schemas
 %{_sysconfdir}/gconf/schemas/panel-compatibility.schemas
@@ -251,17 +255,26 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libpanel-applet-2.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libpanel-applet-2.so.0
+%attr(755,root,root) %{_libdir}/libpanel-applet-3.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libpanel-applet-3.so.0
+%{_libdir}/girepository-1.0/*.typelib
 
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libpanel-applet-2.so
-%{_libdir}/libpanel-applet-2.la
+%attr(755,root,root) %{_libdir}/libpanel-applet-3.so
 %{_includedir}/panel-2.0
+%{_includedir}/gnome-panel-3.0
 %{_pkgconfigdir}/libpanelapplet-2.0.pc
+%{_pkgconfigdir}/libpanelapplet-3.0.pc
+%{_datadir}/gir-1.0/*.gir
 
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/libpanel-applet-2.a
+%{_libdir}/libpanel-applet-2.la
+%{_libdir}/libpanel-applet-3.a
+%{_libdir}/libpanel-applet-3.la
 
 %files apidocs
 %defattr(644,root,root,755)

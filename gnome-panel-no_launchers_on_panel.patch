@@ -96,7 +96,7 @@ diff -aurN gnome-panel-2.13.90.orig/gnome-panel/panel-default-setup.entries gnom
 -      </value>
 -    </entry>
 -
--    <entry><key>objects/browser_launcher/bonobo_iid</key><schema_key>/schemas/apps/panel/objects/bonobo_iid</schema_key></entry>
+-    <entry><key>objects/browser_launcher/applet_iid</key><schema_key>/schemas/apps/panel/objects/applet_iid</schema_key></entry>
 -    <entry><key>objects/browser_launcher/attached_toplevel_id</key><schema_key>/schemas/apps/panel/objects/attached_toplevel_id</schema_key> </entry>
 -    <entry><key>objects/browser_launcher/tooltip</key><schema_key>/schemas/apps/panel/objects/tooltip</schema_key></entry>
 -    <entry><key>objects/browser_launcher/use_custom_icon</key><schema_key>/schemas/apps/panel/objects/use_custom_icon</schema_key></entry>
@@ -150,7 +150,7 @@ diff -aurN gnome-panel-2.13.90.orig/gnome-panel/panel-default-setup.entries gnom
 -      </value>
 -    </entry>
 -
--    <entry><key>objects/email_launcher/bonobo_iid</key><schema_key>/schemas/apps/panel/objects/bonobo_iid</schema_key></entry>
+-    <entry><key>objects/email_launcher/applet_iid</key><schema_key>/schemas/apps/panel/objects/applet_iid</schema_key></entry>
 -    <entry><key>objects/email_launcher/attached_toplevel_id</key><schema_key>/schemas/apps/panel/objects/attached_toplevel_id</schema_key> </entry>
 -    <entry><key>objects/email_launcher/tooltip</key><schema_key>/schemas/apps/panel/objects/tooltip</schema_key></entry>
 -    <entry><key>objects/email_launcher/use_custom_icon</key><schema_key>/schemas/apps/panel/objects/use_custom_icon</schema_key></entry>

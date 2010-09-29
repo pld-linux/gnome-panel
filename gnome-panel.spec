@@ -2,7 +2,7 @@ Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl.UTF-8):	Podstawowe programy środowiska graficznego GNOME
 Name:		gnome-panel
 Version:	2.32.0.2
-Release:	0.1
+Release:	1
 License:	LGPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-panel/2.32/%{name}-%{version}.tar.bz2
@@ -10,6 +10,7 @@ Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-panel/2.32/%{name}-%{versi
 Patch0:		%{name}-no_launchers_on_panel.patch
 # http://bugzilla.gnome.org/show_bug.cgi?id=552049
 Patch1:		%{name}-use-sysconfig-timezone.patch
+Patch2:		%{name}-link.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.26.0
 BuildRequires:	NetworkManager-devel >= 0.6
@@ -17,7 +18,7 @@ BuildRequires:	ORBit2-devel >= 1:2.14.9
 BuildRequires:	autoconf
 BuildRequires:	automake >= 1:1.9
 BuildRequires:	dbus-devel >= 1.1.2
-BuildRequires:	dbus-glib-devel >= 0.74
+BuildRequires:	dbus-glib-devel >= 0.80
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	evolution-data-server-devel >= 2.24.0
 BuildRequires:	gettext-devel
@@ -26,8 +27,8 @@ BuildRequires:	gnome-common >= 2.24.0
 BuildRequires:	gnome-desktop-devel >= 2.30.0
 BuildRequires:	gnome-doc-utils >= 0.14.0
 BuildRequires:	gnome-menus-devel >= 2.30.0
-BuildRequires:	gobject-introspection-devel
-BuildRequires:	gtk+2-devel >= 2:2.18.0
+BuildRequires:	gobject-introspection-devel >= 0.6.7
+BuildRequires:	gtk+2-devel >= 2:2.20.0
 BuildRequires:	gtk-doc >= 1.9
 BuildRequires:	intltool >= 0.40.0
 BuildRequires:	libbonoboui-devel >= 2.24.0
@@ -98,7 +99,7 @@ Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki panelu GNOME
 Group:		X11/Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	GConf2-devel >= 2.26.0
-Requires:	gtk+2-devel >= 2:2.18.0
+Requires:	gtk+2-devel >= 2:2.20.0
 Requires:	libbonoboui-devel >= 2.24.0
 
 %description devel
@@ -135,6 +136,7 @@ Dokumentacja API panel-applet.
 %setup -q
 %patch0 -p1
 %patch1 -p0
+%patch2 -p1
 sed -i s#^en@shaw## po/LINGUAS
 rm po/en@shaw.po
 
@@ -171,6 +173,7 @@ install -d $RPM_BUILD_ROOT{%{_pixmapsdir},%{_datadir}/%{name}}
 install %{name}/panel-default-setup.entries $RPM_BUILD_ROOT%{_datadir}/%{name}
 
 rm -f $RPM_BUILD_ROOT%{_sysconfdir}/gconf/schemas/panel-default-setup.entries
+rm -f $RPM_BUILD_ROOT%{_libdir}/gnome-panel/modules/*.{a,la}
 
 %find_lang %{name} --with-gnome --with-omf --all-name
 

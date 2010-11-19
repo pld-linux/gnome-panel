@@ -33,7 +33,6 @@ BuildRequires:	gtk-doc >= 1.9
 BuildRequires:	intltool >= 0.40.0
 BuildRequires:	libbonoboui-devel >= 2.24.0
 BuildRequires:	libcanberra-gtk-devel
-BuildRequires:	libgdata-static
 BuildRequires:	libgweather-devel >= 2.28.0
 BuildRequires:	librsvg-devel >= 2.22.0
 BuildRequires:	libtool

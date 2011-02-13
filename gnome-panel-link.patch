@@ -1,10 +1,9 @@
-diff -urN gnome-panel-2.32.0.2/applets/notification_area/Makefile.am gnome-panel-2.32.0.2.new//applets/notification_area/Makefile.am
---- gnome-panel-2.32.0.2/applets/notification_area/Makefile.am	2010-09-20 17:49:51.000000000 +0200
-+++ gnome-panel-2.32.0.2.new//applets/notification_area/Makefile.am	2010-09-29 22:24:05.220421016 +0200
-@@ -30,16 +30,16 @@
+--- gnome-panel-2.91.6/applets/notification_area/Makefile.am.wiget	2011-02-01 00:52:27.000000000 +0100
++++ gnome-panel-2.91.6/applets/notification_area/Makefile.am	2011-02-03 21:57:01.197176223 +0100
+@@ -30,16 +30,16 @@ NOTIFICATION_AREA_SOURCES = main.c
  
  NOTIFICATION_AREA_LDADD =				\
- 	../../libpanel-applet/libpanel-applet-3.la	\
+ 	../../libpanel-applet/libpanel-applet-4.la	\
 +	libtray.la					\
  	$(X_LIBS)					\
  	$(NOTIFICATION_AREA_LIBS)			\

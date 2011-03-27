@@ -137,8 +137,6 @@ Dokumentacja API panel-applet.
 %patch0 -p1
 %patch1 -p0
 %patch2 -p1
-sed -i s#^en@shaw## po/LINGUAS
-rm po/en@shaw.po
 
 # short circuit stopper (fix me!)
 mv ChangeLog main-ChangeLog
@@ -172,8 +170,8 @@ install -d $RPM_BUILD_ROOT{%{_pixmapsdir},%{_datadir}/%{name}}
 
 install %{name}/panel-default-setup.entries $RPM_BUILD_ROOT%{_datadir}/%{name}
 
-rm -f $RPM_BUILD_ROOT%{_sysconfdir}/gconf/schemas/panel-default-setup.entries
-rm -f $RPM_BUILD_ROOT%{_libdir}/gnome-panel/modules/*.{a,la}
+%{__rm} $RPM_BUILD_ROOT%{_sysconfdir}/gconf/schemas/panel-default-setup.entries
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/gnome-panel/modules/*.{a,la}
 
 %find_lang %{name} --with-gnome --with-omf --all-name
 

@@ -2,7 +2,7 @@ Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl.UTF-8):	Podstawowe programy środowiska graficznego GNOME
 Name:		gnome-panel
 Version:	2.91.92
-Release:	1
+Release:	2
 License:	LGPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-panel/2.91/%{name}-%{version}.tar.bz2
@@ -22,7 +22,7 @@ BuildRequires:	evolution-data-server-devel >= 2.91.2
 BuildRequires:	gettext-devel
 BuildRequires:	glib2-devel >= 1:2.28.0
 BuildRequires:	gnome-common >= 2.24.0
-BuildRequires:	gnome-desktop3-devel >= 2.91.0
+BuildRequires:	gnome-desktop-devel >= 2.91.92
 BuildRequires:	gnome-doc-utils >= 0.14.0
 BuildRequires:	gnome-menus-devel >= 2.30.0
 BuildRequires:	gobject-introspection-devel >= 0.10.0
@@ -46,7 +46,7 @@ Requires(post,postun):	gtk-update-icon-cache
 Requires(post,postun):	scrollkeeper
 Requires(post,preun):	GConf2
 Requires:	%{name}-libs = %{version}-%{release}
-Requires:	gnome-desktop3 >= 2.91.0
+Requires:	gnome-desktop >= 2.91.92
 Requires:	gnome-icon-theme >= 2.28.0
 Requires:	hicolor-icon-theme
 Requires:	tzdata >= 2008b-4

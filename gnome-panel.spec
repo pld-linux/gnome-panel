@@ -41,6 +41,7 @@ BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	scrollkeeper >= 0.3.11
 BuildRequires:	xorg-lib-libSM-devel
+BuildRequires:	dconf-devel
 BuildConflicts:	GConf-devel < 1.0.9-7
 Requires(post,postun):	gtk-update-icon-cache
 Requires(post,postun):	scrollkeeper

@@ -1,59 +1,56 @@
 Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl.UTF-8):	Podstawowe programy środowiska graficznego GNOME
 Name:		gnome-panel
-Version:	2.32.1
-Release:	2
+Version:	3.0.0
+Release:	1
 License:	LGPL
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-panel/2.32/%{name}-%{version}.tar.bz2
-# Source0-md5:	a228035e1f7026abf296b797f1f7d2f9
-Patch0:		%{name}-no_launchers_on_panel.patch
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-panel/3.0/%{name}-%{version}.tar.bz2
+# Source0-md5:	b44c869cc8383cbbbadc1df91984064b
 # http://bugzilla.gnome.org/show_bug.cgi?id=552049
-Patch1:		%{name}-use-sysconfig-timezone.patch
-Patch2:		%{name}-link.patch
+Patch0:		%{name}-use-sysconfig-timezone.patch
+Patch1:		%{name}-link.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.26.0
 BuildRequires:	NetworkManager-devel >= 0.6
-BuildRequires:	ORBit2-devel >= 1:2.14.9
 BuildRequires:	autoconf
 BuildRequires:	automake >= 1:1.9
 BuildRequires:	dbus-devel >= 1.1.2
 BuildRequires:	dbus-glib-devel >= 0.80
+BuildRequires:	dconf-devel
 BuildRequires:	docbook-dtd412-xml
-BuildRequires:	evolution-data-server-devel >= 2.24.0
+BuildRequires:	evolution-data-server-devel >= 2.91.2
 BuildRequires:	gettext-devel
-BuildRequires:	glib2-devel >= 1:2.26.0
+BuildRequires:	glib2-devel >= 1:2.28.0
 BuildRequires:	gnome-common >= 2.24.0
-BuildRequires:	gnome-desktop-devel >= 2.30.0
+BuildRequires:	gnome-desktop-devel >= 2.91.92
 BuildRequires:	gnome-doc-utils >= 0.14.0
 BuildRequires:	gnome-menus-devel >= 2.30.0
-BuildRequires:	gobject-introspection-devel >= 0.6.7
-BuildRequires:	gtk+2-devel >= 2:2.20.0
+BuildRequires:	gobject-introspection-devel >= 0.10.0
+BuildRequires:	gtk+3-devel >= 3.0.0
 BuildRequires:	gtk-doc >= 1.9
 BuildRequires:	intltool >= 0.40.0
-BuildRequires:	libbonoboui-devel >= 2.24.0
-BuildRequires:	libcanberra-gtk-devel
-BuildRequires:	libgweather-devel >= 2.28.0
+BuildRequires:	libgweather-devel >= 2.91.0
 BuildRequires:	librsvg-devel >= 2.22.0
 BuildRequires:	libtool
-BuildRequires:	libwnck-devel >= 2.26.0
+BuildRequires:	libwnck-devel >= 2.91.6
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig >= 1:0.15.0
-BuildRequires:	polkit-gnome-devel >= 0.93
 BuildRequires:	rpm-build >= 4.1-10
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	scrollkeeper >= 0.3.11
+BuildRequires:	telepathy-glib-devel >= 0.14.0
 BuildRequires:	xorg-lib-libSM-devel
 BuildConflicts:	GConf-devel < 1.0.9-7
 Requires(post,postun):	gtk-update-icon-cache
-Requires(post,postun):	hicolor-icon-theme
 Requires(post,postun):	scrollkeeper
 Requires(post,preun):	GConf2
 Requires:	%{name}-libs = %{version}-%{release}
-Requires:	gnome-desktop >= 2.30.0
+Requires:	gnome-desktop >= 2.91.92
 Requires:	gnome-icon-theme >= 2.28.0
+Requires:	hicolor-icon-theme
 Requires:	tzdata >= 2008b-4
 Requires:	xdg-menus
 Suggests:	gnome-utils-screenshot
@@ -99,8 +96,8 @@ Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki panelu GNOME
 Group:		X11/Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	GConf2-devel >= 2.26.0
-Requires:	gtk+2-devel >= 2:2.20.0
-Requires:	libbonoboui-devel >= 2.24.0
+Requires:	glib2-devel >= 1:2.28.0
+Requires:	gtk+3-devel >= 3.0.0
 
 %description devel
 Panel header files for creating GNOME panels.
@@ -134,9 +131,8 @@ Dokumentacja API panel-applet.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p0
-%patch2 -p1
+%patch0 -p0
+%patch1 -p1
 
 # short circuit stopper (fix me!)
 mv ChangeLog main-ChangeLog
@@ -154,6 +150,7 @@ find . -name ChangeLog |awk '{src=$0; dst=$0;sub("^./","",dst);gsub("/","-",dst)
 %{__automake}
 %configure \
 	--disable-schemas-install \
+	--disable-schemas-compile \
 	--disable-silent-rules \
 	--enable-eds \
 	--enable-gtk-doc \
@@ -162,16 +159,13 @@ find . -name ChangeLog |awk '{src=$0; dst=$0;sub("^./","",dst);gsub("/","-",dst)
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_pixmapsdir},%{_datadir}/%{name}}
+install -d $RPM_BUILD_ROOT%{_datadir}/%{name}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
 	GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1
 
-install %{name}/panel-default-setup.entries $RPM_BUILD_ROOT%{_datadir}/%{name}
-
-%{__rm} $RPM_BUILD_ROOT%{_sysconfdir}/gconf/schemas/panel-default-setup.entries
-%{__rm} $RPM_BUILD_ROOT%{_libdir}/gnome-panel/modules/*.{a,la}
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/libpanel-applet-4.la
 
 %find_lang %{name} --with-gnome --with-omf --all-name
 
@@ -181,36 +175,15 @@ rm -rf $RPM_BUILD_ROOT
 %post
 %scrollkeeper_update_post
 %gconf_schema_install clock.schemas
-%gconf_schema_install fish.schemas
-%gconf_schema_install panel-compatibility.schemas
-%gconf_schema_install panel-general.schemas
-%gconf_schema_install panel-global.schemas
-%gconf_schema_install panel-object.schemas
-%gconf_schema_install panel-toplevel.schemas
-%gconf_schema_install window-list.schemas
-%gconf_schema_install workspace-switcher.schemas
+%glib_compile_schemas
 %update_icon_cache hicolor
-
-%{_bindir}/gconftool-2 --direct \
-	--config-source="`%{_bindir}/gconftool-2 --get-default-source`" \
-	--load %{_datadir}/%{name}/panel-default-setup.entries > /dev/null
-%{_bindir}/gconftool-2 --direct \
-	--config-source="`%{_bindir}/gconftool-2 --get-default-source`" \
-	--load %{_datadir}/%{name}/panel-default-setup.entries /apps/panel/profiles/default > /dev/null
 
 %preun
 %gconf_schema_uninstall clock.schemas
-%gconf_schema_uninstall fish.schemas
-%gconf_schema_uninstall panel-compatibility.schemas
-%gconf_schema_uninstall panel-general.schemas
-%gconf_schema_uninstall panel-global.schemas
-%gconf_schema_uninstall panel-object.schemas
-%gconf_schema_uninstall panel-toplevel.schemas
-%gconf_schema_uninstall window-list.schemas
-%gconf_schema_uninstall workspace-switcher.schemas
 
 %postun
 %scrollkeeper_update_postun
+%glib_compile_schemas
 %update_icon_cache hicolor
 
 %post	libs -p /sbin/ldconfig
@@ -222,61 +195,47 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/gnome-desktop-item-edit
 %attr(755,root,root) %{_bindir}/gnome-panel
 %attr(755,root,root) %{_bindir}/panel-test-applets
-%attr(755,root,root) %{_bindir}/panel-test-applets-bonobo
 %attr(755,root,root) %{_libexecdir}/clock-applet
 %attr(755,root,root) %{_libexecdir}/fish-applet
 %attr(755,root,root) %{_libexecdir}/gnome-panel-add
 %attr(755,root,root) %{_libexecdir}/notification-area-applet
 %attr(755,root,root) %{_libexecdir}/wnck-applet
-%dir %{_libdir}/gnome-panel
-%dir %{_libdir}/gnome-panel/modules
-%{_libdir}/gnome-panel/modules/libpanel-applets-bonobo.so
 %{_datadir}/dbus-1/services/org.gnome.panel.applet.ClockAppletFactory.service
 %{_datadir}/dbus-1/services/org.gnome.panel.applet.FishAppletFactory.service
 %{_datadir}/dbus-1/services/org.gnome.panel.applet.NotificationAreaAppletFactory.service
 %{_datadir}/dbus-1/services/org.gnome.panel.applet.WnckletFactory.service
-%{_datadir}/gnome-2.0/ui/*.xml
 %{_datadir}/gnome-panel
-%{_datadir}/gnome-panelrc
-%{_datadir}/idl/gnome-panel-2.0
 %{_desktopdir}/gnome-panel.desktop
 %{_iconsdir}/hicolor/*/apps/*
 %{_mandir}/man1/*.1*
 %{_sysconfdir}/gconf/schemas/clock.schemas
-%{_sysconfdir}/gconf/schemas/fish.schemas
-%{_sysconfdir}/gconf/schemas/panel-compatibility.schemas
-%{_sysconfdir}/gconf/schemas/panel-general.schemas
-%{_sysconfdir}/gconf/schemas/panel-global.schemas
-%{_sysconfdir}/gconf/schemas/panel-object.schemas
-%{_sysconfdir}/gconf/schemas/panel-toplevel.schemas
-%{_sysconfdir}/gconf/schemas/window-list.schemas
-%{_sysconfdir}/gconf/schemas/workspace-switcher.schemas
+%{_datadir}/glib-2.0/schemas/org.gnome.gnome-panel.applet.fish.gschema.xml
+%{_datadir}/glib-2.0/schemas/org.gnome.gnome-panel.applet.window-list.gschema.xml
+%{_datadir}/glib-2.0/schemas/org.gnome.gnome-panel.applet.workspace-switcher.gschema.xml
+%{_datadir}/glib-2.0/schemas/org.gnome.gnome-panel.enums.xml
+%{_datadir}/glib-2.0/schemas/org.gnome.gnome-panel.gschema.xml
+%{_datadir}/glib-2.0/schemas/org.gnome.gnome-panel.launcher.gschema.xml
+%{_datadir}/glib-2.0/schemas/org.gnome.gnome-panel.menu-button.gschema.xml
+%{_datadir}/glib-2.0/schemas/org.gnome.gnome-panel.object.gschema.xml
+%{_datadir}/glib-2.0/schemas/org.gnome.gnome-panel.toplevel.gschema.xml
 
 %files libs
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libpanel-applet-2.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libpanel-applet-2.so.0
-%attr(755,root,root) %{_libdir}/libpanel-applet-3.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libpanel-applet-3.so.0
-%{_libdir}/girepository-1.0/*.typelib
+%attr(755,root,root) %{_libdir}/libpanel-applet-4.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libpanel-applet-4.so.0
+%{_libdir}/girepository-1.0/PanelApplet-4.0.typelib
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libpanel-applet-2.so
-%attr(755,root,root) %{_libdir}/libpanel-applet-3.so
-%{_includedir}/panel-2.0
-%{_includedir}/gnome-panel-3.0
-%{_pkgconfigdir}/libpanelapplet-2.0.pc
-%{_pkgconfigdir}/libpanelapplet-3.0.pc
-%{_datadir}/gir-1.0/*.gir
+%attr(755,root,root) %{_libdir}/libpanel-applet-4.so
+%{_includedir}/gnome-panel-4.0
+%{_pkgconfigdir}/libpanelapplet-4.0.pc
+%{_datadir}/gir-1.0/PanelApplet-4.0.gir
 
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/libpanel-applet-2.a
-%{_libdir}/libpanel-applet-2.la
-%{_libdir}/libpanel-applet-3.a
-%{_libdir}/libpanel-applet-3.la
+%{_libdir}/libpanel-applet-4.a
 
 %files apidocs
 %defattr(644,root,root,755)
-%{_gtkdocdir}/panel-applet
+%{_gtkdocdir}/panel-applet-4.0

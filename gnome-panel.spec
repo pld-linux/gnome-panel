@@ -1,12 +1,12 @@
 Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl.UTF-8):	Podstawowe programy środowiska graficznego GNOME
 Name:		gnome-panel
-Version:	3.0.0
+Version:	3.0.0.1
 Release:	1
 License:	LGPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-panel/3.0/%{name}-%{version}.tar.bz2
-# Source0-md5:	b44c869cc8383cbbbadc1df91984064b
+# Source0-md5:	ed8288be1fd69ffcd1e1fde87dcdb615
 # http://bugzilla.gnome.org/show_bug.cgi?id=552049
 Patch0:		%{name}-use-sysconfig-timezone.patch
 Patch1:		%{name}-link.patch
@@ -19,21 +19,21 @@ BuildRequires:	dbus-devel >= 1.1.2
 BuildRequires:	dbus-glib-devel >= 0.80
 BuildRequires:	dconf-devel
 BuildRequires:	docbook-dtd412-xml
-BuildRequires:	evolution-data-server-devel >= 2.91.2
+BuildRequires:	evolution-data-server-devel >= 3.0.0
 BuildRequires:	gettext-devel
 BuildRequires:	glib2-devel >= 1:2.28.0
 BuildRequires:	gnome-common >= 2.24.0
-BuildRequires:	gnome-desktop-devel >= 2.91.92
+BuildRequires:	gnome-desktop-devel >= 3.0.0
 BuildRequires:	gnome-doc-utils >= 0.14.0
-BuildRequires:	gnome-menus-devel >= 2.30.0
+BuildRequires:	gnome-menus-devel >= 3.0.0
 BuildRequires:	gobject-introspection-devel >= 0.10.0
 BuildRequires:	gtk+3-devel >= 3.0.0
 BuildRequires:	gtk-doc >= 1.9
 BuildRequires:	intltool >= 0.40.0
-BuildRequires:	libgweather-devel >= 2.91.0
+BuildRequires:	libgweather-devel >= 3.0.0
 BuildRequires:	librsvg-devel >= 2.22.0
 BuildRequires:	libtool
-BuildRequires:	libwnck-devel >= 2.91.6
+BuildRequires:	libwnck-devel >= 3.0.0
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig >= 1:0.15.0
 BuildRequires:	rpm-build >= 4.1-10
@@ -48,8 +48,8 @@ Requires(post,postun):	gtk-update-icon-cache
 Requires(post,postun):	scrollkeeper
 Requires(post,preun):	GConf2
 Requires:	%{name}-libs = %{version}-%{release}
-Requires:	gnome-desktop >= 2.91.92
-Requires:	gnome-icon-theme >= 2.28.0
+Requires:	gnome-desktop >= 3.0.0
+Requires:	gnome-icon-theme >= 3.0.0
 Requires:	hicolor-icon-theme
 Requires:	tzdata >= 2008b-4
 Requires:	xdg-menus

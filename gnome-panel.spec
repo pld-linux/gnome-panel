@@ -1,12 +1,12 @@
 Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl.UTF-8):	Podstawowe programy środowiska graficznego GNOME
 Name:		gnome-panel
-Version:	3.0.0.1
+Version:	3.0.2
 Release:	1
 License:	LGPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-panel/3.0/%{name}-%{version}.tar.bz2
-# Source0-md5:	ed8288be1fd69ffcd1e1fde87dcdb615
+# Source0-md5:	0f2f644dc4081b72f6df7a65282af7c6
 # http://bugzilla.gnome.org/show_bug.cgi?id=552049
 Patch0:		%{name}-use-sysconfig-timezone.patch
 Patch1:		%{name}-link.patch

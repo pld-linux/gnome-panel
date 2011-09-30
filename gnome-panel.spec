@@ -1,15 +1,14 @@
 Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl.UTF-8):	Podstawowe programy środowiska graficznego GNOME
 Name:		gnome-panel
-Version:	3.0.2
+Version:	3.2.0
 Release:	1
 License:	LGPL
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-panel/3.0/%{name}-%{version}.tar.bz2
-# Source0-md5:	0f2f644dc4081b72f6df7a65282af7c6
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-panel/3.2/%{name}-%{version}.tar.bz2
+# Source0-md5:	797fba4bda989a1290cc77693173378e
 # http://bugzilla.gnome.org/show_bug.cgi?id=552049
 Patch0:		%{name}-use-sysconfig-timezone.patch
-Patch1:		%{name}-link.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.26.0
 BuildRequires:	NetworkManager-devel >= 0.6
@@ -19,13 +18,13 @@ BuildRequires:	dbus-devel >= 1.1.2
 BuildRequires:	dbus-glib-devel >= 0.80
 BuildRequires:	dconf-devel
 BuildRequires:	docbook-dtd412-xml
-BuildRequires:	evolution-data-server-devel >= 3.0.0
+BuildRequires:	evolution-data-server-devel >= 3.2.0
 BuildRequires:	gettext-devel
 BuildRequires:	glib2-devel >= 1:2.28.0
 BuildRequires:	gnome-common >= 2.24.0
-BuildRequires:	gnome-desktop-devel >= 3.0.0
+BuildRequires:	gnome-desktop-devel >= 3.2.0
 BuildRequires:	gnome-doc-utils >= 0.14.0
-BuildRequires:	gnome-menus-devel >= 3.0.0
+BuildRequires:	gnome-menus-devel >= 3.2.0
 BuildRequires:	gobject-introspection-devel >= 0.10.0
 BuildRequires:	gtk+3-devel >= 3.0.0
 BuildRequires:	gtk-doc >= 1.9
@@ -48,7 +47,7 @@ Requires(post,postun):	gtk-update-icon-cache
 Requires(post,postun):	scrollkeeper
 Requires(post,preun):	GConf2
 Requires:	%{name}-libs = %{version}-%{release}
-Requires:	gnome-desktop >= 3.0.0
+Requires:	gnome-desktop >= 3.2.0
 Requires:	gnome-icon-theme >= 3.0.0
 Requires:	hicolor-icon-theme
 Requires:	tzdata >= 2008b-4
@@ -105,18 +104,6 @@ Panel header files for creating GNOME panels.
 %description devel -l pl.UTF-8
 Pliki nagłówkowe bibliotek panelu GNOME.
 
-%package static
-Summary:	GNOME panel static libraries
-Summary(pl.UTF-8):	Statyczne biblioteki panelu GNOME
-Group:		X11/Development/Libraries
-Requires:	%{name}-devel = %{version}-%{release}
-
-%description static
-Panel static libraries.
-
-%description static -l pl.UTF-8
-Statyczne biblioteki panelu GNOME.
-
 %package apidocs
 Summary:	panel-applet API documentation
 Summary(pl.UTF-8):	Dokumentacja API panel-applet
@@ -132,7 +119,6 @@ Dokumentacja API panel-applet.
 %prep
 %setup -q
 %patch0 -p0
-%patch1 -p1
 
 # short circuit stopper (fix me!)
 mv ChangeLog main-ChangeLog
@@ -152,6 +138,7 @@ find . -name ChangeLog |awk '{src=$0; dst=$0;sub("^./","",dst);gsub("/","-",dst)
 	--disable-schemas-install \
 	--disable-schemas-compile \
 	--disable-silent-rules \
+	--disable-static \
 	--enable-eds \
 	--enable-gtk-doc \
 	--with-html-dir=%{_gtkdocdir}
@@ -231,10 +218,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/gnome-panel-4.0
 %{_pkgconfigdir}/libpanelapplet-4.0.pc
 %{_datadir}/gir-1.0/PanelApplet-4.0.gir
-
-%files static
-%defattr(644,root,root,755)
-%{_libdir}/libpanel-applet-4.a
 
 %files apidocs
 %defattr(644,root,root,755)

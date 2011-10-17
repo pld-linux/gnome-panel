@@ -1,12 +1,12 @@
 Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl.UTF-8):	Podstawowe programy środowiska graficznego GNOME
 Name:		gnome-panel
-Version:	3.2.0
+Version:	3.2.1
 Release:	1
 License:	LGPL
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-panel/3.2/%{name}-%{version}.tar.bz2
-# Source0-md5:	797fba4bda989a1290cc77693173378e
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-panel/3.2/%{name}-%{version}.tar.xz
+# Source0-md5:	cc2c18e18396d728cc10c58596db2f9a
 # http://bugzilla.gnome.org/show_bug.cgi?id=552049
 Patch0:		%{name}-use-sysconfig-timezone.patch
 URL:		http://www.gnome.org/
@@ -40,8 +40,10 @@ BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	scrollkeeper >= 0.3.11
+BuildRequires:	tar >= 1:1.22
 BuildRequires:	telepathy-glib-devel >= 0.14.0
 BuildRequires:	xorg-lib-libSM-devel
+BuildRequires:	xz
 BuildConflicts:	GConf-devel < 1.0.9-7
 Requires(post,postun):	gtk-update-icon-cache
 Requires(post,postun):	scrollkeeper

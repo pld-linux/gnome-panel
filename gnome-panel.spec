@@ -1,32 +1,31 @@
 Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl.UTF-8):	Podstawowe programy środowiska graficznego GNOME
 Name:		gnome-panel
-Version:	3.2.1
+Version:	3.4.0
 Release:	1
 License:	LGPL
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-panel/3.2/%{name}-%{version}.tar.xz
-# Source0-md5:	cc2c18e18396d728cc10c58596db2f9a
-# http://bugzilla.gnome.org/show_bug.cgi?id=552049
-Patch0:		%{name}-use-sysconfig-timezone.patch
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-panel/3.4/%{name}-%{version}.tar.xz
+# Source0-md5:	cbb5882c0898789fc0bec343102e46bf
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.26.0
 BuildRequires:	NetworkManager-devel >= 0.6
 BuildRequires:	autoconf
-BuildRequires:	automake >= 1:1.9
+BuildRequires:	automake >= 1:1.11
 BuildRequires:	dbus-devel >= 1.1.2
 BuildRequires:	dbus-glib-devel >= 0.80
 BuildRequires:	dconf-devel
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	evolution-data-server-devel >= 3.2.0
+BuildRequires:	gdk-pixbuf2-devel >= 2.25.2
 BuildRequires:	gettext-devel
-BuildRequires:	glib2-devel >= 1:2.28.0
+BuildRequires:	glib2-devel >= 1:2.31.14
 BuildRequires:	gnome-common >= 2.24.0
 BuildRequires:	gnome-desktop-devel >= 3.2.0
 BuildRequires:	gnome-doc-utils >= 0.14.0
 BuildRequires:	gnome-menus-devel >= 3.2.0
 BuildRequires:	gobject-introspection-devel >= 0.10.0
-BuildRequires:	gtk+3-devel >= 3.0.0
+BuildRequires:	gtk+3-devel >= 3.3.8
 BuildRequires:	gtk-doc >= 1.9
 BuildRequires:	intltool >= 0.40.0
 BuildRequires:	libgweather-devel >= 3.0.0
@@ -35,6 +34,7 @@ BuildRequires:	libtool
 BuildRequires:	libwnck-devel >= 3.0.0
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig >= 1:0.15.0
+BuildRequires:	polkit-devel
 BuildRequires:	rpm-build >= 4.1-10
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(find_lang) >= 1.23
@@ -97,8 +97,8 @@ Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki panelu GNOME
 Group:		X11/Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	GConf2-devel >= 2.26.0
-Requires:	glib2-devel >= 1:2.28.0
-Requires:	gtk+3-devel >= 3.0.0
+Requires:	glib2-devel >= 1:2.31.14
+Requires:	gtk+3-devel >= 3.3.8
 
 %description devel
 Panel header files for creating GNOME panels.
@@ -120,7 +120,6 @@ Dokumentacja API panel-applet.
 
 %prep
 %setup -q
-%patch0 -p0
 
 # short circuit stopper (fix me!)
 mv ChangeLog main-ChangeLog

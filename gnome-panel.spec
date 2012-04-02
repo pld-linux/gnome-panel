@@ -54,8 +54,8 @@ Requires:	gnome-icon-theme >= 3.0.0
 Requires:	hicolor-icon-theme
 Requires:	tzdata >= 2008b-4
 Requires:	xdg-menus
-Suggests:	gnome-utils-screenshot
-Suggests:	gnome-utils-search-tool
+Suggests:	gnome-screenshot
+Suggests:	gnome-search-tool
 Suggests:	polkit-gnome >= 0.93
 # sr@Latn vs. sr@latin
 Conflicts:	glibc-misc < 6:2.7

@@ -1,12 +1,12 @@
 Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl.UTF-8):	Podstawowe programy środowiska graficznego GNOME
 Name:		gnome-panel
-Version:	3.4.0
+Version:	3.4.1
 Release:	1
 License:	LGPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-panel/3.4/%{name}-%{version}.tar.xz
-# Source0-md5:	cbb5882c0898789fc0bec343102e46bf
+# Source0-md5:	798d185f12cf64345caebe2c319a2dbe
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.26.0
 BuildRequires:	NetworkManager-devel >= 0.6
@@ -16,16 +16,16 @@ BuildRequires:	dbus-devel >= 1.1.2
 BuildRequires:	dbus-glib-devel >= 0.80
 BuildRequires:	dconf-devel
 BuildRequires:	docbook-dtd412-xml
-BuildRequires:	evolution-data-server-devel >= 3.2.0
-BuildRequires:	gdk-pixbuf2-devel >= 2.25.2
+BuildRequires:	evolution-data-server-devel >= 3.4.0
+BuildRequires:	gdk-pixbuf2-devel >= 2.26.0
 BuildRequires:	gettext-devel
-BuildRequires:	glib2-devel >= 1:2.31.14
+BuildRequires:	glib2-devel >= 1:2.32.0
 BuildRequires:	gnome-common >= 2.24.0
-BuildRequires:	gnome-desktop-devel >= 3.2.0
+BuildRequires:	gnome-desktop-devel >= 3.4.0
 BuildRequires:	gnome-doc-utils >= 0.14.0
 BuildRequires:	gnome-menus-devel >= 3.2.0
 BuildRequires:	gobject-introspection-devel >= 0.10.0
-BuildRequires:	gtk+3-devel >= 3.3.8
+BuildRequires:	gtk+3-devel >= 3.4.0
 BuildRequires:	gtk-doc >= 1.9
 BuildRequires:	intltool >= 0.40.0
 BuildRequires:	libgweather-devel >= 3.0.0
@@ -49,7 +49,7 @@ Requires(post,postun):	gtk-update-icon-cache
 Requires(post,postun):	scrollkeeper
 Requires(post,preun):	GConf2
 Requires:	%{name}-libs = %{version}-%{release}
-Requires:	gnome-desktop >= 3.2.0
+Requires:	gnome-desktop >= 3.4.0
 Requires:	gnome-icon-theme >= 3.0.0
 Requires:	hicolor-icon-theme
 Requires:	tzdata >= 2008b-4
@@ -97,8 +97,8 @@ Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki panelu GNOME
 Group:		X11/Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	GConf2-devel >= 2.26.0
-Requires:	glib2-devel >= 1:2.31.14
-Requires:	gtk+3-devel >= 3.3.8
+Requires:	glib2-devel >= 1:2.32.0
+Requires:	gtk+3-devel >= 3.4.0
 
 %description devel
 Panel header files for creating GNOME panels.

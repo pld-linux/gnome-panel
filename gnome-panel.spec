@@ -1,12 +1,12 @@
 Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl.UTF-8):	Podstawowe programy środowiska graficznego GNOME
 Name:		gnome-panel
-Version:	3.4.2.1
+Version:	3.6.0
 Release:	1
 License:	LGPL
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-panel/3.4/%{name}-%{version}.tar.xz
-# Source0-md5:	1a7c12b22b7e5f61ce7ab90608b2c2c8
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-panel/3.6/%{name}-%{version}.tar.xz
+# Source0-md5:	6642c9f36bd2b8dddfac6255ef11e9b6
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.26.0
 BuildRequires:	NetworkManager-devel >= 0.6
@@ -14,21 +14,20 @@ BuildRequires:	autoconf
 BuildRequires:	automake >= 1:1.11
 BuildRequires:	dbus-devel >= 1.1.2
 BuildRequires:	dbus-glib-devel >= 0.80
-BuildRequires:	dconf-devel
+BuildRequires:	dconf-devel >= 0.14.0
 BuildRequires:	docbook-dtd412-xml
-BuildRequires:	evolution-data-server-devel >= 3.4.0
+BuildRequires:	evolution-data-server-devel >= 3.6.0
 BuildRequires:	gdk-pixbuf2-devel >= 2.26.0
 BuildRequires:	gettext-devel
 BuildRequires:	glib2-devel >= 1:2.32.0
 BuildRequires:	gnome-common >= 2.24.0
 BuildRequires:	gnome-desktop-devel >= 3.4.0
-BuildRequires:	gnome-doc-utils >= 0.14.0
 BuildRequires:	gnome-menus-devel >= 3.2.0
 BuildRequires:	gobject-introspection-devel >= 0.10.0
 BuildRequires:	gtk+3-devel >= 3.4.0
 BuildRequires:	gtk-doc >= 1.9
 BuildRequires:	intltool >= 0.40.0
-BuildRequires:	libgweather-devel >= 3.0.0
+BuildRequires:	libgweather-devel >= 3.6.0
 BuildRequires:	librsvg-devel >= 2.22.0
 BuildRequires:	libtool
 BuildRequires:	libwnck-devel >= 3.0.0
@@ -39,15 +38,14 @@ BuildRequires:	rpm-build >= 4.1-10
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.311
-BuildRequires:	scrollkeeper >= 0.3.11
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	telepathy-glib-devel >= 0.14.0
 BuildRequires:	xorg-lib-libSM-devel
 BuildRequires:	xz
+BuildRequires:	yelp-tools
 BuildConflicts:	GConf-devel < 1.0.9-7
+Requires(post,postun):	glib2 >= 2:2.32.0
 Requires(post,postun):	gtk-update-icon-cache
-Requires(post,postun):	scrollkeeper
-Requires(post,preun):	GConf2
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	gnome-desktop >= 3.4.0
 Requires:	gnome-icon-theme >= 3.0.0
@@ -127,8 +125,6 @@ find . -name ChangeLog |awk '{src=$0; dst=$0;sub("^./","",dst);gsub("/","-",dst)
 
 %build
 %{__gtkdocize}
-%{__gnome_doc_prepare}
-%{__gnome_doc_common}
 %{__intltoolize}
 %{__libtoolize}
 %{__aclocal} -I m4
@@ -136,8 +132,6 @@ find . -name ChangeLog |awk '{src=$0; dst=$0;sub("^./","",dst);gsub("/","-",dst)
 %{__autoheader}
 %{__automake}
 %configure \
-	--disable-schemas-install \
-	--disable-schemas-compile \
 	--disable-silent-rules \
 	--disable-static \
 	--enable-eds \
@@ -150,27 +144,20 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_datadir}/%{name}
 
 %{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT \
-	GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1
+	DESTDIR=$RPM_BUILD_ROOT
 
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/libpanel-applet-4.la
 
-%find_lang %{name} --with-gnome --with-omf --all-name
+%find_lang %{name} --with-gnome --all-name
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %post
-%scrollkeeper_update_post
-%gconf_schema_install clock.schemas
 %glib_compile_schemas
 %update_icon_cache hicolor
 
-%preun
-%gconf_schema_uninstall clock.schemas
-
 %postun
-%scrollkeeper_update_postun
 %glib_compile_schemas
 %update_icon_cache hicolor
 
@@ -196,7 +183,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_desktopdir}/gnome-panel.desktop
 %{_iconsdir}/hicolor/*/apps/*
 %{_mandir}/man1/*.1*
-%{_sysconfdir}/gconf/schemas/clock.schemas
+%{_datadir}/glib-2.0/schemas/org.gnome.gnome-panel.applet.clock.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.gnome-panel.applet.fish.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.gnome-panel.applet.window-list.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.gnome-panel.applet.workspace-switcher.gschema.xml

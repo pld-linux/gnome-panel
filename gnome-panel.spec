@@ -2,7 +2,7 @@ Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl.UTF-8):	Podstawowe programy środowiska graficznego GNOME
 Name:		gnome-panel
 Version:	3.6.0
-Release:	1
+Release:	2
 License:	LGPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-panel/3.6/%{name}-%{version}.tar.xz
@@ -44,7 +44,7 @@ BuildRequires:	xorg-lib-libSM-devel
 BuildRequires:	xz
 BuildRequires:	yelp-tools
 BuildConflicts:	GConf-devel < 1.0.9-7
-Requires(post,postun):	glib2 >= 2:2.32.0
+Requires(post,postun):	glib2 >= 1:2.32.0
 Requires(post,postun):	gtk-update-icon-cache
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	gnome-desktop >= 3.4.0

@@ -2,23 +2,24 @@ Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl.UTF-8):	Podstawowe programy środowiska graficznego GNOME
 Name:		gnome-panel
 Version:	3.6.0
-Release:	3
-License:	LGPL
+Release:	4
+License:	LGPL v2+ (library), GPL v2+ (the rest)
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-panel/3.6/%{name}-%{version}.tar.xz
 # Source0-md5:	6642c9f36bd2b8dddfac6255ef11e9b6
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.26.0
 BuildRequires:	NetworkManager-devel >= 0.6
-BuildRequires:	autoconf
+BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1:1.11
+BuildRequires:	cairo-devel >= 1.0.0
 BuildRequires:	dbus-devel >= 1.1.2
 BuildRequires:	dbus-glib-devel >= 0.80
 BuildRequires:	dconf-devel >= 0.14.0
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	evolution-data-server-devel >= 3.6.0
 BuildRequires:	gdk-pixbuf2-devel >= 2.26.0
-BuildRequires:	gettext-devel
+BuildRequires:	gettext-devel >= 0.12
 BuildRequires:	glib2-devel >= 1:2.32.0
 BuildRequires:	gnome-common >= 2.24.0
 BuildRequires:	gnome-desktop-devel >= 3.4.0
@@ -26,11 +27,12 @@ BuildRequires:	gnome-menus-devel >= 3.2.0
 BuildRequires:	gobject-introspection-devel >= 0.10.0
 BuildRequires:	gtk+3-devel >= 3.4.0
 BuildRequires:	gtk-doc >= 1.9
-BuildRequires:	intltool >= 0.40.0
+BuildRequires:	intltool >= 0.40.6
 BuildRequires:	libgweather-devel >= 3.6.0
 BuildRequires:	librsvg-devel >= 2.22.0
-BuildRequires:	libtool
+BuildRequires:	libtool >= 2:2.2.6
 BuildRequires:	libwnck-devel >= 3.0.0
+BuildRequires:	pango-devel >= 1:1.15.4
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig >= 1:0.15.0
 BuildRequires:	polkit-devel
@@ -40,18 +42,30 @@ BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	telepathy-glib-devel >= 0.14.0
+BuildRequires:	xorg-lib-libICE-devel
 BuildRequires:	xorg-lib-libSM-devel
+BuildRequires:	xorg-lib-libX11-devel
+BuildRequires:	xorg-lib-libXau-devel
+BuildRequires:	xorg-lib-libXrandr-devel >= 1.2.0
 BuildRequires:	xz
 BuildRequires:	yelp-tools
 BuildConflicts:	GConf-devel < 1.0.9-7
 Requires(post,postun):	glib2 >= 1:2.32.0
 Requires(post,postun):	gtk-update-icon-cache
 Requires:	%{name}-libs = %{version}-%{release}
+Requires:	dconf >= 0.14.0
+Requires:	evolution-data-server >= 3.6.0
+Requires:	gdk-pixbuf2 >= 2.26.0
 Requires:	gnome-desktop >= 3.4.0
 Requires:	gnome-icon-theme >= 3.0.0
+Requires:	gnome-menus >= 3.2.0
 Requires:	hicolor-icon-theme
+Requires:	libgweather >= 3.6.0
+Requires:	pango >= 1:1.15.4
+Requires:	telepathy-glib >= 0.14.0
 Requires:	tzdata >= 2008b-4
 Requires:	xdg-menus
+Requires:	xorg-lib-libXrandr >= 1.2.0
 Suggests:	gnome-screenshot
 Suggests:	gnome-search-tool
 Suggests:	polkit-gnome >= 0.93
@@ -81,6 +95,10 @@ panelu GNOME2.
 Summary:	GNOME panel library
 Summary(pl.UTF-8):	Biblioteka panelu GNOME
 Group:		X11/Libraries
+Requires:	GConf2-libs >= 2.26.0
+Requires:	cairo >= 1.0.0
+Requires:	glib2 >= 1:2.32.0
+Requires:	gtk+3 >= 3.4.0
 Requires:	librsvg >= 1:2.22.0
 
 %description libs
@@ -148,6 +166,8 @@ install -d $RPM_BUILD_ROOT%{_datadir}/%{name}
 
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/libpanel-applet-4.la
 
+%{__mv} $RPM_BUILD_ROOT%{_datadir}/locale/{sr@ije,sr@ijekavian}
+
 %find_lang %{name} --with-gnome --all-name
 
 %clean
@@ -179,10 +199,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/dbus-1/services/org.gnome.panel.applet.FishAppletFactory.service
 %{_datadir}/dbus-1/services/org.gnome.panel.applet.NotificationAreaAppletFactory.service
 %{_datadir}/dbus-1/services/org.gnome.panel.applet.WnckletFactory.service
-%{_datadir}/gnome-panel
-%{_desktopdir}/gnome-panel.desktop
-%{_iconsdir}/hicolor/*/apps/*
-%{_mandir}/man1/*.1*
 %{_datadir}/glib-2.0/schemas/org.gnome.gnome-panel.applet.clock.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.gnome-panel.applet.fish.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.gnome-panel.applet.window-list.gschema.xml
@@ -193,6 +209,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/glib-2.0/schemas/org.gnome.gnome-panel.menu-button.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.gnome-panel.object.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.gnome-panel.toplevel.gschema.xml
+%{_datadir}/gnome-panel
+%{_desktopdir}/gnome-panel.desktop
+%{_iconsdir}/hicolor/*/apps/gnome-panel*.*
+%{_mandir}/man1/gnome-panel.1*
 
 %files libs
 %defattr(644,root,root,755)

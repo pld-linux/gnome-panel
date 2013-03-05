@@ -54,7 +54,6 @@ Requires(post,postun):	glib2 >= 1:2.32.0
 Requires(post,postun):	gtk-update-icon-cache
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	dconf >= 0.14.0
-Requires:	evolution-data-server >= 3.6.0
 Requires:	gdk-pixbuf2 >= 2.26.0
 Requires:	gnome-desktop >= 3.4.0
 Requires:	gnome-icon-theme >= 3.0.0
@@ -66,6 +65,7 @@ Requires:	telepathy-glib >= 0.14.0
 Requires:	tzdata >= 2008b-4
 Requires:	xdg-menus
 Requires:	xorg-lib-libXrandr >= 1.2.0
+Suggests:	evolution-data-server >= 3.6.0
 Suggests:	gnome-screenshot
 Suggests:	gnome-search-tool
 Suggests:	polkit-gnome >= 0.93
@@ -166,7 +166,7 @@ install -d $RPM_BUILD_ROOT%{_datadir}/%{name}
 
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/libpanel-applet-4.la
 
-%{__mv} $RPM_BUILD_ROOT%{_datadir}/locale/{sr@ije,sr@ijekavian}
+%{__mv} $RPM_BUILD_ROOT%{_localedir}/{sr@ije,sr@ijekavian}
 
 %find_lang %{name} --with-gnome --all-name
 

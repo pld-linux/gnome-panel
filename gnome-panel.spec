@@ -2,12 +2,19 @@ Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl.UTF-8):	Podstawowe programy środowiska graficznego GNOME
 Name:		gnome-panel
 Version:	3.6.2
-Release:	3
+Release:	4
 License:	LGPL v2+ (library), GPL v2+ (the rest)
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-panel/3.6/%{name}-%{version}.tar.xz
 # Source0-md5:	f394ad73babbce95fd0bb65ec6fd3519
 Patch0:		am.patch
+Patch1:		0001-panel-Fix-launcher-icon-animation-ending-with-black-.patch
+Patch2:		0002-fix-build-error-due-to-missing-gweather-xml.h.patch
+Patch3:		0003-na-apply-style-after-realize.patch
+Patch4:		0004-drop-support-for-commandline-based-calendar-tasks-ap.patch
+Patch5:		0005-panel-run-dialog-resurrect-function-gnome_desktop_pr.patch
+Patch6:		0006-panel-run-dialog-rename-helper-function.patch
+Patch7:		0007-notification_area-Use-the-generic-marshaller.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.26.0
 BuildRequires:	NetworkManager-devel >= 0.6
@@ -138,6 +145,13 @@ Dokumentacja API panel-applet.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
+%patch4 -p1
+%patch5 -p1
+%patch6 -p1
+%patch7 -p1
 
 # short circuit stopper (fix me!)
 mv ChangeLog main-ChangeLog

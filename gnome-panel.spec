@@ -7,6 +7,7 @@ License:	LGPL v2+ (library), GPL v2+ (the rest)
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-panel/3.8/%{name}-%{version}.tar.xz
 # Source0-md5:	809c3e81917194ebee21ab6ab3cd9baa
+Patch0:		libgweather-3.10.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.26.0
 BuildRequires:	NetworkManager-devel >= 0.6
@@ -136,6 +137,7 @@ Dokumentacja API panel-applet.
 
 %prep
 %setup -q
+%patch0 -p1
 
 # short circuit stopper (fix me!)
 mv ChangeLog main-ChangeLog

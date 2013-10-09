@@ -1,0 +1,11 @@
+--- gnome-panel-3.8.0/applets/clock/clock-location.c~	2013-09-25 16:10:00.000000000 +0200
++++ gnome-panel-3.8.0/applets/clock/clock-location.c	2013-10-09 21:52:42.473427727 +0200
+@@ -542,7 +542,7 @@
+ 	}
+ 
+ 	priv->weather_info =
+-		gweather_info_new_for_world (priv->world,
++		gweather_info_new (
+ 					     priv->loc,
+ 					     GWEATHER_FORECAST_LIST);
+ 	g_signal_connect (priv->weather_info, "updated",

@@ -20,7 +20,7 @@ BuildRequires:	dconf-devel >= 0.14.0
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	evolution-data-server-devel >= 3.6.0
 BuildRequires:	gdk-pixbuf2-devel >= 2.26.0
-BuildRequires:	gettext-devel >= 0.12
+BuildRequires:	gettext-tools >= 0.12
 BuildRequires:	glib2-devel >= 1:2.32.0
 BuildRequires:	gnome-common >= 2.24.0
 BuildRequires:	gnome-desktop-devel >= 3.4.0

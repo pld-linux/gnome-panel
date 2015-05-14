@@ -53,6 +53,7 @@ Requires:	gnome-icon-theme >= 3.0.0
 Requires:	gnome-menus >= 3.8.0
 Requires:	hicolor-icon-theme
 Requires:	libgweather >= 3.10.1
+Requires:	libwnck >= 3.4.6
 Requires:	pango >= 1:1.15.4
 Requires:	telepathy-glib >= 0.14.0
 Requires:	tzdata >= 2008b-4

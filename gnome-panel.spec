@@ -1,12 +1,12 @@
 Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl.UTF-8):	Podstawowe programy środowiska graficznego GNOME
 Name:		gnome-panel
-Version:	3.16.1
-Release:	2
+Version:	3.18.0
+Release:	0.1
 License:	LGPL v2+ (library), GPL v2+ (the rest)
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-panel/3.16/%{name}-%{version}.tar.xz
-# Source0-md5:	88ffde25491185e482bc204c4398e03a
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-panel/3.18/%{name}-%{version}.tar.xz
+# Source0-md5:	83726071255423241cda93604b44c828
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1:1.11

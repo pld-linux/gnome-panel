@@ -1,3 +1,7 @@
+#
+# Conditional build:
+%bcond_without	apidocs	# gtk-doc documentation rebuild
+#
 Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl.UTF-8):	Podstawowe programy środowiska graficznego GNOME
 Name:		gnome-panel
@@ -9,20 +13,20 @@ Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-panel/3.18/%{name}-%{versi
 # Source0-md5:	83726071255423241cda93604b44c828
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf >= 2.50
-BuildRequires:	automake >= 1:1.11
+BuildRequires:	automake >= 1:1.13
 BuildRequires:	cairo-devel >= 1.0.0
 BuildRequires:	dconf-devel >= 0.14.0
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	evolution-data-server-devel >= 3.6.0
 BuildRequires:	gdk-pixbuf2-devel >= 2.26.0
 BuildRequires:	gettext-tools >= 0.12
-BuildRequires:	glib2-devel >= 1:2.35.0
+BuildRequires:	glib2-devel >= 1:2.45.3
 BuildRequires:	gnome-common >= 2.24.0
 BuildRequires:	gnome-desktop-devel >= 3.4.0
 BuildRequires:	gnome-menus-devel >= 3.8.0
 BuildRequires:	gobject-introspection-devel >= 0.10.0
 BuildRequires:	gtk+3-devel >= 3.15.2
-BuildRequires:	gtk-doc >= 1.9
+%{?with_apidocs:BuildRequires:	gtk-doc >= 1.24.1}
 BuildRequires:	intltool >= 0.40.6
 BuildRequires:	libgweather-devel >= 3.10.1
 BuildRequires:	librsvg-devel >= 2.36.2
@@ -43,7 +47,7 @@ BuildRequires:	xorg-lib-libXau-devel
 BuildRequires:	xorg-lib-libXrandr-devel >= 1.2.0
 BuildRequires:	xz
 BuildRequires:	yelp-tools
-Requires(post,postun):	glib2 >= 1:2.35.0
+Requires(post,postun):	glib2 >= 1:2.45.3
 Requires(post,postun):	gtk-update-icon-cache
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	dconf >= 0.14.0
@@ -90,7 +94,7 @@ Summary:	GNOME panel library
 Summary(pl.UTF-8):	Biblioteka panelu GNOME
 Group:		X11/Libraries
 Requires:	cairo >= 1.0.0
-Requires:	glib2 >= 1:2.35.0
+Requires:	glib2 >= 1:2.45.3
 Requires:	gtk+3 >= 3.15.2
 Requires:	librsvg >= 1:2.36.2
 
@@ -105,7 +109,7 @@ Summary:	GNOME panel includes, and more
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki panelu GNOME
 Group:		X11/Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
-Requires:	glib2-devel >= 1:2.35.0
+Requires:	glib2-devel >= 1:2.45.3
 Requires:	gtk+3-devel >= 3.15.2
 
 %description devel
@@ -148,7 +152,7 @@ find . -name ChangeLog |awk '{src=$0; dst=$0;sub("^./","",dst);gsub("/","-",dst)
 	--disable-silent-rules \
 	--disable-static \
 	--enable-eds \
-	--enable-gtk-doc \
+	%{?with_apidocs:--enable-gtk-doc} \
 	--with-html-dir=%{_gtkdocdir}
 %{__make}
 
@@ -222,4 +226,4 @@ rm -rf $RPM_BUILD_ROOT
 
 %files apidocs
 %defattr(644,root,root,755)
-%{_gtkdocdir}/panel-applet-5.0
+%{_gtkdocdir}/libpanel-applet

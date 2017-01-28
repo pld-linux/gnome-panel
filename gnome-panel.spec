@@ -5,12 +5,12 @@
 Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl.UTF-8):	Podstawowe programy środowiska graficznego GNOME
 Name:		gnome-panel
-Version:	3.18.2
-Release:	2
+Version:	3.22.0
+Release:	1
 License:	LGPL v2+ (library), GPL v2+ (the rest)
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-panel/3.18/%{name}-%{version}.tar.xz
-# Source0-md5:	05951941e015dff534da9a3ed7c13286
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-panel/3.22/%{name}-%{version}.tar.xz
+# Source0-md5:	9adcb1bd0515e5b7daf356dc6dc1d84a
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1:1.13
@@ -19,16 +19,18 @@ BuildRequires:	dconf-devel >= 0.14.0
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	evolution-data-server-devel >= 3.6.0
 BuildRequires:	gdk-pixbuf2-devel >= 2.26.0
+BuildRequires:	gdm-devel >= 3
 BuildRequires:	gettext-tools >= 0.12
 BuildRequires:	glib2-devel >= 1:2.45.3
 BuildRequires:	gnome-desktop-devel >= 3.4.0
 BuildRequires:	gnome-menus-devel >= 3.8.0
 BuildRequires:	gobject-introspection-devel >= 0.10.0
-BuildRequires:	gtk+3-devel >= 3.15.2
-%{?with_apidocs:BuildRequires:	gtk-doc >= 1.24.1}
+BuildRequires:	gtk+3-devel >= 3.19.6
+%{?with_apidocs:BuildRequires:	gtk-doc >= 1.25}
 BuildRequires:	intltool >= 0.40.6
-BuildRequires:	libgweather-devel >= 3.10.1
+BuildRequires:	libgweather-devel >= 3.17.1
 BuildRequires:	librsvg-devel >= 2.36.2
+#BuildRequires:	libstatus-notifier-devel (repo no longer available?)
 BuildRequires:	libtool >= 2:2.2.6
 BuildRequires:	libwnck-devel >= 3.4.6
 BuildRequires:	pango-devel >= 1:1.15.4
@@ -40,10 +42,9 @@ BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	tar >= 1:1.22
-BuildRequires:	telepathy-glib-devel >= 0.14.0
 BuildRequires:	xorg-lib-libX11-devel
 BuildRequires:	xorg-lib-libXau-devel
-BuildRequires:	xorg-lib-libXrandr-devel >= 1.2.0
+BuildRequires:	xorg-lib-libXrandr-devel >= 1.3.0
 BuildRequires:	xz
 BuildRequires:	yelp-tools
 Requires(post,postun):	glib2 >= 1:2.45.3
@@ -55,13 +56,12 @@ Requires:	gnome-desktop >= 3.4.0
 Requires:	gnome-icon-theme >= 3.0.0
 Requires:	gnome-menus >= 3.8.0
 Requires:	hicolor-icon-theme
-Requires:	libgweather >= 3.10.1
+Requires:	libgweather >= 3.17.1
 Requires:	libwnck >= 3.4.6
 Requires:	pango >= 1:1.15.4
-Requires:	telepathy-glib >= 0.14.0
 Requires:	tzdata >= 2008b-4
 Requires:	xdg-menus
-Requires:	xorg-lib-libXrandr >= 1.2.0
+Requires:	xorg-lib-libXrandr >= 1.3.0
 Suggests:	evolution-data-server >= 3.6.0
 Suggests:	gnome-screenshot
 Suggests:	gnome-search-tool
@@ -94,7 +94,7 @@ Summary(pl.UTF-8):	Biblioteka panelu GNOME
 Group:		X11/Libraries
 Requires:	cairo >= 1.0.0
 Requires:	glib2 >= 1:2.45.3
-Requires:	gtk+3 >= 3.15.2
+Requires:	gtk+3 >= 3.19.6
 Requires:	librsvg >= 1:2.36.2
 
 %description libs
@@ -109,7 +109,7 @@ Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki panelu GNOME
 Group:		X11/Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	glib2-devel >= 1:2.45.3
-Requires:	gtk+3-devel >= 3.15.2
+Requires:	gtk+3-devel >= 3.19.6
 
 %description devel
 Panel header files for creating GNOME panels.
@@ -136,7 +136,7 @@ Dokumentacja API panel-applet.
 %setup -q
 
 # short circuit stopper (fix me!)
-mv ChangeLog main-ChangeLog
+%{__mv} ChangeLog main-ChangeLog
 find . -name ChangeLog |awk '{src=$0; dst=$0;sub("^./","",dst);gsub("/","-",dst); print "cp " src " " dst}'|sh
 
 %build
@@ -163,7 +163,7 @@ install -d $RPM_BUILD_ROOT%{_datadir}/%{name}
 	DESTDIR=$RPM_BUILD_ROOT
 
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/libpanel-applet.la \
-	$RPM_BUILD_ROOT%{_libdir}/gnome-panel/5.0/*.la
+	$RPM_BUILD_ROOT%{_libdir}/gnome-panel/*.la
 
 %{__mv} $RPM_BUILD_ROOT%{_localedir}/{sr@ije,sr@ijekavian}
 
@@ -190,11 +190,10 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/gnome-panel
 %attr(755,root,root) %{_bindir}/panel-test-applets
 %dir %{_libdir}/%{name}
-%dir %{_libdir}/%{name}/5.0
-%attr(755,root,root) %{_libdir}/%{name}/5.0/libclock-applet.so
-%attr(755,root,root) %{_libdir}/%{name}/5.0/libfish-applet.so
-%attr(755,root,root) %{_libdir}/%{name}/5.0/libnotification-area-applet.so
-%attr(755,root,root) %{_libdir}/%{name}/5.0/libwnck-applet.so
+%attr(755,root,root) %{_libdir}/%{name}/libclock-applet.so
+%attr(755,root,root) %{_libdir}/%{name}/libfish-applet.so
+%attr(755,root,root) %{_libdir}/%{name}/libnotification-area-applet.so
+%attr(755,root,root) %{_libdir}/%{name}/libwnck-applet.so
 %{_datadir}/glib-2.0/schemas/org.gnome.gnome-panel.applet.clock.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.gnome-panel.applet.fish.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.gnome-panel.applet.window-list.gschema.xml
@@ -213,15 +212,13 @@ rm -rf $RPM_BUILD_ROOT
 %files libs
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libpanel-applet.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libpanel-applet.so.0
-%{_libdir}/girepository-1.0/PanelApplet-5.0.typelib
+%attr(755,root,root) %ghost %{_libdir}/libpanel-applet.so.2
 
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libpanel-applet.so
 %{_includedir}/gnome-panel
 %{_pkgconfigdir}/libpanel-applet.pc
-%{_datadir}/gir-1.0/PanelApplet-5.0.gir
 
 %files apidocs
 %defattr(644,root,root,755)

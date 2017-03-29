@@ -5,12 +5,12 @@
 Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl.UTF-8):	Podstawowe programy środowiska graficznego GNOME
 Name:		gnome-panel
-Version:	3.22.0
+Version:	3.24.1
 Release:	1
 License:	LGPL v2+ (library), GPL v2+ (the rest)
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-panel/3.22/%{name}-%{version}.tar.xz
-# Source0-md5:	9adcb1bd0515e5b7daf356dc6dc1d84a
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-panel/3.24/%{name}-%{version}.tar.xz
+# Source0-md5:	d5ae2fa7af774e78968d44b0cd632939
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1:1.13
@@ -20,14 +20,13 @@ BuildRequires:	docbook-dtd412-xml
 BuildRequires:	evolution-data-server-devel >= 3.6.0
 BuildRequires:	gdk-pixbuf2-devel >= 2.26.0
 BuildRequires:	gdm-devel >= 3
-BuildRequires:	gettext-tools >= 0.12
+BuildRequires:	gettext-tools >= 0.19.4
 BuildRequires:	glib2-devel >= 1:2.45.3
 BuildRequires:	gnome-desktop-devel >= 3.4.0
 BuildRequires:	gnome-menus-devel >= 3.8.0
 BuildRequires:	gobject-introspection-devel >= 0.10.0
-BuildRequires:	gtk+3-devel >= 3.19.6
+BuildRequires:	gtk+3-devel >= 3.22.0
 %{?with_apidocs:BuildRequires:	gtk-doc >= 1.25}
-BuildRequires:	intltool >= 0.40.6
 BuildRequires:	libgweather-devel >= 3.17.1
 BuildRequires:	librsvg-devel >= 2.36.2
 #BuildRequires:	libstatus-notifier-devel (repo no longer available?)
@@ -94,7 +93,7 @@ Summary(pl.UTF-8):	Biblioteka panelu GNOME
 Group:		X11/Libraries
 Requires:	cairo >= 1.0.0
 Requires:	glib2 >= 1:2.45.3
-Requires:	gtk+3 >= 3.19.6
+Requires:	gtk+3 >= 3.22.0
 Requires:	librsvg >= 1:2.36.2
 
 %description libs
@@ -109,7 +108,7 @@ Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki panelu GNOME
 Group:		X11/Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	glib2-devel >= 1:2.45.3
-Requires:	gtk+3-devel >= 3.19.6
+Requires:	gtk+3-devel >= 3.22.0
 
 %description devel
 Panel header files for creating GNOME panels.
@@ -141,7 +140,6 @@ find . -name ChangeLog |awk '{src=$0; dst=$0;sub("^./","",dst);gsub("/","-",dst)
 
 %build
 %{__gtkdocize}
-%{__intltoolize}
 %{__libtoolize}
 %{__aclocal} -I m4
 %{__autoconf}
@@ -163,7 +161,7 @@ install -d $RPM_BUILD_ROOT%{_datadir}/%{name}
 	DESTDIR=$RPM_BUILD_ROOT
 
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/libpanel-applet.la \
-	$RPM_BUILD_ROOT%{_libdir}/gnome-panel/*.la
+	$RPM_BUILD_ROOT%{_libdir}/gnome-panel/modules/*.la
 
 %{__mv} $RPM_BUILD_ROOT%{_localedir}/{sr@ije,sr@ijekavian}
 
@@ -188,12 +186,13 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS NEWS README *ChangeLog
 %attr(755,root,root) %{_bindir}/gnome-desktop-item-edit
 %attr(755,root,root) %{_bindir}/gnome-panel
-%attr(755,root,root) %{_bindir}/panel-test-applets
 %dir %{_libdir}/%{name}
-%attr(755,root,root) %{_libdir}/%{name}/libclock-applet.so
-%attr(755,root,root) %{_libdir}/%{name}/libfish-applet.so
-%attr(755,root,root) %{_libdir}/%{name}/libnotification-area-applet.so
-%attr(755,root,root) %{_libdir}/%{name}/libwnck-applet.so
+%dir %{_libdir}/%{name}/modules
+%attr(755,root,root) %{_libdir}/%{name}/modules/clock.so
+%attr(755,root,root) %{_libdir}/%{name}/modules/fish.so
+%attr(755,root,root) %{_libdir}/%{name}/modules/notification-area.so
+%attr(755,root,root) %{_libdir}/%{name}/modules/status-notifier.so
+%attr(755,root,root) %{_libdir}/%{name}/modules/wncklet.so
 %{_datadir}/glib-2.0/schemas/org.gnome.gnome-panel.applet.clock.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.gnome-panel.applet.fish.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.gnome-panel.applet.window-list.gschema.xml
@@ -212,13 +211,14 @@ rm -rf $RPM_BUILD_ROOT
 %files libs
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libpanel-applet.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libpanel-applet.so.2
+%attr(755,root,root) %ghost %{_libdir}/libpanel-applet.so.3
 
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libpanel-applet.so
 %{_includedir}/gnome-panel
 %{_pkgconfigdir}/libpanel-applet.pc
+%{_pkgconfigdir}/libgnome-panel.pc
 
 %files apidocs
 %defattr(644,root,root,755)

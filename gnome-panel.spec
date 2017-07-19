@@ -28,7 +28,7 @@ BuildRequires:	gobject-introspection-devel >= 0.10.0
 BuildRequires:	gtk+3-devel >= 3.22.0
 %{?with_apidocs:BuildRequires:	gtk-doc >= 1.25}
 BuildRequires:	libgweather-devel >= 3.17.1
-BuildRequires:	librsvg-devel >= 2.36.2
+BuildRequires:	librsvg-devel >= 1:2.36.2
 #BuildRequires:	libstatus-notifier-devel (repo no longer available?)
 BuildRequires:	libtool >= 2:2.2.6
 BuildRequires:	libwnck-devel >= 3.4.6

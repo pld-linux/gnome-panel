@@ -5,12 +5,13 @@
 Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl.UTF-8):	Podstawowe programy środowiska graficznego GNOME
 Name:		gnome-panel
-Version:	3.24.1
-Release:	2
+Version:	3.26.0
+Release:	1
 License:	LGPL v2+ (library), GPL v2+ (the rest)
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-panel/3.24/%{name}-%{version}.tar.xz
-# Source0-md5:	d5ae2fa7af774e78968d44b0cd632939
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-panel/3.26/%{name}-%{version}.tar.xz
+# Source0-md5:	8e9fa02a55e447e613c629bcf467f807
+Patch0:		%{name}-libgweather.patch
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1:1.13
@@ -133,6 +134,7 @@ Dokumentacja API panel-applet.
 
 %prep
 %setup -q
+%patch0 -p1
 
 # short circuit stopper (fix me!)
 %{__mv} ChangeLog main-ChangeLog
@@ -191,6 +193,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/%{name}/modules/clock.so
 %attr(755,root,root) %{_libdir}/%{name}/modules/fish.so
 %attr(755,root,root) %{_libdir}/%{name}/modules/notification-area.so
+%attr(755,root,root) %{_libdir}/%{name}/modules/separator.so
 %attr(755,root,root) %{_libdir}/%{name}/modules/status-notifier.so
 %attr(755,root,root) %{_libdir}/%{name}/modules/wncklet.so
 %{_datadir}/glib-2.0/schemas/org.gnome.gnome-panel.applet.clock.gschema.xml

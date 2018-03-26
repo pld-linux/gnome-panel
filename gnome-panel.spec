@@ -5,13 +5,12 @@
 Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl.UTF-8):	Podstawowe programy środowiska graficznego GNOME
 Name:		gnome-panel
-Version:	3.26.0
+Version:	3.28.0
 Release:	1
 License:	LGPL v2+ (library), GPL v2+ (the rest)
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-panel/3.26/%{name}-%{version}.tar.xz
-# Source0-md5:	8e9fa02a55e447e613c629bcf467f807
-Patch0:		%{name}-libgweather.patch
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-panel/3.28/%{name}-%{version}.tar.xz
+# Source0-md5:	3011d52bf1d8990ec075fa5fe411d35e
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1:1.13
@@ -41,6 +40,7 @@ BuildRequires:	rpm-build >= 4.1-10
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.311
+BuildRequires:	systemd-devel >= 230
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xorg-lib-libX11-devel
 BuildRequires:	xorg-lib-libXau-devel
@@ -134,7 +134,6 @@ Dokumentacja API panel-applet.
 
 %prep
 %setup -q
-%patch0 -p1
 
 # short circuit stopper (fix me!)
 %{__mv} ChangeLog main-ChangeLog
@@ -192,6 +191,7 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_libdir}/%{name}/modules
 %attr(755,root,root) %{_libdir}/%{name}/modules/clock.so
 %attr(755,root,root) %{_libdir}/%{name}/modules/fish.so
+%attr(755,root,root) %{_libdir}/%{name}/modules/menu.so
 %attr(755,root,root) %{_libdir}/%{name}/modules/notification-area.so
 %attr(755,root,root) %{_libdir}/%{name}/modules/separator.so
 %attr(755,root,root) %{_libdir}/%{name}/modules/status-notifier.so
@@ -221,7 +221,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libpanel-applet.so
 %{_includedir}/gnome-panel
 %{_pkgconfigdir}/libpanel-applet.pc
-%{_pkgconfigdir}/libgnome-panel.pc
 
 %files apidocs
 %defattr(644,root,root,755)

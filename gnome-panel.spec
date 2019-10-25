@@ -5,12 +5,12 @@
 Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl.UTF-8):	Podstawowe programy środowiska graficznego GNOME
 Name:		gnome-panel
-Version:	3.28.0
-Release:	2
+Version:	3.34.1
+Release:	1
 License:	LGPL v2+ (library), GPL v2+ (the rest)
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-panel/3.28/%{name}-%{version}.tar.xz
-# Source0-md5:	3011d52bf1d8990ec075fa5fe411d35e
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-panel/3.34/%{name}-%{version}.tar.xz
+# Source0-md5:	cfd5d3fd548a2afdd8bd3bbdf9646bbd
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1:1.13
@@ -185,7 +185,6 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS NEWS README *ChangeLog
-%attr(755,root,root) %{_bindir}/gnome-desktop-item-edit
 %attr(755,root,root) %{_bindir}/gnome-panel
 %dir %{_libdir}/%{name}
 %dir %{_libdir}/%{name}/modules
@@ -198,12 +197,13 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/%{name}/modules/wncklet.so
 %{_datadir}/glib-2.0/schemas/org.gnome.gnome-panel.applet.clock.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.gnome-panel.applet.fish.gschema.xml
+%{_datadir}/glib-2.0/schemas/org.gnome.gnome-panel.applet.initial-settings.gschema.xml
+%{_datadir}/glib-2.0/schemas/org.gnome.gnome-panel.applet.menu-button.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.gnome-panel.applet.window-list.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.gnome-panel.applet.workspace-switcher.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.gnome-panel.enums.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.gnome-panel.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.gnome-panel.launcher.gschema.xml
-%{_datadir}/glib-2.0/schemas/org.gnome.gnome-panel.menu-button.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.gnome-panel.object.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.gnome-panel.toplevel.gschema.xml
 %{_datadir}/gnome-panel

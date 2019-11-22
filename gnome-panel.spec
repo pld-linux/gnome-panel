@@ -11,25 +11,23 @@ License:	LGPL v2+ (library), GPL v2+ (the rest)
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-panel/3.34/%{name}-%{version}.tar.xz
 # Source0-md5:	cfd5d3fd548a2afdd8bd3bbdf9646bbd
-URL:		http://www.gnome.org/
+URL:		https://wiki.gnome.org/Projects/GnomePanel
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1:1.13
 BuildRequires:	cairo-devel >= 1.0.0
 BuildRequires:	dconf-devel >= 0.14.0
 BuildRequires:	docbook-dtd412-xml
-BuildRequires:	evolution-data-server-devel >= 3.6.0
+BuildRequires:	evolution-data-server-devel >= 3.33.2
 BuildRequires:	gdk-pixbuf2-devel >= 2.26.0
 BuildRequires:	gdm-devel >= 3
-BuildRequires:	gettext-tools >= 0.19.4
+BuildRequires:	gettext-tools >= 0.19.8
 BuildRequires:	glib2-devel >= 1:2.45.3
 BuildRequires:	gnome-desktop-devel >= 3.4.0
 BuildRequires:	gnome-menus-devel >= 3.8.0
 BuildRequires:	gobject-introspection-devel >= 0.10.0
 BuildRequires:	gtk+3-devel >= 3.22.0
 %{?with_apidocs:BuildRequires:	gtk-doc >= 1.25}
-BuildRequires:	libgweather-devel >= 3.17.1
-BuildRequires:	librsvg-devel >= 1:2.36.2
-#BuildRequires:	libstatus-notifier-devel (repo no longer available?)
+BuildRequires:	libgweather-devel >= 3.28.0
 BuildRequires:	libtool >= 2:2.2.6
 BuildRequires:	libwnck-devel >= 3.4.6
 BuildRequires:	pango-devel >= 1:1.15.4
@@ -40,7 +38,7 @@ BuildRequires:	rpm-build >= 4.1-10
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.311
-BuildRequires:	systemd-devel >= 230
+BuildRequires:	systemd-devel >= 1:230
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xorg-lib-libX11-devel
 BuildRequires:	xorg-lib-libXau-devel
@@ -56,18 +54,17 @@ Requires:	gnome-desktop >= 3.4.0
 Requires:	gnome-icon-theme >= 3.0.0
 Requires:	gnome-menus >= 3.8.0
 Requires:	hicolor-icon-theme
-Requires:	libgweather >= 3.17.1
+Requires:	libgweather >= 3.28.0
 Requires:	libwnck >= 3.4.6
 Requires:	pango >= 1:1.15.4
+Requires:	systemd-libs >= 1:230
 Requires:	tzdata >= 2008b-4
 Requires:	xdg-menus
 Requires:	xorg-lib-libXrandr >= 1.3.0
-Suggests:	evolution-data-server >= 3.6.0
+Suggests:	evolution-data-server >= 3.33.2
 Suggests:	gnome-screenshot
 Suggests:	gnome-search-tool
 Suggests:	polkit-gnome >= 0.93
-# sr@Latn vs. sr@latin
-Conflicts:	glibc-misc < 6:2.7
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -95,7 +92,6 @@ Group:		X11/Libraries
 Requires:	cairo >= 1.0.0
 Requires:	glib2 >= 1:2.45.3
 Requires:	gtk+3 >= 3.22.0
-Requires:	librsvg >= 1:2.36.2
 
 %description libs
 GNOME panel library.
@@ -134,10 +130,6 @@ Dokumentacja API panel-applet.
 
 %prep
 %setup -q
-
-# short circuit stopper (fix me!)
-%{__mv} ChangeLog main-ChangeLog
-find . -name ChangeLog |awk '{src=$0; dst=$0;sub("^./","",dst);gsub("/","-",dst); print "cp " src " " dst}'|sh
 
 %build
 %{__gtkdocize}
@@ -184,7 +176,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc AUTHORS NEWS README *ChangeLog
+%doc AUTHORS NEWS README.md ChangeLog
 %attr(755,root,root) %{_bindir}/gnome-panel
 %dir %{_libdir}/%{name}
 %dir %{_libdir}/%{name}/modules
@@ -208,7 +200,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/glib-2.0/schemas/org.gnome.gnome-panel.toplevel.gschema.xml
 %{_datadir}/gnome-panel
 %{_desktopdir}/gnome-panel.desktop
-%{_iconsdir}/hicolor/*/apps/gnome-panel*.*
+%{_iconsdir}/hicolor/*x*/apps/gnome-panel*.png
+%{_iconsdir}/hicolor/scalable/apps/gnome-panel*.svg
 %{_mandir}/man1/gnome-panel.1*
 
 %files libs

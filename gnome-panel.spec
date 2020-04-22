@@ -5,12 +5,12 @@
 Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl.UTF-8):	Podstawowe programy środowiska graficznego GNOME
 Name:		gnome-panel
-Version:	3.34.1
-Release:	2
+Version:	3.36.1
+Release:	1
 License:	LGPL v2+ (library), GPL v2+ (the rest)
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-panel/3.34/%{name}-%{version}.tar.xz
-# Source0-md5:	cfd5d3fd548a2afdd8bd3bbdf9646bbd
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-panel/3.36/%{name}-%{version}.tar.xz
+# Source0-md5:	b6bb185ce1724f4b19699042d90282a6
 URL:		https://wiki.gnome.org/Projects/GnomePanel
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1:1.13
@@ -153,7 +153,7 @@ install -d $RPM_BUILD_ROOT%{_datadir}/%{name}
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-%{__rm} $RPM_BUILD_ROOT%{_libdir}/libpanel-applet.la \
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/*.la \
 	$RPM_BUILD_ROOT%{_libdir}/gnome-panel/modules/*.la
 
 %{__mv} $RPM_BUILD_ROOT%{_localedir}/{sr@ije,sr@ijekavian}
@@ -208,13 +208,18 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libpanel-applet.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libpanel-applet.so.3
+%attr(755,root,root) %{_libdir}/libgnome-panel.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libgnome-panel.so.0
 
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libpanel-applet.so
+%attr(755,root,root) %{_libdir}/libgnome-panel.so
 %{_includedir}/gnome-panel
 %{_pkgconfigdir}/libpanel-applet.pc
+%{_pkgconfigdir}/libgnome-panel.pc
 
 %files apidocs
 %defattr(644,root,root,755)
 %{_gtkdocdir}/libpanel-applet
+%{_gtkdocdir}/libgnome-panel

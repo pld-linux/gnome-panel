@@ -42,6 +42,7 @@ BuildRequires:	systemd-devel >= 1:230
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xorg-lib-libX11-devel
 BuildRequires:	xorg-lib-libXau-devel
+BuildRequires:	xorg-lib-libXi-devel
 BuildRequires:	xorg-lib-libXrandr-devel >= 1.3.0
 BuildRequires:	xz
 BuildRequires:	yelp-tools

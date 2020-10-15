@@ -5,12 +5,12 @@
 Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl.UTF-8):	Podstawowe programy środowiska graficznego GNOME
 Name:		gnome-panel
-Version:	3.36.2
-Release:	2
+Version:	3.38.0
+Release:	1
 License:	LGPL v2+ (library), GPL v2+ (the rest)
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-panel/3.36/%{name}-%{version}.tar.xz
-# Source0-md5:	4f599a59498c027c3181a3ad2f4ec92c
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-panel/3.38/%{name}-%{version}.tar.xz
+# Source0-md5:	7543bd33906253ea8267892ffb73cc73
 URL:		https://wiki.gnome.org/Projects/GnomePanel
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1:1.13
@@ -37,7 +37,7 @@ BuildRequires:	polkit-devel
 BuildRequires:	rpm-build >= 4.1-10
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(find_lang) >= 1.23
-BuildRequires:	rpmbuild(macros) >= 1.311
+BuildRequires:	rpmbuild(macros) >= 1.752
 BuildRequires:	systemd-devel >= 1:230
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xorg-lib-libX11-devel
@@ -119,9 +119,7 @@ Summary:	panel-applet API documentation
 Summary(pl.UTF-8):	Dokumentacja API panel-applet
 Group:		Documentation
 Requires:	gtk-doc-common
-%if "%{_rpmversion}" >= "4.6"
-BuildArch:	noarch
-%endif
+%{?noarchpackage}
 
 %description apidocs
 panel-applet API documentation.
@@ -181,22 +179,24 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/gnome-panel
 %dir %{_libdir}/%{name}
 %dir %{_libdir}/%{name}/modules
-%attr(755,root,root) %{_libdir}/%{name}/modules/clock.so
-%attr(755,root,root) %{_libdir}/%{name}/modules/fish.so
-%attr(755,root,root) %{_libdir}/%{name}/modules/menu.so
-%attr(755,root,root) %{_libdir}/%{name}/modules/notification-area.so
-%attr(755,root,root) %{_libdir}/%{name}/modules/separator.so
-%attr(755,root,root) %{_libdir}/%{name}/modules/status-notifier.so
-%attr(755,root,root) %{_libdir}/%{name}/modules/wncklet.so
+%attr(755,root,root) %{_libdir}/%{name}/modules/org.gnome.gnome-panel.action-button.so
+%attr(755,root,root) %{_libdir}/%{name}/modules/org.gnome.gnome-panel.clock.so
+%attr(755,root,root) %{_libdir}/%{name}/modules/org.gnome.gnome-panel.fish.so
+%attr(755,root,root) %{_libdir}/%{name}/modules/org.gnome.gnome-panel.launcher.so
+%attr(755,root,root) %{_libdir}/%{name}/modules/org.gnome.gnome-panel.menu.so
+%attr(755,root,root) %{_libdir}/%{name}/modules/org.gnome.gnome-panel.notification-area.so
+%attr(755,root,root) %{_libdir}/%{name}/modules/org.gnome.gnome-panel.separator.so
+%attr(755,root,root) %{_libdir}/%{name}/modules/org.gnome.gnome-panel.status-notifier.so
+%attr(755,root,root) %{_libdir}/%{name}/modules/org.gnome.gnome-panel.wncklet.so
 %{_datadir}/glib-2.0/schemas/org.gnome.gnome-panel.applet.clock.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.gnome-panel.applet.fish.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.gnome-panel.applet.initial-settings.gschema.xml
+%{_datadir}/glib-2.0/schemas/org.gnome.gnome-panel.applet.launcher.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.gnome-panel.applet.menu-button.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.gnome-panel.applet.window-list.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.gnome-panel.applet.workspace-switcher.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.gnome-panel.enums.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.gnome-panel.gschema.xml
-%{_datadir}/glib-2.0/schemas/org.gnome.gnome-panel.launcher.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.gnome-panel.object.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.gnome-panel.toplevel.gschema.xml
 %{_datadir}/gnome-panel
@@ -207,20 +207,15 @@ rm -rf $RPM_BUILD_ROOT
 
 %files libs
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libpanel-applet.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libpanel-applet.so.3
 %attr(755,root,root) %{_libdir}/libgnome-panel.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libgnome-panel.so.0
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libpanel-applet.so
 %attr(755,root,root) %{_libdir}/libgnome-panel.so
 %{_includedir}/gnome-panel
-%{_pkgconfigdir}/libpanel-applet.pc
 %{_pkgconfigdir}/libgnome-panel.pc
 
 %files apidocs
 %defattr(644,root,root,755)
-%{_gtkdocdir}/libpanel-applet
 %{_gtkdocdir}/libgnome-panel

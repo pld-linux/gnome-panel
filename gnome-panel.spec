@@ -119,7 +119,7 @@ Summary:	panel-applet API documentation
 Summary(pl.UTF-8):	Dokumentacja API panel-applet
 Group:		Documentation
 Requires:	gtk-doc-common
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description apidocs
 panel-applet API documentation.

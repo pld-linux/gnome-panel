@@ -5,12 +5,12 @@
 Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl.UTF-8):	Podstawowe programy środowiska graficznego GNOME
 Name:		gnome-panel
-Version:	3.38.0
+Version:	3.40.0
 Release:	1
 License:	LGPL v2+ (library), GPL v2+ (the rest)
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-panel/3.38/%{name}-%{version}.tar.xz
-# Source0-md5:	7543bd33906253ea8267892ffb73cc73
+Source0:	https://download.gnome.org/sources/gnome-panel/3.40/%{name}-%{version}.tar.xz
+# Source0-md5:	a5bd8491d6fa871dc5b4451bc5dfc647
 URL:		https://wiki.gnome.org/Projects/GnomePanel
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1:1.13
@@ -21,20 +21,20 @@ BuildRequires:	evolution-data-server-devel >= 3.33.2
 BuildRequires:	gdk-pixbuf2-devel >= 2.26.0
 BuildRequires:	gdm-devel >= 3
 BuildRequires:	gettext-tools >= 0.19.8
-BuildRequires:	glib2-devel >= 1:2.45.3
+BuildRequires:	glib2-devel >= 1:2.67.1
 BuildRequires:	gnome-desktop-devel >= 3.4.0
 BuildRequires:	gnome-menus-devel >= 3.8.0
 BuildRequires:	gobject-introspection-devel >= 0.10.0
 BuildRequires:	gtk+3-devel >= 3.22.0
 %{?with_apidocs:BuildRequires:	gtk-doc >= 1.25}
-BuildRequires:	libgweather-devel >= 3.28.0
+BuildRequires:	libgweather-devel >= 40
 BuildRequires:	libtool >= 2:2.2.6
 BuildRequires:	libwnck-devel >= 3.4.6
 BuildRequires:	pango-devel >= 1:1.15.4
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig >= 1:0.15.0
 BuildRequires:	polkit-devel
-BuildRequires:	rpm-build >= 4.1-10
+BuildRequires:	rpm-build >= 4.6
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.752
@@ -46,7 +46,7 @@ BuildRequires:	xorg-lib-libXi-devel
 BuildRequires:	xorg-lib-libXrandr-devel >= 1.3.0
 BuildRequires:	xz
 BuildRequires:	yelp-tools
-Requires(post,postun):	glib2 >= 1:2.45.3
+Requires(post,postun):	glib2 >= 1:2.67.1
 Requires(post,postun):	gtk-update-icon-cache
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	dconf >= 0.14.0
@@ -55,7 +55,7 @@ Requires:	gnome-desktop >= 3.4.0
 Requires:	gnome-icon-theme >= 3.0.0
 Requires:	gnome-menus >= 3.8.0
 Requires:	hicolor-icon-theme
-Requires:	libgweather >= 3.28.0
+Requires:	libgweather >= 40
 Requires:	libwnck >= 3.4.6
 Requires:	pango >= 1:1.15.4
 Requires:	systemd-libs >= 1:230
@@ -91,7 +91,7 @@ Summary:	GNOME panel library
 Summary(pl.UTF-8):	Biblioteka panelu GNOME
 Group:		X11/Libraries
 Requires:	cairo >= 1.0.0
-Requires:	glib2 >= 1:2.45.3
+Requires:	glib2 >= 1:2.67.1
 Requires:	gtk+3 >= 3.22.0
 
 %description libs
@@ -105,7 +105,7 @@ Summary:	GNOME panel includes, and more
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki panelu GNOME
 Group:		X11/Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
-Requires:	glib2-devel >= 1:2.45.3
+Requires:	glib2-devel >= 1:2.67.1
 Requires:	gtk+3-devel >= 3.22.0
 
 %description devel

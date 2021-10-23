@@ -5,12 +5,12 @@
 Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl.UTF-8):	Podstawowe programy środowiska graficznego GNOME
 Name:		gnome-panel
-Version:	3.40.0
+Version:	3.42.0
 Release:	1
 License:	LGPL v2+ (library), GPL v2+ (the rest)
 Group:		X11/Applications
-Source0:	https://download.gnome.org/sources/gnome-panel/3.40/%{name}-%{version}.tar.xz
-# Source0-md5:	a5bd8491d6fa871dc5b4451bc5dfc647
+Source0:	https://download.gnome.org/sources/gnome-panel/3.42/%{name}-%{version}.tar.xz
+# Source0-md5:	9c84583da26fb31fa03e467240675864
 URL:		https://wiki.gnome.org/Projects/GnomePanel
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1:1.13
@@ -29,7 +29,7 @@ BuildRequires:	gtk+3-devel >= 3.22.0
 %{?with_apidocs:BuildRequires:	gtk-doc >= 1.25}
 BuildRequires:	libgweather-devel >= 40
 BuildRequires:	libtool >= 2:2.2.6
-BuildRequires:	libwnck-devel >= 3.4.6
+BuildRequires:	libwnck-devel >= 40.0
 BuildRequires:	pango-devel >= 1:1.15.4
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig >= 1:0.15.0
@@ -56,7 +56,7 @@ Requires:	gnome-icon-theme >= 3.0.0
 Requires:	gnome-menus >= 3.8.0
 Requires:	hicolor-icon-theme
 Requires:	libgweather >= 40
-Requires:	libwnck >= 3.4.6
+Requires:	libwnck >= 40.0
 Requires:	pango >= 1:1.15.4
 Requires:	systemd-libs >= 1:230
 Requires:	tzdata >= 2008b-4

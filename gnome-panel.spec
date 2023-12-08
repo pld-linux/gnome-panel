@@ -1,19 +1,15 @@
-#
-# Conditional build:
-%bcond_without	apidocs	# gtk-doc documentation rebuild
-#
 Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl.UTF-8):	Podstawowe programy środowiska graficznego GNOME
 Name:		gnome-panel
-Version:	3.46.0
+Version:	3.50.0
 Release:	1
 License:	LGPL v2+ (library), GPL v2+ (the rest)
 Group:		X11/Applications
-Source0:	https://download.gnome.org/sources/gnome-panel/3.46/%{name}-%{version}.tar.xz
-# Source0-md5:	529cfa62ffcbb2bd3eccbc01e7c50569
+Source0:	https://download.gnome.org/sources/gnome-panel/3.50/%{name}-%{version}.tar.xz
+# Source0-md5:	62d40b139d8fcbf4a4ce0fc302fec22a
 URL:		https://wiki.gnome.org/Projects/GnomePanel
 BuildRequires:	autoconf >= 2.50
-BuildRequires:	automake >= 1:1.13
+BuildRequires:	automake >= 1:1.16.4
 BuildRequires:	cairo-devel >= 1.0.0
 BuildRequires:	dconf-devel >= 0.14.0
 BuildRequires:	docbook-dtd412-xml
@@ -26,7 +22,6 @@ BuildRequires:	gnome-desktop-devel >= 3.4.0
 BuildRequires:	gnome-menus-devel >= 3.8.0
 BuildRequires:	gobject-introspection-devel >= 0.10.0
 BuildRequires:	gtk+3-devel >= 3.22.0
-%{?with_apidocs:BuildRequires:	gtk-doc >= 1.25}
 BuildRequires:	libgweather4-devel >= 4.0
 BuildRequires:	libtool >= 2:2.2.6
 BuildRequires:	libwnck-devel >= 43.0
@@ -34,7 +29,6 @@ BuildRequires:	pango-devel >= 1:1.15.4
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig >= 1:0.15.0
 BuildRequires:	polkit-devel
-BuildRequires:	rpm-build >= 4.6
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.752
@@ -107,6 +101,7 @@ Group:		X11/Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	glib2-devel >= 1:2.67.1
 Requires:	gtk+3-devel >= 3.22.0
+Obsoletes:	gnome-panel-apidocs < 3.47.1
 
 %description devel
 Panel header files for creating GNOME panels.
@@ -114,24 +109,10 @@ Panel header files for creating GNOME panels.
 %description devel -l pl.UTF-8
 Pliki nagłówkowe bibliotek panelu GNOME.
 
-%package apidocs
-Summary:	panel-applet API documentation
-Summary(pl.UTF-8):	Dokumentacja API panel-applet
-Group:		Documentation
-Requires:	gtk-doc-common
-BuildArch:	noarch
-
-%description apidocs
-panel-applet API documentation.
-
-%description apidocs -l pl.UTF-8
-Dokumentacja API panel-applet.
-
 %prep
 %setup -q
 
 %build
-%{__gtkdocize}
 %{__libtoolize}
 %{__aclocal} -I m4
 %{__autoconf}
@@ -140,9 +121,7 @@ Dokumentacja API panel-applet.
 %configure \
 	--disable-silent-rules \
 	--disable-static \
-	--enable-eds \
-	%{?with_apidocs:--enable-gtk-doc} \
-	--with-html-dir=%{_gtkdocdir}
+	--enable-eds
 %{__make}
 
 %install
@@ -208,14 +187,10 @@ rm -rf $RPM_BUILD_ROOT
 %files libs
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libgnome-panel.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libgnome-panel.so.0
+%attr(755,root,root) %ghost %{_libdir}/libgnome-panel.so.3
 
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libgnome-panel.so
 %{_includedir}/gnome-panel
 %{_pkgconfigdir}/libgnome-panel.pc
-
-%files apidocs
-%defattr(644,root,root,755)
-%{_gtkdocdir}/libgnome-panel

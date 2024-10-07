@@ -1,12 +1,12 @@
 Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl.UTF-8):	Podstawowe programy środowiska graficznego GNOME
 Name:		gnome-panel
-Version:	3.52.0
+Version:	3.54.0
 Release:	1
 License:	LGPL v2+ (library), GPL v2+ (the rest)
 Group:		X11/Applications
-Source0:	https://download.gnome.org/sources/gnome-panel/3.52/%{name}-%{version}.tar.xz
-# Source0-md5:	b31f81ec510d0a4aadf80e048af1728f
+Source0:	https://download.gnome.org/sources/gnome-panel/3.54/%{name}-%{version}.tar.xz
+# Source0-md5:	41782ff845edaade595a8ca37d7ad274
 URL:		https://wiki.gnome.org/Projects/GnomePanel
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1:1.16.4
@@ -18,7 +18,7 @@ BuildRequires:	gdk-pixbuf2-devel >= 2.26.0
 BuildRequires:	gdm-devel >= 3
 BuildRequires:	gettext-tools >= 0.19.8
 BuildRequires:	glib2-devel >= 1:2.67.1
-BuildRequires:	gnome-desktop-devel >= 3.4.0
+BuildRequires:	gnome-desktop-devel >= 3.35.3
 BuildRequires:	gnome-menus-devel >= 3.8.0
 BuildRequires:	gobject-introspection-devel >= 0.10.0
 BuildRequires:	gsettings-desktop-schemas-devel >= 42.0
@@ -46,7 +46,7 @@ Requires(post,postun):	gtk-update-icon-cache
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	dconf >= 0.14.0
 Requires:	gdk-pixbuf2 >= 2.26.0
-Requires:	gnome-desktop >= 3.4.0
+Requires:	gnome-desktop >= 3.35.3
 Requires:	gnome-icon-theme >= 3.0.0
 Requires:	gnome-menus >= 3.8.0
 Requires:	gsettings-desktop-schemas >= 42.0
